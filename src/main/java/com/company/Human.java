@@ -2,7 +2,7 @@ package com.company;
 
 public abstract class Human {
 
-    private String fio; //ФИО
+    private String fullName; //ФИО
     private int id;
 
     public Human() {

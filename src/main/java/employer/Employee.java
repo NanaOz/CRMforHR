@@ -1,7 +1,10 @@
 package employer;
 
-public class Employee {
+import com.company.Human;
 
+public class Employee extends Human {
 
-
+    public Employee() {
+        super();
+    }
 }

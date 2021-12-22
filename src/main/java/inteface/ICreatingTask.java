@@ -1,4 +1,6 @@
 package inteface;
 
-public interface ICreatingTask {
+public interface ICreatingTask {  //создание задачи
+    public void creatingTask ();
+
 }

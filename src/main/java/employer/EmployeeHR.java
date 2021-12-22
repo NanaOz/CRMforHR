@@ -8,21 +8,20 @@ public class EmployeeHR extends Human {
         super();
     }
 
-    public void createTask(){
+    public void editingLid(){          //редактирование карточки
 
     }
 
-    public void editingLid(){
+    public void createCommand(){       //подбор команды
 
     }
 
-    public void createCommand(){
+    public void search(){            //поиск/фильтры
 
     }
 
-    public void search(){
-
-    }
+//    @Override
+    public void creatingTask (){}      //создать задачу
 
 
 
