@@ -4,8 +4,6 @@ import com.company.Human;
 
 public class EmployeeHR extends Human {
 
-
-
     public EmployeeHR(){
         super();
     }
