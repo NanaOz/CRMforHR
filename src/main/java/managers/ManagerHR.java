@@ -5,17 +5,14 @@ import com.company.Human;
 import employer.Employee;
 import employer.EmployeeHR;
 
+import java.util.Date;
 import java.util.HashMap;
 
-public class ManagerHR extends Human {
+public class ManagerHR extends EmployeeHR {
 
-    public String dateStartTask;  //дата начала задания
-    public String dateEndTask;   //дэдлайн
-    public String task;          //задание
 
-    public HashMap<String ,EmployeeHR> employeeHRHash;    //список сотрудников HR
-    public HashMap<String , Employee> employeeHash;       //список всех сотрудников
-    public HashMap<String , Candidate> candidateHash;     //список соискателей
+
+
 
     public String position;    //должность
     public Boolean viewMode=false;   //зона видимости
@@ -37,8 +34,7 @@ public class ManagerHR extends Human {
 
     }
 
-    //    @Override
-    public void creatingTask (){}      //создать задачу
+
 
 
 

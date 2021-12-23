@@ -2,7 +2,7 @@ package employer;
 
 import com.company.Human;
 
-public class EmployeeHR extends Human {
+public class EmployeeHR extends Employee {
 
     public EmployeeHR(){
         super();
