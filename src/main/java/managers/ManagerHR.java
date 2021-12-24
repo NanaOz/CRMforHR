@@ -13,9 +13,8 @@ public class ManagerHR extends EmployeeHR {
 
 
 
-
-    public String position;    //должность
     public Boolean viewMode=false;   //зона видимости
+
 
     public ManagerHR() {
         super();

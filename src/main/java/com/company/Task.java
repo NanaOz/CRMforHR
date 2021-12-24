@@ -12,7 +12,7 @@ public class Task {
     public String task;          //задание
 
     Employee employee;
-    EmployeeHR employeeHR; //нужны ли?если наследники от employee
+    EmployeeHR employeeHR; //нужны?
     Candidate candidate;
 
     public void creatingTask (){}      //создать задачу

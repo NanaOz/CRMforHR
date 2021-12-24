@@ -4,6 +4,8 @@ import com.company.Human;
 
 public class EmployeeHR extends Employee {
 
+    public String username; //логин
+
     public EmployeeHR(){
         super();
     }
@@ -20,7 +22,7 @@ public class EmployeeHR extends Employee {
 
     }
 
-//    @Override
+
     public void creatingTask (){}      //создать задачу
 
 
