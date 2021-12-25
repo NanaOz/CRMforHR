@@ -1,6 +1,8 @@
 package com.company;
 
-public class Candidate extends Human {
+import models.User;
+
+public class Candidate extends User {
 
     public Candidate() {
         super();

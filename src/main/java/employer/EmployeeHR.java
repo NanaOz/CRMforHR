@@ -1,7 +1,5 @@
 package employer;
 
-import com.company.Human;
-
 public class EmployeeHR extends Employee {
 
     public String username; //логин

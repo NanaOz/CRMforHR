@@ -1,12 +1,6 @@
 package managers;
 
-import com.company.Candidate;
-import com.company.Human;
-import employer.Employee;
 import employer.EmployeeHR;
-
-import java.util.Date;
-import java.util.HashMap;
 
 public class ManagerHR extends EmployeeHR {
 

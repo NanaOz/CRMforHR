@@ -1,8 +1,8 @@
 package employer;
 
-import com.company.Human;
-
 public class EmployeeIT extends Employee {
+
+    //мапа с тегами
 
     public EmployeeIT() {
 

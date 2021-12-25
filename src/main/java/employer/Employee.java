@@ -1,8 +1,8 @@
 package employer;
 
-import com.company.Human;
+import models.User;
 
-public class Employee extends Human {
+public class Employee extends User {
 
     private String project; // проект, где работает сейчас
 
