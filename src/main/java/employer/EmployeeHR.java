@@ -2,7 +2,7 @@ package employer;
 
 public class EmployeeHR extends Employee {
 
-    public String username; //логин
+    private String zoneVisibility; //зона видимости ????
 
     public EmployeeHR(){
         super();
