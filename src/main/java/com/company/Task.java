@@ -13,9 +13,9 @@ public class Task {
     public String task;                 //задание
     public String status;               //статус "выполнено", "не выполнено"
 
-    Employee employee;
-    EmployeeHR employeeHR;              //нужны?
-    Candidate candidate;
+    public Employee employee;
+    public EmployeeHR employeeHR;              //исполнители
+    public Candidate candidate;
 
     public void creatingTask (){}       //создать задачу
 }

@@ -8,11 +8,11 @@ import javax.persistence.*;
 @Table (name = "Users")
 public class User {
     @Column (name = "surname")
-    private String surname; //фамилия
+    private String surname;                 //фамилия
     @Column (name = "name")
-    private String name; //имя
+    private String name;                   //имя
     @Column (nullable = true, name = "fathersName")
-    private String fathersName; //отчество
+    private String fathersName;            //отчество
 
     @GeneratedValue (strategy = GenerationType.IDENTITY)
     @Id
@@ -23,12 +23,12 @@ public class User {
     @Column (name = "password")
     private String password;
     @Column (name = "email")
-    private String email; //почта
+    private String email;                 //почта
 
+    private String post;
 
     //пока не понятно понадобятся или нет
-    @Transient
-    private String post; //или перенести в сотрудники и соискатели(как предпологаемую должность)?
+    //    @Transient
     @Transient
     private String skills; //навыки
     @Transient
@@ -43,10 +43,7 @@ public class User {
     private String workExperience; //стаж, предыдущее место работы
 
 
-    public User() {
-
-
-    }
+    public User() {}
 
     public void setId(Long id) {
         this.id = id;
