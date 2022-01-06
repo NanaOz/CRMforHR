@@ -1,6 +1,4 @@
-package managers;
-
-import employer.EmployeeHR;
+package models;
 
 public class ManagerHR extends EmployeeHR {
 

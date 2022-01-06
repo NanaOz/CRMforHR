@@ -1,4 +1,4 @@
-package com.company;
+package models;
 
 import models.User;
 

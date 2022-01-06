@@ -1,4 +1,6 @@
-package employer;
+package models;
+
+import models.Employee;
 
 public class EmployeeIT extends Employee {
 

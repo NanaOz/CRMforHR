@@ -1,10 +1,10 @@
 package com.company;
 
-import employer.Employee;
-import employer.EmployeeHR;
+import models.Candidate;
+import models.Employee;
+import models.EmployeeHR;
 
 import java.util.Date;
-import java.util.HashMap;
 
 public class Task {
     public Date dateStartTask;          //дата начала задания

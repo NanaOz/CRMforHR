@@ -6,31 +6,37 @@
     border: 0;
     box-sizing: border-box;
 }
+
 html,
-boby{
+boby {
     height: 100%;
-    background-color: black;
+    background-color: #0a0a0a;
     font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
     color: white;
     font-size: 16px;
 }
-.wrapper{
+
+.wrapper {
     min-height: 100%;
     position: relative;
     overflow: hidden;
 }
-.contents{
+
+.contents {
     padding: 50px 0;
     max-width: 1000px;
     margin: 0px auto;
 }
-.tabs{
+
+.tabs {
     margin: 0px 0px 50px 0px;
 }
-.tabs_items{
+
+.tabs_items {
     display: flex;
 }
-.tabs_item{
+
+.tabs_item {
     flex: 0 1 16.666%;
     height: 50px;
     display: flex;
@@ -40,71 +46,147 @@ boby{
     color: white;
     text-decoration: none;
 }
-.tabs_item span{
+
+.tabs_item span {
     position: relative;
     z-index: 2;
 }
-.tabs_body{}
-.tabs_block{
+
+.tabs_body {
+}
+
+.tabs_addTask {
+    text-decoration: none;
+    display: inline-block;
+    padding: 20px 30px;
+    margin: 10px 20px;
+    position: relative;
+    color: white;
+    border: 1px solid rgba(255, 255, 255, .4);
+    background: none;
+    font-weight: 300;
+    font-family: 'Montserrat', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+.tabs_addTask:before, .border-button:after {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 0;
+    opacity: 0;
+    box-sizing: border-box;
+}
+.tabs_addTask:before {
+    bottom: 0;
+    left: 0;
+    border-left: 1px solid white;
+    border-top: 1px solid white;
+    transition: 0s ease opacity .8s, .2s ease width .4s, .2s ease height .6s;
+}
+.tabs_addTask:after {
+    top: 0;
+    right: 0;
+    border-right: 1px solid white;
+    border-bottom: 1px solid white;
+    transition: 0s ease opacity .4s, .2s ease width, .2s ease height .2s;
+}
+.tabs_addTask:hover:before,
+.tabs_addTask:hover:after {
+    height: 100%;
+    width: 100%;
+    opacity: 1;
+}
+.tabs_addTask:hover:before {
+    transition: 0s ease opacity 0s, .2s ease height, .2s ease width .2s;
+}
+.tabs_addTask:hover:after {
+    transition: 0s ease opacity .4s, .2s ease height .4s, .2s ease width .6s;
+}
+.tabs_addTask:hover {
+    background: rgba(255, 255, 255, .2);
+}
+
+
+
+
+
+
+.tabs_block {
     position: relative;
     padding: 20px;
     font-size: 18px;
     line-height: 24px;
     display: none;
 }
-.tabs_block:before{
+
+.tabs_block:before {
     content: "";
     height: 50px;
     width: 16.666%;
     position: absolute;
     top: -50px;
 }
-.tabs_block:nth-child(1){
-    background-color: #8bdcbd;
+
+.tabs_block:nth-child(1) {
+    background-color: #64bd9b;
 }
-.tabs_block:nth-child(1):before{
-    background-color: #8bdcbd;
+
+.tabs_block:nth-child(1):before {
+    background-color: #64bd9b;
     left: 0;
 }
-.tabs_block:nth-child(2){
-    background-color: #b0e071;
+
+.tabs_block:nth-child(2) {
+    background-color: #57cb6e;
 }
-.tabs_block:nth-child(2):before{
-    background-color: #b0e071;
+
+.tabs_block:nth-child(2):before {
+    background-color: #57cb6e;
     left: 16.666%;
 }
-.tabs_block:nth-child(3){
-    background-color: #e79393;
+
+.tabs_block:nth-child(3) {
+    background-color: #e16f5b;
 }
-.tabs_block:nth-child(3):before{
-    background-color: #e79393;
+
+.tabs_block:nth-child(3):before {
+    background-color: #e16f5b;
     left: 33.333%;
 }
-.tabs_block:nth-child(4){
-    background-color: #f6b381;
+
+.tabs_block:nth-child(4) {
+    background-color: #e15555;
 }
-.tabs_block:nth-child(4):before{
-    background-color: #f6b381;
+
+.tabs_block:nth-child(4):before {
+    background-color: #e15555;
     right: 33.333%;
 }
-.tabs_block:nth-child(5){
-    background-color: #6bd5c8;
+
+.tabs_block:nth-child(5) {
+    background-color: #d74f8b;
 }
-.tabs_block:nth-child(5):before{
-    background-color: #6bd5c8;
+
+.tabs_block:nth-child(5):before {
+    background-color: #d74f8b;
     right: 16.666%;
 }
-.tabs_block:nth-child(6){
-    background-color: plum;
+
+.tabs_block:nth-child(6) {
+    background-color: #966896;
 }
-.tabs_block:nth-child(6):before{
-    background-color: plum;
+
+.tabs_block:nth-child(6):before {
+    background-color: #966896;
     right: 0;
 }
-.tabs_block:target{
+
+.tabs_block:target {
     display: block;
 }
-.text{
+
+.text {
     font-size: 18px;
     line-height: 24px;
 }

@@ -1,4 +1,4 @@
-package employer;
+package models;
 
 import models.User;
 
