@@ -108,6 +108,42 @@ boby {
 }
 
 
+.table {
+    width: 100%;
+    border: none;
+    margin-bottom: 20px;
+}
+.table thead th {
+    font-weight: bold;
+    text-align: left;
+    border: none;
+    padding: 10px 15px;
+    background: rgba(131, 128, 128, 0.41);
+    font-size: 14px;
+}
+.table thead tr th:first-child {
+    border-radius: 8px 0 0 8px;
+}
+.table thead tr th:last-child {
+    border-radius: 0 8px 8px 0;
+}
+.table tbody td {
+    text-align: left;
+    border: none;
+    padding: 10px 15px;
+    font-size: 14px;
+    vertical-align: top;
+}
+.table tbody tr:nth-child(even){
+    background: rgba(131, 128, 128, 0.41);
+}
+.table tbody tr td:first-child {
+    border-radius: 8px 0 0 8px;
+}
+.table tbody tr td:last-child {
+    border-radius: 0 8px 8px 0;
+}
+
 
 
 
@@ -129,56 +165,56 @@ boby {
 }
 
 .tabs_block:nth-child(1) {
-    background-color: #64bd9b;
+    background-color: #383737;
 }
 
 .tabs_block:nth-child(1):before {
-    background-color: #64bd9b;
+    background-color: #383737;
     left: 0;
 }
 
 .tabs_block:nth-child(2) {
-    background-color: #57cb6e;
+    background-color: #383737;
 }
 
 .tabs_block:nth-child(2):before {
-    background-color: #57cb6e;
+    background-color: #383737;
     left: 16.666%;
 }
 
 .tabs_block:nth-child(3) {
-    background-color: #e16f5b;
+    background-color: #383737;
 }
 
 .tabs_block:nth-child(3):before {
-    background-color: #e16f5b;
+    background-color: #383737;
     left: 33.333%;
 }
 
 .tabs_block:nth-child(4) {
-    background-color: #e15555;
+    background-color: #383737;
 }
 
 .tabs_block:nth-child(4):before {
-    background-color: #e15555;
+    background-color: #383737;
     right: 33.333%;
 }
 
 .tabs_block:nth-child(5) {
-    background-color: #d74f8b;
+    background-color: #383737;
 }
 
 .tabs_block:nth-child(5):before {
-    background-color: #d74f8b;
+    background-color: #383737;
     right: 16.666%;
 }
 
 .tabs_block:nth-child(6) {
-    background-color: #966896;
+    background-color: #383737;
 }
 
 .tabs_block:nth-child(6):before {
-    background-color: #966896;
+    background-color: #383737;
     right: 0;
 }
 
