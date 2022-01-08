@@ -250,7 +250,15 @@ boby {
 }
 
 
-
+.table_and_search{
+    display: table;
+}
+.table{
+    display: table-cell;
+}
+.search {
+    display: table-cell;
+}
 
 
 .tabs_block {

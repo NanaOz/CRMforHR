@@ -24,7 +24,7 @@ public class User {
     private String password;
     @Column (name = "email")
     private String email;                 //почта
-
+    @Column (name = "post")
     private String post;
 
     //пока не понятно понадобятся или нет
@@ -42,13 +42,11 @@ public class User {
     @Transient
     private String workExperience; //стаж, предыдущее место работы
 
-
     public User() {}
 
     public void setId(Long id) {
         this.id = id;
     }
-
 
     public Long getId() {
         return id;

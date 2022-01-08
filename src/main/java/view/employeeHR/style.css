@@ -16,6 +16,10 @@ boby {
     font-size: 16px;
 }
 
+body.lock {
+    overflow: hidden;
+}
+
 .wrapper {
     min-height: 100%;
     position: relative;
@@ -58,8 +62,8 @@ boby {
 .tabs_addTask {
     text-decoration: none;
     display: inline-block;
-    padding: 20px 30px;
-    margin: 10px 20px;
+    padding: 10px 20px;
+    margin: 5px 10px;
     position: relative;
     color: white;
     border: 1px solid rgba(255, 255, 255, .4);
@@ -131,7 +135,7 @@ boby {
     text-align: left;
     border: none;
     padding: 10px 15px;
-    font-size: 14px;
+    font-size: 12px;
     vertical-align: top;
 }
 .table tbody tr:nth-child(even){
@@ -145,7 +149,16 @@ boby {
 }
 
 
-
+/*поиск и фильтры*/
+.table_and_search{
+display: table;
+}
+.table{
+    display: table-cell;
+}
+.search {
+    display: table-cell;
+}
 
 
 .tabs_block {
@@ -225,4 +238,51 @@ boby {
 .text {
     font-size: 18px;
     line-height: 24px;
+}
+
+/*попап*/
+.popup {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.68);
+    top: 0;
+    left: 0;
+    opacity: 0;
+    visibility: hidden;
+    overflow-y: auto;
+    overflow-x: hidden;
+    transition: all 0.8s ease 0s;
+}
+.popup.open {
+    opacity: 1;
+    visibility: visible;
+}
+
+.popup_body {
+    min-height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 30px 10px;
+}
+.popup_content {
+    background-color: white;
+    color: black;
+    max-width: 2000px;
+    padding: 30px;
+    position: relative;
+}
+.popup_close {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    font-size: 20px;
+    color: black;
+    text-decoration: none;
+}
+.popup_text {}
+.popup_title {
+    font-size: 40px;
+    margin: 0px 0px 1em 0px;
 }
