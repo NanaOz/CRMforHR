@@ -9,14 +9,16 @@
 <div class="wrapper">
     <div class="contents">
         <div class="tabs">
-            <nav class="tabs_items">
-                <a href="#tab_menu" class="tabs_item"><span>Меню</span></a>
-                <a href="#tab_task" class="tabs_item"><span>Задачи</span></a>
-                <a href="#tab_employee" class="tabs_item"><span>Сотрудники</span></a>
-                <a href="#tab_candidate" class="tabs_item"><span>Соискатели</span></a>
-                <a href="#tab_team" class="tabs_item"><span>Сбор Команды</span></a>
-                <a href="#tab_exit" class="tabs_item"><span>Выход</span></a>
-            </nav>
+            <header id="header" class="header lock-padding">
+                <nav class="tabs_items">
+                    <a href="#tab_menu" class="tabs_item"><span>Меню</span></a>
+                    <a href="#tab_task" class="tabs_item"><span>Задачи</span></a>
+                    <a href="#tab_employee" class="tabs_item"><span>Сотрудники</span></a>
+                    <a href="#tab_candidate" class="tabs_item"><span>Соискатели</span></a>
+                    <a href="#tab_team" class="tabs_item"><span>Сбор Команды</span></a>
+                    <a href="#tab_exit" class="tabs_item"><span>Выход</span></a>
+                </nav>
+            </header>
             <div class="tabs_body">
                 <div id="tab_menu" class="tabs_block">
                     Тут будет профиль
@@ -60,8 +62,8 @@
                 </div>
                 <div id="tab_employee" class="tabs_block">
                     <div>
-                        <a href="#popup" class="tabs_deleteAccount popup-link">Удалить аккаунт</a>
-                        <a href="#popup" class="tabs_addAccount popup-link">Создать аккаунт</a>
+                        <a href="#" class="tabs_deleteAccount popup-link">Удалить аккаунт</a>
+                        <a href="#popup_2" class="tabs_addAccount popup-link">Создать аккаунт</a>
                         <div class="table_and_search">
                             <div class="table">
                                 <table class="table">
@@ -179,7 +181,66 @@
                     </div>
                 </div>
             </div>
-
         </div>
+    </div>
+</div>
+<div id="popup" class="popup">
+    <div class="popup_body">
+        <div class="popup_content">
+            <a href="#" class="popup_close close-popup">X</a>
+            <div class="popup_title">Создать задачу</div>
+            <div class="popup_text">
+                <div>
+                    <label for="executor">Исполнитель</label><input type="text" id="executor" required autocomplete="off">
+                </div>
+                <div>
+                    <label for="start_date">Дата начала</label><input type="text" id="start_date" required autocomplete="off">
+                </div>
+                <div>
+                    <label for="deadline">Дэдлайн</label><input type="text" id="deadline" required autocomplete="off">
+                </div>
+                <div>
+                    <label for="task">Задача</label><input type="text" id="task" required autocomplete="off">
+                </div>
+                <div>
+                    <label for="select_lid">Выбор лида</label><input type="text" id="select_lid" required autocomplete="off">
+                </div>
+                <div>
+                    <button type="submit">Создать задачу</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="popup_2" class="popup">
+    <div class="popup_body">
+        <div class="popup_content">
+            <a href="#" class="popup_close close-popup">X</a>
+            <div class="popup_title">Создать аккаунт сотрудника</div>
+            <div class="popup_text">
+                <div>
+                    <label for="executor">Тэги</label><input type="text" id="tags" required autocomplete="off">
+                </div>
+                <div>
+                    <label for="start_date">Стаж</label><input type="text" id="experience" required autocomplete="off">
+                </div>
+                <div>
+                    <label for="deadline">Должность</label><input type="text" id="post" required autocomplete="off">
+                </div>
+                <div>
+                    <label for="task">Проект</label><input type="text" id="project" required autocomplete="off">
+                </div>
+                <div>
+                    <label for="select_lid">Статус</label><input type="text" id="status" required autocomplete="off">
+                </div>
+                <div>
+                    <button type="submit">Добавить вакансию</button>
+                    <button type="submit">Подбор команды</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="/view/employeeHR/popupAddTask.js"></script>
 </body>
 </html>

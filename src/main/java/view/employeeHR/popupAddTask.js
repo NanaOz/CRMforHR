@@ -11,8 +11,8 @@ if (popupLinks.length > 0) {
         const popupLink = popupLinks [index];
         popupLink.addEventListener("click", function (e){  //вешаем событие клик
             const popupName = popupLink.getAttribute('href').replace('#', '')  //для получения чистого имени popup
-            const curentPopup = document.getElementById(popupName);
-            popupOpen(curentPopup); //открытие попапа
+            const currentPopup = document.getElementById(popupName);
+            popupOpen(currentPopup); //открытие попапа
             e.preventDefault() //запрещаем перезагрузку страницы
         })
     }
@@ -27,8 +27,8 @@ if (popupCloseIcon.length > 0) {
         })
     }
 }
-function popupOpen (curentPopup) { //ипередаем готовый объект
-    if (curentPopup && unlock) { //проверяем есть ли и открыт ли
+function popupOpen (currentPopup) { //ипередаем готовый объект
+    if (currentPopup && unlock) { //проверяем есть ли и открыт ли
         const popupActive = document.querySelector('.popup.open'); //это если попап в попапе
         if (popupActive) {
             popupClose(popupActive, false);
@@ -36,8 +36,8 @@ function popupOpen (curentPopup) { //ипередаем готовый объе�
         else {
             bodyLock(); //скрытие скрола
         }
-        curentPopup.classList.add('open'); //к нашему оппапу добавляем класс open css
-        curentPopup.addEventListener("click", function (e) {
+        currentPopup.classList.add('open'); //к нашему оппапу добавляем класс open css
+        currentPopup.addEventListener("click", function (e) {
             if (!e.target.closest('.popup_content')) { //отсекаем все, кроме темной области
                 popupClose(e.target.closest('.popup'));
             }
