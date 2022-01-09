@@ -16,12 +16,11 @@
                 <a href="#tab_employee" class="tabs_item"><span>Сотрудники</span></a>
                 <a href="#tab_candidate" class="tabs_item"><span>Соискатели</span></a>
                 <a href="#tab_team" class="tabs_item"><span>Сбор Команды</span></a>
-                <a href="#tab_exit" class="tabs_item"><span>Выход</span></a>
             </nav>
            </header>
             <div class="tabs_body">
                 <div id="tab_menu" class="tabs_block">
-                    Тут будет профиль
+                    <div><a href="" class="tabs_exit popup-link">Выход из системы</a></div>
                 </div>
                 <div id="tab_task" class="tabs_block">
                     <div><a href="#popup" class="tabs_addTask popup-link"> Создать задачу</a>
@@ -100,17 +99,17 @@
                         </div>
                         <div class="search">
                             <form action="" method="get">
-                                <div><input name="name_search" placeholder="ФИО" type="search"></div>
-                                <div><input name="post_search" placeholder="Должность" type="search"></div>
-                                <div>
+                                <div><p class="search_name">ФИО:</p><input name="name_search" placeholder="" type="search"></div>
+                                <div><p class="search_name">Должность:</p><input name="post_search" placeholder="" type="search"></div>
+                                <div class="search_radio">
                                     <p><input type="radio" name="status" value="works"/>Работает</p>
                                     <p><input type="radio" name="status" value="dismissed"/>Уволен</p>
                                 </div>
-                                <div><input name="tags_search" placeholder="Тэги" type="search"></div>
-                                <div><input name="project_search" placeholder="Проект" type="search"></div>
-                                <div><input name="id_search" placeholder="ID" type="search"></div>
+                                <div><p class="search_name">Тэги:</p><input name="tags_search" placeholder="Тэги" type="search"></div>
+                                <div><p class="search_name">Проект:</p><input name="project_search" placeholder="Проект" type="search"></div>
+                                <div><p class="search_name">ID:</p><input name="id_search" placeholder="ID" type="search"></div>
                                 <div>
-                                    <button type="submit">Поиск</button>
+                                    <button class="search_button" type="submit">Поиск</button>
                                 </div>
                             </form>
                         </div>
@@ -151,26 +150,24 @@
                     </div>
                     <div class="search">
                         <form action="" method="get">
-                            <div><input name="name_search" placeholder="ФИО" type="search"></div>
-                            <div><input name="post_search" placeholder="Должность" type="search"></div>
-                            <div>
+                            <div><p class="search_name">ФИО:</p><input name="name_search" placeholder="ФИО" type="search"></div>
+                            <div><p class="search_name">Должность:</p><input name="post_search" placeholder="Должность" type="search"></div>
+                            <div class="search_radio">
                                 <p><input type="radio" name="status" value="works"/>Не работает</p>
                                 <p><input type="radio" name="status" value="dismissed"/>Пришлашен на собеседование</p>
                             </div>
-                            <div><input name="tags_search" placeholder="Тэги" type="search"></div>
-                            <div><input name="project_search" placeholder="Проект" type="search"></div>
-                            <div><input name="id_search" placeholder="ID" type="search"></div>
+                            <div><p class="search_name">Тэги:</p><input name="tags_search" placeholder="Тэги" type="search"></div>
+                            <div><p class="search_name">Проект:</p><input name="project_search" placeholder="Проект" type="search"></div>
+                            <div><p class="search_name">ID:</p><input name="id_search" placeholder="ID" type="search"></div>
                             <div>
-                                <button type="submit">Поиск</button>
+                                <button class="search_button" type="submit">Поиск</button>
                             </div>
                         </form>
                     </div>
                 </div>
                 <div id="tab_team" class="tabs_block">
+
                     Тут будет подбор команды
-                </div>
-                <div id="tab_exit" class="tabs_block">
-                    Тут будет выход из программы
                 </div>
             </div>
         </div>
@@ -204,6 +201,6 @@
         </div>
     </div>
 </div>
-<script src="/view/employeeHR/popupAddTask.js"></script>
+<script src="/view/popup/popup.js"></script>
 </body>
 </html>
