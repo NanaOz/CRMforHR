@@ -115,7 +115,7 @@ function sortTableEmployee(n) {
                 }
             } else if (dirEmployee == "desc") {
                 if (xEmployee.innerHTML.toLowerCase() < yEmployee.innerHTML.toLowerCase()) {
-                    //if so, mark as a switch and break the loop:
+                    //если да, отметить переключатель и разорвите цикл:
                     shouldSwitchEmployee = true;
                     break;
                 }

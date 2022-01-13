@@ -201,25 +201,35 @@
             <div class="popup_title">Создать задачу</div>
             <div class="popup_text">
                 <div>
-                    <label for="executor">Исполнитель:</label><input type="text" id="executor" required
-                                                                    autocomplete="off">
+                    <label for="executor">Исполнитель:</label>
+<!--                    <input type="text" id="executor" class="popup_field" required autocomplete="off">-->
+                    <select type="text" id="executor" class="popup_field" required autocomplete="off">
+                        <option>Сюда подключить сотрудников HR из БД</option>
+                    </select>
                 </div>
                 <div>
-                    <label for="start_date">Дата начала:</label><input type="text" id="start_date" required
-                                                                      autocomplete="off">
+                    <label for="start_date">Дата начала:</label>
+<!--                    <input type="text" id="start_date" requiredautocomplete="off">-->
+<!--                    <input type="text" id="start_date" value="" size="10" onClick="xCal(this)" onmouseenter="xCal(this)" onKeyUp="xCal()">-->
+                <input type="date" id="start_date" class="popup_field" name="date">
                 </div>
                 <div>
-                    <label for="deadline">Дэдлайн:</label><input type="text" id="deadline" required autocomplete="off">
+                    <label for="deadline">Дэдлайн:</label>
+<!--                    <input type="text" id="deadline" required autocomplete="off">-->
+                    <input type="date" id="deadline" class="popup_field" name="date">
                 </div>
                 <div>
-                    <label for="task">Задача:</label><input type="text" id="task" required autocomplete="off">
+                    <label for="task">Задача:</label><input type="text" id="task" class="popup_field" required autocomplete="off">
                 </div>
                 <div>
-                    <label for="select_lid">Выбор лида:</label><input type="text" id="select_lid" required
-                                                                     autocomplete="off">
+                    <label for="select_lid">Выбор лида:</label>
+<!--                    <input type="text" id="select_lid" class="popup_field" required autocomplete="off">-->
+                    <select type="text" id="select_lid" class="popup_field" required autocomplete="off">
+                        <option>Сюда подключить всех человеков</option>
+                    </select>
                 </div>
                 <div>
-                    <button type="submit">Создать задачу</button>
+                    <button class="popup_button" type="submit">Создать задачу</button>
                 </div>
             </div>
         </div>
@@ -232,27 +242,49 @@
             <div class="popup_title">Создать аккаунт сотрудника</div>
             <div class="popup_text">
                 <div>
-                    <label for="last_name">Фамилия:</label><input type="text" id="last_name" required autocomplete="off">
+                    <label for="last_name">ФИО:</label>
+<!--                    <input type="text" id="last_name" class="popup_field" required autocomplete="off">-->
+                <select type="text" id="last_name" class="popup_field" required autocomplete="off">
+                    <option>Сюда подключить список ФИО для HR</option>
+                </select>
+                </div>
+<!--                <div>-->
+<!--                    <label for="name">Имя:</label>-->
+<!--                    <input type="text" id="name" class="popup_field" required autocomplete="off">-->
+<!--                </div>-->
+<!--                <div>-->
+<!--                    <label for="fathers_name">Отчество:</label>-->
+<!--                    <input type="text" id="fathers_name" class="popup_field" required autocomplete="off">-->
+<!--                </div>-->
+                <div>
+                    <label for="post">Должность:</label>
+<!--                    <input type="text" id="post" class="popup_field" required autocomplete="off">-->
+                    <select type="text" id="post" class="popup_field" required autocomplete="off">
+                        <option>Сотрудник HR</option>
+                        <option>Руководитель HR</option>
+                    </select>
                 </div>
                 <div>
-                    <label for="name">Имя:</label><input type="text" id="name" required autocomplete="off">
+                    <label for="id_employee">ID:</label>
+                    <input type="text" id="id_employee" class="popup_field" required autocomplete="off" disabled>
                 </div>
                 <div>
-                    <label for="fathers_name">Отчество:</label><input type="text" id="fathers_name" required
-                                                                     autocomplete="off">
+                   <p><label for="zone_visibility">Зона видимости:</label></p>
+                    <div>
+                        <input type="checkbox" id="zone_visibility"  required autocomplete="off">
+                        <label for="zone_visibility">Доступ ко всем сотрудникам</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="zone_visibility1" required autocomplete="off">
+                        <label for="zone_visibility">Доступ ко всем сотрудникам, кроме руководителей</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="zone_visibility3" required autocomplete="off">
+                        <label for="zone_visibility">Доступ ко всем сотрудникам, кроме сотрудников HR</label>
+                    </div>
                 </div>
                 <div>
-                    <label for="post"></label>Должность:<input type="text" id="post" required autocomplete="off">
-                </div>
-                <div>
-                    <label for="id_employee">ID:</label><input type="text" id="id_employee" required autocomplete="off">
-                </div>
-                <div>
-                    <label for="zone_visibility">Зона видимости:</label><input type="text" id="zone_visibility" required
-                                                                              autocomplete="off">
-                </div>
-                <div>
-                    <button type="submit">Создать аккаунт сотрудника</button>
+                    <button class="popup_button" type="submit">Создать аккаунт сотрудника</button>
                 </div>
             </div>
         </div>
