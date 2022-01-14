@@ -1,8 +1,8 @@
 package com.company;
 
-import models.Candidate;
-import models.Employee;
-import models.EmployeeHR;
+import com.company.utils.Candidate;
+import com.company.utils.Employee;
+import com.company.utils.EmployeeHR;
 
 import java.util.Date;
 

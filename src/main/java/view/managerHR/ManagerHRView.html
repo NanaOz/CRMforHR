@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<!--<html lang="en">-->
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="/view/managerHR/ManagerHRStyle.css"/>
-    <title>Рабочее окно для руководителя HR</title>
+    <link rel="stylesheet" type="text/css" href="/css/style.css"/>
+    <title>Рабочее окно для HR</title>
 </head>
 <body>
 <div class="wrapper">
@@ -40,15 +41,6 @@
                         </thead>
                         <tbody>
                         <tr>
-                            <td>12.08.2020</td>
-                            <td>Беглова Ольга</td>
-                            <td>Позвонить</td>
-                            <td>Петров Петр Петрович</td>
-                            <td>не выполнено</td>
-                            <td>21.08.2020</td>
-                            <td>-</td>
-                        </tr>
-                        <tr>
                             <td>11.08.2020</td>
                             <td>Краснова Мария</td>
                             <td>Подписать</td>
@@ -66,56 +58,53 @@
                         <a href="#popup_2" class="tabs_addAccount popup-link">Создать аккаунт</a>
                         <div class="table_and_search">
                             <div class="table">
-                                <table id="employeeTable" class="table">
-                                    <thead>
-                                    <tr>
-                                        <th onclick="sortTableEmployee(0)">ID</th>
-                                        <th onclick="sortTableEmployee(1)">ФИО</th>
-                                        <th onclick="sortTableEmployee(2)">Статус</th>
-                                        <th onclick="sortTableEmployee(3)">Должность</th>
-                                        <th onclick="sortTableEmployee(4)">Проект</th>
-                                        <th onclick="sortTableEmployee(5)">Тэги</th>
-                                        <th onclick="sortTableEmployee(6)">Навыки</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>Петров Петр Петрович</td>
-                                        <td>работает</td>
-                                        <td>Разработчик</td>
-                                        <td>Какой-то проект</td>
-                                        <td>тэг, тэг</td>
-                                        <td>его навыки</td>
-                                    </tr>
-                                    <tr>
-                                        <td>2</td>
-                                        <td>Сидоров Анатолий Иванович</td>
-                                        <td>уволен</td>
-                                        <td>Тестостеровщик</td>
-                                        <td>Просто проект</td>
-                                        <td>Новый тэг, тэг, тэг и еще какие то тэги</td>
-                                        <td>навыки</td>
-                                    </tr>
-                                    <tr>
-                                        <td>3</td>
-                                        <td>Сидоров Аркаша</td>
-                                        <td>уволен</td>
-                                        <td>Тестостеровщик</td>
-                                        <td>проект</td>
-                                        <td>какие то тэги</td>
-                                        <td>Ну навыки</td>
-                                    </tr>
-                                    </tbody>
-                                </table>
+                                <div>
+                                    <table id="employeeTable" class="table">
+                                        <thead>
+                                        <tr>
+                                            <th onclick="sortTableEmployee(0)">ID</th>
+                                            <th onclick="sortTableEmployee(1)">ФИО</th>
+                                            <th onclick="sortTableEmployee(2)">Статус</th>
+                                            <th onclick="sortTableEmployee(3)">Должность</th>
+                                            <th onclick="sortTableEmployee(4)">Проект</th>
+                                            <th onclick="sortTableEmployee(5)">Тэги</th>
+                                            <th onclick="sortTableEmployee(6)">Навыки</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+<!--                                        <tr th:each="User:${users}">-->
+                                           <tr th:each="el":${users}>
+                                            <td th:text="${el.id}"></td>
+                                            <td th:text="${user.surename}"></td>
+                                            <td th:text="${status.status}"></td>
+                                            <td th:text="${post.post}"></td>
+                                            <td th:text="${employeeIT.project}"></td>
+                                            <td th:text="${tag.tag}"></td>
+                                            <td th:text="${user.post}"></td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
                             <div class="search">
                                 <form action="" method="get">
-                                    <div><p class="search_name">ФИО:</p><input id="nameInputEmployee" onkeyup="searchByNameEmployee()" name="name_search" type="search"></div>
-                                    <div><p class="search_name">Должность:</p><input id="postInputEmployee" onkeyup="searchByPostEmployee()" name="post_search" type="search"></div>
-                                    <div><p class="search_name">Тэги:</p><input id="tagInputEmployee" onkeyup="searchByTagEmployee()" name="tags_search" type="search"></div>
-                                    <div><p class="search_name">Проект:</p><input id="projectInputEmployee" onkeyup="searchByProjectEmployee()" name="project_search" type="search"></div>
-                                    <div><p class="search_name">ID:</p><input id="idInputEmployee" onkeyup="searchByIdEmployee()" name="id_search" type="search"></div>
+                                    <div><p class="search_name">ФИО:</p><input id="nameInputEmployee"
+                                                                               onkeyup="searchByNameEmployee()"
+                                                                               name="name_search" type="search"></div>
+                                    <div><p class="search_name">Должность:</p><input id="postInputEmployee"
+                                                                                     onkeyup="searchByPostEmployee()"
+                                                                                     name="post_search" type="search">
+                                    </div>
+                                    <div><p class="search_name">Тэги:</p><input id="tagInputEmployee"
+                                                                                onkeyup="searchByTagEmployee()"
+                                                                                name="tags_search" type="search"></div>
+                                    <div><p class="search_name">Проект:</p><input id="projectInputEmployee"
+                                                                                  onkeyup="searchByProjectEmployee()"
+                                                                                  name="project_search" type="search">
+                                    </div>
+                                    <div><p class="search_name">ID:</p><input id="idInputEmployee"
+                                                                              onkeyup="searchByIdEmployee()"
+                                                                              name="id_search" type="search"></div>
                                 </form>
                             </div>
                         </div>
@@ -156,10 +145,18 @@
                     </div>
                     <div class="search">
                         <form action="" method="get">
-                            <div><p class="search_name">ФИО:</p><input id="nameInputCandidate" onkeyup="searchByNameCandidate()" name="name_search" type="search"></div>
-                            <div><p class="search_name">Должность:</p><input id="postInputCandidate" onkeyup="searchByPostCandidate()" name="post_search" type="search"></div>
-                            <div><p class="search_name">Тэги:</p><input id="tagInputCandidate" onkeyup="searchByTagCandidate()" name="tags_search" type="search"></div>
-                            <div><p class="search_name">ID:</p><input id="idInputCandidate" onkeyup="searchByIdCandidate()" name="id_search" type="search"></div>
+                            <div><p class="search_name">ФИО:</p><input id="nameInputCandidate"
+                                                                       onkeyup="searchByNameCandidate()"
+                                                                       name="name_search" type="search"></div>
+                            <div><p class="search_name">Должность:</p><input id="postInputCandidate"
+                                                                             onkeyup="searchByPostCandidate()"
+                                                                             name="post_search" type="search"></div>
+                            <div><p class="search_name">Тэги:</p><input id="tagInputCandidate"
+                                                                        onkeyup="searchByTagCandidate()"
+                                                                        name="tags_search" type="search"></div>
+                            <div><p class="search_name">ID:</p><input id="idInputCandidate"
+                                                                      onkeyup="searchByIdCandidate()" name="id_search"
+                                                                      type="search"></div>
                         </form>
                     </div>
                 </div>
@@ -202,28 +199,29 @@
             <div class="popup_text">
                 <div>
                     <label for="executor">Исполнитель:</label>
-<!--                    <input type="text" id="executor" class="popup_field" required autocomplete="off">-->
+                    <!--                    <input type="text" id="executor" class="popup_field" required autocomplete="off">-->
                     <select type="text" id="executor" class="popup_field" required autocomplete="off">
                         <option>Сюда подключить сотрудников HR из БД</option>
                     </select>
                 </div>
                 <div>
                     <label for="start_date">Дата начала:</label>
-<!--                    <input type="text" id="start_date" requiredautocomplete="off">-->
-<!--                    <input type="text" id="start_date" value="" size="10" onClick="xCal(this)" onmouseenter="xCal(this)" onKeyUp="xCal()">-->
-                <input type="date" id="start_date" class="popup_field" name="date">
+                    <!--                    <input type="text" id="start_date" requiredautocomplete="off">-->
+                    <!--                    <input type="text" id="start_date" value="" size="10" onClick="xCal(this)" onmouseenter="xCal(this)" onKeyUp="xCal()">-->
+                    <input type="date" id="start_date" class="popup_field" name="date">
                 </div>
                 <div>
                     <label for="deadline">Дэдлайн:</label>
-<!--                    <input type="text" id="deadline" required autocomplete="off">-->
+                    <!--                    <input type="text" id="deadline" required autocomplete="off">-->
                     <input type="date" id="deadline" class="popup_field" name="date">
                 </div>
                 <div>
-                    <label for="task">Задача:</label><input type="text" id="task" class="popup_field" required autocomplete="off">
+                    <label for="task">Задача:</label><input type="text" id="task" class="popup_field" required
+                                                            autocomplete="off">
                 </div>
                 <div>
                     <label for="select_lid">Выбор лида:</label>
-<!--                    <input type="text" id="select_lid" class="popup_field" required autocomplete="off">-->
+                    <!--                    <input type="text" id="select_lid" class="popup_field" required autocomplete="off">-->
                     <select type="text" id="select_lid" class="popup_field" required autocomplete="off">
                         <option>Сюда подключить всех человеков</option>
                     </select>
@@ -243,22 +241,22 @@
             <div class="popup_text">
                 <div>
                     <label for="last_name">ФИО:</label>
-<!--                    <input type="text" id="last_name" class="popup_field" required autocomplete="off">-->
-                <select type="text" id="last_name" class="popup_field" required autocomplete="off">
-                    <option>Сюда подключить список ФИО для HR</option>
-                </select>
+                    <!--                    <input type="text" id="last_name" class="popup_field" required autocomplete="off">-->
+                    <select type="text" id="last_name" class="popup_field" required autocomplete="off">
+                        <option>Сюда подключить список ФИО для HR</option>
+                    </select>
                 </div>
-<!--                <div>-->
-<!--                    <label for="name">Имя:</label>-->
-<!--                    <input type="text" id="name" class="popup_field" required autocomplete="off">-->
-<!--                </div>-->
-<!--                <div>-->
-<!--                    <label for="fathers_name">Отчество:</label>-->
-<!--                    <input type="text" id="fathers_name" class="popup_field" required autocomplete="off">-->
-<!--                </div>-->
+                <!--                <div>-->
+                <!--                    <label for="name">Имя:</label>-->
+                <!--                    <input type="text" id="name" class="popup_field" required autocomplete="off">-->
+                <!--                </div>-->
+                <!--                <div>-->
+                <!--                    <label for="fathers_name">Отчество:</label>-->
+                <!--                    <input type="text" id="fathers_name" class="popup_field" required autocomplete="off">-->
+                <!--                </div>-->
                 <div>
                     <label for="post">Должность:</label>
-<!--                    <input type="text" id="post" class="popup_field" required autocomplete="off">-->
+                    <!--                    <input type="text" id="post" class="popup_field" required autocomplete="off">-->
                     <select type="text" id="post" class="popup_field" required autocomplete="off">
                         <option>Сотрудник HR</option>
                         <option>Руководитель HR</option>
@@ -269,9 +267,9 @@
                     <input type="text" id="id_employee" class="popup_field" required autocomplete="off" disabled>
                 </div>
                 <div>
-                   <p><label for="zone_visibility">Зона видимости:</label></p>
+                    <p><label for="zone_visibility">Зона видимости:</label></p>
                     <div>
-                        <input type="checkbox" id="zone_visibility"  required autocomplete="off">
+                        <input type="checkbox" id="zone_visibility" required autocomplete="off">
                         <label for="zone_visibility">Доступ ко всем сотрудникам</label>
                     </div>
                     <div>
@@ -290,6 +288,6 @@
         </div>
     </div>
 </div>
-<script src="/view/popup/popup.js"></script>
+<script src="/js/popup.js"></script>
 </body>
 </html>

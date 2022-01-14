@@ -72,6 +72,7 @@ body.lock {
 
 .tabs_block {
     background-color: #383737;
+
 }
 
 .tabs_block:nth-child(1):before {

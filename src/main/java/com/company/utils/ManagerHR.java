@@ -1,4 +1,4 @@
-package models;
+package com.company.utils;
 
 public class ManagerHR extends EmployeeHR {
 

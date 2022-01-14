@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="/css/style.css"/>
+    <title>Соискатели</title>
+</head>
+<body>
+<div class="wrapper">
+    <div class="contents">
+        <div class="tabs">
+            <header id="header" class="header lock-padding">
+                <nav class="tabs_items">
+                    <a href="menu.html" class="tabs_item"><span>Меню</span></a>
+                    <a href="task.html" class="tabs_item"><span>Задачи</span></a>
+                    <a href="employee.html" class="tabs_item"><span>Сотрудники</span></a>
+                    <a href="#tab_candidate" class="tabs_item"><span>Соискатели</span></a>
+                    <a href="team.html" class="tabs_item"><span>Сбор Команды</span></a>
+                </nav>
+            </header>
+            <div class="tabs_body">
+                <div id="tab_menu" class="tabs_block"></div>
+                <div id="tab_task" class="tabs_block"></div>
+                <div id="tab_employee" class="tabs_block"></div>
+                <div id="tab_candidate" class="tabs_block">
+                    <div class="table">
+                        <table id="candidateTable" class="table">
+                            <thead>
+                            <tr>
+                                <th onclick="sortTableCandidate(0)">ID</th>
+                                <th onclick="sortTableCandidate(1)">ФИО</th>
+                                <th onclick="sortTableCandidate(2)">Статус</th>
+                                <th onclick="sortTableCandidate(3)">Претендуемая должность</th>
+                                <th onclick="sortTableCandidate(4)">Тэги</th>
+                                <th onclick="sortTableCandidate(5)">Навыки</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>Петров Петр Петрович</td>
+                                <td>не работает</td>
+                                <td>Разработчик</td>
+                                <td>новый тэг</td>
+                                <td>навыки</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>Сидоров Анатолий Иванович</td>
+                                <td>приглашен на собеседование</td>
+                                <td>Веб-дизайнер</td>
+                                <td>веб, тэг</td>
+                                <td>Какие-то навыки</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="search">
+                        <form action="" method="get">
+                            <div><p class="search_name">ФИО:</p><input id="nameInputCandidate"
+                                                                       onkeyup="searchByNameCandidate()"
+                                                                       name="name_search" type="search"></div>
+                            <div><p class="search_name">Должность:</p><input id="postInputCandidate"
+                                                                             onkeyup="searchByPostCandidate()"
+                                                                             name="post_search" type="search"></div>
+                            <div><p class="search_name">Тэги:</p><input id="tagInputCandidate"
+                                                                        onkeyup="searchByTagCandidate()"
+                                                                        name="tags_search" type="search"></div>
+                            <div><p class="search_name">ID:</p><input id="idInputCandidate"
+                                                                      onkeyup="searchByIdCandidate()" name="id_search"
+                                                                      type="search"></div>
+                        </form>
+                    </div>
+                </div>
+                <div id="tab_team" class="tabs_block"></div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
