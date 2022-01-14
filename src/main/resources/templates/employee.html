@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="/css/style.css"/>
@@ -41,15 +41,14 @@
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        <!--                                        <tr th:each="User:${users}">-->
-                                        <tr th:each="el":${users}>
-                                            <td th:text="${el.id}"></td>
+                                        <tr th:each="User":${users}>
+                                            <td th:text="${user.id}"></td>
                                             <td th:text="${user.surename}"></td>
-                                            <td th:text="${status.status}"></td>
-                                            <td th:text="${post.post}"></td>
-                                            <td th:text="${employeeIT.project}"></td>
-                                            <td th:text="${tag.tag}"></td>
-                                            <td th:text="${user.post}"></td>
+                                            <td th:text="${}"></td>
+                                            <td th:text="${}"></td>
+                                            <td th:text="${}"></td>
+                                            <td th:text="${}"></td>
+                                            <td th:text="${}"></td>
                                         </tr>
                                         </tbody>
                                     </table>
