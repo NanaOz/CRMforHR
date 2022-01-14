@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="postgres@localhost" uuid="0d964c80-ee01-4d8d-ba4b-3b94d3d378f9">
+    <data-source source="LOCAL" name="postgres@78.153.6.155" uuid="b8170757-cbd8-492f-a72d-e6dab45883ad">
       <driver-ref>postgresql</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>org.postgresql.Driver</jdbc-driver>
-      <jdbc-url>jdbc:postgresql://localhost:5432/postgres?currentSchema=CRMforHR</jdbc-url>
+      <jdbc-url>jdbc:postgresql://78.153.6.155:5432/postgres</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
   </component>

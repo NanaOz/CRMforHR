@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="JpaBuddyIdeaProjectConfig">
+    <option name="defaultUnitInitialized" value="true" />
+    <reUseDbSnapshotConnections>
+      <dbConnection id="b8170757-cbd8-492f-a72d-e6dab45883ad_CRMforHR" />
+    </reUseDbSnapshotConnections>
+    <option name="reIgnoreSlowDbConnections">
+      <ignoreDs id="b8170757-cbd8-492f-a72d-e6dab45883ad_CRMforHR" />
+    </option>
+  </component>
+</project>
