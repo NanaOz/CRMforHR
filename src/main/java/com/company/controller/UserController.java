@@ -1,33 +1,56 @@
 package com.company.controller;
 
-import com.company.utils.User;
+import com.company.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import com.company.repository.UserRepository;
+import org.springframework.web.bind.annotation.PostMapping;
+
+import javax.validation.Valid;
 
 
 @Controller
 public class UserController {
 
-   @Autowired
-   public UserRepository userRepository;
+    private final UserRepository userRepository;
 
-   @GetMapping("/employee")
-    public String showEmployee(Model model) {
-       Iterable<User> users = userRepository.findAll();
-       model.addAttribute("users", users);
-       return "ManagerHR";
+    @Autowired
+    public UserController(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
+
+   @GetMapping("/")
+   public String homePage(Model model){
+      return "menu";
    }
 
-//    private final UserRepository userRepository;
-//
-//    @Autowired
-//    public UserController(UserRepository userRepository) {
-//        this.userRepository = userRepository;
-//    }
+   @GetMapping("/in")
+   public String showUserList(Model model) {
+      model.addAttribute("users", userRepository.findAll());
+      return "employee";
+   }
 
+   @GetMapping("/signup")
+   public String showSignUpForm(User user) {
+      System.out.println("TRYTOADDD");
+      return "employee";
+   }
+
+   @PostMapping("/adduser")
+   public String addUser(@Valid User user, BindingResult result, Model model) {
+      System.out.println("BRGINOFADDING");
+      if (result.hasErrors()) {
+         System.out.println("ERROR????");
+         return "employee";
+      }
+
+      userRepository.save(user);
+      System.out.println("SAVED??????");
+      return "redirect:/in";
+   }
 //    @GetMapping("/memu")
 //    public String showUserList(Model model) {
 //        model.addAttribute("users", userRepository.findAll());
@@ -81,4 +104,5 @@ public class UserController {
 //        return "redirect:/index";
 //    }
 
-}
+   }
+

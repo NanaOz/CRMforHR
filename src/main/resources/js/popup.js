@@ -27,7 +27,7 @@ if (popupCloseIcon.length > 0) {
         })
     }
 }
-function popupOpen (currentPopup) { //ипередаем готовый объект
+function popupOpen (currentPopup) { //передаем готовый объект
     if (currentPopup && unlock) { //проверяем есть ли и открыт ли
         const popupActive = document.querySelector('.popup.open'); //это если попап в попапе
         if (popupActive) {

@@ -2,12 +2,13 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
+    <meta username="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="/css/style.css"/>
     <title>Сотрудники</title>
 </head>
 <body>
 <div class="wrapper">
-    <div class="contents">
+    <div th:switch="${users}" class="contents">
         <div class="tabs">
             <header id="header" class="header lock-padding">
                 <nav class="tabs_items">
@@ -41,12 +42,12 @@
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        <tr th:each="User":${users}>
+                                        <tr th:each="user:${users}">
                                             <td th:text="${user.id}"></td>
-                                            <td th:text="${user.surename}"></td>
-                                            <td th:text="${}"></td>
-                                            <td th:text="${}"></td>
-                                            <td th:text="${}"></td>
+                                            <td th:text="${user.surname}"></td>
+                                            <td th:text="${user.username}"></td>
+                                            <td th:text="${user.fathersName}"></td>
+                                            <td th:text="${user.email}"></td>
                                             <td th:text="${}"></td>
                                             <td th:text="${}"></td>
                                         </tr>

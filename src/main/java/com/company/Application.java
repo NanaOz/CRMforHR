@@ -7,14 +7,14 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @SpringBootApplication
-@EnableJpaRepositories(basePackages="repository")
+@EnableJpaRepositories(basePackages="com.company.repository")
 @EnableTransactionManagement
-@EntityScan(basePackages= "com/company/utils")
-public class Main {
+@EntityScan(basePackages="com.company.entity")
+public class Application {
 
     public static void main(String[] args) {
 
-        SpringApplication.run(Main.class, args);
+        SpringApplication.run(Application.class, args);
     }
 
 }
