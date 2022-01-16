@@ -1,36 +1,36 @@
-//package com.company.entity;
-//
-//import javax.persistence.*;
-//import java.util.Objects;
-//
-//@Entity
-//@Table (name = "Post")
-//public class Post {
-//    private long id;
-//    private String post;
-//
-//    @GeneratedValue(strategy = GenerationType.IDENTITY)
-//    @Id
-//    @Column(name = "Id", nullable = false)
-//    public long getId() {
-//        return id;
-//    }
-//
-//    public void setId(long id) {
-//        this.id = id;
-//    }
-//
-//    @Basic
-//    @Column(name = "Post", nullable = false, length = -1)
-//    public String getPost() {
-//        return post;
-//    }
-//
-//    public void setPost(String post) {
-//        this.post = post;
-//    }
-//
-//    @Override
+package com.company.entity;
+
+import javax.persistence.*;
+
+@Entity
+@Table(name = "Post")
+public class Post {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "Id", nullable = false)
+    private Long id;
+
+    @Lob
+    @Column(name = "Post", nullable = false)
+    private String post;
+
+    public String getPost() {
+        return post;
+    }
+
+    public void setPost(String post) {
+        this.post = post;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+    //    @Override
 //    public boolean equals(Object o) {
 //        if (this == o) return true;
 //        if (o == null || getClass() != o.getClass()) return false;
@@ -42,4 +42,4 @@
 //    public int hashCode() {
 //        return Objects.hash(id, post);
 //    }
-//}
+}

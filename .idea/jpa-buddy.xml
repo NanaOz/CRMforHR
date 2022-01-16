@@ -2,11 +2,16 @@
 <project version="4">
   <component name="JpaBuddyIdeaProjectConfig">
     <option name="defaultUnitInitialized" value="true" />
+    <option name="reverseEngineeringLastDbConnectionId" value="6b33b3fd-23e0-4a80-816b-758971842f32" />
+    <option name="reLastEntityCreationPackage" value="src/main/java/com/company/entity" />
     <reUseDbSnapshotConnections>
       <dbConnection id="b8170757-cbd8-492f-a72d-e6dab45883ad_CRMforHR" />
+      <dbConnection id="6b33b3fd-23e0-4a80-816b-758971842f32" />
     </reUseDbSnapshotConnections>
     <option name="reIgnoreSlowDbConnections">
       <ignoreDs id="b8170757-cbd8-492f-a72d-e6dab45883ad_CRMforHR" />
+      <ignoreDs id="9e1945b3-6d37-46ac-b730-9c74c2bb7ae9" />
+      <ignoreDs id="6b33b3fd-23e0-4a80-816b-758971842f32" />
     </option>
   </component>
 </project>

@@ -7,9 +7,9 @@
 //@Table (name = "Candidate")
 //public class Candidate {
 //    private long id;
-//    private Users usersByUserId;
-//    private Status statusByStatusId;
-//    private Post postByPostId;
+//    private User usersByUserId;
+//    private StatusRepository statusByStatusId;
+//    private PostRepository postByPostId;
 //
 //    @GeneratedValue(strategy = GenerationType.IDENTITY)
 //    @Id
@@ -37,31 +37,31 @@
 //
 //    @ManyToOne
 //    @JoinColumn(name = "User_Id", referencedColumnName = "id", nullable = false)
-//    public Users getUsersByUserId() {
+//    public User getUsersByUserId() {
 //        return usersByUserId;
 //    }
 //
-//    public void setUsersByUserId(Users usersByUserId) {
+//    public void setUsersByUserId(User usersByUserId) {
 //        this.usersByUserId = usersByUserId;
 //    }
 //
 //    @ManyToOne
 //    @JoinColumn(name = "Status_id", referencedColumnName = "Id")
-//    public Status getStatusByStatusId() {
+//    public StatusRepository getStatusByStatusId() {
 //        return statusByStatusId;
 //    }
 //
-//    public void setStatusByStatusId(Status statusByStatusId) {
+//    public void setStatusByStatusId(StatusRepository statusByStatusId) {
 //        this.statusByStatusId = statusByStatusId;
 //    }
 //
 //    @ManyToOne
 //    @JoinColumn(name = "Post_id", referencedColumnName = "Id")
-//    public Post getPostByPostId() {
+//    public PostRepository getPostByPostId() {
 //        return postByPostId;
 //    }
 //
-//    public void setPostByPostId(Post postByPostId) {
+//    public void setPostByPostId(PostRepository postByPostId) {
 //        this.postByPostId = postByPostId;
 //    }
 //}

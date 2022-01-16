@@ -30,7 +30,7 @@
     @Test
     public void whenCalledshowSignUpForm_thenCorrect() {
         Human human = new Human();
-        human.setName("Sidr");
+        human.setUsername("Sidr");
         human.setSurname("Sidrov");
         human.setAge((new Long(25)));
 

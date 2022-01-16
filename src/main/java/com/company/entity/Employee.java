@@ -8,7 +8,7 @@
 //
 //public class Employee {
 //    private long id;
-//    private Users usersByUserId;
+//    private User usersByUserId;
 //    private Post postByPostId;
 //    private Status statusByStatusId;
 //
@@ -38,11 +38,11 @@
 //
 //    @ManyToOne
 //    @JoinColumn(name = "User_Id", referencedColumnName = "id", nullable = false)
-//    public Users getUsersByUserId() {
+//    public User getUsersByUserId() {
 //        return usersByUserId;
 //    }
 //
-//    public void setUsersByUserId(Users usersByUserId) {
+//    public void setUsersByUserId(User usersByUserId) {
 //        this.usersByUserId = usersByUserId;
 //    }
 //

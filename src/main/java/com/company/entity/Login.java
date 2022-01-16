@@ -9,7 +9,7 @@
 //public class Login {
 //    private String login;
 //    private String userpassword;
-//    private Users usersByUserId;
+//    private User usersByUserId;
 //
 //    @GeneratedValue(strategy = GenerationType.IDENTITY)
 //    @Id
@@ -46,13 +46,13 @@
 //        return Objects.hash(login, userpassword);
 //    }
 //
-//    @ManyToOne
+//    @OneToOne
 //    @JoinColumn(name = "User_Id", referencedColumnName = "id", nullable = false)
-//    public Users getUsersByUserId() {
+//    public User getUsersByUserId() {
 //        return usersByUserId;
 //    }
 //
-//    public void setUsersByUserId(Users usersByUserId) {
+//    public void setUsersByUserId(User usersByUserId) {
 //        this.usersByUserId = usersByUserId;
 //    }
 //}

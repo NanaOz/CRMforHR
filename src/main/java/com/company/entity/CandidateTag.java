@@ -9,7 +9,7 @@
 //    private long id;
 //    private Long level;
 //    private Candidate candidateByCandidateId;
-//    private Tags tagsByTagId;
+//    private TagsRepository tagsByTagId;
 //
 //    @GeneratedValue(strategy = GenerationType.IDENTITY)
 //    @Id
@@ -57,11 +57,11 @@
 //
 //    @ManyToOne
 //    @JoinColumn(name = "Tag_id", referencedColumnName = "Id", nullable = false)
-//    public Tags getTagsByTagId() {
+//    public TagsRepository getTagsByTagId() {
 //        return tagsByTagId;
 //    }
 //
-//    public void setTagsByTagId(Tags tagsByTagId) {
+//    public void setTagsByTagId(TagsRepository tagsByTagId) {
 //        this.tagsByTagId = tagsByTagId;
 //    }
 //}

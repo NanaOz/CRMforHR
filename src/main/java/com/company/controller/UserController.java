@@ -1,7 +1,7 @@
 package com.company.controller;
 
 
-import com.company.entity.Users;
+import com.company.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -49,13 +49,13 @@ public class UserController {
     }
 
     @GetMapping("/signup")
-    public String showSignUpForm(Users user) {
+    public String showSignUpForm(User user) {
         System.out.println("TRYTOADDD");
         return "add-user";
     }
 
     @PostMapping("/adduser")
-    public String addUser(@Valid Users user, BindingResult result, Model model) {
+    public String addUser(@Valid User user, BindingResult result, Model model) {
         System.out.println("BRGINOFADDING");
         if (result.hasErrors()) {
             System.out.println("ERROR????");
