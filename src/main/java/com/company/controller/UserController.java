@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.validation.Valid;
 
-
 @Controller
 public class UserController {
 
@@ -22,12 +21,12 @@ public class UserController {
         this.userRepository = userRepository;
     }
 
-   @GetMapping("/")
-   public String homePage(Model model){
+   @GetMapping("/menu")
+   public String homePage(){
       return "menu";
    }
 
-   @GetMapping("/in")
+   @GetMapping("/employee")
    public String showUserList(Model model) {
       model.addAttribute("users", userRepository.findAll());
       return "employee";
@@ -51,30 +50,8 @@ public class UserController {
       System.out.println("SAVED??????");
       return "redirect:/in";
    }
-//    @GetMapping("/memu")
-//    public String showUserList(Model model) {
-//        model.addAttribute("users", userRepository.findAll());
-//        return "ManagerHRView";
-//    }
-//
-//    @GetMapping("/signup")
-//    public String showSignUpForm(User user) {
-//        System.out.println("TRYTOADDD");
-//        return "add-user";
-//    }
-//
-//    @PostMapping("/adduser")
-//    public String addUser(@Valid User user, BindingResult result, Model model) {
-//        System.out.println("BRGINOFADDING");
-//        if (result.hasErrors()) {
-//            System.out.println("ERROR????");
-//            return "add-user";
-//        }
-//
-//        userRepository.save(user);
-//        System.out.println("SAVED??????");
-//        return "redirect:/index";
-//    }
+
+
 //
 //    @GetMapping("/edit/{id}")
 //    public String showUpdateForm(@PathVariable("id") long id, Model model) {
