@@ -1,38 +1,32 @@
-//package com.company.entity;
-//
-//import javax.persistence.*;
-//import java.util.Objects;
-//
-//@Entity
-//@Table (name = "login")
-//@IdClass(LoginPK.class)
-//public class Login {
-//    private String login;
-//    private String userpassword;
-//    private User usersByUserId;
-//
-//    @GeneratedValue(strategy = GenerationType.IDENTITY)
-//    @Id
-//    @Column(name = "login", nullable = false, length = -1)
-//    public String getLogin() {
-//        return login;
-//    }
-//
-//    public void setLogin(String login) {
-//        this.login = login;
-//    }
-//
-//    @GeneratedValue(strategy = GenerationType.IDENTITY)
-//    @Id
-//    @Column(name = "userpassword", nullable = false, length = -1)
-//    public String getUserpassword() {
-//        return userpassword;
-//    }
-//
-//    public void setUserpassword(String userpassword) {
-//        this.userpassword = userpassword;
-//    }
-//
+package com.company.entity;
+
+import javax.persistence.*;
+
+@Entity
+@Table(name = "login")
+public class Login {
+    @EmbeddedId
+    private LoginId id;
+
+    @OneToOne(optional = false)
+    @JoinColumn(name = "User_Id", nullable = false)
+    private User user;
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public LoginId getId() {
+        return id;
+    }
+
+    public void setId(LoginId id) {
+        this.id = id;
+    }
 //    @Override
 //    public boolean equals(Object o) {
 //        if (this == o) return true;
@@ -45,14 +39,4 @@
 //    public int hashCode() {
 //        return Objects.hash(login, userpassword);
 //    }
-//
-//    @OneToOne
-//    @JoinColumn(name = "User_Id", referencedColumnName = "id", nullable = false)
-//    public User getUsersByUserId() {
-//        return usersByUserId;
-//    }
-//
-//    public void setUsersByUserId(User usersByUserId) {
-//        this.usersByUserId = usersByUserId;
-//    }
-//}
+}

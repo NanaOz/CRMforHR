@@ -3,19 +3,19 @@ package com.company.entity;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "CandidateTag")
-public class CandidateTag {
+@Table(name = "EmployeeITTag")
+public class EmployeeITTag {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false)
+    @Column(name = "Id", nullable = false)
     private Long id;
 
     @ManyToOne(optional = false)
-    @JoinColumn(name = "Candidate_id", nullable = false)
-    private Candidate candidate;
+    @JoinColumn(name = "EmployeeIT_id", nullable = false)
+    private EmployeeIT employeeIT;
 
     @ManyToOne(optional = false)
-    @JoinColumn(name = "Tag_id", nullable = false)
+    @JoinColumn(name = "Tag_Id", nullable = false)
     private Tag tag;
 
     @Column(name = "Level")
@@ -37,12 +37,12 @@ public class CandidateTag {
         this.tag = tag;
     }
 
-    public Candidate getCandidate() {
-        return candidate;
+    public EmployeeIT getEmployeeIT() {
+        return employeeIT;
     }
 
-    public void setCandidate(Candidate candidate) {
-        this.candidate = candidate;
+    public void setEmployeeIT(EmployeeIT employeeIT) {
+        this.employeeIT = employeeIT;
     }
 
     public Long getId() {
@@ -56,7 +56,7 @@ public class CandidateTag {
 //    public boolean equals(Object o) {
 //        if (this == o) return true;
 //        if (o == null || getClass() != o.getClass()) return false;
-//        CandidateTag that = (CandidateTag) o;
+//        EmployeeItTag that = (EmployeeItTag) o;
 //        return id == that.id && Objects.equals(level, that.level);
 //    }
 //
@@ -64,19 +64,18 @@ public class CandidateTag {
 //    public int hashCode() {
 //        return Objects.hash(id, level);
 //    }
-//
-//    @ManyToOne
-//    @JoinColumn(name = "Candidate_id", referencedColumnName = "ID", nullable = false)
-//    public Candidate getCandidateByCandidateId() {
-//        return candidateByCandidateId;
+//    /    @ManyToOne
+//    @JoinColumn(name = "EmployeeIT_id", referencedColumnName = "Id", nullable = false)
+//    public EmployeeIt getEmployeeItByEmployeeItId() {
+//        return employeeItByEmployeeItId;
 //    }
 //
-//    public void setCandidateByCandidateId(Candidate candidateByCandidateId) {
-//        this.candidateByCandidateId = candidateByCandidateId;
+//    public void setEmployeeItByEmployeeItId(EmployeeIt employeeItByEmployeeItId) {
+//        this.employeeItByEmployeeItId = employeeItByEmployeeItId;
 //    }
 //
 //    @ManyToOne
-//    @JoinColumn(name = "Tag_id", referencedColumnName = "Id", nullable = false)
+//    @JoinColumn(name = "Tag_Id", referencedColumnName = "Id", nullable = false)
 //    public TagRepository getTagsByTagId() {
 //        return tagsByTagId;
 //    }

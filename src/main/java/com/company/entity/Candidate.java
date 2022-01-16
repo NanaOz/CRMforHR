@@ -1,28 +1,59 @@
-//package com.company.entity;
-//
-//import javax.persistence.*;
-//import java.util.Objects;
-//
-//@Entity
-//@Table (name = "Candidate")
-//public class Candidate {
-//    private long id;
-//    private User usersByUserId;
-//    private StatusRepository statusByStatusId;
-//    private PostRepository postByPostId;
-//
-//    @GeneratedValue(strategy = GenerationType.IDENTITY)
-//    @Id
-//    @Column(name = "ID", nullable = false)
-//    public long getId() {
-//        return id;
-//    }
-//
-//    public void setId(long id) {
-//        this.id = id;
-//    }
-//
-//    @Override
+package com.company.entity;
+
+import javax.persistence.*;
+
+@Entity
+@Table(name = "Candidate")
+public class Candidate {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "ID", nullable = false)
+    private Long id;
+
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "User_Id", nullable = false)
+    private User user;
+
+    @ManyToOne
+    @JoinColumn(name = "Status_id")
+    private Status status;
+
+    @ManyToOne
+    @JoinColumn(name = "Post_id")
+    private Post post;
+
+    public Post getPost() {
+        return post;
+    }
+
+    public void setPost(Post post) {
+        this.post = post;
+    }
+
+    public Status getStatus() {
+        return status;
+    }
+
+    public void setStatus(Status status) {
+        this.status = status;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+    //    @Override
 //    public boolean equals(Object o) {
 //        if (this == o) return true;
 //        if (o == null || getClass() != o.getClass()) return false;
@@ -64,4 +95,4 @@
 //    public void setPostByPostId(PostRepository postByPostId) {
 //        this.postByPostId = postByPostId;
 //    }
-//}
+}

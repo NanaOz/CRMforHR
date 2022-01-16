@@ -4,14 +4,13 @@ import org.hibernate.Hibernate;
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
-import javax.persistence.Entity;
 import javax.persistence.Lob;
 import java.io.Serializable;
 import java.util.Objects;
 
 @Embeddable
-public class Login1Id implements Serializable {
-    private static final long serialVersionUID = 3639739096961335166L;
+public class LoginId implements Serializable {
+//    private static final long serialVersionUID = 3639739096961335166L;
     @Lob
     @Column(name = "login", nullable = false)
     private String login;
@@ -44,7 +43,7 @@ public class Login1Id implements Serializable {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
-        Login1Id entity = (Login1Id) o;
+        LoginId entity = (LoginId) o;
         return Objects.equals(this.login, entity.login) &&
                 Objects.equals(this.userpassword, entity.userpassword);
     }

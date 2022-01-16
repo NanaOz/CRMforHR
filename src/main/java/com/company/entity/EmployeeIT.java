@@ -4,7 +4,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "EmployeeIT")
-public class EmployeeIT1 {
+public class EmployeeIT {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "Id", nullable = false)
@@ -16,13 +16,13 @@ public class EmployeeIT1 {
 
     @ManyToOne(optional = false)
     @JoinColumn(name = "EmployeeId", nullable = false)
-    private Employee1 employeeId;
+    private Employee employeeId;
 
-    public Employee1 getEmployeeId() {
+    public Employee getEmployeeId() {
         return employeeId;
     }
 
-    public void setEmployeeId(Employee1 employeeId) {
+    public void setEmployeeId(Employee employeeId) {
         this.employeeId = employeeId;
     }
 

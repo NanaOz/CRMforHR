@@ -1,26 +1,34 @@
-//package com.company.entity;
-//
-//import javax.persistence.*;
-//import java.util.Objects;
-//
-//@Entity
-//@Table (name = "EmployeeHr")
-//public class EmployeeHr {
-//    private long id;
-//    private Employee employeeByEmployeeId;
-//
-//    @GeneratedValue(strategy = GenerationType.IDENTITY)
-//    @Id
-//    @Column(name = "ID", nullable = false)
-//    public long getId() {
-//        return id;
-//    }
-//
-//    public void setId(long id) {
-//        this.id = id;
-//    }
-//
-//    @Override
+package com.company.entity;
+
+import javax.persistence.*;
+
+@Entity
+@Table(name = "EmployeeHR")
+public class EmployeeHR {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "ID", nullable = false)
+    private Long id;
+
+    @Column(name = "Employee_Id", nullable = false)
+    private Long employeeId;
+
+    public Long getEmployeeId() {
+        return employeeId;
+    }
+
+    public void setEmployeeId(Long employeeId) {
+        this.employeeId = employeeId;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+    //    @Override
 //    public boolean equals(Object o) {
 //        if (this == o) return true;
 //        if (o == null || getClass() != o.getClass()) return false;
@@ -42,4 +50,4 @@
 //    public void setEmployeeByEmployeeId(Employee employeeByEmployeeId) {
 //        this.employeeByEmployeeId = employeeByEmployeeId;
 //    }
-//}
+}
