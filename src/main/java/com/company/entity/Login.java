@@ -12,6 +12,18 @@ public class Login {
     @JoinColumn(name = "User_Id", nullable = false)
     private User user;
 
+    @ManyToOne
+    @JoinColumn(name = "Role_Id")
+    private Role role;
+
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
+    }
+
     public User getUser() {
         return user;
     }

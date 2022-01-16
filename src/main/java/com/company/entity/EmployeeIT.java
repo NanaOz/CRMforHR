@@ -14,8 +14,8 @@ public class EmployeeIT {
     @Column(name = "Project", nullable = false)
     private String project;
 
-    @ManyToOne(optional = false)
-    @JoinColumn(name = "EmployeeId", nullable = false)
+    @ManyToOne
+    @JoinColumn(name = "EmployeeId")
     private Employee employeeId;
 
     public Employee getEmployeeId() {
@@ -25,6 +25,7 @@ public class EmployeeIT {
     public void setEmployeeId(Employee employeeId) {
         this.employeeId = employeeId;
     }
+
 
     public String getProject() {
         return project;
