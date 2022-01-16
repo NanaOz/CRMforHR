@@ -21,22 +21,19 @@ public class User {
     @Column(name = "email")
     private String email;
 
-    //    public User () {}
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "id")
-//    @Column(username = "id", nullable = false)
     private long id;
 
     public long getId() {
         return id;
-    }
+}
 
     public void setId(long id) {
         this.id = id;
     }
-    //    @Basic
-//    @Column(username = "surname", nullable = false, length = -1)
+
     public String getSurname() {
         return surname;
     }
@@ -45,8 +42,7 @@ public class User {
         this.surname = surname;
     }
 
-    //    @Basic
-//    @Column(username = "username", nullable = false, length = -1)
+
     public String getUsername() {
         return username;
     }
@@ -55,8 +51,7 @@ public class User {
         this.username = username;
     }
 
-    //    @Basic
-//    @Column(username = "fathersName", nullable = false, length = -1)
+
     public String getFathersName() {
         return fathersName;
     }
@@ -65,8 +60,7 @@ public class User {
         this.fathersName = fathersName;
     }
 
-    //    @Basic
-//    @Column(username = "email", nullable = false, length = -1)
+
     public String getEmail() {
         return email;
     }
