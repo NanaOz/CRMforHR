@@ -27,31 +27,31 @@ public class UserController {
         return "menu";
     }
 
-    @GetMapping("/employee")
-    public String showUserList(Model model) {
-        model.addAttribute("users", userRepository.findAll());
-        return "employee";
-    }
+//    @GetMapping("/employee")
+//    public String showUserList(Model model) {
+//        model.addAttribute("users", userRepository.findAll());
+//        return "employee";
+//    }
 
 
-    @GetMapping("/signup")
-    public String showSignUpForm(User user) {
-        System.out.println("TRYTOADDD");
-        return "employee";
-    }
-
-    @PostMapping("/adduser")
-    public String addUser(@Valid User user, BindingResult result, Model model) {
-        System.out.println("BRGINOFADDING");
-        if (result.hasErrors()) {
-            System.out.println("ERROR????");
-            return "employee";
-        }
-
-        userRepository.save(user);
-        System.out.println("SAVED??????");
-        return "redirect:/in";
-    }
+//    @GetMapping("/signup")
+//    public String showSignUpForm(User user) {
+//        System.out.println("TRYTOADDD");
+//        return "employee";
+//    }
+//
+//    @PostMapping("/adduser")
+//    public String addUser(@Valid User user, BindingResult result, Model model) {
+//        System.out.println("BRGINOFADDING");
+//        if (result.hasErrors()) {
+//            System.out.println("ERROR????");
+//            return "employee";
+//        }
+//
+//        userRepository.save(user);
+//        System.out.println("SAVED??????");
+//        return "redirect:/in";
+//    }
 
 
 

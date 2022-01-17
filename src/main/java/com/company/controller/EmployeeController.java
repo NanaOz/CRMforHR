@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
 @Controller
-public class EmployeeController {
+public class EmployeeController extends User {
     private final EmployeeRepository employeeRepository;
     private final UserRepository userRepository;
 
@@ -26,16 +26,24 @@ public class EmployeeController {
 //        return "employee";
 //    }
 
-    @GetMapping("/employee")
-    public String showUserListEmployee(@PathVariable("id") long id, Model model) {
+//    @GetMapping("/employee")
+//    public String showUserListEmployee(@PathVariable("id") long id, Model model) {
+//
+//        User user = userRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid user Id:" + id));
+//        model.addAttribute("users", user);
+////        Employee employee = employeeRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid user Id:" + id));
+////        model.addAttribute("workers", employee);
+//        model.addAttribute("workers", employeeRepository.findAll());
+////        model.addAttribute("users", userRepository.findAll());
+//        return "employee";
+//    }
 
-        User user = userRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid user Id:" + id));
-        model.addAttribute("users", user);
-//        Employee employee = employeeRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid user Id:" + id));
-//        model.addAttribute("workers", employee);
+    @GetMapping("/employee")
+    public String showEmployeeList(Model model) {
         model.addAttribute("workers", employeeRepository.findAll());
 //        model.addAttribute("users", userRepository.findAll());
         return "employee";
     }
+
 
 }
