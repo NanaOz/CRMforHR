@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
 @Controller
-public class EmployeeController extends User {
+public class EmployeeController {
     private final EmployeeRepository employeeRepository;
     private final UserRepository userRepository;
 
