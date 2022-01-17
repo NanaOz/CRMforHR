@@ -7,6 +7,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import com.company.repository.UserRepository;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.validation.Valid;
@@ -32,6 +33,7 @@ public class UserController {
         return "employee";
     }
 
+
     @GetMapping("/signup")
     public String showSignUpForm(User user) {
         System.out.println("TRYTOADDD");
@@ -52,14 +54,21 @@ public class UserController {
     }
 
 
-//
-//    @GetMapping("/edit/{id}")
-//    public String showUpdateForm(@PathVariable("id") long id, Model model) {
-//        User user = userRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid user Id:" + id));
-//        model.addAttribute("user", user);
-//
-//        return "update-user";
-//    }
+
+    @GetMapping("/info/{id}")
+    public String showUpdateForm(@PathVariable("id") long id, Model model) {
+        User user = userRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid user Id:" + id));
+        model.addAttribute("user", user);
+
+        return "popup-info";
+    }
+
+    @GetMapping("/popup-create-account")
+    public String showSignUpForm() {
+        System.out.println("TRYTOADDD");
+        return "popup-create-account";
+    }
+
 //
 //    @PostMapping("/update/{id}")
 //    public String updateUser(@PathVariable("id") long id, @Valid User user, BindingResult result, Model model) {

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta username="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="/style.css/"/>
+    <title>Создать задачу</title>
+</head>
+<body>
+<div id="popup" class="popup">
+    <div class="popup_body">
+        <div class="popup_content">
+            <a href="#" class="popup_close close-popup">X</a>
+            <div class="popup_title">Создать задачу</div>
+            <div class="popup_text">
+                <div>
+                    <label for="executor">Исполнитель:</label>
+                    <!--                    <input type="text" id="executor" class="popup_field" required autocomplete="off">-->
+                    <select type="text" id="executor" class="popup_field" required autocomplete="off">
+                        <option>Сюда подключить сотрудников HR из БД</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="start_date">Дата начала:</label>
+                    <!--                    <input type="text" id="start_date" requiredautocomplete="off">-->
+                    <!--                    <input type="text" id="start_date" value="" size="10" onClick="xCal(this)" onmouseenter="xCal(this)" onKeyUp="xCal()">-->
+                    <input type="date" id="start_date" class="popup_field" name="date">
+                </div>
+                <div>
+                    <label for="deadline">Дэдлайн:</label>
+                    <!--                    <input type="text" id="deadline" required autocomplete="off">-->
+                    <input type="date" id="deadline" class="popup_field" name="date">
+                </div>
+                <div>
+                    <label for="task">Задача:</label><input type="text" id="task" class="popup_field" required
+                                                            autocomplete="off">
+                </div>
+                <div>
+                    <label for="select_lid">Выбор лида:</label>
+                    <!--                    <input type="text" id="select_lid" class="popup_field" required autocomplete="off">-->
+                    <select type="text" id="select_lid" class="popup_field" required autocomplete="off">
+                        <option>Сюда подключить всех человеков</option>
+                    </select>
+                </div>
+                <div>
+                    <button class="popup_button" type="submit">Создать задачу</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="/popup.js/"></script>
+</body>
+</html>
