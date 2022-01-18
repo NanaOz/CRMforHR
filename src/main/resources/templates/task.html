@@ -8,7 +8,7 @@
 </head>
 <body>
 <div class="wrapper">
-    <div class="contents">
+    <div th:switch="${tasks}" class="contents">
         <div class="tabs">
             <header id="header" class="header lock-padding">
                 <nav class="tabs_items">
@@ -38,14 +38,14 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr>
-                            <td>11.08.2020</td>
-                            <td>Краснова Мария</td>
-                            <td>Подписать</td>
-                            <td>Сидоров Анатолий Иванович</td>
-                            <td> выполнено</td>
-                            <td>21.08.2020</td>
-                            <td>18.08.2020</td>
+                        <tr th:each="task:${tasks}">
+                            <td th:text="${task.dateofcreation}"></td>
+                            <td th:text="${task.executor}"></td>
+                            <td th:text="${task.task}"></td>
+                            <td th:text="${task.lid}"></td>
+                            <td th:text="${task.status}"></td>
+                            <td th:text="${task.datedeadline}"></td>
+                            <td th:text="${task.dateactualcompletion}"></td>
                         </tr>
                         </tbody>
                     </table>
