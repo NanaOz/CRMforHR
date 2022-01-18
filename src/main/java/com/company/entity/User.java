@@ -21,10 +21,39 @@ public class User {
     @Column(name = "email")
     private String email;
 
+    @Lob @Type(type = "org.hibernate.type.TextType")
+    @Column(name = "login")
+    private String login;
+
+    @Lob @Type(type = "org.hibernate.type.TextType")
+    @Column(name = "password")
+    private String password;
+
+    @Lob @Type(type = "org.hibernate.type.TextType")
+    @Column(name = "role")
+    private String role;
+
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "id")
     private long id;
+
+
+    public String getLogin() {
+        return login;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
 
     public long getId() {
         return id;
@@ -80,5 +109,13 @@ public class User {
     @Override
     public int hashCode() {
         return Objects.hash(surname, username, fathersName, id, email);
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
     }
 }

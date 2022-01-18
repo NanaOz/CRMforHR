@@ -56,8 +56,8 @@ public class UserController {
 
 
     @GetMapping("/info/{id}")
-    public String showUpdateForm(@PathVariable("id") long id, Model model) {
-        User user = userRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid user Id:" + id));
+    public String showUpdateForm(@PathVariable("id") long id, Model model) throws Throwable {
+        User user = (User) userRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid user Id:" + id));
         model.addAttribute("user", user);
 
         return "popup-info";
