@@ -11,8 +11,6 @@ import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 
-import static org.apache.tomcat.jni.User.username;
-
 @Component
 public class CustomAuthencationProvider implements AuthenticationProvider {
     @Autowired
@@ -24,7 +22,7 @@ public class CustomAuthencationProvider implements AuthenticationProvider {
         String userName = authentication.getName();
         String password = authentication.getCredentials().toString();
         //получаем пользователя
-        User myUser = (User) dao.findByLogin(userName);
+        User myUser = dao.findByLogin(userName);
         //смотрим, найден ли пользователь в базе
 
         if (myUser == null) {
