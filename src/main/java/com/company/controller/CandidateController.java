@@ -19,14 +19,14 @@ public class CandidateController {
         this.candidateRepository = candidateRepository;
     }
 
-    @GetMapping("/candidate")
-    public String homePage(){
-        return "candidate";
-    }
+//    @GetMapping("/candidate")
+//    public String homePage(){
+//        return "candidate";
+//    }
 
 //    @GetMapping("/candidate")
-//    public String showUserList(Model model) {
-//        model.addAttribute("candidate", candidateRepository.findAll());
+//    public String showCandidateList(Model model) {
+//        model.addAttribute("candidates", candidateRepository.findAll());
 //        return "candidate";
 //    }
 }

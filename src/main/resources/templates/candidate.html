@@ -8,7 +8,7 @@
 </head>
 <body>
 <div class="wrapper">
-    <div th:switch="${candidates}"  class="contents">
+    <div th:switch="${users}"  class="contents">
         <div class="tabs">
             <header id="header" class="header lock-padding">
                 <nav class="tabs_items">
@@ -32,20 +32,20 @@
                                 <th onclick="sortTableCandidate(1)">ФИО</th>
                                 <th onclick="sortTableCandidate(2)">Статус</th>
                                 <th onclick="sortTableCandidate(3)">Претендуемая должность</th>
-                                <th onclick="sortTableCandidate(4)">Тэги</th>
+<!--                                <th onclick="sortTableCandidate(4)">Тэги</th>-->
 <!--                                <th onclick="sortTableCandidate(5)">Навыки</th>-->
                                 <th> </th>
                             </tr>
                             </thead>
                             <tbody>
                             <tr th:each="candidate:${candidates}">
-                                <td th:text="${candidate.user.id}"></td>
-                                <td th:text="${candidate.user.surname} + ' ' + ${candidate.user.username} + ' ' + ${candidate.user.fathersName}"></td>
-                                <td th:text="${candidate.status}"></td>
-                                <td th:text="${candidate.post}"></td>
-                                <td th:text="${candidate.tag}"></td>
+                                <td th:text="${user.id}"></td>
+                                <td th:text="${user.surname} + ' ' + ${user.username} + ' ' + ${user.fathersName}"></td>
+                                <td th:text="${user.surname}"></td>
+                                <td th:text="${user.email}"></td>
+<!--                                <td th:text="${candidate.tag}"></td>-->
 <!--                                <td></td>-->
-                                <td><a th:href="@{/info/{id}(id=${candidate.user.id})}" class="info">ИНФО</a></td>
+                                <td><a th:href="@{/info/{id}(id=${user.id})}" class="info">ИНФО</a></td>
                             </tr>
 <!--                            <tr>-->
 <!--                                <td>2</td>-->
@@ -80,6 +80,6 @@
         </div>
     </div>
 </div>
-<script src="/public/popup.js"></script>
+<script src="/popup.js/"></script>
 </body>
 </html>

@@ -7,15 +7,15 @@
     <title>ИНФО</title>
 </head>
 <body>
-<div id="popup_3" class="popup">
+<div th:switch="${users}"  id="popup_3" class="popup">
     <div class="popup_body">
         <div class="popup_content">
             <a href="#" class="popup_close close-popup">X</a>
             <div class="popup_title">Информация о сотруднике</div>
-            <div class="popup_text">
-                <div>
-                    <label th:text="${user.id}">ID:</label>
-                </div>
+            <div th:each="user:${users}" class="popup_text">
+<!--                <div>-->
+<!--                    <label th:text="${user.id}">ID:</label>-->
+<!--                </div>-->
                 <div>
                     <label th:text="${user.surname}">Фамилия:</label>
                 </div>
