@@ -38,7 +38,7 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <tr th:each="user:${users}">
+                            <tr th:each="candidate:${candidates}">
                                 <td th:text="${user.id}"></td>
                                 <td th:text="${user.surname} + ' ' + ${user.username} + ' ' + ${user.fathersName}"></td>
                                 <td th:text="${user.surname}"></td>
