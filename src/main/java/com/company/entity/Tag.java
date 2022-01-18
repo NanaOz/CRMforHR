@@ -1,17 +1,20 @@
 package com.company.entity;
 
+import org.hibernate.annotations.Type;
+
 import javax.persistence.*;
 
 @Entity
-@Table(name = "Tags")
+@Table(name = "tags")
 public class Tag {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "Id", nullable = false)
+    @Column(name = "id", nullable = false)
     private Long id;
 
     @Lob
-    @Column(name = "Tag", nullable = false)
+    @Type(type = "org.hibernate.type.TextType")
+    @Column(name = "tag", nullable = false)
     private String tag;
 
     public String getTag() {

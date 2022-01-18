@@ -3,14 +3,14 @@ package com.company.entity;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "EmployeeHR")
+@Table(name = "employeeHR")
 public class EmployeeHR {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ID", nullable = false)
+    @Column(name = "id", nullable = false)
     private Long id;
 
-    @Column(name = "Employee_Id", nullable = false)
+    @Column(name = "employeeid", nullable = false)
     private Long employeeId;
 
     public Long getEmployeeId() {

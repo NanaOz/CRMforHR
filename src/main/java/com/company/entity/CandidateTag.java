@@ -3,7 +3,7 @@ package com.company.entity;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "CandidateTag")
+@Table(name = "candidateTag")
 public class CandidateTag {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -11,14 +11,14 @@ public class CandidateTag {
     private Long id;
 
     @ManyToOne(optional = false)
-    @JoinColumn(name = "Candidate_id", nullable = false)
+    @JoinColumn(name = "candidateid", nullable = false)
     private Candidate candidate;
 
     @ManyToOne(optional = false)
-    @JoinColumn(name = "Tag_id", nullable = false)
+    @JoinColumn(name = "tagid", nullable = false)
     private Tag tag;
 
-    @Column(name = "Level")
+    @Column(name = "level")
     private Long level;
 
     public Long getLevel() {

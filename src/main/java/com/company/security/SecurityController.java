@@ -7,15 +7,15 @@ import org.springframework.web.bind.annotation.RestController;
 public class SecurityController {
     @GetMapping("/")
     public String hello() {
-        return "Hello";
+        return "redirect:/menu";
     }
-    @GetMapping("/user")
-    public String user() {
-        return "User";
-    }
-    @GetMapping("/admin")
-    public String admin() {
-        return "Admin";
-    }
+//    @GetMapping("/user")
+//    public String user() {
+//        return "User";
+//    }
+//    @GetMapping("/admin")
+//    public String admin() {
+//        return "Admin";
+//    }
 }
 

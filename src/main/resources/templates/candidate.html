@@ -8,7 +8,7 @@
 </head>
 <body>
 <div class="wrapper">
-    <div th:switch="${users}"  class="contents">
+    <div th:switch="${candidates}"  class="contents">
         <div class="tabs">
             <header id="header" class="header lock-padding">
                 <nav class="tabs_items">
@@ -38,23 +38,15 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <tr th:each="candidate:${candidates}">
-                                <td th:text="${user.id}"></td>
-                                <td th:text="${user.surname} + ' ' + ${user.username} + ' ' + ${user.fathersName}"></td>
-                                <td th:text="${user.surname}"></td>
-                                <td th:text="${user.email}"></td>
+                            <tr th:each="сandidate:${candidates}">
+                                <td th:text="${сandidate.id}"></td>
+                                <td th:text="${сandidate.user.surname} + ' ' + ${сandidate.user.username} + ' ' + ${сandidate.user.fathersName}"></td>
+                                <td th:text="${сandidate.status.status}"></td>
+                                <td th:text="${сandidate.post.post}"></td>
 <!--                                <td th:text="${candidate.tag}"></td>-->
 <!--                                <td></td>-->
-                                <td><a th:href="@{/info/{id}(id=${user.id})}" class="info">ИНФО</a></td>
+                                <td><a th:href="@{/info/{id}(id=${candidate.id})}" class="info">ИНФО</a></td>
                             </tr>
-<!--                            <tr>-->
-<!--                                <td>2</td>-->
-<!--                                <td>Сидоров Анатолий Иванович</td>-->
-<!--                                <td>приглашен на собеседование</td>-->
-<!--                                <td>Веб-дизайнер</td>-->
-<!--                                <td>веб, тэг</td>-->
-<!--                                <td>Какие-то навыки</td>-->
-<!--                            </tr>-->
                             </tbody>
                         </table>
                     </div>

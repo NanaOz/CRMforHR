@@ -9,11 +9,11 @@ public class Login {
     private LoginId id;
 
     @OneToOne(optional = false)
-    @JoinColumn(name = "User_Id", nullable = false)
+    @JoinColumn(name = "userid", nullable = false)
     private User user;
 
     @ManyToOne
-    @JoinColumn(name = "Role_Id")
+    @JoinColumn(name = "roleid")
     private Role role;
 
     public Role getRole() {

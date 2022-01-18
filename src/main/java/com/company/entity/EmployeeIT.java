@@ -1,21 +1,24 @@
 package com.company.entity;
 
+import org.hibernate.annotations.Type;
+
 import javax.persistence.*;
 
 @Entity
-@Table(name = "EmployeeIT")
+@Table(name = "employeeIT")
 public class EmployeeIT {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "Id", nullable = false)
+    @Column(name = "id", nullable = false)
     private Long id;
 
     @Lob
-    @Column(name = "Project", nullable = false)
+    @Type(type = "org.hibernate.type.TextType")
+    @Column(name = "project", nullable = false)
     private String project;
 
     @ManyToOne
-    @JoinColumn(name = "EmployeeId")
+    @JoinColumn(name = "employeeid")
     private Employee employeeId;
 
     public Employee getEmployeeId() {
