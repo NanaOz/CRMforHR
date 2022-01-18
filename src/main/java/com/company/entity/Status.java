@@ -1,5 +1,7 @@
 package com.company.entity;
 
+import org.hibernate.annotations.Type;
+
 import javax.persistence.*;
 
 @Entity
@@ -10,8 +12,8 @@ public class Status {
     @Column(name = "Id", nullable = false)
     private Long id;
 
-    @Lob
-    @Column(name = "Status", nullable = false)
+    @Column(name = "status")
+    @Type(type = "org.hibernate.type.TextType")
     private String status;
 
     public String getStatus() {

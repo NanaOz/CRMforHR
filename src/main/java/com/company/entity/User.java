@@ -6,7 +6,7 @@ import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
-@Table (name = "Users")
+@Table (name = "users", schema = "public")
 public class User {
     @Lob @Type(type = "org.hibernate.type.TextType")
     @Column(name = "surname")

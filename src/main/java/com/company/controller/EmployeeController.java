@@ -9,8 +9,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 @Controller
+//@RequestMapping("employee")
 public class EmployeeController {
     private final EmployeeRepository employeeRepository;
     private final UserRepository userRepository;
@@ -40,7 +43,7 @@ public class EmployeeController {
 
     @GetMapping("/employee")
     public String showEmployeeList(Model model) {
-        model.addAttribute("workers", employeeRepository.findAll());
+        model.addAttribute("employees", employeeRepository.findAll());
 //        model.addAttribute("users", userRepository.findAll());
         return "employee";
     }

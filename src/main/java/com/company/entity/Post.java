@@ -1,5 +1,7 @@
 package com.company.entity;
 
+import org.hibernate.annotations.Type;
+
 import javax.persistence.*;
 
 @Entity
@@ -12,6 +14,7 @@ public class Post {
     private Long id;
 
     @Lob
+    @Type(type = "org.hibernate.type.TextType")
     @Column(name = "Post", nullable = false)
     private String post;
 

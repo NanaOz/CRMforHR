@@ -27,11 +27,11 @@ public class UserController {
         return "menu";
     }
 
-//    @GetMapping("/employee")
-//    public String showUserList(Model model) {
-//        model.addAttribute("users", userRepository.findAll());
-//        return "employee";
-//    }
+    @GetMapping("/candidate")
+    public String showUserList(Model model) {
+        model.addAttribute("users", userRepository.findAll());
+        return "candidate";
+    }
 
 
 //    @GetMapping("/signup")

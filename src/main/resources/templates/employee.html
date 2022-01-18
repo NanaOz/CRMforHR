@@ -8,7 +8,7 @@
 </head>
 <body>
 <div class="wrapper">
-    <div th:switch="${workers}" class="contents">
+    <div th:switch="${employees}" class="contents">
         <div class="tabs">
             <header id="header" class="header lock-padding">
                 <nav class="tabs_items">
@@ -45,13 +45,13 @@
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        <tr th:each="employee:${workers}">
-                                            <td th:text="${employee.user.id}"></td>
+                                        <tr th:each="employee:${employees}">
+                                            <td th:text="${employee.id}"></td>
                                             <td th:text="${employee.user.surname} + ' ' + ${employee.user.username} + ' ' + ${employee.user.fathersName}"></td>
-                                            <td th:text="${employee.status}"></td>
-                                            <td th:text="${employee.post}"></td>
+                                            <td th:text="${employee.status.status}"></td>
+                                            <td th:text="${employee.post.post}"></td>
 <!--                                            <td th:text="${user/}"></td>-->
-                                            <td><a th:href="@{/info/{id}(id=${employee.user.id})}" class="info">ИНФО</a></td>
+                                            <td><a th:href="@{/info/{id}(id=${employee.id})}" class="info">ИНФО</a></td>
 <!--                                            <td th:text="${}"></td>-->
                                         </tr>
                                         </tbody>
