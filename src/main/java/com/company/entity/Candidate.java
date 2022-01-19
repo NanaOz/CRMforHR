@@ -12,7 +12,7 @@ public class Candidate {
 
     @OneToOne(optional = false, cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id")
-    private User user1;
+    private User user;
 
     @ManyToOne(optional = false, cascade = CascadeType.ALL)
     @JoinColumn(name = "status_id")
@@ -41,11 +41,11 @@ public class Candidate {
     }
 
     public User getUser() {
-        return user1;
+        return user;
     }
 
     public void setUser(User user) {
-        this.user1 = user;
+        this.user = user;
     }
 
     public Long getId() {
@@ -60,7 +60,7 @@ public class Candidate {
     public String toString() {
         return "Candidate{" +
                 "id=" + id +
-                ", user=" + user1 +
+                ", user=" + user +
                 ", status=" + status +
                 ", post=" + post +
                 '}';

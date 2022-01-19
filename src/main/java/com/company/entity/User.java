@@ -1,5 +1,6 @@
 package com.company.entity;
 
+
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.Type;
@@ -28,15 +29,15 @@ public class User {
     @Column(name = "id")
     private long id;
 
-    @Getter
-    @Setter
-    @OneToOne(optional = false, mappedBy = "user")
-    private Employee owner;
+//    @Getter
+//    @Setter
+//    @OneToOne(optional = false, mappedBy = "user")
+//    private Employee owner;
 
-    @Getter
-    @Setter
-    @OneToOne(optional = false, mappedBy = "user1")
-    private Candidate owner1;
+//    @Getter
+//    @Setter
+//    @OneToOne(optional = false, mappedBy = "user1")
+//    private Candidate owner1;
 
     public User () {}
 
@@ -109,4 +110,6 @@ public class User {
 //                ", post='" + owner.getPost() + '\'' +
                 '}';
     }
+
+
 }
