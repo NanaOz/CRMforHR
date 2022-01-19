@@ -40,7 +40,7 @@ public class EmployeeController {
 
     @GetMapping("/employee")
     public String showEmployeeList(Model model) {
-        model.addAttribute("workers", employeeRepository.findAll());
+        model.addAttribute("employees", employeeRepository.findAll());
 //        model.addAttribute("users", userRepository.findAll());
         return "employee";
     }
