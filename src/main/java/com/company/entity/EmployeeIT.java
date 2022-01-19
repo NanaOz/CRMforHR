@@ -1,5 +1,7 @@
 package com.company.entity;
 
+import org.hibernate.annotations.Type;
+
 import javax.persistence.*;
 
 @Entity
@@ -7,15 +9,15 @@ import javax.persistence.*;
 public class EmployeeIT {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "Id", nullable = false)
+    @Column(name = "id", nullable = false)
     private Long id;
 
-    @Lob
-    @Column(name = "Project", nullable = false)
+    @Lob @Type(type = "org.hibernate.type.TextType")
+    @Column(name = "project", nullable = false)
     private String project;
 
-    @ManyToOne
-    @JoinColumn(name = "EmployeeId")
+    @ManyToOne(optional = false, cascade = CascadeType.ALL)
+    @JoinColumn(name = "employee_id")
     private Employee employeeId;
 
     public Employee getEmployeeId() {

@@ -24,9 +24,9 @@ public class CandidateController {
 //        return "candidate";
 //    }
 
-//    @GetMapping("/candidate")
-//    public String showCandidateList(Model model) {
-//        model.addAttribute("candidates", candidateRepository.findAll());
-//        return "candidate";
-//    }
+    @GetMapping("/candidate")
+    public String showCandidateList(Model model) {
+        model.addAttribute("candidates", candidateRepository.findAll());
+        return "candidate";
+    }
 }

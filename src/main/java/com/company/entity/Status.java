@@ -1,8 +1,11 @@
 package com.company.entity;
 
+
 import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.Collection;
 
 @Entity
 @Table(name = "Status")
@@ -12,10 +15,17 @@ public class Status {
     @Column(name = "Id", nullable = false)
     private Long id;
 
-    @Column(name = "status")
-    @Type(type = "org.hibernate.type.TextType")
+    @Lob @Type(type = "org.hibernate.type.TextType")
+    @Column(name = "Status", nullable = false)
     private String status;
+//
+//    @Setter
+//    @OneToMany(fetch = FetchType.EAGER, mappedBy = "post")
+//
+//    private Collection<Employee> employeeC;
 
+
+    public Status () {}
     public String getStatus() {
         return status;
     }

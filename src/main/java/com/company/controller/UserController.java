@@ -23,11 +23,11 @@ public class UserController {
         return "menu";
     }
 
-    @GetMapping("/candidate")
-    public String showUserList(Model model) {
-        model.addAttribute("users", userRepository.findAll());
-        return "candidate";
-    }
+//    @GetMapping("/candidate")
+//    public String showUserList(Model model) {
+//        model.addAttribute("users", userRepository.findAll());
+//        return "candidate";
+//    }
 
 
 //    @GetMapping("/signup")

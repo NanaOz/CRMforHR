@@ -1,12 +1,15 @@
 package com.company.entity;
 
+
+import lombok.Getter;
+import lombok.Setter;
 import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
-@Table (name = "users", schema = "public")
+@Table (name = "Users")
 public class User {
     @Lob @Type(type = "org.hibernate.type.TextType")
     @Column(name = "surname")
@@ -21,39 +24,24 @@ public class User {
     @Column(name = "email")
     private String email;
 
-    @Lob @Type(type = "org.hibernate.type.TextType")
-    @Column(name = "login")
-    private String login;
-
-    @Lob @Type(type = "org.hibernate.type.TextType")
-    @Column(name = "password")
-    private String password;
-
-    @Lob @Type(type = "org.hibernate.type.TextType")
-    @Column(name = "role")
-    private String role;
-
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "id")
     private long id;
 
+//    @Getter
+//    @Setter
+//    @OneToOne(optional = false, mappedBy = "user")
+//    private Employee owner;
 
-    public String getLogin() {
-        return login;
-    }
+//    @Getter
+//    @Setter
+//    @OneToOne(optional = false, mappedBy = "user1")
+//    private Candidate owner1;
 
-    public void setLogin(String login) {
-        this.login = login;
-    }
+    public User () {}
 
-    public String getPassword() {
-        return password;
-    }
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
 
     public long getId() {
         return id;
@@ -111,11 +99,17 @@ public class User {
         return Objects.hash(surname, username, fathersName, id, email);
     }
 
-    public String getRole() {
-        return role;
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", surname='" + surname + '\'' +
+                ", username='" + username + '\'' +
+                ", fathersName='" + fathersName + '\'' +
+                ", email='" + email + '\'' +
+//                ", post='" + owner.getPost() + '\'' +
+                '}';
     }
 
-    public void setRole(String role) {
-        this.role = role;
-    }
+
 }

@@ -8,12 +8,12 @@ public class Login {
     @EmbeddedId
     private LoginId id;
 
-    @OneToOne(optional = false)
-    @JoinColumn(name = "User_Id", nullable = false)
+    @OneToOne(optional = false, cascade = CascadeType.ALL)
+    @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
-    @ManyToOne
-    @JoinColumn(name = "Role_Id")
+    @ManyToOne(optional = false, cascade = CascadeType.ALL)
+    @JoinColumn(name = "role_id")
     private Role role;
 
     public Role getRole() {
