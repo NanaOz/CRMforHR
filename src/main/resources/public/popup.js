@@ -366,3 +366,23 @@ function searchByIdCandidate() {
     }
 }
 
+/*для вкладки сбор команды*/
+function makeCheckboxGroup(container) {
+    const parentCheckbox = container.querySelector('input[type="checkbox"][data-role="parent"]');
+    const childrenCheckboxes = container.querySelectorAll('input[type="checkbox"]:not([data-role="parent"])');
+
+    childrenCheckboxes.forEach(chk => chk.addEventListener('click', () => {
+        const checkedCheckboxes = Array.from(childrenCheckboxes).filter(chk => chk.checked);
+
+        parentCheckbox.checked = checkedCheckboxes.length > 0;
+    }));
+
+    parentCheckbox.addEventListener('click', () => {
+        childrenCheckboxes.forEach(chk => {
+            chk.checked = parentCheckbox.checked;
+        });
+    });
+}
+
+document.querySelectorAll('.checkbox-group').forEach(makeCheckboxGroup);
+

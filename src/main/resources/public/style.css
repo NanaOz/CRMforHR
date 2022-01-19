@@ -109,6 +109,10 @@ body.lock {
     line-height: 30px;
 }
 
+.info {
+    color: #d5d2d2;
+}
+
 /*кнопки создать задачу, удалить акк и добавить акк*/
 .tabs_addTask, .tabs_deleteAccount, .tabs_addAccount, .tabs_exit, .tabs_addVacancy, .tabs_teamSelection {
     text-decoration: none;
@@ -181,8 +185,11 @@ body.lock {
     border: none;
     /*margin-bottom: 20px;*/
     margin: 0 auto;
+    table-layout: fixed;
 }
-
+.th {
+    width: 20%;
+}
 .table thead th {
     font-weight: normal;
     text-align: center;
@@ -361,4 +368,3 @@ body.lock {
 }
 
 /*сбор команды*/
-
