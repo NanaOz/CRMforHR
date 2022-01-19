@@ -185,8 +185,11 @@ body.lock {
     border: none;
     /*margin-bottom: 20px;*/
     margin: 0 auto;
+    table-layout: fixed;
 }
-
+.th {
+    width: 20%;
+}
 .table thead th {
     font-weight: normal;
     text-align: center;

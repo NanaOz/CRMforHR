@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta username="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="/style.css/"/>
+    <title>Ваш кабинет</title>
+</head>
+<body>
+<div class="wrapper">
+    <div class="contents">
+        <div class="tabs">
+            <header id="header" class="header lock-padding">
+                <nav class="tabs_items">
+                    <a href="menu#tab_menu" class="tabs_item"><span>Меню</span></a>
+                    <a href="task#tab_task" class="tabs_item"><span>Задачи</span></a>
+                    <a href="employee#tab_employee" class="tabs_item"><span>Сотрудники</span></a>
+                    <a href="candidate#tab_candidate" class="tabs_item"><span>Соискатели</span></a>
+                    <a href="team#tab_team" class="tabs_item"><span>Сбор Команды</span></a>
+                </nav>
+            </header>
+            <div class="tabs_body">
+                <div id="tab_menu" class="tabs_block">
+                    <div><a href="" class="tabs_exit popup-link">Выход из системы</a></div>
+                </div>
+                <div id="tab_task" class="tabs_block"></div>
+                <div id="tab_employee" class="tabs_block">
+                    <div class="table">
+                        <div>
+                            <table id="employeeTable" class="table">
+                                <thead>
+                                <tr>
+                                    <th onclick="sortTableEmployee(1)">ФИО</th>
+                                    <th onclick="sortTableEmployee(2)">Статус</th>
+                                    <th onclick="sortTableEmployee(3)">Должность</th>
+                                    <!--                                            <th onclick="sortTableEmployee(4)">Проект</th>-->
+                                    <!--                                            <th onclick="sortTableEmployee(5)">Тэги</th>-->
+                                    <!--                                            <th onclick="sortTableEmployee(6)">Навыки</th>-->
+
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr th:each="employee:${employees}">
+                                    <td th:text="${employee.user.surname} + ' ' + ${employee.user.username} + ' ' + ${employee.user.fathersName}"></td>
+                                    <td th:text="${employee.status.status}"></td>
+                                    <td th:text="${employee.post.post}"></td>
+                                    <!--                                            <td th:text="${user/}"></td>-->
+                                    <!--                                            <td th:text="${}"></td>-->
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="search">
+                        <form action="" method="get">
+                            <div><p class="search_name">ФИО:</p><input id="nameInputEmployee"
+                                                                       onkeyup="searchByNameEmployee()"
+                                                                       name="name_search" type="search"></div>
+                            <div><p class="search_name">Должность:</p><input id="postInputEmployee"
+                                                                             onkeyup="searchByPostEmployee()"
+                                                                             name="post_search" type="search">
+                            </div>
+                            <div><p class="search_name">Тэги:</p><input id="tagInputEmployee"
+                                                                        onkeyup="searchByTagEmployee()"
+                                                                        name="tags_search" type="search"></div>
+                            <div><p class="search_name">Проект:</p><input id="projectInputEmployee"
+                                                                          onkeyup="searchByProjectEmployee()"
+                                                                          name="project_search" type="search">
+                            </div>
+                            <div><p class="search_name">ID:</p><input id="idInputEmployee"
+                                                                      onkeyup="searchByIdEmployee()"
+                                                                      name="id_search" type="search"></div>
+                        </form>
+                    </div>
+                </div>
+                <div id="tab_candidate" class="tabs_block">
+                    <div>Недоступно</div>
+                </div>
+                <div id="tab_team" class="tabs_block">
+                    <div>мб добавить таблицу, где можно посмотреть всех работников по проекту,
+                        над которым работает залогиненый пользователь
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<script src="/popup.js/"></script>
+</body>
+</html>
