@@ -3,25 +3,25 @@ package com.company.entity;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "Employee")
+@Table(name = "employee")
 public class Employee {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ID", nullable = false)
+    @Column(name = "id", nullable = false)
     private Long id;
 
-    @ManyToOne(optional = false)
-    @JoinColumn(name = "User_Id", nullable = false)
+    @OneToOne(optional = false, cascade = CascadeType.ALL)
+    @JoinColumn(name = "userid")
     private User user;
 
-    @ManyToOne
-    @JoinColumn(name = "Post_id")
+    @ManyToOne(optional = false, cascade = CascadeType.ALL)
+    @JoinColumn(name = "post_id")
     private Post post;
 
-    @ManyToOne
-    @JoinColumn(name = "Status_id")
+    @ManyToOne(optional = false, cascade = CascadeType.ALL)
+    @JoinColumn(name = "status_id")
     private Status status;
-
+ public Employee () {}
     public Status getStatus() {
         return status;
     }
@@ -53,46 +53,14 @@ public class Employee {
     public void setId(Long id) {
         this.id = id;
     }
-    //    @Override
-//    public boolean equals(Object o) {
-//        if (this == o) return true;
-//        if (o == null || getClass() != o.getClass()) return false;
-//        Employee employee = (Employee) o;
-//        return id == employee.id;
-//    }
-//
-//    @Override
-//    public int hashCode() {
-//        return Objects.hash(id);
-//    }
-//
-//    @ManyToOne
-//    @JoinColumn(name = "User_Id", referencedColumnName = "id", nullable = false)
-//    public User getUsersByUserId() {
-//        return usersByUserId;
-//    }
-//
-//    public void setUsersByUserId(User usersByUserId) {
-//        this.usersByUserId = usersByUserId;
-//    }
-//
-//    @ManyToOne
-//    @JoinColumn(name = "Post_id", referencedColumnName = "Id")
-//    public Post getPostByPostId() {
-//        return postByPostId;
-//    }
-//
-//    public void setPostByPostId(Post postByPostId) {
-//        this.postByPostId = postByPostId;
-//    }
-//
-//    @ManyToOne
-//    @JoinColumn(name = "Status_id", referencedColumnName = "Id")
-//    public Status getStatusByStatusId() {
-//        return statusByStatusId;
-//    }
-//
-//    public void setStatusByStatusId(Status statusByStatusId) {
-//        this.statusByStatusId = statusByStatusId;
-//    }
+
+    @Override
+    public String toString() {
+        return "Employee{" +
+                "id=" + id +
+                ", user=" + user +
+                ", post=" + post +
+                ", status=" + status +
+                '}';
+    }
 }

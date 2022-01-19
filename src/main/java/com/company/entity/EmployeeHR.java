@@ -7,10 +7,10 @@ import javax.persistence.*;
 public class EmployeeHR {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ID", nullable = false)
+    @Column(name = "id", nullable = false)
     private Long id;
 
-    @Column(name = "Employee_Id", nullable = false)
+    @Column(name = "employee_id", nullable = false)
     private Long employeeId;
 
     public Long getEmployeeId() {
@@ -43,11 +43,11 @@ public class EmployeeHR {
 //
 //    @ManyToOne
 //    @JoinColumn(name = "Employee_Id", referencedColumnName = "ID", nullable = false)
-//    public Employee getEmployeeByEmployeeId() {
+//    public Employee1 getEmployeeByEmployeeId() {
 //        return employeeByEmployeeId;
 //    }
 //
-//    public void setEmployeeByEmployeeId(Employee employeeByEmployeeId) {
+//    public void setEmployeeByEmployeeId(Employee1 employeeByEmployeeId) {
 //        this.employeeByEmployeeId = employeeByEmployeeId;
 //    }
 }

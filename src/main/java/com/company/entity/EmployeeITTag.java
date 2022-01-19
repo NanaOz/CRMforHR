@@ -3,22 +3,22 @@ package com.company.entity;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "EmployeeITTag")
+@Table(name = "Employee_it_tag")
 public class EmployeeITTag {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "Id", nullable = false)
+    @Column(name = "id", nullable = false)
     private Long id;
 
-    @ManyToOne(optional = false)
-    @JoinColumn(name = "EmployeeIT_id", nullable = false)
+    @ManyToOne(optional = false, cascade = CascadeType.ALL)
+    @JoinColumn(name = "employee_it_id", nullable = false)
     private EmployeeIT employeeIT;
 
-    @ManyToOne(optional = false)
-    @JoinColumn(name = "Tag_Id", nullable = false)
+    @ManyToOne(optional = false, cascade = CascadeType.ALL)
+    @JoinColumn(name = "tag_id", nullable = false)
     private Tag tag;
 
-    @Column(name = "Level")
+    @Column(name = "level")
     private Long level;
 
     public Long getLevel() {

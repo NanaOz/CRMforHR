@@ -1,5 +1,7 @@
 package com.company.entity;
 
+import lombok.Getter;
+import lombok.Setter;
 import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
@@ -25,6 +27,20 @@ public class User {
     @Id
     @Column(name = "id")
     private long id;
+
+    @Getter
+    @Setter
+    @OneToOne(optional = false, mappedBy = "user")
+    private Employee owner;
+
+    @Getter
+    @Setter
+    @OneToOne(optional = false, mappedBy = "user1")
+    private Candidate owner1;
+
+    public User () {}
+
+
 
     public long getId() {
         return id;
@@ -80,5 +96,17 @@ public class User {
     @Override
     public int hashCode() {
         return Objects.hash(surname, username, fathersName, id, email);
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", surname='" + surname + '\'' +
+                ", username='" + username + '\'' +
+                ", fathersName='" + fathersName + '\'' +
+                ", email='" + email + '\'' +
+//                ", post='" + owner.getPost() + '\'' +
+                '}';
     }
 }

@@ -3,24 +3,26 @@ package com.company.entity;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "Candidate")
+@Table(name = "candidate")
 public class Candidate {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ID", nullable = false)
+    @Column(name = "id", nullable = false)
     private Long id;
 
-    @ManyToOne(optional = false)
-    @JoinColumn(name = "User_Id", nullable = false)
-    private User user;
+    @OneToOne(optional = false, cascade = CascadeType.ALL)
+    @JoinColumn(name = "user_id")
+    private User user1;
 
-    @ManyToOne
-    @JoinColumn(name = "Status_id")
+    @ManyToOne(optional = false, cascade = CascadeType.ALL)
+    @JoinColumn(name = "status_id")
     private Status status;
 
-    @ManyToOne
-    @JoinColumn(name = "Post_id")
+    @ManyToOne(optional = false, cascade = CascadeType.ALL)
+    @JoinColumn(name = "post_id")
     private Post post;
+
+    public Candidate () {}
 
     public Post getPost() {
         return post;
@@ -39,11 +41,11 @@ public class Candidate {
     }
 
     public User getUser() {
-        return user;
+        return user1;
     }
 
     public void setUser(User user) {
-        this.user = user;
+        this.user1 = user;
     }
 
     public Long getId() {
@@ -52,6 +54,16 @@ public class Candidate {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    @Override
+    public String toString() {
+        return "Candidate{" +
+                "id=" + id +
+                ", user=" + user1 +
+                ", status=" + status +
+                ", post=" + post +
+                '}';
     }
     //    @Override
 //    public boolean equals(Object o) {
