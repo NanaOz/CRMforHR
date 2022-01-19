@@ -18,6 +18,7 @@ public class UserController {
         this.userRepository = userRepository;
     }
 
+
     @GetMapping("/menu")
     public String homePage(){
         return "menu";
