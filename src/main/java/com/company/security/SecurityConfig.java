@@ -23,8 +23,16 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/user/**").hasAnyRole("USER", "ADMIN")
                 .antMatchers("/**").permitAll()
                 .and().formLogin()
-                .and().csrf().disable();
+                .permitAll()
+                .loginPage("/login")
+                .loginProcessingUrl("/perform-login")
+                .usernameParameter("user")
+                .passwordParameter("pass")
+                .defaultSuccessUrl("/menu");
+//                .and().csrf().disable();
     }
+
+
 
     @Override
     public void configure(AuthenticationManagerBuilder auth) throws Exception {
