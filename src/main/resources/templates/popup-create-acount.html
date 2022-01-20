@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta username="viewport" content="width=device-width, initial-scale=1">
@@ -8,16 +8,19 @@
 </head>
 <body>
 <div id="popup_2" class="popup">
-    <div class="popup_body">
-        <div class="popup_content">
-            <a href="#" class="popup_close close-popup">X</a>
-            <div class="popup_title">Создать аккаунт сотрудника</div>
-            <div class="popup_text">
-                <div>
-                    <label for="last_name">ФИО:</label>
-                    <select type="text" id="last_name" class="popup_field" required autocomplete="off">
-                        <option>Сюда подключить список ФИО для HR</option>
-                    </select>
+<div th:switch="${candidatess}" class="popup_body">
+    <div class="popup_content">
+        <a href="#" class="popup_close close-popup">X</a>
+        <div class="popup_title">Создать аккаунт сотрудника</div>
+        <div class="popup_text">
+            <!--                <form th:action="@{/employee/{id}(id=${candidate.user.id})}" th:object="${candidate}">-->
+            <div>
+                <label for="last_name">ФИО:</label>
+                <!--                        <select th:field="*{surname}" type="text" id="last_name" class="popup_field" required-->
+                <select id="last_name" class="popup_field" required autocomplete="off">
+                    <option th:each="candidate:${candidatess}"
+                            th:text="${candidate.user.surname} + ' ' + ${candidate.user.username} + ' ' + ${candidate.user.fathersName}"></option>
+                </select>
                 </div>
                 <div>
                     <label for="post">Должность:</label>

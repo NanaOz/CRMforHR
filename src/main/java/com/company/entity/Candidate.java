@@ -1,6 +1,7 @@
 package com.company.entity;
 
 import javax.persistence.*;
+import java.util.Objects;
 
 @Entity
 @Table(name = "candidate")
@@ -65,18 +66,18 @@ public class Candidate {
                 ", post=" + post +
                 '}';
     }
-    //    @Override
-//    public boolean equals(Object o) {
-//        if (this == o) return true;
-//        if (o == null || getClass() != o.getClass()) return false;
-//        Candidate candidate = (Candidate) o;
-//        return id == candidate.id;
-//    }
-//
-//    @Override
-//    public int hashCode() {
-//        return Objects.hash(id);
-//    }
+        @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Candidate candidate = (Candidate) o;
+        return id == candidate.id;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
+    }
 //
 //    @ManyToOne
 //    @JoinColumn(name = "User_Id", referencedColumnName = "id", nullable = false)
