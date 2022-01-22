@@ -19,11 +19,11 @@
                 <div id="tab_employee" class="tabs_block">
                     <div>
 <!--                        <a href="#" class="tabs_deleteAccount popup-link">Удалить аккаунт</a>-->
-                        <a href="#popup_2" class="tabs_addAccount popup-link">Создать аккаунт</a>
-<!--                        <a th:href="@{/popup-create}" class="tabs_addAccount popup-link">Создать аккаунт</a>-->
-                        <div th:insert="blocks/popup_acount :: popup_acount">
 
-                        </div>
+<!--                        <a th:href="@{/popup-create}" class="tabs_addAccount popup-link">Создать аккаунт</a>-->
+                        <div th:insert="blocks/popup_acount :: popup_acount">  </div>
+
+
 
                         <div class="table_and_search">
                             <div class="table">
@@ -35,7 +35,7 @@
                                             <th onclick="sortTableEmployee(1)">ФИО</th>
                                             <th onclick="sortTableEmployee(2)">Статус</th>
                                             <th onclick="sortTableEmployee(3)">Должность</th>
-<!--                                            <th onclick="sortTableEmployee(4)">Проект</th>-->
+                                            <th onclick="sortTableEmployee(4)">Проект</th>
 <!--                                            <th onclick="sortTableEmployee(5)">Тэги</th>-->
 <!--                                            <th onclick="sortTableEmployee(6)">Навыки</th>-->
                                             <th> </th>
@@ -48,8 +48,13 @@
                                             <td th:text="${employee.user.surname} + ' ' + ${employee.user.username} + ' ' + ${employee.user.fathersName}"></td>
                                             <td th:text="${employee.status.status}"></td>
                                             <td th:text="${employee.post.post}"></td>
+                                            <td th:text="${employee.project.projectName}"></td>
 <!--                                            <td th:text="${user/}"></td>-->
                                             <td><a th:href="@{/info/{id}(id=${employee.id})}" class="info">ИНФО</a></td>
+<!--                                            <td>-->
+<!--                                                <a href="#popup_3" class="tabs_info popup-link">ИНФО</a>-->
+<!--                                                <div th:insert="blocks/popup_info :: popup_info"> </div>-->
+<!--                                            </td>-->
 <!--                                            <td th:text="${}"></td>-->
                                         </tr>
                                         </tbody>
