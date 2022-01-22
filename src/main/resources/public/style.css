@@ -189,7 +189,9 @@ body.lock {
 }
 .th {
     width: 20%;
+
 }
+
 .table thead th {
     font-weight: normal;
     text-align: center;
@@ -241,18 +243,12 @@ body.lock {
     position: center;
     color: #eeeeee;
     font-size: 10px; /*устанавливаем явный размер шрифта*/
-    /*font-weight: 100; !*задаёт начертание шрифта*!*/
 
     width: 100%;
-    /*height: calc(2.25rem + 2px);*/
     padding: 0.75rem; /*внутренние поля:*/
-    /*font-family: inherit;*/
     line-height: 2; /*высота строки*/
-    /*background-color: #383737;*/
-    /*background-clip: padding-box;*/
-    border: 1px solid #fffefe;
-    border-radius: 0.50rem; /*радиус скругления углов*/
-    /*transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;*/
+    /*border: 1px solid #fffefe;*/
+    /*border-radius: 0.50rem; !*радиус скругления углов*!*/
 }
 .search_button{
     /*text-decoration: none;*/

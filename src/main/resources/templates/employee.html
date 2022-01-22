@@ -48,8 +48,10 @@
                                             <td th:text="${employee.user.surname} + ' ' + ${employee.user.username} + ' ' + ${employee.user.fathersName}"></td>
                                             <td th:text="${employee.status.status}"></td>
                                             <td th:text="${employee.post.post}"></td>
-<!--                                            <td th:text="${user/}"></td>-->
-                                            <td><a th:href="@{/info/{id}(id=${employee.id})}" class="info">ИНФО</a></td>
+<!--                                            <td th:text="${}"></td>-->
+                                            <td onclick="infoclic">
+                                                <a th:href="@{/info/{id}(id=${employee.id})}" class="info">ИНФО</a>
+                                            </td>
 <!--                                            <td th:text="${}"></td>-->
                                         </tr>
                                         </tbody>
