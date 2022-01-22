@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
     <meta username="viewport" content="width=device-width, initial-scale=1">
@@ -7,31 +7,36 @@
     <title>ИНФО</title>
 </head>
 <body>
-<div th:switch="${users}"  id="popup_3" class="popup">
+<div id="popup_3" class="popup">
     <div class="popup_body">
         <div class="popup_content">
             <a href="#" class="popup_close close-popup">X</a>
-            <div class="popup_title">Информация о сотруднике</div>
-            <div th:each="user:${users}" class="popup_text">
-<!--                <div>-->
-<!--                    <label th:text="${user.id}">ID:</label>-->
-<!--                </div>-->
-                <div>
-                    <label th:text="${user.surname}">Фамилия:</label>
+            <form action="#" th:action="@{/info/{id}(id=${employee.id})}" th:object="${employee}" method="post">
+                <div class="popup_title">Информация о сотруднике</div>
+                <div class="popup_text">
+                    <div>
+                        <!--                    <label th:text="${user.surname}">Фамилия:</label>-->
+                        <label for="surname">Фамилия:</label>
+                        <span type="text" th:field="*{surname}" id="surname"></span>
+                    </div>
+                    <div>
+                        <!--                    <label th:text="${user.username}">Имя:</label>-->
+                        <label for="name">Имя:</label>
+                        <span type="text" th:field="*{name}" id="name"></span>
+                    </div>
+                    <div>
+                        <!--                    <label th:text="${user.fathersName}">Отчество:</label>-->
+                        <label for="fathersName">Отчество:</label>
+                        <span type="text" th:field="*{fathersName}" id="fathersName"></span>
+                    </div>
+                    <div>
+                        <!--                    <label th:text="${user.email}">Почта:</label>-->
+                        <label for="email">Почта:</label>
+                        <span type="text" th:field="*{email}" id="email"></span>
+                    </div>
+                   //дописать все + редактируемые
                 </div>
-                <div>
-                    <label th:text="${user.username}">Имя:</label>
-                </div>
-                <div>
-                    <label th:text="${user.fathersName}">Отчество:</label>
-                </div>
-                <div>
-                    <label th:text="${user.email}">Почта:</label>
-                </div>
-                <div>
-                    <button class="popup_button" type="submit">Создать аккаунт сотрудника</button>
-                </div>
-            </div>
+            </form>
         </div>
     </div>
 </div>
