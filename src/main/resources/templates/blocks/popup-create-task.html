@@ -1,0 +1,65 @@
+<div th:fragment="popup-create-task">
+    <a href="#popup" class="tabs_addAccount popup-link">Создать задачу</a>
+    <div id="popup" class="popup">
+        <div class="popup_body">
+            <div class="popup_content">
+                <a href="#header" class="popup_close close-popup">X</a>
+
+                <div class="popup_title">Создать задачу</div>
+                <div class="popup_text">
+                    <div>
+                        <!--                          <div  th:switch="${employee}">-->
+                        <!--                    <div th:switch="${employee}">-->
+
+                        <label for="executor">Исполнитель:</label>
+                        <!--                    <input type="text" id="executor" class="popup_field" required autocomplete="off">-->
+                        <select type="text" id="executor" class="popup_field" required autocomplete="off">
+                            <option>
+<!--                                    th:text="${employee.user.surname} + ' ' + ${employee.user.username} + ' ' + ${employee.user.fathersName}">-->
+                                <!--                                    th:each="employee:${employee}"-->
+                                <!--                                    th:each="employee:${employees}"-->
+                                <!--                                    th:value="${employee}"-->
+                                <!--                                    th:text="${employee.user.surname} + ' ' + ${employee.user.username} + ' ' + ${employee.user.fathersName}">-->
+                            </option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="start_date">Дата начала:</label>
+                        <!--                    <input type="text" id="start_date" requiredautocomplete="off">-->
+                        <!--                    <input type="text" id="start_date" value="" size="10" onClick="xCal(this)" onmouseenter="xCal(this)" onKeyUp="xCal()">-->
+                        <input type="date" id="start_date" class="popup_field" name="date">
+                    </div>
+                    <div>
+                        <label for="deadline">Дэдлайн:</label>
+                        <!--                    <input type="text" id="deadline" required autocomplete="off">-->
+                        <input type="date" id="deadline" class="popup_field" name="date">
+                    </div>
+                    <div>
+                        <label for="task">Задача:</label><input type="text" id="task" class="popup_field" required
+                                                                autocomplete="off">
+                    </div>
+                    <!--                    <div th:switch="${users}">-->
+                    <div>
+                        <label for="select_lid">Выбор лида:</label>
+                        <!--                    <input type="text" id="select_lid" class="popup_field" required autocomplete="off">-->
+                        <select type="text" id="select_lid" class="popup_field" required autocomplete="off">
+                            <option>
+<!--                                    th:text="${user.surname} + ' ' + ${user.username} + ' ' + ${user.fathersName}">-->
+                            <!--                                    th:each="user:${users}"-->
+
+                            <!--                                    th:each="task:${tasks}"-->
+                            <!--                                    th:value="${task}"-->
+                            <!--                                    th:text="${task.lid.surname} + ' ' + ${task.lid.username} + ' ' + ${task.lid.fathersName}">-->
+                            </option>
+                        </select>
+                    </div>
+                    <div>
+                        <button class="popup_button" type="submit">Создать задачу</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="/popup.js/"></script>
+

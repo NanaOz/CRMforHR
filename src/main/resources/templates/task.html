@@ -16,8 +16,10 @@
             <div class="tabs_body">
                 <div id="tab_menu" class="tabs_block"></div>
                 <div id="tab_task" class="tabs_block">
-<!--                    <div><a href="#popup" class="tabs_addTask popup-link"> Создать задачу</a>-->
-                    <div><a th:href="@{templates/popup-create-task.html}" class="tabs_addTask popup-link"> Создать задачу</a>
+                    <!--                    <div><a href="#popup" class="tabs_addTask popup-link"> Создать задачу</a>-->
+                    <div th:insert="blocks/popup-create-task :: popup-create-task">
+<!--                        <a th:href="@{templates/popup-create-task.html}" class="tabs_addTask popup-link"> Создать задачу</a>-->
+
                     </div>
                     <table id="taskTable" class="table">
                         <thead>
