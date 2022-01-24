@@ -33,13 +33,13 @@
                         </thead>
                         <tbody>
                         <tr th:each="task:${tasks}">
-                            <td th:text="${task.dateofcreation}"></td>
-                            <td th:text="${task.executor}"></td>
+                            <td th:text="${task.dateCreation}"></td>
+                            <td th:text="${task.executor.user.surname}+ ' ' + ${task.executor.user.username} + ' ' + ${task.executor.user.fathersName}"></td>
                             <td th:text="${task.task}"></td>
-                            <td th:text="${task.lid}"></td>
-                            <td th:text="${task.status}"></td>
-                            <td th:text="${task.datedeadline}"></td>
-                            <td th:text="${task.dateactualcompletion}"></td>
+                            <td th:text="${task.lid.surname} + ' ' + ${task.lid.username} + ' ' + ${task.lid.fathersName}"></td>
+                            <td th:text="${task.status.taskName}"></td>
+                            <td th:text="${task.dateDeadline}"></td>
+                            <td th:text="${task.dateActualCompletion}"></td>
                         </tr>
                         </tbody>
                     </table>

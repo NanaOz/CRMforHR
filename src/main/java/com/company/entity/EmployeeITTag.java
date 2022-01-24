@@ -10,7 +10,7 @@ public class EmployeeITTag {
     @Column(name = "id", nullable = false)
     private Long id;
 
-    @ManyToOne(optional = false, cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "employee_it_id", nullable = false)
     private EmployeeIT employeeIT;
 

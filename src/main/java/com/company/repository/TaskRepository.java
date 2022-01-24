@@ -1,9 +1,9 @@
-//package com.company.repository;
-//
-//import org.springframework.data.jpa.repository.JpaRepository;
-//import org.springframework.scheduling.config.Task;
-//import org.springframework.stereotype.Repository;
-//
-//@Repository
-//public interface TaskRepository extends JpaRepository<Task, Long> {
-//}
+package com.company.repository;
+
+import com.company.entity.Task;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface TaskRepository extends JpaRepository<Task, Long> {
+}
