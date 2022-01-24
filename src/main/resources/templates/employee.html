@@ -10,21 +10,13 @@
 <div class="wrapper">
     <div th:switch="${employees}" class="contents">
         <div class="tabs">
-
             <header th:insert="blocks/header :: header"> </header>
-
             <div class="tabs_body">
                 <div id="tab_menu" class="tabs_block"></div>
                 <div id="tab_task" class="tabs_block"></div>
                 <div id="tab_employee" class="tabs_block">
                     <div>
-<!--                        <a href="#" class="tabs_deleteAccount popup-link">Удалить аккаунт</a>-->
-
-<!--                        <a th:href="@{/popup-create}" class="tabs_addAccount popup-link">Создать аккаунт</a>-->
                         <div th:insert="blocks/popup_acount :: popup_acount">  </div>
-
-
-
                         <div class="table_and_search">
                             <div class="table">
                                 <div>
@@ -49,13 +41,9 @@
                                             <td th:text="${employeeit.employee.status.status}"></td>
                                             <td th:text="${employeeit.employee.post.post}"></td>
                                             <td th:text="${employeeit.project.projectName}"></td>
-<!--                                            <td th:text="${user/}"></td>-->
-                                            <td><a th:href="'/info/'+ ${employeeit.id}" >ИНФО</a></td>
-<!--                                            <td>-->
-<!--                                                <a href="#popup_3" class="tabs_info popup-link">ИНФО</a>-->
-<!--                                                <div th:insert="blocks/popup_info :: popup_info"> </div>-->
-<!--                                            </td>-->
-<!--                                            <td th:text="${}"></td>-->
+<!--                                            <td><a th:href="'/info/'+ ${employeeit.id}" >ИНФО</a></td>-->
+                                           <td><div th:insert="blocks/popup-infoIT :: popup-infoIT"></div></td>
+
                                         </tr>
                                         <tr th:each="employeehr:${employeesHr}">
                                             <td th:text="${employeehr.id}"></td>
@@ -63,13 +51,9 @@
                                             <td th:text="${employeehr.employee.status.status}"></td>
                                             <td th:text="${employeehr.employee.post.post}"></td>
                                             <td></td>
-                                            <!--                                            <td th:text="${user/}"></td>-->
-                                            <td><a th:href="'/info/'+ ${employeehr.id}" >ИНФО</a></td>
-                                            <!--                                            <td>-->
-                                            <!--                                                <a href="#popup_3" class="tabs_info popup-link">ИНФО</a>-->
-                                            <!--                                                <div th:insert="blocks/popup_info :: popup_info"> </div>-->
-                                            <!--                                            </td>-->
-                                            <!--                                            <td th:text="${}"></td>-->
+<!--                                            <td><a th:href="'/info/'+ ${employeehr.id}" >ИНФО</a></td>-->
+                                            <td><div th:insert="blocks/popup-infoHR :: popup-infoHR"></div></td>
+
                                         </tr>
                                         </tbody>
                                     </table>
@@ -105,51 +89,6 @@
         </div>
     </div>
 </div>
-<!--<div id="popup_2" class="popup">-->
-<!--    <div class="popup_body">-->
-<!--        <div class="popup_content">-->
-<!--            <a href="#" class="popup_close close-popup">X</a>-->
-<!--            <div class="popup_title">Создать аккаунт сотрудника</div>-->
-<!--            <div class="popup_text">-->
-<!--                <div>-->
-<!--                    <label for="last_name">ФИО:</label>-->
-<!--                    <select type="text" id="last_name" class="popup_field" required autocomplete="off">-->
-<!--                        <option>Сюда подключить список ФИО для HR</option>-->
-<!--                    </select>-->
-<!--                </div>-->
-<!--                <div>-->
-<!--                    <label for="post">Должность:</label>-->
-<!--                    <select type="text" id="post" class="popup_field" required autocomplete="off">-->
-<!--                        <option>Сотрудник HR</option>-->
-<!--                        <option>Руководитель HR</option>-->
-<!--                    </select>-->
-<!--                </div>-->
-<!--                <div>-->
-<!--                    <label for="id_employee">ID:</label>-->
-<!--                    <input type="text" id="id_employee" class="popup_field" required autocomplete="off" disabled>-->
-<!--                </div>-->
-<!--                <div>-->
-<!--                    <p><label for="zone_visibility">Зона видимости:</label></p>-->
-<!--                    <div>-->
-<!--                        <input type="checkbox" id="zone_visibility" required autocomplete="off">-->
-<!--                        <label for="zone_visibility">Доступ ко всем сотрудникам</label>-->
-<!--                    </div>-->
-<!--                    <div>-->
-<!--                        <input type="checkbox" id="zone_visibility1" required autocomplete="off">-->
-<!--                        <label for="zone_visibility">Доступ ко всем сотрудникам, кроме руководителей</label>-->
-<!--                    </div>-->
-<!--                    <div>-->
-<!--                        <input type="checkbox" id="zone_visibility3" required autocomplete="off">-->
-<!--                        <label for="zone_visibility">Доступ ко всем сотрудникам, кроме сотрудников HR</label>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--                <div>-->
-<!--                    <button class="popup_button" type="submit">Создать аккаунт сотрудника</button>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--    </div>-->
-<!--</div>-->
 <script src="/popup.js/"></script>
 </body>
 </html>

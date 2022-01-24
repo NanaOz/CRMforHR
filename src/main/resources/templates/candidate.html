@@ -10,9 +10,7 @@
 <div class="wrapper">
     <div th:switch="${candidates}"  class="contents">
         <div class="tabs">
-
             <header th:insert="blocks/header :: header"> </header>
-
             <div class="tabs_body">
                 <div id="tab_menu" class="tabs_block"></div>
                 <div id="tab_task" class="tabs_block"></div>
@@ -39,7 +37,9 @@
                                 <td th:text="${candidate.post.post}"></td>
 <!--                                <td th:text="${candidate.tag}"></td>-->
 <!--                                <td></td>-->
-                                <td><a th:href="@{/info/{id}(id=${candidate.id})}" class="info">ИНФО</a></td>
+<!--                                <td><a th:href="@{/info/{id}(id=${candidate.id})}" class="info">ИНФО</a></td>-->
+                                <td><div th:insert="blocks/popup-infoCandidate :: popup-infoCandidate"></div></td>
+
                             </tr>
                             </tbody>
                         </table>
