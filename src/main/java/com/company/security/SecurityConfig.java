@@ -6,8 +6,11 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+
+import static javax.management.Query.and;
 
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
@@ -19,17 +22,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .antMatchers("/admin/**").hasRole( "ADMIN")
-                .antMatchers("/user/**").hasAnyRole("USER", "ADMIN")
-                .antMatchers("/**").permitAll()
+                .antMatchers("/**").hasAnyRole( "employeIt","employeeHr","managerHr")
                 .and().formLogin()
                 .permitAll()
                 .loginPage("/login")
                 .loginProcessingUrl("/perform-login")
                 .usernameParameter("user")
                 .passwordParameter("pass")
-                .defaultSuccessUrl("/menu");
-//                .and().csrf().disable();
+                .defaultSuccessUrl("/menu")
+                .and().rememberMe();
     }
 
 
@@ -39,4 +40,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         //и добавляем его сюда
         auth.authenticationProvider(customAuthencationProvider);
     }
+
+
 }
