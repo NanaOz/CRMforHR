@@ -7,12 +7,11 @@ import java.util.Objects;
 @Table(name = "candidate")
 public class Candidate {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false)
     private Long id;
 
     @OneToOne(optional = false, cascade = CascadeType.ALL)
-    @JoinColumn(name = "user_id")
+    @MapsId
+    @JoinColumn(name = "id")
     private User user;
 
     @ManyToOne(optional = false, cascade = CascadeType.ALL)

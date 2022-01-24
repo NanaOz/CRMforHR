@@ -17,10 +17,6 @@ public class Task {
     @Column(name = "date_creation", nullable = false)
     private LocalDate dateCreation;
 
-    @OneToOne(optional = false, cascade = CascadeType.ALL)
-    @JoinColumn(name = "executor_id")
-    private Employee executor;
-
     @Lob @Type(type = "org.hibernate.type.TextType")
     @Column(name = "task")
     private String task;
@@ -39,6 +35,18 @@ public class Task {
 //    @Lob @Type(type = "org.hibernate.type.DateType")
     @Column(name = "date_actual_completion")
     private LocalDate dateActualCompletion;
+
+    @OneToOne
+    @JoinColumn(name = "executor_id")
+    private EmployeeHR executor;
+
+    public EmployeeHR getExecutor() {
+        return executor;
+    }
+
+    public void setExecutor(EmployeeHR executor) {
+        this.executor = executor;
+    }
 
     public LocalDate getDateActualCompletion() {
         return dateActualCompletion;
@@ -96,13 +104,7 @@ public class Task {
         this.id = id;
     }
 
-    public Employee getExecutor() {
-        return executor;
-    }
-
-    public void setExecutor(Employee executor) {
-        this.executor = executor;
-    }
+//
 //    @Id
 //    @GeneratedValue(strategy = GenerationType.IDENTITY)
 //    @Column(name = "id", nullable = false)

@@ -3,22 +3,21 @@ package com.company.entity;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "EmployeeHR")
+@Table(name = "employee_hr")
 public class EmployeeHR {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false)
     private Long id;
+    @OneToOne(optional = false, cascade = CascadeType.ALL)
+    @MapsId
+    @JoinColumn(name = "id")
+    private Employee employee;
 
-    @Column(name = "employee_id", nullable = false)
-    private Long employeeId;
-
-    public Long getEmployeeId() {
-        return employeeId;
+    public Employee getEmployee() {
+        return employee;
     }
 
-    public void setEmployeeId(Long employeeId) {
-        this.employeeId = employeeId;
+    public void setEmployee(Employee employee) {
+        this.employee = employee;
     }
 
     public Long getId() {

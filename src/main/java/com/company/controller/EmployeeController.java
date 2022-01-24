@@ -2,6 +2,7 @@ package com.company.controller;
 
 import com.company.entity.Employee;
 import com.company.repository.CandidateRepository;
+import com.company.repository.EmployeeHrRepository;
 import com.company.repository.EmployeeITRepository;
 import com.company.repository.EmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,12 +16,14 @@ public class EmployeeController {
     private final EmployeeRepository employeeRepository;
     private final CandidateRepository candidateRepository;
     private final EmployeeITRepository employeeITRepository;
+    private final EmployeeHrRepository employeeHrRepository;
 
     @Autowired
-    public EmployeeController(EmployeeRepository employeeRepository, CandidateRepository candidateRepository, EmployeeITRepository employeeITRepository) {
+    public EmployeeController(EmployeeRepository employeeRepository, CandidateRepository candidateRepository, EmployeeITRepository employeeITRepository, EmployeeHrRepository employeeHrRepository) {
         this.employeeRepository = employeeRepository;
         this.candidateRepository = candidateRepository;
         this.employeeITRepository = employeeITRepository;
+        this.employeeHrRepository = employeeHrRepository;
     }
 
 //    @GetMapping("/employee")
@@ -45,6 +48,7 @@ public class EmployeeController {
         model.addAttribute("employees", employeeRepository.findAll());
         model.addAttribute("candidatess", candidateRepository.findAll());
         model.addAttribute("employeesIt", employeeITRepository.findAll());
+        model.addAttribute("employeesHr", employeeHrRepository.findAll());
         return "employee";}
 
     @GetMapping("info/{id}")

@@ -5,7 +5,7 @@ import org.hibernate.annotations.Type;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "Tags")
+@Table(name = "tags")
 public class Tag {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -15,6 +15,17 @@ public class Tag {
     @Lob @Type(type = "org.hibernate.type.TextType")
     @Column(name = "tag", nullable = false)
     private String tag;
+
+    @Column(name = "criterion")
+    private Long criterion;
+
+    public Long getCriterion() {
+        return criterion;
+    }
+
+    public void setCriterion(Long criterion) {
+        this.criterion = criterion;
+    }
 
     public String getTag() {
         return tag;

@@ -34,7 +34,7 @@
                         <tbody>
                         <tr th:each="task:${tasks}">
                             <td th:text="${task.dateCreation}"></td>
-                            <td th:text="${task.executor.user.surname}+ ' ' + ${task.executor.user.username} + ' ' + ${task.executor.user.fathersName}"></td>
+                            <td th:text="${task.executor.employee.user.surname}+ ' ' + ${task.executor.employee.user.username} + ' ' + ${task.executor.employee.user.fathersName}"></td>
                             <td th:text="${task.task}"></td>
                             <td th:text="${task.lid.surname} + ' ' + ${task.lid.username} + ' ' + ${task.lid.fathersName}"></td>
                             <td th:text="${task.status.taskName}"></td>

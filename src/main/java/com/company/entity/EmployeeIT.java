@@ -7,15 +7,14 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 @Entity
-@Table(name = "EmployeeIT")
+@Table(name = "employee_it")
 public class EmployeeIT {
     @Id
-
     private Long id;
 
-    @Lob @Type(type = "org.hibernate.type.TextType")
-    @Column(name = "project")
-    private String project;
+    @ManyToOne
+    @JoinColumn(name = "project_id")
+    private Project project;
 
 
     @OneToOne(optional = false, cascade = CascadeType.ALL)
@@ -29,10 +28,10 @@ public class EmployeeIT {
     public Employee getEmployee() {return employee;}
     public void setEmployee(Employee employee) {this.employee = employee;}
 
-    public String getProject() {
+    public Project getProject() {
         return project;
     }
-    public void setProject(String project) {
+    public void setProject(Project project) {
         this.project = project;
     }
 

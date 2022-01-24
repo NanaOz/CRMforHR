@@ -43,19 +43,33 @@
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        <tr th:each="employee:${employees}">
-                                            <td th:text="${employee.id}"></td>
-                                            <td th:text="${employee.user.surname} + ' ' + ${employee.user.username} + ' ' + ${employee.user.fathersName}"></td>
-                                            <td th:text="${employee.status.status}"></td>
-                                            <td th:text="${employee.post.post}"></td>
-                                            <td th:text="${employee.project.projectName}"></td>
+                                        <tr th:each="employeeit:${employeesIt}">
+                                            <td th:text="${employeeit.id}"></td>
+                                            <td th:text="${employeeit.employee.user.surname} + ' ' + ${employeeit.employee.user.username} + ' ' + ${employeeit.employee.user.fathersName}"></td>
+                                            <td th:text="${employeeit.employee.status.status}"></td>
+                                            <td th:text="${employeeit.employee.post.post}"></td>
+                                            <td th:text="${employeeit.project.projectName}"></td>
 <!--                                            <td th:text="${user/}"></td>-->
-                                            <td><a th:href="'/info/'+ ${employee.id}" >ИНФО</a></td>
+                                            <td><a th:href="'/info/'+ ${employeeit.id}" >ИНФО</a></td>
 <!--                                            <td>-->
 <!--                                                <a href="#popup_3" class="tabs_info popup-link">ИНФО</a>-->
 <!--                                                <div th:insert="blocks/popup_info :: popup_info"> </div>-->
 <!--                                            </td>-->
 <!--                                            <td th:text="${}"></td>-->
+                                        </tr>
+                                        <tr th:each="employeehr:${employeesHr}">
+                                            <td th:text="${employeehr.id}"></td>
+                                            <td th:text="${employeehr.employee.user.surname} + ' ' + ${employeehr.employee.user.username} + ' ' + ${employeehr.employee.user.fathersName}"></td>
+                                            <td th:text="${employeehr.employee.status.status}"></td>
+                                            <td th:text="${employeehr.employee.post.post}"></td>
+                                            <td></td>
+                                            <!--                                            <td th:text="${user/}"></td>-->
+                                            <td><a th:href="'/info/'+ ${employeehr.id}" >ИНФО</a></td>
+                                            <!--                                            <td>-->
+                                            <!--                                                <a href="#popup_3" class="tabs_info popup-link">ИНФО</a>-->
+                                            <!--                                                <div th:insert="blocks/popup_info :: popup_info"> </div>-->
+                                            <!--                                            </td>-->
+                                            <!--                                            <td th:text="${}"></td>-->
                                         </tr>
                                         </tbody>
                                     </table>
