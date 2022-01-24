@@ -1,5 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+
+<form action="#" th:action="@{/info/{id}(id=${employees.id})}" th:object="${employees}" method="post">
 <head>
     <meta charset="UTF-8">
     <meta username="viewport" content="width=device-width, initial-scale=1">
@@ -9,10 +11,10 @@
 <body>
 <!--<div th:switch="${employees}"  id="popup_3" class="popup">-->
     <div class="popup_body">
-<!--        <form action="#" th:action="@{/info/{id}(id=${employees.id})}" th:object="${employees}" method="post">-->
-        <div action="#" th:action="@{/info/{id}(id=${employees.id})}" th:object="${employees}" id="popup_3" class="popup">
+
+<!--        <div action="#" th:action="@{/info/{id}(id=${employees.id})}" th:object="${employees}" id="popup_3" class="popup">-->
         <div class="popup_content">
-<!--            <a href="/info/{id}/#" class="popup_close close-popup">X</a>-->
+            <a href="/close" class="popup_close close-popup">X</a>
             <div class="popup_title">Информация о сотруднике</div>
 <!--            <div th:each="user:${users}" class="popup_text">-->
 <!--                <div>-->
@@ -33,11 +35,12 @@
                 <div>
                     <button class="popup_button" type="submit">Создать аккаунт сотрудника</button>
                 </div>
-<!--            </div>-->
             </div>
-<!--        </form>-->
-    </div>
-</div>
+            </div>
+
+<!--    </div>-->
+<!--</div>-->
 <script src="/popup.js/"></script>
 </body>
+</form>
 </html>

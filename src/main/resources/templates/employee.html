@@ -50,7 +50,7 @@
                                             <td th:text="${employee.post.post}"></td>
                                             <td th:text="${employee.project.projectName}"></td>
 <!--                                            <td th:text="${user/}"></td>-->
-                                            <td><a th:href="@{/info/{id}(id=${employee.id})}" class="info">ИНФО</a></td>
+                                            <td><a th:href="'/info/'+ ${employee.id}" >ИНФО</a></td>
 <!--                                            <td>-->
 <!--                                                <a href="#popup_3" class="tabs_info popup-link">ИНФО</a>-->
 <!--                                                <div th:insert="blocks/popup_info :: popup_info"> </div>-->

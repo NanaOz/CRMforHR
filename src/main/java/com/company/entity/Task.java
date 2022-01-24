@@ -33,10 +33,10 @@ public class Task {
     @ManyToOne(optional = false, cascade = CascadeType.ALL)
     @JoinColumn(name = "status_id")
     private StatusTask statusTask;
-    @Lob @Type(type = "org.hibernate.type.DateType")
+//    @Lob @Type(type = "org.hibernate.type.DateType")
     @Column(name = "date_deadline", nullable = false)
     private LocalDate dateDeadline;
-    @Lob @Type(type = "org.hibernate.type.DateType")
+//    @Lob @Type(type = "org.hibernate.type.DateType")
     @Column(name = "date_actual_completion")
     private LocalDate dateActualCompletion;
 

@@ -77,7 +77,7 @@ public class Employee {
     @Override
     public String toString() {
         return "Employee{" +
-                "id=" + user.getId() +
+                "id=" + id +
                 "user=" + user +
                 ", post=" + post +
                 ", status=" + status +

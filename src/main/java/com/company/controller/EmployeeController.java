@@ -45,19 +45,19 @@ public class EmployeeController {
         model.addAttribute("employees", employeeRepository.findAll());
         model.addAttribute("candidatess", candidateRepository.findAll());
         model.addAttribute("employeesIt", employeeITRepository.findAll());
-
-
-//        model.addAttribute("users", userRepository.findAll());
         return "employee";}
 
     @GetMapping("info/{id}")
     public String showInfoForm(@PathVariable("id") long id, Model model) {
         Employee employee = employeeRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid user Id:" + id));
         model.addAttribute("employees", employee);
-
         return "popup-info";
     }
 
+    @GetMapping("/close")
+    public String closeInfoForm(Model model) {
+        return "redirect:/employee#tab_employee";
+    }
 //    @PostMapping("/info/{id}")
 //    public String updateUser(@PathVariable("id") long id, @Valid Employee employee, BindingResult result, Model model) {
 //        if (result.hasErrors()) {
