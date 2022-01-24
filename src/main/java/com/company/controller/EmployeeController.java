@@ -62,6 +62,7 @@ public class EmployeeController {
     public String closeInfoForm(Model model) {
         return "redirect:/employee#tab_employee";
     }
+
 //    @PostMapping("/info/{id}")
 //    public String updateUser(@PathVariable("id") long id, @Valid Employee employee, BindingResult result, Model model) {
 //        if (result.hasErrors()) {
