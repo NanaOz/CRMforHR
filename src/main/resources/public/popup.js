@@ -366,6 +366,12 @@ function searchByIdCandidate() {
     }
 }
 
+/*для инфо*/
+function infoclic () {
+
+}
+
+
 /*для вкладки сбор команды*/
 function makeCheckboxGroup(container) {
     const parentCheckbox = container.querySelector('input[type="checkbox"][data-role="parent"]');
