@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<form action="#" th:action="@{/info/{id}(id=${employees.id})}" th:object="${employees}" method="post">
+<form action="#" th:action="@{/infocand/{id}(id=${candidates})}" th:object="${candidates}" method="post">
     <head>
         <meta charset="UTF-8">
         <meta username="viewport" content="width=device-width, initial-scale=1">
@@ -11,40 +11,36 @@
     <!--    <div id="popup_3" class="popup">-->
     <div class="popup_body">
         <div class="popup_content">
-            <a href="/close" class="popup_close close-popup">X</a>
+            <a href="/closex" class="popup_close close-popup">X</a>
             <div class="popup_title">Информация о сотруднике</div>
             <div>
                 <label>ID:</label>
-                <span th:text="${employees.id}">ID:</span>
+                <span th:text="${candidates.id}">ID:</span>
             </div>
             <div>
                 <label>Фамилия:</label>
-                <span th:text="${employees.user.surname}"></span>
+                <span th:text="${candidates.user.surname}"></span>
             </div>
             <div>
                 <label>Имя:</label>
-                <span th:text="${employees.user.username}"></span>
+                <span th:text="${candidates.user.username}"></span>
             </div>
             <div>
                 <label>Отчество:</label>
-                <span th:text="${employees.user.fathersName}"></span>
+                <span th:text="${candidates.user.fathersName}"></span>
             </div>
             <div>
                 <label>Почта:</label>
-                <span th:text="${employees.user.email}"></span>
+                <span th:text="${candidates.user.email}"></span>
                 <input type="text" id="email" placeholder="редактировать email">
             </div>
             <div>
                 <label>Должность:</label>
-                <span th:text="${employees.post.post}"></span>
-            </div>
-            <div>
-                <label>Проект:</label>
-                <span th:text="${employees.project.projectName}"></span>
+                <span th:text="${candidates.post.post}"></span>
             </div>
 <!--            <div>-->
 <!--                <label>Тэги:</label>-->
-<!--                <span th:text="${employees.project.projectName}"></span>-->
+<!--                <span th:text="${candidates.ta}"></span>-->
 <!--            </div>-->
             <div>
                 <button class="popup_button" type="submit">ОК</button>
