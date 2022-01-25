@@ -1,10 +1,7 @@
 package com.company.controller;
 
 import com.company.entity.Employee;
-import com.company.repository.CandidateRepository;
-import com.company.repository.EmployeeHrRepository;
-import com.company.repository.EmployeeITRepository;
-import com.company.repository.EmployeeRepository;
+import com.company.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,13 +14,15 @@ public class EmployeeController {
     private final CandidateRepository candidateRepository;
     private final EmployeeITRepository employeeITRepository;
     private final EmployeeHrRepository employeeHrRepository;
+    private final StatusRepository statusRepository;
 
     @Autowired
-    public EmployeeController(EmployeeRepository employeeRepository, CandidateRepository candidateRepository, EmployeeITRepository employeeITRepository, EmployeeHrRepository employeeHrRepository) {
+    public EmployeeController(EmployeeRepository employeeRepository, CandidateRepository candidateRepository, EmployeeITRepository employeeITRepository, EmployeeHrRepository employeeHrRepository, StatusRepository statusRepository) {
         this.employeeRepository = employeeRepository;
         this.candidateRepository = candidateRepository;
         this.employeeITRepository = employeeITRepository;
         this.employeeHrRepository = employeeHrRepository;
+        this.statusRepository = statusRepository;
     }
 
 //    @GetMapping("/employee")
@@ -93,7 +92,7 @@ public class EmployeeController {
 //        System.out.println("BRGINOFADDING");
 //        if (result.hasErrors()) {
 //            System.out.println("ERROR????");
-//            return "popup-create-acount";
+//            return "popup_acount";
 //        }
 //
 //        Candidate candidate = candidateRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid candidate Id:" + id));
@@ -101,12 +100,13 @@ public class EmployeeController {
 //
 //        employee1.setUser(candidate.getUser());
 //        employee1.setPost(candidate.getPost());
-//        employee1.setStatus(new Status());
+////        employee1.setStatus(new Status());
+//        employee1.setStatus(statusRepository.findById(1L));
 //
 //        candidateRepository.delete(candidate);
 //        employeeRepository.save(employee1);
 //        System.out.println("SAVED??????");
 //        return "redirect:/employee";
 //    }
-
+//
 }

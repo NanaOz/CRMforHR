@@ -1,0 +1,34 @@
+<div th:fragment="popup-changeTag">
+
+
+    <a href="#popup_4" class="tabs_addAccount popup-link">Изменить теги</a>
+    <div id="popup_4" class="popup">
+        <div th:switch="${tags}" class="popup_body">
+            <div class="popup_content">
+                <a href="#header" class="popup_close close-popup">X</a>
+                <div class="popup_title">Изменить теги</div>
+                <div th:insert="popups/popup-addTag :: popup-addTag" >  </div>
+
+                <!--                <div href="/signup" class="tabs_change tabs_change">Добавить тэг  </div>-->
+                <table>
+                    <thead>
+                    <tr>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="tag : ${tags}">
+                        <td th:text="${tag.tag}" ></td>
+                        <td><a th:href="@{/edit/{id}(id=${tag.id})}" class="tabs_change tabs_change">изменить</a></td>
+<!--                        <td><div th:insert="blocks/popup-refreshTag :: popup-refreshTag"></div></td>-->
+
+                        <td><a th:href="@{/delete/{id}(id=${tag.id})}" class="tabs_change tabs_change">удалить</a></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="/popup.js/"></script>

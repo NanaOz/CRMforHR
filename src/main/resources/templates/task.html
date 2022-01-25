@@ -10,17 +10,11 @@
 <div class="wrapper">
     <div th:switch="${tasks}" class="contents">
         <div class="tabs">
-
             <header th:insert="blocks/header :: header"> </header>
-
             <div class="tabs_body">
                 <div id="tab_menu" class="tabs_block"></div>
                 <div id="tab_task" class="tabs_block">
-                    <!--                    <div><a href="#popup" class="tabs_addTask popup-link"> Создать задачу</a>-->
-                    <div th:insert="blocks/popup-create-task :: popup-create-task">
-<!--                        <a th:href="@{templates/popup-create-task.html}" class="tabs_addTask popup-link"> Создать задачу</a>-->
-
-                    </div>
+                    <div th:insert="popups/popup-create-task :: popup-create-task"></div>
                     <table id="taskTable" class="table">
                         <thead>
                         <tr>
@@ -54,47 +48,5 @@
     </div>
 </div>
 </body>
-<!--<div id="popup" class="popup">-->
-<!--    <div class="popup_body">-->
-<!--        <div class="popup_content">-->
-<!--            <a href="#" class="popup_close close-popup">X</a>-->
-<!--            <div class="popup_title">Создать задачу</div>-->
-<!--            <div class="popup_text">-->
-<!--                <div>-->
-<!--                    <label for="executor">Исполнитель:</label>-->
-<!--                    &lt;!&ndash;                    <input type="text" id="executor" class="popup_field" required autocomplete="off">&ndash;&gt;-->
-<!--                    <select type="text" id="executor" class="popup_field" required autocomplete="off">-->
-<!--                        <option>Сюда подключить сотрудников HR из БД</option>-->
-<!--                    </select>-->
-<!--                </div>-->
-<!--                <div>-->
-<!--                    <label for="start_date">Дата начала:</label>-->
-<!--                    &lt;!&ndash;                    <input type="text" id="start_date" requiredautocomplete="off">&ndash;&gt;-->
-<!--                    &lt;!&ndash;                    <input type="text" id="start_date" value="" size="10" onClick="xCal(this)" onmouseenter="xCal(this)" onKeyUp="xCal()">&ndash;&gt;-->
-<!--                    <input type="date" id="start_date" class="popup_field" name="date">-->
-<!--                </div>-->
-<!--                <div>-->
-<!--                    <label for="deadline">Дэдлайн:</label>-->
-<!--                    &lt;!&ndash;                    <input type="text" id="deadline" required autocomplete="off">&ndash;&gt;-->
-<!--                    <input type="date" id="deadline" class="popup_field" name="date">-->
-<!--                </div>-->
-<!--                <div>-->
-<!--                    <label for="task">Задача:</label><input type="text" id="task" class="popup_field" required-->
-<!--                                                            autocomplete="off">-->
-<!--                </div>-->
-<!--                <div>-->
-<!--                    <label for="select_lid">Выбор лида:</label>-->
-<!--                    &lt;!&ndash;                    <input type="text" id="select_lid" class="popup_field" required autocomplete="off">&ndash;&gt;-->
-<!--                    <select type="text" id="select_lid" class="popup_field" required autocomplete="off">-->
-<!--                        <option>Сюда подключить всех человеков</option>-->
-<!--                    </select>-->
-<!--                </div>-->
-<!--                <div>-->
-<!--                    <button class="popup_button" type="submit">Создать задачу</button>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--    </div>-->
-<!--</div>-->
 <script src="/popup.js/"></script>
 </html>

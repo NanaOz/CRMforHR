@@ -10,7 +10,7 @@
 <div class="wrapper">
     <div class="contents">
         <div class="tabs">
-            <header th:insert="blocks/header :: header"> </header>
+            <header th:insert="blocks/header :: header"></header>
             <div class="tabs_body">
                 <div id="tab_menu" class="tabs_block"></div>
                 <div id="tab_task" class="tabs_block"></div>
@@ -18,9 +18,11 @@
                 <div id="tab_candidate" class="tabs_block"></div>
                 <div id="tab_team" class="tabs_block">
                     <div>
-                        <a href="" class="tabs_addVacancy popup-link">Добавить вакансию</a>
+<!--                        <a href="" class="tabs_teamSelection popup-link">Изменить теги</a>-->
+                        <div th:insert="popups/popup-changeTag :: popup-changeTag">  </div>
+
+<!--                        <a href="" class="tabs_addVacancy popup-link">Добавить вакансию</a>-->
                         <a href="" class="tabs_teamSelection popup-link">Подбор команды</a>
-                        <a href="" class="tabs_teamSelection popup-link">Изменить теги</a>
                     </div>
 
                     <legend>Выберите теги</legend>
@@ -30,47 +32,46 @@
             <label for="tag">Подключить список тэги</label>
                         </span>
                     </div>
-<!--                    <legend>Выберите должность</legend>-->
-<!--                    <div class="checkbox-group">-->
-<!--                        <span>-->
-<!--            <input type="checkbox" id="post" name="ingredient" value="book">-->
-<!--            <label for="post">Тут список должностей</label>-->
-<!--                        </span>-->
-<!--                    </div>-->
-
-                    <!--                    <section class="container">-->
-                    <!--                        <div class="select_tag">-->
-                    <!--                            <select size="30" name="select_tag" class="dropdown-select">-->
-                    <!--                                <option value="">Тэг</option>-->
-                    <!--                                <option value="1">какой-то первый тэг</option>-->
-                    <!--                                <option value="2">еще какой-то тэг</option>-->
-                    <!--                                <option value="3">просто тэг</option>-->
-                    <!--                            </select>-->
-                    <!--                        </div>-->
-                    <!--                    </section>-->
-
-<!--                    <form class="team_check">-->
-<!--                        <div class="multiselect">-->
-<!--                            <div class="selectBox" onclick="showCheckboxes()">-->
-<!--                                <select>-->
-<!--                                    <option>Выберите теги</option>-->
-<!--                                </select>-->
-<!--                                <div class="overSelect"></div>-->
-<!--                            </div>-->
-<!--                            <div id="checkboxes">-->
-<!--                                <label for="one">-->
-<!--                                    <input type="checkbox" id="one"/>First checkbox</label>-->
-<!--                                <label for="two">-->
-<!--                                    <input type="checkbox" id="two"/>Second checkbox</label>-->
-<!--                                <label for="three">-->
-<!--                                    <input type="checkbox" id="three"/>Third checkbox</label>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                    </form>-->
-
-
-
                 </div>
+                <!--                    <legend>Выберите должность</legend>-->
+                <!--                    <div class="checkbox-group">-->
+                <!--                        <span>-->
+                <!--            <input type="checkbox" id="post" name="ingredient" value="book">-->
+                <!--            <label for="post">Тут список должностей</label>-->
+                <!--                        </span>-->
+                <!--                    </div>-->
+
+                <!--                    <section class="container">-->
+                <!--                        <div class="select_tag">-->
+                <!--                            <select size="30" name="select_tag" class="dropdown-select">-->
+                <!--                                <option value="">Тэг</option>-->
+                <!--                                <option value="1">какой-то первый тэг</option>-->
+                <!--                                <option value="2">еще какой-то тэг</option>-->
+                <!--                                <option value="3">просто тэг</option>-->
+                <!--                            </select>-->
+                <!--                        </div>-->
+                <!--                    </section>-->
+
+                <!--                    <form class="team_check">-->
+                <!--                        <div class="multiselect">-->
+                <!--                            <div class="selectBox" onclick="showCheckboxes()">-->
+                <!--                                <select>-->
+                <!--                                    <option>Выберите теги</option>-->
+                <!--                                </select>-->
+                <!--                                <div class="overSelect"></div>-->
+                <!--                            </div>-->
+                <!--                            <div id="checkboxes">-->
+                <!--                                <label for="one">-->
+                <!--                                    <input type="checkbox" id="one"/>First checkbox</label>-->
+                <!--                                <label for="two">-->
+                <!--                                    <input type="checkbox" id="two"/>Second checkbox</label>-->
+                <!--                                <label for="three">-->
+                <!--                                    <input type="checkbox" id="three"/>Third checkbox</label>-->
+                <!--                            </div>-->
+                <!--                        </div>-->
+                <!--                    </form>-->
+
+
             </div>
         </div>
     </div>

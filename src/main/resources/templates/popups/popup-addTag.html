@@ -1,0 +1,27 @@
+<div th:fragment="popup-addTag">
+
+    <form action="popup-addTag" th:action="@{/addtag}" th:object="${tag}" method="post">
+        <a href="/addtag" class="tabs_change tabs_change">Добавить тэг</a>
+        <div id="popup_5" class="popup">
+            <div class="popup_body">
+                <div class="popup_content">
+                    <a href="#header" class="popup_close close-popup">X</a>
+                    <div class="popup_title">Добавить тэг</div>
+                    <!--                <form action="#" th:action="@{/addtag}" th:object="${tag}" method="post">-->
+
+                    <div>
+                        <label>Тэг</label>
+                        <!--                        <input type="text" th:field="*{tag}" id="tag" placeholder="tag">-->
+                        <!--                        <span th:if="${#fields.hasErrors('tag')}" th:errors="*{tag}" class="text-danger"></span>-->
+                    </div>
+                    <div>
+                        <input type="submit" value="Add Tag">
+                    </div>
+
+                    <!--                </form>-->
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+<script src="/popup.js/"></script>

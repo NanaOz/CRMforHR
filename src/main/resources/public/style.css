@@ -114,6 +114,25 @@ body.lock {
 }
 
 /*кнопки создать задачу, удалить акк и добавить акк*/
+.tabs_change {
+    text-decoration: none;
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 5px 10px;
+    position: relative;
+    color: #210707;
+    border: 1px solid rgb(0, 0, 0);
+}
+
+.tabs_info_user {
+    text-decoration: none;
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 5px 10px;
+    position: relative;
+    color: #ffffff;
+}
+
 .tabs_addTask, .tabs_deleteAccount, .tabs_addAccount, .tabs_exit, .tabs_addVacancy, .tabs_teamSelection {
     text-decoration: none;
     display: inline-block;
