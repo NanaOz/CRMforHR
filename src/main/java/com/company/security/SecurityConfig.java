@@ -30,6 +30,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .usernameParameter("user")
                 .passwordParameter("pass")
                 .defaultSuccessUrl("/menu")
+                .and().logout()
+                .logoutSuccessUrl("/menu")
+                .logoutUrl("/perform_logout")
+                .invalidateHttpSession(true)
+                .deleteCookies("JSESSIONID")
                 .and().rememberMe();
     }
 
