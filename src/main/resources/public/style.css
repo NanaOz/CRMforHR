@@ -199,6 +199,15 @@ body.lock {
 }
 
 /*оформление таблиц*/
+.table_team_search {
+    text-align: left;
+    vertical-align: top;
+}
+.table_team_search th {
+    vertical-align: top;
+
+}
+
 .table {
     width: 100%;
     border: none;

@@ -11,39 +11,60 @@
     <div class="contents">
         <div class="tabs">
             <header th:insert="blocks/header :: header"></header>
-            <div  class="tabs_body">
+            <div class="tabs_body">
                 <div id="tab_menu" class="tabs_block"></div>
                 <div id="tab_task" class="tabs_block"></div>
                 <div id="tab_employee" class="tabs_block"></div>
                 <div id="tab_candidate" class="tabs_block"></div>
                 <div id="tab_team" class="tabs_block">
-<!--                    <table>-->
+                    <!--                    <table>-->
                     <div>
                         <div th:insert="popups/popup-changeTag :: popup-changeTag"></div>
-<!--                        <div th:insert="popups/popup-teamSelection :: popup-teamSelection"></div>-->
+                        <!--                        <div th:insert="popups/popup-teamSelection :: popup-teamSelection"></div>-->
                         <!--                        <a href="" class="tabs_teamSelection popup-link">Изменить теги</a>-->
                         <!--                        <a href="" class="tabs_teamSelection popup-link">Подбор команды</a>-->
                     </div>
-
-<!--                        <thead>-->
-<!--                        <tr>-->
-<!--                            <th>-->
-<!--                                <div th:insert="popups/popup-changeTag :: popup-changeTag"></div>-->
-<!--                            </th>-->
-<!--                            <th>-->
-<!--                                <div th:insert="popups/popup-teamSelection :: popup-teamSelection"></div>-->
-<!--                            </th>-->
-<!--                        </tr>-->
-<!--                        </thead>-->
-<!--                    </table>-->
-
-                    <legend>Выберите теги</legend>
-                    <div th:switch="${tags}" class="checkbox-group">
+                    <table class="table_team_search">
+                        <thead>
+                        <tr>
+                            <th>
+                                <div>
+                                    <legend>Выберите теги:</legend>
+                                    <div th:switch="${tags}" class="checkbox-group">
                         <span th:each="tag : ${tags}">
             <p><input type="checkbox" id="tag" name="ingredient" value="tag">
-            <label  for="tag"><i th:text="${tag.tag}"></i></label></p>
+            <label for="tag"><i th:text="${tag.tag}"></i></label></p>
                         </span>
-                    </div>
+                                    </div>
+                                </div>
+                            </th>
+                            <th>
+                                <div>
+                                    <legend>Выберите статус:</legend>
+                                    <div th:switch="${statususer}" class="checkbox-group">
+                        <span th:each="status : ${statususer}">
+            <p><input type="checkbox" id="status" name="ingredient" value="status">
+            <label for="status"><i th:text="${status.status}"></i></label></p>
+                        </span>
+                                    </div>
+                                </div>
+                            </th>
+                            <th>
+                                <div>
+                                    <legend>Выберите должность:</legend>
+                                    <div th:switch="${postname}" class="checkbox-group">
+                        <span th:each="post : ${postname}">
+            <p><input type="checkbox" id="post" name="ingredient" value="post">
+            <label for="post"><i th:text="${post.post}"></i></label></p>
+                        </span>
+                                    </div>
+                                </div>
+                            </th>
+
+
+                        </tr>
+                        </thead>
+                    </table>
                 </div>
                 <!--                    <legend>Выберите должность</legend>-->
                 <!--                    <div class="checkbox-group">-->

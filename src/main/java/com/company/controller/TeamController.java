@@ -1,6 +1,8 @@
 package com.company.controller;
 
 import com.company.entity.Tag;
+import com.company.repository.PostRepository;
+import com.company.repository.StatusRepository;
 import com.company.repository.TagRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,10 +18,14 @@ import javax.validation.Valid;
 public class TeamController {
 
     private final TagRepository tagRepository;
+    private final StatusRepository statusRepository;
+    private final PostRepository postRepository;
 
     @Autowired
-    public TeamController(TagRepository tagRepository) {
+    public TeamController(TagRepository tagRepository, StatusRepository statusRepository, PostRepository postRepository) {
         this.tagRepository = tagRepository;
+        this.statusRepository = statusRepository;
+        this.postRepository = postRepository;
     }
 
 //    @GetMapping("/team")
@@ -30,6 +36,8 @@ public class TeamController {
     @GetMapping("/team")
     public String showTagList(Model model) {
         model.addAttribute("tags", tagRepository.findAll());
+        model.addAttribute("statususer", statusRepository.findAll());
+        model.addAttribute("postname", postRepository.findAll());
         return "team";
     }
 
