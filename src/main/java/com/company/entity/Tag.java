@@ -3,6 +3,7 @@ package com.company.entity;
 import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "tags")
@@ -18,6 +19,13 @@ public class Tag {
 
     @Column(name = "criterion")
     private Long criterion;
+
+    @ManyToMany(cascade = {CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
+    @JoinTable(name = "candidate_tag",
+            joinColumns = @JoinColumn(name = "tag_id"),
+            inverseJoinColumns = @JoinColumn(name = "candidate_id")
+    )
+    private List<Candidate> candidates;
 
     public Long getCriterion() {
         return criterion;
