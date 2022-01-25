@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="/style.css/"/>
@@ -10,12 +10,15 @@
     <div class="contents">
         <div class="tabs">
 
-            <header th:insert="blocks/header :: header"> </header>
+            <header th:insert="blocks/header :: header"></header>
 
             <div class="tabs_body">
                 <div id="tab_menu" class="tabs_block">
-                    <div><a href="" class="tabs_exit popup-link">Выход из системы</a></div>
-
+                    <div>
+                        <form th:action="@{/logout}" method="post">
+                            <input type="submit" class="tabs_exit popup-link" value="Выход из системы"/>
+                        </form>
+                    </div>
                 </div>
                 <div id="tab_task" class="tabs_block"></div>
                 <div id="tab_employee" class="tabs_block"></div>
