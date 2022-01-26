@@ -37,13 +37,13 @@
                 <label>Статус:</label>
                 <span th:text="${task.status.taskName}"></span>
             </div>
-            <div th:switch="${statustask}">
-                <select type="text" id="select_status" class="popup_field" required autocomplete="off">
-                    <option th:each="statustask:${statustask}"
-                            th:text="${statustask.task_name}">
-                    </option>
-                </select>
-            </div>
+<!--            <div th:switch="${statustask}">-->
+<!--                <select type="text" id="select_status" class="popup_field" required autocomplete="off">-->
+<!--                    <option th:each="statustask:${statustask}"-->
+<!--                            th:text="${statustask.task_name}">-->
+<!--                    </option>-->
+<!--                </select>-->
+<!--            </div>-->
 
             <div>
                 <label>Дэдлайн:</label>
