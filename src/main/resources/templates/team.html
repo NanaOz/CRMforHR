@@ -20,16 +20,17 @@
                     <!--                    <table>-->
                     <div>
                         <div th:insert="popups/popup-changeTag :: popup-changeTag"></div>
-                        <!--                        <div th:insert="popups/popup-teamSelection :: popup-teamSelection"></div>-->
                         <!--                        <a href="" class="tabs_teamSelection popup-link">Изменить теги</a>-->
                         <!--                        <a href="" class="tabs_teamSelection popup-link">Подбор команды</a>-->
                     </div>
+                    <!--                        <div th:insert="popups/popup-teamSelection :: popup-teamSelection"></div>-->
+
                     <table class="table_team_search">
                         <thead>
                         <tr>
                             <th>
                                 <div>
-                                    <legend>Выберите теги:</legend>
+                                    <legend class="team_lable">Выберите теги:</legend>
                                     <div th:switch="${tags}" class="checkbox-group">
                         <span th:each="tag : ${tags}">
             <p><input type="checkbox" id="tag" name="ingredient" value="tag">
@@ -40,7 +41,7 @@
                             </th>
                             <th>
                                 <div>
-                                    <legend>Выберите статус:</legend>
+                                    <legend class="team_lable">Выберите статус:</legend>
                                     <div th:switch="${statususer}" class="checkbox-group">
                         <span th:each="status : ${statususer}">
             <p><input type="checkbox" id="status" name="ingredient" value="status">
@@ -51,7 +52,7 @@
                             </th>
                             <th>
                                 <div>
-                                    <legend>Выберите должность:</legend>
+                                    <legend class="team_lable" >Выберите должность:</legend>
                                     <div th:switch="${postname}" class="checkbox-group">
                         <span th:each="post : ${postname}">
             <p><input type="checkbox" id="post" name="ingredient" value="post">

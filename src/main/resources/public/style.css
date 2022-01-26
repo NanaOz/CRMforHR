@@ -202,10 +202,15 @@ body.lock {
 .table_team_search {
     text-align: left;
     vertical-align: top;
+    width: 100%;
 }
 .table_team_search th {
     vertical-align: top;
 
+}
+.team_lable {
+    font-size: 18px;
+    text-transform: uppercase;
 }
 
 .table {
