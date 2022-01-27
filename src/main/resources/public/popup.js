@@ -366,5 +366,33 @@ function searchByIdCandidate() {
     }
 }
 
-
 /*для вкладки сбор команды*/
+function makeCheckboxGroup(container) {
+    const parentCheckbox = container.querySelector('input[type="checkbox"][data-role="parent"]');
+    const childrenCheckboxes = container.querySelectorAll('input[type="checkbox"]:not([data-role="parent"])');
+
+    childrenCheckboxes.forEach(chk => chk.addEventListener('click', () => {
+        const checkedCheckboxes = Array.from(childrenCheckboxes).filter(chk => chk.checked);
+
+        parentCheckbox.checked = checkedCheckboxes.length > 0;
+    }));
+
+    parentCheckbox.addEventListener('click', () => {
+        childrenCheckboxes.forEach(chk => {
+            chk.checked = parentCheckbox.checked;
+        });
+    });
+}
+
+document.querySelectorAll('.checkbox-group').forEach(makeCheckboxGroup);
+
+function getCheckedCheckBoxes() {
+    let checkboxes = document.getElementsByClassName('checkbox');
+    let checkboxesChecked = []; // можно в массиве их хранить, если нужно использовать
+    for (let index = 0; index < checkboxes.length; index++) {
+        if (checkboxes[index].checked) {
+            checkboxesChecked.push(checkboxes[index].value); // положим в выбранный массив
+        }
+    }
+    return checkboxesChecked; // для использования в нужном месте
+}

@@ -29,12 +29,10 @@
                     <div>
                         <label for="select_lid">Выбор лида:</label>
                         <select type="text" id="select_lid" class="popup_field" required autocomplete="off">
+                           <option>-</option>
                             <option
                                     th:each="user:${users}"
-                                    th:text="${user.id} + ' ' + ${user.surname} + ' ' + ${user.username} + ' ' + ${user.fathersName}"
-
-
-                            >
+                                    th:text="${user.id} + ' ' + ${user.surname} + ' ' + ${user.username} + ' ' + ${user.fathersName}">
                             </option>
                         </select>
                     </div>
