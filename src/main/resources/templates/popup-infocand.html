@@ -60,8 +60,8 @@
                     </td>
                     <td>
                         <div class="text-field_group">
-                            <input class="edit_file" type="text" id="emailcan" placeholder="редактировать email">
-                            <button class="text-field_btn" type="button"><a href="/emailokcand">ок</a></button>
+                            <input class="edit_file" type="text" id="emailcan" placeholder="введите email">
+                            <button class="text-field_btn" type="button"><a href="/emailokcand">изменить</a></button>
                         </div>
                     </td>
                 </tr>
@@ -83,55 +83,49 @@
                     </td>
                     <td>
                         <div class="text-field_group">
-                            <input class="edit_file" type="text" id="phonecand" placeholder="редактировать номер">
-                            <button class="text-field_btn" type="button"><a href="/phoneokcand">ок</a></button>
+                            <input class="edit_file" type="text" id="phonecand" placeholder="введите номер">
+                            <button class="text-field_btn" type="button"><a href="/phoneokcand">изменить</a></button>
                         </div>
                     </td>
                 </tr>
+                <!--                <tr th:each="tagss:${candidates.tags}">-->
                 <tr>
                     <td>
                         <label>Тэги:</label>
                     </td>
+                    <!--                    <td th:text="${tagss}"></td>-->
                     <td></td>
                     <td></td>
                 </tr>
                 </tbody>
             </table>
 
+            //TODO вывести теги по конкретному кандидату
+<!--            <table class="table_info">-->
+<!--                <tbody>-->
+<!--&lt;!&ndash;                <tr th:each="candidat:${candidates}">&ndash;&gt;-->
+<!--                <tr>-->
+<!--                    <td th:each="tagcan:${candidates.tags}"-->
+<!--                    th:text="${tagcan.id} + ' ' + ${tagcan.tag} + ' ' + ${tagcan.criterion}">-->
+<!--                    </td>-->
+<!--                </tr>-->
+<!--                </tbody>-->
+<!--            </table>-->
 
-
-<!--            <div>-->
-<!--                <label>Тэги:</label>-->
-<!--                <span-->
-<!--                        th:each="tag:${candidates.tags}"-->
-<!--                        th:text="${tag}">-->
-<!--                &lt;!&ndash;                        th:each="candidates:${candidates}"&ndash;&gt;-->
-<!--                ></span>-->
-<!--                <table>-->
-<!--                    <tread>-->
-<!--                        <tr>-->
-<!--                            <th>-->
-<!--                                Тэги:-->
-<!--                            </th>-->
-<!--                        </tr>-->
-<!--                    </tread>-->
-<!--                    <tbody>-->
-<!--                    <tr th:each="tag:${candidates.tags}">-->
-<!--                        <td th:text="${tag}">-->
-
-<!--                        </td>-->
-<!--                    </tr>-->
-<!--                    </tbody>-->
-<!--                </table>-->
-<!--            </div>-->
-<!--            <div>-->
-<!--                <button class="popup_button" type="submit"><a href="/candok">ОК</a></button>-->
-<!--            </div>-->
+            <div class="tabs_change tabs_change">
+                <label for="tagcand">Добавить теги:</label>
+                <select type="text" id="tagcand" class="popup_field" required autocomplete="off">
+                    <option
+                            th:each="tagall:${tag}"
+                            th:text="${tagall.tag}">
+                    </option>
+                </select>
+                <button class="popup_button" type="submit"><a href="/addtagcand">добавить</a></button>
+                </div>
+            </div>
         </div>
-
     </div>
     <script src="/popup.js/"></script>
-    <!--    </div>-->
     </body>
 </form>
 </html>

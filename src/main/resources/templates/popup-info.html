@@ -102,10 +102,35 @@
                         <label>Тэги:</label>
                     </td>
                     <td></td>
-                    <td></td>
+                    <td>
+                    </td>
                 </tr>
                 </tbody>
             </table>
+
+            //TODO вывести теги по конкретному кандидату
+            <!--            <table class="table_info">-->
+            <!--                <tbody>-->
+            <!--&lt;!&ndash;                <tr th:each="employees:${employees}">&ndash;&gt;-->
+            <!--                <tr>-->
+            <!--                    <td th:each="tagemp:${employees.tags}"-->
+            <!--                    th:text="${tagemp.id} + ' ' + ${tagemp.tag} + ' ' + ${tagemp.criterion}">-->
+            <!--                    </td>-->
+            <!--                </tr>-->
+            <!--                </tbody>-->
+            <!--            </table>-->
+
+            <div class="tabs_change tabs_change">
+                <label for="tagemp">Добавить теги:</label>
+                <select type="text" id="tagemp" class="popup_field" required autocomplete="off">
+                    <option
+                            th:each="tagall:${tag}"
+                            th:text="${tagall.tag}">
+                    </option>
+                </select>
+                <button class="popup_button" type="submit"><a href="/addtagemp">добавить</a></button>
+            </div>
+        </div>
 <!--            <div>-->
 <!--                <button class="popup_button" type="submit"><a href="/empok">ОК</a></button>-->
 <!--            </div>-->

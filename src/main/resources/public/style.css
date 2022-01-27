@@ -404,6 +404,7 @@ body.lock {
 }
 
 /*оформление редактируемых полей в попапах*/
+
 .text-field_group {
     display: flex;
 }

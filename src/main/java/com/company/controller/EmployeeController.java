@@ -15,14 +15,16 @@ public class EmployeeController {
     private final EmployeeITRepository employeeITRepository;
     private final EmployeeHrRepository employeeHrRepository;
     private final StatusRepository statusRepository;
+    private final TagRepository tagRepository;
 
     @Autowired
-    public EmployeeController(EmployeeRepository employeeRepository, CandidateRepository candidateRepository, EmployeeITRepository employeeITRepository, EmployeeHrRepository employeeHrRepository, StatusRepository statusRepository) {
+    public EmployeeController(EmployeeRepository employeeRepository, CandidateRepository candidateRepository, EmployeeITRepository employeeITRepository, EmployeeHrRepository employeeHrRepository, StatusRepository statusRepository, TagRepository tagRepository) {
         this.employeeRepository = employeeRepository;
         this.candidateRepository = candidateRepository;
         this.employeeITRepository = employeeITRepository;
         this.employeeHrRepository = employeeHrRepository;
         this.statusRepository = statusRepository;
+        this.tagRepository = tagRepository;
     }
 
 //    @GetMapping("/employee")
@@ -54,6 +56,7 @@ public class EmployeeController {
     public String showInfoForm(@PathVariable("id") long id, Model model) {
         Employee employee = employeeRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid user Id:" + id));
         model.addAttribute("employees", employee);
+        model.addAttribute("tag", tagRepository.findAll());
         return "popup-info";
     }
 
@@ -78,6 +81,14 @@ public class EmployeeController {
     public String emailNew(Model model) {
         return "redirect:/employee#tab_employee";
     }
+    //TODO ДОДЕЛАТЬ контроллер на добавление выбранного тега
+    @GetMapping("/addtagemp")
+    public String tagAddCandidate(Model model) {
+        return "redirect:/employee#tab_employee";
+    }
+    //TODO ДОДЕЛАТЬ контроллер на добавление выбранного тега
+
+
 
 
 

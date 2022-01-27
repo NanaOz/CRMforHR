@@ -41,6 +41,7 @@ public class CandidateController {
     @GetMapping("/candidate")
     public String showCandidateList(Model model) {
         model.addAttribute("candidates", candidateRepository.findAll());
+        model.addAttribute("tags", tagRepository.findAll());
         return "candidate";
     }
 
@@ -65,6 +66,11 @@ public class CandidateController {
     //TODO ДОДЕЛАТЬ контроллер на редактирование почты
     @GetMapping("/emailokcand")
     public String emailNewCandidate(Model model) {
+        return "redirect:/candidate#tab_candidate";
+    }
+    //TODO ДОДЕЛАТЬ контроллер на добавление выбранного тега
+    @GetMapping("/addtagcand")
+    public String tagAddCandidate(Model model) {
         return "redirect:/candidate#tab_candidate";
     }
 
