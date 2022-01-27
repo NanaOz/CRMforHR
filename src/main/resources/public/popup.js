@@ -366,12 +366,6 @@ function searchByIdCandidate() {
     }
 }
 
-/*для инфо*/
-function infoclic () {
-
-}
-
-
 /*для вкладки сбор команды*/
 function makeCheckboxGroup(container) {
     const parentCheckbox = container.querySelector('input[type="checkbox"][data-role="parent"]');
@@ -389,6 +383,16 @@ function makeCheckboxGroup(container) {
         });
     });
 }
+
 document.querySelectorAll('.checkbox-group').forEach(makeCheckboxGroup);
 
-
+function getCheckedCheckBoxes() {
+    let checkboxes = document.getElementsByClassName('checkbox');
+    let checkboxesChecked = []; // можно в массиве их хранить, если нужно использовать
+    for (let index = 0; index < checkboxes.length; index++) {
+        if (checkboxes[index].checked) {
+            checkboxesChecked.push(checkboxes[index].value); // положим в выбранный массив
+        }
+    }
+    return checkboxesChecked; // для использования в нужном месте
+}

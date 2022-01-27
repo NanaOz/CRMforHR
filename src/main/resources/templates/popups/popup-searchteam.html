@@ -1,0 +1,72 @@
+<div th:fragment="popup-searchtaem">
+
+    <a href="#popup_8" class="tabs_addAccount popup-link">Подобрать команду</a>
+    <div id="popup_8" class="popup">
+        <div class="popup_body">
+            <div class="popup_content">
+                <a href="#" class="popup_close close-popup">X</a>
+                <div class="popup_title">Подобрать команду</div>
+                <div class="popup_text">
+                    <form th:action='@{/searchteam}'
+                          method="post"
+                          th:object="${tags}">
+                        <button class="tabs_change tabs_change"><a>Подобрать</a></button>
+                        <p></p>
+
+                        <table class="table_team_search">
+                            <thead>
+                            <tr>
+                                <th>
+                                    <div>
+                                        <legend class="team_lable">Выберите теги:</legend>
+                                        <div th:switch="${tags}" class="checkbox-group">
+                        <span th:each="tag : ${tags}">
+                            <p><input class="checkbox" type="checkbox" id="tag" name="idChecked" value="tags">
+                            <label for="tag"><i th:text="${tag.tag}"></i></label></p>
+                        </span>
+                                        </div>
+                                    </div>
+                                </th>
+                                <th>
+                                    <div>
+                                        <legend class="team_lable">Выберите статус:</legend>
+                                        <div th:switch="${statususer}" class="checkbox-group">
+                        <span th:each="status : ${statususer}">
+            <p><input type="checkbox" id="status" name="idChecked" value="status">
+            <label for="status"><i th:text="${status.status}"></i></label></p>
+                        </span>
+                                        </div>
+                                    </div>
+                                </th>
+                                <th>
+                                    <div>
+                                        <legend class="team_lable">Выберите должность:</legend>
+                                        <div th:switch="${postname}" class="checkbox-group">
+                        <span th:each="post : ${postname}">
+            <p><input type="checkbox" id="post" name="idChecked" value="post">
+            <label for="post"><i th:text="${post.post}"></i></label></p>
+                        </span>
+                                        </div>
+                                    </div>
+                                </th>
+                            </tr>
+                            </thead>
+                        </table>
+
+                        <!--                        <table>-->
+                        <!--                            <tread>-->
+                        <!--                                <tr>-->
+                        <!--                                    <th><input type="checkbox" id="checkAll"/></th>-->
+                        <!--                                </tr>-->
+                        <!--                            </tread>-->
+                        <!--                            <tbody>-->
+                        <!--                            <tr th:each="tag:${tags}">-->
+                        <!--                                <td> <input type="checkbox" th:name="idChecked" th:value="${tag.tag}">-->
+                        <!--                                </td>-->
+                        <!--                            </tr>-->
+                        <!--                            </tbody>-->
+                        <!--                        </table>-->
+                    </form>
+
+
+                </div>

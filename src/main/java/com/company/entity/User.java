@@ -24,6 +24,14 @@ public class User {
     @Column(name = "email")
     private String email;
 
+
+
+
+    @Lob @Type(type = "org.hibernate.type.TextType")
+    @Column(name = "phone")
+    private String phone;
+
+
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "id")
@@ -86,6 +94,13 @@ public class User {
         this.email = email;
     }
 
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

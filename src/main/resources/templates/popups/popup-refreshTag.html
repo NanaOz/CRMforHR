@@ -1,18 +1,18 @@
 <div th:fragment="popup-refreshTag">
 
 
-    <a href="#popup_5" class="tabs_addAccount popup-link">Обновить тэг</a>
+    <a href="#popup_5" class="tabs_addAccount popup-link">Изменить тэг</a>
     <div id="popup_5" class="popup">
         <div class="popup_body">
             <div class="popup_content">
                 <a href="#header" class="popup_close close-popup">X</a>
-                <div class="popup_title">Обновить тэг</div>
+                <div class="popup_title">Изиенить тэг</div>
                 <form action="#" th:action="@{/refresh/{id}(id=${tag.id})}" th:object="${tag}" method="post">
                     <div class="row">
                         <div>
                             <label for="tag">Тэг</label>
                             <input type="text" th:field="*{tag}" id="tag" placeholder="tag">
-                            <span th:if="${#fields.hasErrors('tag')}" th:errors="*{tag}"></span>
+<!--                            <span th:if="${#fields.hasErrors('tag')}" th:errors="*{tag}"></span>-->
                         </div>
                     </div>
                     <div >

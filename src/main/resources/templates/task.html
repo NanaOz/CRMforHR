@@ -25,6 +25,7 @@
                             <th onclick="sortTableTask(4)">Статус</th>
                             <th onclick="sortTableTask(5)">Дэдлайн (желаемый)</th>
                             <th onclick="sortTableTask(6)">Факт. дата завершения</th>
+                            <th></th>
                         </tr>
                         </thead>
                         <tbody>
@@ -36,6 +37,8 @@
                             <td th:text="${task.status.taskName}"></td>
                             <td th:text="${task.dateDeadline}"></td>
                             <td th:text="${task.dateActualCompletion}"></td>
+                            <td><a th:href="'/infotask/'+ ${task.id}" class="tabs_info_user tabs_info_user">ИНФО</a></td>
+
                         </tr>
                         </tbody>
                     </table>

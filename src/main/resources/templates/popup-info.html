@@ -13,46 +13,130 @@
         <div class="popup_content">
             <a href="/close" class="popup_close close-popup">X</a>
             <div class="popup_title">Информация о сотруднике</div>
-            <div>
-                <label>ID:</label>
-                <span th:text="${employees.id}">ID:</span>
+            <table class="table_info">
+                <tbody>
+                <tr>
+                    <td>
+                            <label>ID:</label>
+                    </td>
+                    <td>
+                        <span th:text="${employees.id}">ID:</span>
+                    </td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>
+                            <label>Фамилия:</label>
+                    </td>
+                    <td>
+                        <span th:text="${employees.user.surname}"></span>
+                    </td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>
+                            <label>Имя:</label>
+                    </td>
+                    <td>
+                        <span th:text="${employees.user.username}"></span>
+                    </td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>
+                            <label>Отчество:</label>
+                    </td>
+                    <td>
+                        <span th:text="${employees.user.fathersName}"></span>
+                    </td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>
+                            <label>Почта:</label>
+                    </td>
+                    <td>
+                        <span th:text="${employees.user.email}"></span>
+                    </td>
+                    <td>
+                        <div class="text-field_group">
+                            <input class="edit_file" type="text" id="email" placeholder="редактировать email">
+                            <button class="text-field_btn" type="button"><a href="/emailok">ок</a></button>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                            <label>Должность:</label>
+                    </td>
+                    <td>
+                        <span th:text="${employees.post.post}"></span>
+                    </td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>
+                            <label>Проект:</label>
+                    </td>
+                    <td>
+                        <span th:text="${employees.project.projectName}"></span>
+                    </td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>Телефон:</label>
+                    </td>
+                    <td>
+                        <span th:text="${employees.user.phone}"></span>
+                    </td>
+                    <td>
+                        <div class="text-field_group">
+                            <input class="edit_file" type="text" id="phone" placeholder="редактировать номер">
+                            <button class="text-field_btn" type="button"><a href="/phoneok">ок</a></button>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>Тэги:</label>
+                    </td>
+                    <td></td>
+                    <td>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+
+            //TODO вывести теги по конкретному кандидату
+            <!--            <table class="table_info">-->
+            <!--                <tbody>-->
+            <!--&lt;!&ndash;                <tr th:each="employees:${employees}">&ndash;&gt;-->
+            <!--                <tr>-->
+            <!--                    <td th:each="tagemp:${employees.tags}"-->
+            <!--                    th:text="${tagemp.id} + ' ' + ${tagemp.tag} + ' ' + ${tagemp.criterion}">-->
+            <!--                    </td>-->
+            <!--                </tr>-->
+            <!--                </tbody>-->
+            <!--            </table>-->
+
+            <div class="tabs_change tabs_change">
+                <label for="tagemp">Добавить теги:</label>
+                <select type="text" id="tagemp" class="popup_field" required autocomplete="off">
+                    <option
+                            th:each="tagall:${tag}"
+                            th:text="${tagall.tag}">
+                    </option>
+                </select>
+                <button class="popup_button" type="submit"><a href="/addtagemp">добавить</a></button>
             </div>
-            <div>
-                <label>Фамилия:</label>
-                <span th:text="${employees.user.surname}"></span>
-            </div>
-            <div>
-                <label>Имя:</label>
-                <span th:text="${employees.user.username}"></span>
-            </div>
-            <div>
-                <label>Отчество:</label>
-                <span th:text="${employees.user.fathersName}"></span>
-            </div>
-            <div>
-                <label>Почта:</label>
-                <span th:text="${employees.user.email}"></span>
-                <input type="text" id="email" placeholder="редактировать email">
-            </div>
-            <div>
-                <label>Должность:</label>
-                <span th:text="${employees.post.post}"></span>
-            </div>
-            <div>
-                <label>Проект:</label>
-                <span th:text="${employees.project.projectName}"></span>
-            </div>
+        </div>
 <!--            <div>-->
-<!--                <label>Тэги:</label>-->
-<!--                <span th:text="${employees.project.projectName}"></span>-->
+<!--                <button class="popup_button" type="submit"><a href="/empok">ОК</a></button>-->
 <!--            </div>-->
-            <div>
-                <button class="popup_button" type="submit">ОК</button>
-            </div>
         </div>
     </div>
     <script src="/popup.js/"></script>
-    <!--    </div>-->
     </body>
 </form>
 </html>
