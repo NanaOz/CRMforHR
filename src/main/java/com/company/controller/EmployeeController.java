@@ -63,10 +63,23 @@ public class EmployeeController {
     }
 
 
-    @GetMapping("/empok")
-    public String okayInfoForm(Model model) {
+//    @GetMapping("/empok")
+//    public String okayInfoForm(Model model) {
+//        return "redirect:/employee#tab_employee";
+//    }
+
+    //TODO ДОДЕЛАТЬ контроллер на редактирование телефона
+    @GetMapping("/phoneok")
+    public String phoneNew(Model model) {
         return "redirect:/employee#tab_employee";
     }
+    //TODO ДОДЕЛАТЬ контроллер на редактирование почты
+    @GetMapping("/emailok")
+    public String emailNew(Model model) {
+        return "redirect:/employee#tab_employee";
+    }
+
+
 
 //    @PostMapping("/info/{id}")
 //    public String updateUser(@PathVariable("id") long id, @Valid Employee employee, BindingResult result, Model model) {

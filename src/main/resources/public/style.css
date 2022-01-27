@@ -403,4 +403,46 @@ body.lock {
     margin: 0px 0px 15px 0px;
 }
 
+/*оформление редактируемых полей в попапах*/
+.text-field_group {
+    display: flex;
+}
+.text-field_btn {
+    display: inline-block;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #0e0e0e;
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+
+    user-select: none;
+    background-color: #eee;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    border-radius: .25rem;
+    transition: background-color .15s ease-in-out;
+}
+.text-field_btn:hover {
+    background-color: #b7b7b7;
+}
+.text-field_group .text-field__input {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    position: relative;
+    z-index: 2;
+}
+.text-field_group .text-field__btn {
+    position: relative;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    border-left-width: 0;
+}
+.table_info td {
+    padding: 10px;
+}
+
+
+
+
 /*сбор команды*/
