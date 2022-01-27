@@ -389,6 +389,6 @@ function makeCheckboxGroup(container) {
         });
     });
 }
-
 document.querySelectorAll('.checkbox-group').forEach(makeCheckboxGroup);
+
 

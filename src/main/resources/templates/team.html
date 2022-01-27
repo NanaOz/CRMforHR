@@ -32,7 +32,7 @@
                                     <legend>Выберите теги:</legend>
                                     <div th:switch="${tags}" class="checkbox-group">
                         <span th:each="tag : ${tags}">
-            <p><input type="checkbox" id="tag" name="ingredient" value="tag">
+            <p><input type="checkbox" class="checkboxTag" id="tag" name="ingredient" value="tag">
             <label for="tag"><i th:text="${tag.tag}"></i></label></p>
                         </span>
                                     </div>
@@ -43,7 +43,7 @@
                                     <legend>Выберите статус:</legend>
                                     <div th:switch="${statususer}" class="checkbox-group">
                         <span th:each="status : ${statususer}">
-            <p><input type="checkbox" id="status" name="ingredient" value="status">
+            <p><input type="checkbox" class="checkboxStatus" id="status" name="ingredient" value="status">
             <label for="status"><i th:text="${status.status}"></i></label></p>
                         </span>
                                     </div>
@@ -54,7 +54,7 @@
                                     <legend>Выберите должность:</legend>
                                     <div th:switch="${postname}" class="checkbox-group">
                         <span th:each="post : ${postname}">
-            <p><input type="checkbox" id="post" name="ingredient" value="post">
+            <p><input type="checkbox" class="checkboxPost" id="post" name="ingredient" value="post">
             <label for="post"><i th:text="${post.post}"></i></label></p>
                         </span>
                                     </div>
@@ -109,6 +109,7 @@
         </div>
     </div>
 </div>
+
 <script src="/popup.js/"></script>
 </body>
 </html>
