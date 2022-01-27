@@ -11,8 +11,10 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @Controller
 public class TeamController {
@@ -88,4 +90,18 @@ public class TeamController {
         System.out.println("SAVED??????");
         return "redirect:/team#tab_team";
     }
+
+    //TODO доделать контроллер данные из чекбоксов
+    @PostMapping("/searchteam")
+    public String inputData(@RequestParam("idChecked") List<String> tags){
+
+        if(tags != null){
+            for(String tagStr : tags){
+
+//                tagRepository.
+            }
+        }
+        return "redirect:/team#tab_team";
+    }
+
 }
