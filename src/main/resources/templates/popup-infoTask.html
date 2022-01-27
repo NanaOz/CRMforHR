@@ -9,7 +9,7 @@
     </head>
     <body>
     <!--    <div id="popup_3" class="popup">-->
-    <div class="popup_body">
+    <div th:switch="${statustask}" class="popup_body">
         <div class="popup_content">
             <a href="/closetask" class="popup_close close-popup">X</a>
             <div class="popup_title">Информация о задаче</div>
@@ -68,7 +68,15 @@
                     <td>
                         <span th:text="${task.status.taskName}"></span>
                     </td>
-                    <td></td>
+                    <td >
+                        <div class="text-field_group">
+                            <select type="text" id="tagemp" class="popup_field" required autocomplete="off">
+                                <option th:each="status:${statustask}"
+                                        th:text="${status.taskName}"></option>
+                            </select>
+<!--                            <button class="text-field_btn" type="button"><a href="/changestatus">изменить</a></button>-->
+                        </div>
+                    </td>
                 </tr>
                 <tr>
                     <td>

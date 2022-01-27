@@ -48,6 +48,7 @@ public class TaskController {
     public String showInfoForm(@PathVariable("id") long id, Model model) {
         Task task = taskRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid user Id:" + id));
         model.addAttribute("task", task);
+        model.addAttribute("statustask", statusTaskRepository.findAll());
         return "popup-infoTask";
     }
 
@@ -56,6 +57,7 @@ public class TaskController {
         return "redirect:/task#tab_task";
     }
 
+    //TODO доделать контроллер на смену статуса
     @GetMapping("/taskok")
     public String okayInfoForm(Model model) {
         return "redirect:/task#tab_task";
