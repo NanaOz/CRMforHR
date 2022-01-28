@@ -24,6 +24,15 @@ public class Candidate {
     @JoinColumn(name = "post_id")
     private Post post;
 
+
+
+    @ManyToMany(cascade = {CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH}, fetch = FetchType.EAGER)
+    @JoinTable(name = "candidate_tag",
+            joinColumns = @JoinColumn(name = "candidate_id"),
+            inverseJoinColumns = @JoinColumn(name = "tag_id")
+    )
+    private List<Tag> tags;
+
     public List<Tag> getTags() {
         return tags;
     }
@@ -31,13 +40,6 @@ public class Candidate {
     public void setTags(List<Tag> tags) {
         this.tags = tags;
     }
-
-    @ManyToMany(cascade = {CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
-    @JoinTable(name = "candidate_tag",
-            joinColumns = @JoinColumn(name = "candidate_id"),
-            inverseJoinColumns = @JoinColumn(name = "tag_id")
-    )
-    private List<Tag> tags;
 
     public Candidate () {}
 

@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<form action="#" th:action="@{/info/{id}(id=${employees.id})}" th:object="${employees}" method="post">
+<form action="#" th:action="@{/info/{id}(id=${employee.id})}" th:object="${employee}" method="post">
     <head>
         <meta charset="UTF-8">
         <meta username="viewport" content="width=device-width, initial-scale=1">
@@ -20,7 +20,7 @@
                             <label>ID:</label>
                     </td>
                     <td>
-                        <span th:text="${employees.id}">ID:</span>
+                        <span th:text="${employee.id}">ID:</span>
                     </td>
                     <td></td>
                 </tr>
@@ -29,7 +29,7 @@
                             <label>Фамилия:</label>
                     </td>
                     <td>
-                        <span th:text="${employees.user.surname}"></span>
+                        <span th:text="${employee.user.surname}"></span>
                     </td>
                     <td></td>
                 </tr>
@@ -38,7 +38,7 @@
                             <label>Имя:</label>
                     </td>
                     <td>
-                        <span th:text="${employees.user.username}"></span>
+                        <span th:text="${employee.user.username}"></span>
                     </td>
                     <td></td>
                 </tr>
@@ -47,7 +47,7 @@
                             <label>Отчество:</label>
                     </td>
                     <td>
-                        <span th:text="${employees.user.fathersName}"></span>
+                        <span th:text="${employee.user.fathersName}"></span>
                     </td>
                     <td></td>
                 </tr>
@@ -56,7 +56,7 @@
                             <label>Почта:</label>
                     </td>
                     <td>
-                        <span th:text="${employees.user.email}"></span>
+                        <span th:text="${employee.user.email}"></span>
                     </td>
                     <td>
                         <div class="text-field_group">
@@ -70,7 +70,7 @@
                             <label>Должность:</label>
                     </td>
                     <td>
-                        <span th:text="${employees.post.post}"></span>
+                        <span th:text="${employee.post.post}"></span>
                     </td>
                     <td></td>
                 </tr>
@@ -79,7 +79,7 @@
                             <label>Проект:</label>
                     </td>
                     <td>
-                        <span th:text="${employees.project.projectName}"></span>
+                        <span th:text="${employee.project.projectName}"></span>
                     </td>
                     <td></td>
                 </tr>
@@ -88,7 +88,7 @@
                         <label>Телефон:</label>
                     </td>
                     <td>
-                        <span th:text="${employees.user.phone}"></span>
+                        <span th:text="${employee.user.phone}"></span>
                     </td>
                     <td>
                         <div class="text-field_group">
@@ -97,14 +97,26 @@
                         </div>
                     </td>
                 </tr>
-                <tr>
+                <!--<tr>
                     <td>
                         <label>Тэги:</label>
+                    </td>
+                    <td>
+                        <div class="table">
+                            <div>
+                                <table id="tagTable" class="table">
+                                    <tbody>
+                                    <tr th:each="tag:${employee.tags}">
+                                        <td th:text="${tag.tag}"></td>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
                     </td>
                     <td></td>
                     <td>
                     </td>
-                </tr>
+                </tr>-->
                 </tbody>
             </table>
 

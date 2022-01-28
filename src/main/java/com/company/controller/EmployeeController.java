@@ -55,8 +55,8 @@ public class EmployeeController {
     @GetMapping("info/{id}")
     public String showInfoForm(@PathVariable("id") long id, Model model) {
         Employee employee = employeeRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid user Id:" + id));
-        model.addAttribute("employees", employee);
-        model.addAttribute("tag", tagRepository.findAll());
+        model.addAttribute("employee", employee);
+        model.addAttribute("tags", tagRepository.findAll());
         return "popup-info";
     }
 

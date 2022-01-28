@@ -48,8 +48,8 @@ public class CandidateController {
     @GetMapping("/infocand/{id}")
     public String showInfoForm(@PathVariable("id") long id, Model model) {
         Candidate candidate = candidateRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid user Id:" + id));
-        model.addAttribute("candidates", candidate);
-        model.addAttribute("tag", tagRepository.findAll());
+        model.addAttribute("candidate", candidate);
+        model.addAttribute("tags", tagRepository.findAll());
         return "popup-infocand";
     }
 

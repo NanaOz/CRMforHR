@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<form action="#" th:action="@{/infocand/{id}(id=${candidates})}" th:object="${candidates}" method="post">
+<form action="#" th:action="@{/infocand/{id}(id=${candidate})}" th:object="${candidate}" method="post">
     <head>
         <meta charset="UTF-8">
         <meta username="viewport" content="width=device-width, initial-scale=1">
@@ -20,7 +20,7 @@
                         <label>ID:</label>
                     </td>
                     <td>
-                        <span th:text="${candidates.id}">ID:</span>
+                        <span th:text="${candidate.id}">ID:</span>
                     </td>
                     <td></td>
                 </tr>
@@ -29,7 +29,7 @@
                         <label>Фамилия:</label>
                     </td>
                     <td>
-                        <span th:text="${candidates.user.surname}"></span>
+                        <span th:text="${candidate.user.surname}"></span>
                     </td>
                     <td></td>
                 </tr>
@@ -38,7 +38,7 @@
                         <label>Имя:</label>
                     </td>
                     <td>
-                        <span th:text="${candidates.user.username}"></span>
+                        <span th:text="${candidate.user.username}"></span>
                     </td>
                     <td></td>
                 </tr>
@@ -47,7 +47,7 @@
                         <label>Отчество:</label>
                     </td>
                     <td>
-                        <span th:text="${candidates.user.fathersName}"></span>
+                        <span th:text="${candidate.user.fathersName}"></span>
                     </td>
                     <td></td>
                 </tr>
@@ -56,7 +56,7 @@
                         <label>Почта:</label>
                     </td>
                     <td>
-                        <span th:text="${candidates.user.email}"></span>
+                        <span th:text="${candidate.user.email}"></span>
                     </td>
                     <td>
                         <div class="text-field_group">
@@ -70,7 +70,7 @@
                         <label>Должность:</label>
                     </td>
                     <td>
-                        <span th:text="${candidates.post.post}"></span>
+                        <span th:text="${candidate.post.post}"></span>
                     </td>
                     <td></td>
                 </tr>
@@ -79,7 +79,7 @@
                         <label>Телефон:</label>
                     </td>
                     <td>
-                        <span th:text="${candidates.user.phone}"></span>
+                        <span th:text="${candidate.user.phone}"></span>
                     </td>
                     <td>
                         <div class="text-field_group">
@@ -88,14 +88,26 @@
                         </div>
                     </td>
                 </tr>
-                <!--                <tr th:each="tagss:${candidates.tags}">-->
+                <!--                <tr th:each="tagss:${candidate.tags}">-->
                 <tr>
                     <td>
                         <label>Тэги:</label>
                     </td>
-                    <!--                    <td th:text="${tagss}"></td>-->
+                    <td>
+                        <div class="table">
+                            <div>
+                                <table id="tagTable" class="table">
+                                    <tbody>
+                                    <tr th:each="tag:${candidate.tags}">
+                                        <td th:text="${tag.tag}"></td>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </td>
                     <td></td>
-                    <td></td>
+                    <td>
+                    </td>
                 </tr>
                 </tbody>
             </table>
@@ -103,9 +115,9 @@
             //TODO вывести теги по конкретному кандидату
 <!--            <table class="table_info">-->
 <!--                <tbody>-->
-<!--&lt;!&ndash;                <tr th:each="candidat:${candidates}">&ndash;&gt;-->
+<!--&lt;!&ndash;                <tr th:each="candidat:${candidate}">&ndash;&gt;-->
 <!--                <tr>-->
-<!--                    <td th:each="tagcan:${candidates.tags}"-->
+<!--                    <td th:each="tagcan:${candidate.tags}"-->
 <!--                    th:text="${tagcan.id} + ' ' + ${tagcan.tag} + ' ' + ${tagcan.criterion}">-->
 <!--                    </td>-->
 <!--                </tr>-->
@@ -116,8 +128,8 @@
                 <label for="tagcand">Добавить теги:</label>
                 <select type="text" id="tagcand" class="popup_field" required autocomplete="off">
                     <option
-                            th:each="tagall:${tag}"
-                            th:text="${tagall.tag}">
+                            th:each="tag:${tags}"
+                            th:text="${tag.tag}">
                     </option>
                 </select>
                 <button class="popup_button" type="submit"><a href="/addtagcand">добавить</a></button>
