@@ -27,6 +27,13 @@ public class Tag {
     )
     private List<Candidate> candidates;
 
+    @ManyToMany(cascade = {CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
+    @JoinTable(name = "employee_it_tag",
+            joinColumns = @JoinColumn(name = "tag_id"),
+            inverseJoinColumns = @JoinColumn(name = "employee_it_id")
+    )
+    private List<EmployeeIT> employeeIT;
+
     public Long getCriterion() {
         return criterion;
     }
@@ -50,16 +57,20 @@ public class Tag {
     public void setId(Long id) {
         this.id = id;
     }
-    //    @Override
-//    public boolean equals(Object o) {
-//        if (this == o) return true;
-//        if (o == null || getClass() != o.getClass()) return false;
-//        Tags tags = (Tags) o;
-//        return id == tags.id && Objects.equals(tag, tags.tag);
-//    }
-//
-//    @Override
-//    public int hashCode() {
-//        return Objects.hash(id, tag);
-//    }
+
+    public List<Candidate> getCandidates() {
+        return candidates;
     }
+
+    public void setCandidates(List<Candidate> candidates) {
+        this.candidates = candidates;
+    }
+
+    public List<EmployeeIT> getEmployeeIT() {
+        return employeeIT;
+    }
+
+    public void setEmployeeIT(List<EmployeeIT> employeeIT) {
+        this.employeeIT = employeeIT;
+    }
+}
