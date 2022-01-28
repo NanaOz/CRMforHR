@@ -1,7 +1,6 @@
 package com.company.controller;
 
 import com.company.entity.Candidate;
-import com.company.entity.Employee;
 import com.company.repository.CandidateRepository;
 import com.company.repository.EmployeeRepository;
 import com.company.repository.StatusRepository;
@@ -9,14 +8,8 @@ import com.company.repository.TagRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-
-import javax.persistence.Entity;
-import javax.persistence.Table;
-import javax.validation.Valid;
 
 @Controller
 public class CandidateController {
@@ -50,7 +43,7 @@ public class CandidateController {
         Candidate candidate = candidateRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid user Id:" + id));
         model.addAttribute("candidate", candidate);
         model.addAttribute("tags", tagRepository.findAll());
-        return "popup-infocand";
+        return "popup-infoCandidate";
     }
 
     @GetMapping("/closex")

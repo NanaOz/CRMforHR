@@ -1,6 +1,7 @@
 package com.company.controller;
 
 import com.company.entity.Employee;
+import com.company.entity.EmployeeIT;
 import com.company.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -27,23 +28,6 @@ public class EmployeeController {
         this.tagRepository = tagRepository;
     }
 
-//    @GetMapping("/employee")
-//    public String homePage(){
-//        return "employee";
-//    }
-
-//    @GetMapping("/employee")
-//    public String showUserListEmployee(@PathVariable("id") long id, Model model) {
-//
-//        User user = userRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid user Id:" + id));
-//        model.addAttribute("users", user);
-////        Employee employee = employeeRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid user Id:" + id));
-////        model.addAttribute("workers", employee);
-//        model.addAttribute("workers", employeeRepository.findAll());
-////        model.addAttribute("users", userRepository.findAll());
-//        return "employee";
-//    }
-
     @GetMapping("/employee")
     public String showEmployeeList(Model model) {
         model.addAttribute("employees", employeeRepository.findAll());
@@ -52,24 +36,12 @@ public class EmployeeController {
         model.addAttribute("employeesHr", employeeHrRepository.findAll());
         return "employee";}
 
-    @GetMapping("info/{id}")
-    public String showInfoForm(@PathVariable("id") long id, Model model) {
-        Employee employee = employeeRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid user Id:" + id));
-        model.addAttribute("employee", employee);
-        model.addAttribute("tags", tagRepository.findAll());
-        return "popup-info";
-    }
 
     @GetMapping("/close")
     public String closeInfoForm(Model model) {
         return "redirect:/employee#tab_employee";
     }
 
-
-//    @GetMapping("/empok")
-//    public String okayInfoForm(Model model) {
-//        return "redirect:/employee#tab_employee";
-//    }
 
     //TODO ДОДЕЛАТЬ контроллер на редактирование телефона
     @GetMapping("/phoneok")

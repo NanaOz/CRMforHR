@@ -337,6 +337,7 @@ body.lock {
     align-items: center;
     justify-content: center;
     padding: 10px 40px;
+    font-size: 15px;
 }
 
 .popup_content {
@@ -440,7 +441,26 @@ body.lock {
     border-left-width: 0;
 }
 .table_info td {
-    padding: 10px;
+    padding: 5px;
+
+}
+
+.table_info label{
+    font-weight: bold;
+}
+
+.table_info_tag {
+    /*padding: 5px;*/
+    width: 250px;
+    margin-left:100px;
+    /*font-size: 20px;*/
+}
+.text-field_btn {
+    font-size: 15px;
+}
+.not_line_href {
+    text-decoration: none;
+
 }
 
 
