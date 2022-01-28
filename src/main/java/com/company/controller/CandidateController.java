@@ -93,25 +93,21 @@ public class CandidateController {
 //        return "redirect:/candidate#tab_candidate";
 //    }
 
-//        @PostMapping("/create")
-//    public String addUser(BindingResult result, @PathVariable("id") long id, Model model) {
-//        System.out.println("BRGINOFADDING");
-//        if (result.hasErrors()) {
-//            System.out.println("ERROR????");
-//            return "popup_addacount";
-//        }
-//
-//        Candidate candidate = candidateRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid candidate Id:" + id));
-//        Employee employee = new Employee();
-//
-//        employee.setUser(candidate.getUser());
-//        employee.setPost(candidate.getPost());
-////        employee.setStatus(new Status());
-//        employee.setStatus(statusRepository.getById(1L));
-//
-//        candidateRepository.delete(candidate);
-//        employeeRepository.save(employee);
-//        System.out.println("SAVED??????");
-//        return "redirect:/candidate#tab_candidate";
-//    }
+        @GetMapping("/create/{id}")
+        public String addUser(@PathVariable("id") long id,  Model model) {
+        System.out.println("BRGINOFADDING");
+            System.out.println(id);
+
+        Candidate candidate = candidateRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid candidate Id:" + id));
+        Employee employee = new Employee();
+
+        employee.setUser(candidate.getUser());
+        employee.setPost(candidate.getPost());
+        employee.setStatus(statusRepository.findByStatus("Работает"));
+
+        candidateRepository.delete(candidate);
+        employeeRepository.save(employee);
+        System.out.println("SAVED??????");
+        return "redirect:/candidate#tab_candidate";
+    }
 }
