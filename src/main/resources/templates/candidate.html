@@ -17,7 +17,7 @@
                 <div id="tab_employee" class="tabs_block"></div>
                 <div id="tab_candidate" class="tabs_block">
                     <div>
-                        <div th:insert="popups/popup-addacount :: popup-addacount"></div>
+                        <!--<div th:insert="popups/popup-addacount :: popup-addacount"></div>-->
 
                         <div class="table">
                             <table id="candidateTable" class="table">
@@ -38,9 +38,10 @@
                                     <td th:text="${candidate.user.surname} + ' ' + ${candidate.user.username} + ' ' + ${candidate.user.fathersName}"></td>
                                     <td th:text="${candidate.status.status}"></td>
                                     <td th:text="${candidate.post.post}"></td>
+                                    <td><a th:href="'/create/'+ ${candidate.id}"
+                                           class="border-button">CandidateToEmployee</a></td>
                                     <td><a th:href="'/infocand/'+ ${candidate.id}"
                                            class="tabs_info_user tabs_info_user">ИНФО</a></td>
-
                                 </tr>
                                 </tbody>
                             </table>
