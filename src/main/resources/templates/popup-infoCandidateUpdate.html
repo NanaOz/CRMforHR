@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<form action="#" th:action="@{/update/{id}(id=${candidate.user.id})}" th:object="${user}" method="post">
+<form action="#" th:action="@{/update/{id}(id=${candidate.id})}" th:object="${candidate}" method="post">
+<!--<form action="#" th:action="@{/emailokcand/{id}(id=${candidate.id})}" th:object="${candidate.user}" method="post">-->
 
     <head>
         <meta charset="UTF-8">
         <meta username="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" type="text/css" href="/style.css/"/>
-        <title>ИНФО</title>
+        <title>Редактировать информацию</title>
     </head>
     <body>
     <div class="popup_body">
@@ -16,82 +17,46 @@
             <div class="row">
                 <div>
                     <label for="surname">Фамилия</label>
-                    <input type="text" th:field="*{surname}" class="form-control" id="surname" placeholder="surname">
-                    <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="text-danger"></span>
+                    <input type="text" th:field="*{user.surname}" class="form-control" id="surname" placeholder="surname">
+<!--                    <span th:if="${#fields.hasErrors('surname')}" th:errors="*{surname}" class="text-danger"></span>-->
                 </div>
                 <div>
                     <label for="username">Имя</label>
-                    <input type="text" th:field="*{username}" class="form-control" id="username" placeholder="username">
-                    <!--                    <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="text-danger"></span>-->
+                    <input type="text" th:field="*{user.username}" class="form-control" id="username" placeholder="username">
+                    <!--                    <span th:if="${#fields.hasErrors('username')}" th:errors="*{username}" class="text-danger"></span>-->
                 </div>
                 <div>
                     <label for="fathersName">Отчество</label>
-                    <input type="text" th:field="*{fathersName}" class="form-control" id="fathersName"
+                    <input type="text" th:field="*{user.fathersName}" class="form-control" id="fathersName"
                            placeholder="fathersName">
-                    <!--                    <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="text-danger"></span>-->
+                    <!--                    <span th:if="${#fields.hasErrors('fathersName')}" th:errors="*{fathersName}" class="text-danger"></span>-->
                 </div>
                 <div>
                     <label for="email">Почта</label>
-                    <input type="text" th:field="*{email}" class="form-control" id="email" placeholder="email">
+                    <input type="text" th:field="*{user.email}" class="form-control" id="email" placeholder="email">
                     <!--                    <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="text-danger"></span>-->
                 </div>
                 <div>
                     <label for="phone">Телефон</label>
-                    <input type="text" th:field="*{phone}" class="form-control" id="phone" placeholder="phone">
+                    <input type="text" th:field="*{user.phone}" class="form-control" id="phone" placeholder="phone">
                     <!--                    <span th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}" class="text-danger"></span>-->
                 </div>
-                <!--                <div>-->
-                <!--                    <label for="post">Должность</label>-->
-                <!--                    <input type="text" th:field="*{post}" class="form-control" id="post" placeholder="post">-->
-                <!--                    &lt;!&ndash;                    <span th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}" class="text-danger"></span>&ndash;&gt;-->
-                <!--                </div>-->
-                <!--                <div>-->
-                <!--                    <label for="status">Статус</label>-->
-                <!--                    <input type="text" th:field="*{status}" class="form-control" id="status" placeholder="status">-->
-                <!--                    &lt;!&ndash;                    <span th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}" class="text-danger"></span>&ndash;&gt;-->
-                <!--                </div>-->
+                <div>
+                    <label for="post">Должность</label>
+                    <input type="text" th:field="*{post}" class="form-control" id="post" placeholder="post">
+                    <!--                    <span th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}" class="text-danger"></span>-->
+                </div>
+                <div>
+                    <label for="status">Статус</label>
+                    <input type="text" th:field="*{status}" class="form-control" id="status" placeholder="status">
+                    <!--                    <span th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}" class="text-danger"></span>-->
+                </div>
             </div>
             <div class="row">
                 <div>
                     <input type="submit" class="text-field_btn" value="Обновить информацию">
                 </div>
             </div>
-
-            <!--            <table class="table_info">-->
-            <!--                <tbody>-->
-            <!--                <tr>-->
-            <!--                    <td>-->
-            <!--                        <label>Почта:</label>-->
-            <!--                    </td>-->
-            <!--                    <td>-->
-            <!--                        <span th:text="${candidate.user.email}"></span>-->
-            <!--                    </td>-->
-            <!--                    <td>-->
-            <!--                        <div class="text-field_group">-->
-            <!--                            <input class="edit_file" type="text" id="emailcan" placeholder="введите email">-->
-            <!--                            <button class="text-field_btn" type="button"><a class="not_line_href" href="/emailokcand">изменить</a>-->
-            <!--                            </button>-->
-            <!--                        </div>-->
-            <!--                    </td>-->
-            <!--                </tr>-->
-
-            <!--                <tr>-->
-            <!--                    <td>-->
-            <!--                        <label>Телефон:</label>-->
-            <!--                    </td>-->
-            <!--                    <td>-->
-            <!--                        <span th:text="${candidate.user.phone}"></span>-->
-            <!--                    </td>-->
-            <!--                    <td>-->
-            <!--                        <div class="text-field_group">-->
-            <!--                            <input class="edit_file" type="text" id="phonecand" placeholder="введите номер">-->
-            <!--                            <button class="text-field_btn" type="button"><a class="not_line_href" href="/phoneokcand">изменить</a>-->
-            <!--                            </button>-->
-            <!--                        </div>-->
-            <!--                    </td>-->
-            <!--                </tr>-->
-            <!--                </tbody>-->
-
         </div>
     </div>
     <script src="/popup.js/"></script>

@@ -60,12 +60,12 @@ public class CandidateController {
     @PostMapping("/update/{id}")
     public String updateUser(@PathVariable("id") long id, @Valid Candidate candidate, @Valid User user, BindingResult result, Model model) {
         if (result.hasErrors()) {
-            user.setId(id);
-//            candidate.setId(id);
+//            user.setId(id);
+            candidate.setId(id);
             return "popup-infoCandidateUpdate";
         }
-        userRepository.save(user);
-//        candidateRepository.save(candidate);
+//        userRepository.save(user);
+        candidateRepository.save(candidate);
 
         return "redirect:/candidate#tab_candidate";
     }
@@ -75,8 +75,21 @@ public class CandidateController {
 //        Candidate candidate = candidateRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid user Id:" + id));
 //        model.addAttribute("candidate", candidate);
 //        model.addAttribute("tags", tagRepository.findAll());
-//        return "popup-infoCandidate";
+//        return "popup-infoCandidateUpdate";
 //    }
+//        @PostMapping("/emailokcand/{id}")
+//    public String updateUser(@PathVariable("id") long id, @Valid Candidate candidate, @Valid User user, BindingResult result, Model model) {
+//        if (result.hasErrors()) {
+////            user.setId(id);
+//            candidate.setId(id);
+//            return "popup-infoCandidateUpdate";
+//        }
+////        userRepository.save(user);
+//        candidateRepository.save(candidate);
+//
+//        return "redirect:/candidate#tab_candidate";
+//    }
+
 
     //TODO ДОДЕЛАТЬ контроллер на редактирование телефона
 //    @PostMapping("/phoneokcand")
