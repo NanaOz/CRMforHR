@@ -1,6 +1,7 @@
 package com.company.controller;
 
 import com.company.entity.Candidate;
+import com.company.entity.Employee;
 import com.company.repository.CandidateRepository;
 import com.company.repository.EmployeeRepository;
 import com.company.repository.StatusRepository;

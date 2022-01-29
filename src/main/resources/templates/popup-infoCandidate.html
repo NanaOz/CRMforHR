@@ -117,7 +117,7 @@
                 <table class="table_info_tag">
                     <tbody>
                     <tr th:each="tag:${candidate.tags}">
-                        <td th:text="${tag.tag}"></td>
+                        <td th:text="${tag.name}"></td>
                     </tbody>
                 </table>
 
@@ -126,7 +126,7 @@
                     <select type="text" id="tagcand" class="popup_field" required autocomplete="off">
                         <option
                                 th:each="tag:${tags}"
-                                th:text="${tag.tag}">
+                                th:text="${tag.name}">
                         </option>
                     </select>
                     <button class="text-field_btn" type="submit"><a class="not_line_href" href="/addtagcand">добавить</a></button>

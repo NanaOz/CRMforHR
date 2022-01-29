@@ -21,7 +21,7 @@
                         </thead>
                         <tbody>
                         <tr th:each="tag : ${tags}">
-                            <td th:text="${tag.tag}"></td>
+                            <td th:text="${tag.name}"></td>
                             <td><a th:href="@{/edit/{id}(id=${tag.id})}" class="tabs_change tabs_change">изменить</a>
                             </td>
                             <!--                        <div th:insert="popups/popup-refreshTag :: popup-refreshTag"></div>-->

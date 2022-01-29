@@ -14,8 +14,8 @@ public class Tag {
     private Long id;
 
     @Lob @Type(type = "org.hibernate.type.TextType")
-    @Column(name = "tag", nullable = false)
-    private String tag;
+    @Column(name = "name", nullable = false)
+    private String name;
 
     @Column(name = "criterion")
     private Long criterion;
@@ -42,12 +42,10 @@ public class Tag {
         this.criterion = criterion;
     }
 
-    public String getTag() {
-        return tag;
-    }
+    public String getName() { return name; }
 
-    public void setTag(String tag) {
-        this.tag = tag;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public Long getId() {
@@ -73,4 +71,6 @@ public class Tag {
     public void setEmployeeIT(List<EmployeeIT> employeeIT) {
         this.employeeIT = employeeIT;
     }
+
+
 }
