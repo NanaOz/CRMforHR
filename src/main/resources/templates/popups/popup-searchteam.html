@@ -22,7 +22,7 @@
                                         <div th:switch="${tags}" class="checkbox-group">
                         <span th:each="tag : ${tags}">
                             <p><input class="checkbox" type="checkbox" id="tag" name="idChecked" value="tags">
-                            <label for="tag"><i th:text="${tag.tag}"></i></label></p>
+                            <label for="tag"><i th:text="${tag.name}"></i></label></p>
                         </span>
                                         </div>
                                     </div>
@@ -33,7 +33,7 @@
                                         <div th:switch="${statususer}" class="checkbox-group">
                         <span th:each="status : ${statususer}">
             <p><input type="checkbox" id="status" name="idChecked" value="status">
-            <label for="status"><i th:text="${status.status}"></i></label></p>
+            <label for="status"><i th:text="${status.name}"></i></label></p>
                         </span>
                                         </div>
                                     </div>

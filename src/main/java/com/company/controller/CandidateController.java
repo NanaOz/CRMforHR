@@ -97,7 +97,7 @@ public class CandidateController {
 
         employee.setUser(candidate.getUser());
         employee.setPost(candidate.getPost());
-        employee.setStatus(statusRepository.findByStatus("Работает"));
+        employee.setStatus(statusRepository.findByName("Работает"));
 
         candidateRepository.delete(candidate);
         employeeRepository.save(employee);
