@@ -17,22 +17,11 @@ public class Status {
 
     @Lob @Type(type = "org.hibernate.type.TextType")
     @Column(name = "Status", nullable = false)
-    private String status;
-//
-//    @Setter
-//    @OneToMany(fetch = FetchType.EAGER, mappedBy = "post")
-//
-//    private Collection<Employee> employeeC;
+    private String name;
 
+    public String getName() {return name;}
 
-    public Status () {}
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
+    public void setName(String name) { this.name = name;}
 
     public Long getId() {
         return id;
@@ -41,16 +30,5 @@ public class Status {
     public void setId(Long id) {
         this.id = id;
     }
-    //    @Override
-//    public boolean equals(Object o) {
-//        if (this == o) return true;
-//        if (o == null || getClass() != o.getClass()) return false;
-//        Status status1 = (Status) o;
-//        return id == status1.id && Objects.equals(status, status1.status);
-//    }
-//
-//    @Override
-//    public int hashCode() {
-//        return Objects.hash(id, status);
-//    }
+
 }
