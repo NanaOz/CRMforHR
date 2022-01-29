@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<form action="#" th:action="@{info/{id}(id=${employeeit.id})}" th:object="${employeeit}" method="post"></form>
+<head>
+    <meta charset="UTF-8">
+    <meta username="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="/style.css/"/>
+    <title>ИНФО</title>
+</head>
+<body>
+<div class="popup_body">
+    <div class="popup_content">
+        <a href="/close" class="popup_close close-popup">X</a>
+        <div class="popup_title">Информация о сотруднике</div>
+        <table class="table_info">
+            <tbody>
+            <tr>
+                <td>
+                    <label>ID:</label>
+                </td>
+                <td>
+                    <span th:text="${employeeit.id}">ID:</span>
+                </td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>
+                    <label>Фамилия:</label>
+                </td>
+                <td>
+                    <span th:text="${employeeit.employee.user.surname}"></span>
+                </td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>
+                    <label>Имя:</label>
+                </td>
+                <td>
+                    <span th:text="${employeeit.employee.user.username}"></span>
+                </td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>
+                    <label>Отчество:</label>
+                </td>
+                <td>
+                    <span th:text="${employeeit.employee.user.fathersName}"></span>
+                </td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>
+                    <label>Почта:</label>
+                </td>
+                <td>
+                    <span th:text="${employeeit.employee.user.email}"></span>
+                </td>
+                <td>
+                    <div class="text-field_group">
+                        <input class="edit_file" type="text" id="email" placeholder="редактировать email">
+                        <button class="text-field_btn" type="button"><a class="not_line_href" href="/emailok">ок</a>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label>Должность:</label>
+                </td>
+                <td>
+                    <span th:text="${employeeit.employee.post.post}"></span>
+                </td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>
+                    <label>Проект:</label>
+                </td>
+                <td>
+                    <span th:text="${employeeit.employee.project.projectName}"></span>
+                </td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>
+                    <label>Телефон:</label>
+                </td>
+                <td>
+                    <span th:text="${employeeit.employee.user.phone}"></span>
+                </td>
+                <td>
+                    <div class="text-field_group">
+                        <input class="edit_file" type="text" id="phone" placeholder="редактировать номер">
+                        <button class="text-field_btn" type="button"><a class="not_line_href" href="/phoneok">ок</a>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            <td>
+                <label>Тэги:</label>
+            </td>
+            <td></td>
+            <td>
+            </td>
+            </tr>
+            </tbody>
+        </table>
+        <div class="table_and_search">
+            <table class="table_info_tag">
+                <tbody>
+                <tr th:each="tag:${employeeit.tags}">
+                <td th:text="${tag.name}"></td>
+                </tr>
+                </tbody>
+            </table>
+
+            <div class="search">
+                <label for="tagemp">Добавить теги:</label>
+                <select type="text" id="tagemp" class="popup_field" required autocomplete="off">
+                    <option
+                        th:each="tag:${tags}"
+                        th:text="${tag.name}">
+                    </option>
+                </select>
+                <button class="text-field_btn" type="submit"><a class="not_line_href"
+                                                                href="/addtagcand">добавить</a></button>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<script src="/popup.js/"></script>
+</body>
+</form>
+</html>

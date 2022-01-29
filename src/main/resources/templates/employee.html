@@ -41,7 +41,7 @@
                                             <td th:text="${employeeit.employee.status.status}"></td>
                                             <td th:text="${employeeit.employee.post.post}"></td>
                                             <td th:text="${employeeit.project.projectName}"></td>
-                                            <td><a th:href="'/info/'+ ${employeeit.id}" class="tabs_info_user tabs_info_user">ИНФО</a></td>
+                                            <td><a th:href="'/info/employeeit/'+ ${employeeit.id}" class="tabs_info_user tabs_info_user">ИНФО</a></td>
 <!--                                           <td><div th:insert="popups/popup-infoIT :: popup-infoIT"></div></td>-->
 
                                         </tr>
@@ -51,7 +51,7 @@
                                             <td th:text="${employeehr.employee.status.status}"></td>
                                             <td th:text="${employeehr.employee.post.post}"></td>
                                             <td></td>
-                                            <td><a th:href="'/info/'+ ${employeehr.id}" class="tabs_info_user tabs_info_user">ИНФО</a></td>
+                                            <td><a th:href="'/info/employeehr/'+ ${employeehr.id}" class="tabs_info_user tabs_info_user">ИНФО</a></td>
 <!--                                            <td><div th:insert="popups/popup-infoHR :: popup-infoHR"></div></td>-->
 
                                         </tr>

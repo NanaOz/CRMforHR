@@ -9,14 +9,8 @@ import com.company.repository.TagRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-
-import javax.persistence.Entity;
-import javax.persistence.Table;
-import javax.validation.Valid;
 
 @Controller
 public class CandidateController {
@@ -48,9 +42,9 @@ public class CandidateController {
     @GetMapping("/infocand/{id}")
     public String showInfoForm(@PathVariable("id") long id, Model model) {
         Candidate candidate = candidateRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid user Id:" + id));
-        model.addAttribute("candidates", candidate);
-        model.addAttribute("tag", tagRepository.findAll());
-        return "popup-infocand";
+        model.addAttribute("candidate", candidate);
+        model.addAttribute("tags", tagRepository.findAll());
+        return "popup-infoCandidate";
     }
 
     @GetMapping("/closex")
@@ -93,25 +87,21 @@ public class CandidateController {
 //        return "redirect:/candidate#tab_candidate";
 //    }
 
-//        @PostMapping("/create")
-//    public String addUser(BindingResult result, @PathVariable("id") long id, Model model) {
-//        System.out.println("BRGINOFADDING");
-//        if (result.hasErrors()) {
-//            System.out.println("ERROR????");
-//            return "popup_addacount";
-//        }
-//
-//        Candidate candidate = candidateRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid candidate Id:" + id));
-//        Employee employee = new Employee();
-//
-//        employee.setUser(candidate.getUser());
-//        employee.setPost(candidate.getPost());
-////        employee.setStatus(new Status());
-//        employee.setStatus(statusRepository.getById(1L));
-//
-//        candidateRepository.delete(candidate);
-//        employeeRepository.save(employee);
-//        System.out.println("SAVED??????");
-//        return "redirect:/candidate#tab_candidate";
-//    }
+        @GetMapping("/create/{id}")
+        public String addUser(@PathVariable("id") long id,  Model model) {
+        System.out.println("BRGINOFADDING");
+            System.out.println(id);
+
+        Candidate candidate = candidateRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid candidate Id:" + id));
+        Employee employee = new Employee();
+
+        employee.setUser(candidate.getUser());
+        employee.setPost(candidate.getPost());
+        employee.setStatus(statusRepository.findByStatus("Работает"));
+
+        candidateRepository.delete(candidate);
+        employeeRepository.save(employee);
+        System.out.println("SAVED??????");
+        return "redirect:/candidate#tab_candidate";
+    }
 }
