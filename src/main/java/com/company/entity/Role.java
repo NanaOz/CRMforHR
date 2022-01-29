@@ -14,21 +14,15 @@ public class Role {
 
     @Lob @Type(type = "org.hibernate.type.TextType")
     @Column(name = "name_role", nullable = true)
-    private String nameRole;
+    private String name;
 
-    public String getNameRole() {
-        return nameRole;
-    }
+    public String getName() {return name;}
 
-    public void setNameRole(String nameRole) {
-        this.nameRole = nameRole;
-    }
+    public void setName(String name) {this.name = name;}
 
-    public Long getId() {
-        return id;
-    }
+    public Long getId() {return id;}
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+    public void setId(Long id) {this.id = id;}
+
+
 }

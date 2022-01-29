@@ -34,7 +34,7 @@ public class CustomAuthencationProvider implements AuthenticationProvider {
         UserDetails principal = org.springframework.security.core.userdetails.User.builder()
                 .username(login.getLogin())
                 .password(login.getPassword())
-                .roles(login.getRole().getNameRole())
+                .roles(login.getRole().getName())
                 .build();
         return new UsernamePasswordAuthenticationToken(
                 principal, password, principal.getAuthorities());
