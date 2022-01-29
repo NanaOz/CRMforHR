@@ -52,18 +52,21 @@ public class CandidateController {
     public String showUpdateForm(@PathVariable("id") long id, Model model) {
         Candidate candidate = candidateRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid user Id:" + id));
         User user = userRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid user Id:" + id));
+        System.out.println(candidate.getUser());
         model.addAttribute("candidate", candidate);
         model.addAttribute("user", user);
 
         return "popup-infoCandidateUpdate";
     }
     @PostMapping("/update/{id}")
-    public String updateUser(@PathVariable("id") long id, @Valid Candidate candidate, @Valid User user, BindingResult result, Model model) {
+    public String updateUser(@PathVariable("id") long id, @Valid Candidate candidate, BindingResult result, Model model) {
         if (result.hasErrors()) {
 //            user.setId(id);
             candidate.setId(id);
             return "popup-infoCandidateUpdate";
         }
+        System.out.println(candidate);
+        System.out.println(candidate.getUser());
 //        userRepository.save(user);
         candidateRepository.save(candidate);
 

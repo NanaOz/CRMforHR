@@ -16,6 +16,11 @@
             <div class="popup_title">Редактирование</div>
             <div class="row">
                 <div>
+                    <label for="userId"></label>
+                    <input type="hidden" th:field="*{user.id}" class="form-control" id="userId" placeholder="userId">
+                    <!--                    <span th:if="${#fields.hasErrors('surname')}" th:errors="*{surname}" class="text-danger"></span>-->
+                </div>
+                <div>
                     <label for="surname">Фамилия</label>
                     <input type="text" th:field="*{user.surname}" class="form-control" id="surname" placeholder="surname">
 <!--                    <span th:if="${#fields.hasErrors('surname')}" th:errors="*{surname}" class="text-danger"></span>-->
