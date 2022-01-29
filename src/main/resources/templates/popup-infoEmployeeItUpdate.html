@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<form action="#" th:action="@{/update/{id}(id=${candidate.id})}" th:object="${candidate}" method="post">
-    <!--<form action="#" th:action="@{/emailokcand/{id}(id=${candidate.id})}" th:object="${candidate.user}" method="post">-->
-
+<form action="#" th:action="@{/employeeit/update/{id}(id=${employeeit.id})}" th:object="${employeeit}" method="post">
     <head>
         <meta charset="UTF-8">
         <meta username="viewport" content="width=device-width, initial-scale=1">
@@ -13,52 +11,62 @@
     <div class="popup_body">
         <div class="popup_content">
             <a href="/closex" class="popup_close close-popup">X</a>
-            <div class="popup_title">Редактирование</div>
+            <div class="popup_title">Редактировать информацию</div>
             <div class="row">
                 <div>
                     <label for="userId"></label>
-                    <input type="hidden" th:field="*{user.id}" class="form-control" id="userId" placeholder="userId">
+                    <input type="hidden" th:field="*{employee.user.id}" class="form-control" id="userId"
+                           placeholder="userId">
                     <!--                    <span th:if="${#fields.hasErrors('surname')}" th:errors="*{surname}" class="text-danger"></span>-->
                 </div>
                 <div>
                     <label for="surname">Фамилия</label>
-                    <input type="text" th:field="*{user.surname}" class="form-control" id="surname"
+                    <input type="text" th:field="*{employee.user.surname}" class="form-control" id="surname"
                            placeholder="surname">
                     <!--                    <span th:if="${#fields.hasErrors('surname')}" th:errors="*{surname}" class="text-danger"></span>-->
                 </div>
                 <div>
                     <label for="username">Имя</label>
-                    <input type="text" th:field="*{user.username}" class="form-control" id="username"
+                    <input type="text" th:field="*{employee.user.username}" class="form-control" id="username"
                            placeholder="username">
                     <!--                    <span th:if="${#fields.hasErrors('username')}" th:errors="*{username}" class="text-danger"></span>-->
                 </div>
                 <div>
                     <label for="fathersName">Отчество</label>
-                    <input type="text" th:field="*{user.fathersName}" class="form-control" id="fathersName"
+                    <input type="text" th:field="*{employee.user.fathersName}" class="form-control" id="fathersName"
                            placeholder="fathersName">
                     <!--                    <span th:if="${#fields.hasErrors('fathersName')}" th:errors="*{fathersName}" class="text-danger"></span>-->
                 </div>
                 <div>
                     <label for="email">Почта</label>
-                    <input type="text" th:field="*{user.email}" class="form-control" id="email" placeholder="email">
+                    <input type="text" th:field="*{employee.user.email}" class="form-control" id="email"
+                           placeholder="email">
                     <!--                    <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="text-danger"></span>-->
                 </div>
                 <div>
                     <label for="phone">Телефон</label>
-                    <input type="text" th:field="*{user.phone}" class="form-control" id="phone" placeholder="phone">
+                    <input type="text" th:field="*{employee.user.phone}" class="form-control" id="phone"
+                           placeholder="phone">
                     <!--                    <span th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}" class="text-danger"></span>-->
                 </div>
                 <div>
                     <label for="post">Должность</label>
-                    <input type="text" th:field="*{post}" class="form-control" id="post" placeholder="post">
+                    <input type="text" th:field="*{employee.post.name}" class="form-control" id="post"
+                           placeholder="post">
                     <!--                    <span th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}" class="text-danger"></span>-->
                 </div>
                 <div>
                     <label for="status">Статус</label>
-                    <input type="text" th:field="*{status}" class="form-control" id="status" placeholder="status">
+                    <input type="text" th:field="*{employee.status.name}" class="form-control" id="status"
+                           placeholder="status">
                     <!--                    <span th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}" class="text-danger"></span>-->
                 </div>
-
+                <div>
+                    <label for="project">Проект:</label>
+                    <input type="text" th:field="*{project.projectName}" class="form-control" id="project"
+                           placeholder="project">
+                    <!--                    <span th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}" class="text-danger"></span>-->
+                </div>
             </div>
             <div class="row">
                 <div>
@@ -69,7 +77,7 @@
             <div class="table_and_search">
                 <table class="table_info_tag">
                     <tbody>
-                    <tr th:each="tag:${candidate.tags}">
+                    <tr th:each="tag:${employeeit.tags}">
                         <td th:text="${tag.name}"></td>
                     </tbody>
                 </table>
@@ -91,5 +99,4 @@
     <script src="/popup.js/"></script>
     </body>
 </form>
-
 </html>

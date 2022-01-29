@@ -8,7 +8,6 @@
         <title>ИНФО</title>
     </head>
     <body>
-    <!--    <div id="popup_3" class="popup">-->
     <div class="popup_body">
         <div class="popup_content">
             <a href="/close" class="popup_close close-popup">X</a>
@@ -22,7 +21,6 @@
                     <td>
                         <span th:text="${employeehr.employee.id}">ID:</span>
                     </td>
-                    <td></td>
                 </tr>
                 <tr>
                     <td>
@@ -31,7 +29,6 @@
                     <td>
                         <span th:text="${employeehr.employee.user.surname}"></span>
                     </td>
-                    <td></td>
                 </tr>
                 <tr>
                     <td>
@@ -40,7 +37,6 @@
                     <td>
                         <span th:text="${employeehr.employee.user.username}"></span>
                     </td>
-                    <td></td>
                 </tr>
                 <tr>
                     <td>
@@ -49,7 +45,6 @@
                     <td>
                         <span th:text="${employeehr.employee.user.fathersName}"></span>
                     </td>
-                    <td></td>
                 </tr>
                 <tr>
                     <td>
@@ -57,13 +52,6 @@
                     </td>
                     <td>
                         <span th:text="${employeehr.employee.user.email}"></span>
-                    </td>
-                    <td>
-                        <div class="text-field_group">
-                            <input class="edit_file" type="text" id="email" placeholder="редактировать email">
-                            <button class="text-field_btn" type="button"><a class="not_line_href" href="/emailok">ок</a>
-                            </button>
-                        </div>
                     </td>
                 </tr>
                 <tr>
@@ -73,17 +61,7 @@
                     <td>
                         <span th:text="${employeehr.employee.post.name}"></span>
                     </td>
-                    <td></td>
                 </tr>
-<!--                <tr>-->
-<!--                    <td>-->
-<!--                        <label>Проект:</label>-->
-<!--                    </td>-->
-<!--                    <td>-->
-<!--                        <span th:text="${employee.project.projectName}"></span>-->
-<!--                    </td>-->
-<!--                    <td></td>-->
-<!--                </tr>-->
                 <tr>
                     <td>
                         <label>Телефон:</label>
@@ -91,45 +69,14 @@
                     <td>
                         <span th:text="${employeehr.employee.user.phone}"></span>
                     </td>
-                    <td>
-                        <div class="text-field_group">
-                            <input class="edit_file" type="text" id="phone" placeholder="редактировать номер">
-                            <button class="text-field_btn" type="button"><a class="not_line_href" href="/phoneok">ок</a>
-                            </button>
-                        </div>
-                    </td>
                 </tr>
-<!--                <td>-->
-<!--                    <label>Тэги:</label>-->
-<!--                </td>-->
-<!--                <td></td>-->
-<!--                <td>-->
-<!--                </td>-->
-<!--                </tr>-->
                 </tbody>
             </table>
-
-<!--            <div class="table_and_search">-->
-<!--                <table class="table_info_tag">-->
-<!--                    <tbody>-->
-<!--                    <tr th:each="tag:${employee.tags}">-->
-<!--                        <td th:text="${tag.tag}"></td>-->
-<!--                    </tr>-->
-<!--                    </tbody>-->
-<!--                </table>-->
-
-<!--                <div class="search">-->
-<!--                    <label for="tagemp">Добавить теги:</label>-->
-<!--                    <select type="text" id="tagemp" class="popup_field" required autocomplete="off">-->
-<!--                        <option-->
-<!--                                th:each="tag:${tags}"-->
-<!--                                th:text="${tag.tag}">-->
-<!--                        </option>-->
-<!--                    </select>-->
-<!--                    <button class="text-field_btn" type="submit"><a class="not_line_href"-->
-<!--                                                                    href="/addtagcand">добавить</a></button>-->
-<!--                </div>-->
-<!--            </div>-->
+            <div>
+                <button class="text-field_btn" type="button"><a th:href="'/employeehr/edit/'+${employeehr.id}" class="not_line_href"
+                                                                href="/phoneokcand">редактировать информацию</a>
+                </button>
+            </div>
         </div>
     </div>
     </div>
