@@ -37,7 +37,7 @@
                                     <td th:text="${candidate.id}"></td>
                                     <td th:text="${candidate.user.surname} + ' ' + ${candidate.user.username} + ' ' + ${candidate.user.fathersName}"></td>
                                     <td th:text="${candidate.status.name}"></td>
-                                    <td th:text="${candidate.post.post}"></td>
+                                    <td th:text="${candidate.post.name}"></td>
                                     <td><a th:href="'/create/'+ ${candidate.id}"
                                            class="border-button">CandidateToEmployee</a></td>
                                     <td><a th:href="'/infocand/'+ ${candidate.id}"

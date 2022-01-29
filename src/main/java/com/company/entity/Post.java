@@ -1,12 +1,7 @@
 package com.company.entity;
 
-
 import org.hibernate.annotations.Type;
-
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
 
 @Entity
 @Table(name = "Post")
@@ -19,22 +14,11 @@ public class Post {
 
     @Lob @Type(type = "org.hibernate.type.TextType")
     @Column(name = "Post", nullable = false)
-    private String post;
+    private String name;
 
-//    @Getter
-//    @Setter
-//    @OneToMany(fetch = FetchType.EAGER, mappedBy = "post")
-//    private Collection<Employee> employeeColl;
+    public String getName() {return name;}
 
-
-
-    public String getPost() {
-        return post;
-    }
-
-    public void setPost(String post) {
-        this.post = post;
-    }
+    public void setName(String name) {this.name = name;}
 
     public Long getId() {
         return id;
@@ -43,16 +27,6 @@ public class Post {
     public void setId(Long id) {
         this.id = id;
     }
-    //    @Override
-//    public boolean equals(Object o) {
-//        if (this == o) return true;
-//        if (o == null || getClass() != o.getClass()) return false;
-//        Post post1 = (Post) o;
-//        return id == post1.id && Objects.equals(post, post1.post);
-//    }
-//
-//    @Override
-//    public int hashCode() {
-//        return Objects.hash(id, post);
-//    }
+
+
 }

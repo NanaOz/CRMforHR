@@ -39,7 +39,7 @@
                                             <td th:text="${employeeit.id}"></td>
                                             <td th:text="${employeeit.employee.user.surname} + ' ' + ${employeeit.employee.user.username} + ' ' + ${employeeit.employee.user.fathersName}"></td>
                                             <td th:text="${employeeit.employee.status.name}"></td>
-                                            <td th:text="${employeeit.employee.post.post}"></td>
+                                            <td th:text="${employeeit.employee.post.name}"></td>
                                             <td th:text="${employeeit.project.projectName}"></td>
                                             <td><a th:href="'/info/employeeit/'+ ${employeeit.id}" class="tabs_info_user tabs_info_user">ИНФО</a></td>
 <!--                                           <td><div th:insert="popups/popup-infoIT :: popup-infoIT"></div></td>-->
@@ -49,7 +49,7 @@
                                             <td th:text="${employeehr.id}"></td>
                                             <td th:text="${employeehr.employee.user.surname} + ' ' + ${employeehr.employee.user.username} + ' ' + ${employeehr.employee.user.fathersName}"></td>
                                             <td th:text="${employeehr.employee.status.name}"></td>
-                                            <td th:text="${employeehr.employee.post.post}"></td>
+                                            <td th:text="${employeehr.employee.post.name}"></td>
                                             <td></td>
                                             <td><a th:href="'/info/employeehr/'+ ${employeehr.id}" class="tabs_info_user tabs_info_user">ИНФО</a></td>
 <!--                                            <td><div th:insert="popups/popup-infoHR :: popup-infoHR"></div></td>-->
