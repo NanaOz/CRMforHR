@@ -24,9 +24,6 @@ public class User {
     @Column(name = "email")
     private String email;
 
-
-
-
     @Lob @Type(type = "org.hibernate.type.TextType")
     @Column(name = "phone")
     private String phone;

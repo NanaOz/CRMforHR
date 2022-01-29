@@ -56,14 +56,36 @@
                     <input type="text" th:field="*{status}" class="form-control" id="status" placeholder="status">
                     <!--                    <span th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}" class="text-danger"></span>-->
                 </div>
+
             </div>
             <div class="row">
                 <div>
                     <input type="submit" class="text-field_btn" value="Обновить информацию">
                 </div>
             </div>
+
+            <div class="table_and_search">
+                <table class="table_info_tag">
+                    <tbody>
+                    <tr th:each="tag:${candidate.tags}">
+                        <td th:text="${tag.name}"></td>
+                    </tbody>
+                </table>
+
+                <div class="search">
+                    <label for="tagcand">Добавить теги:</label>
+                    <select type="text" id="tagcand" class="popup_field" required autocomplete="off">
+                        <option
+                                th:each="tag:${tags}"
+                                th:text="${tag.name}">
+                        </option>
+                    </select>
+                    <button class="text-field_btn" type="submit"><a class="not_line_href" href="/addtagcand">добавить</a></button>
+                </div>
         </div>
     </div>
+
+
     <script src="/popup.js/"></script>
     </body>
 </form>

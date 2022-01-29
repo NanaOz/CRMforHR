@@ -31,11 +31,6 @@ public class CandidateController {
         this.userRepository = userRepository;
     }
 
-//    @GetMapping("/candidate")
-//    public String homePage(){
-//        return "candidate";
-//    }
-
     @GetMapping("/candidate")
     public String showCandidateList(Model model) {
         model.addAttribute("candidates", candidateRepository.findAll());
@@ -55,11 +50,14 @@ public class CandidateController {
         System.out.println(candidate.getUser());
         model.addAttribute("candidate", candidate);
         model.addAttribute("user", user);
+        model.addAttribute("tags", tagRepository.findAll());
 
         return "popup-infoCandidateUpdate";
     }
+
     @PostMapping("/update/{id}")
     public String updateUser(@PathVariable("id") long id, @Valid Candidate candidate, BindingResult result, Model model) {
+
         if (result.hasErrors()) {
 //            user.setId(id);
             candidate.setId(id);
@@ -73,13 +71,13 @@ public class CandidateController {
         return "redirect:/candidate#tab_candidate";
     }
 
-//    @GetMapping("/infocand/{id}")
-//    public String showInfoForm(@PathVariable("id") long id, Model model) {
-//        Candidate candidate = candidateRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid user Id:" + id));
-//        model.addAttribute("candidate", candidate);
-//        model.addAttribute("tags", tagRepository.findAll());
-//        return "popup-infoCandidateUpdate";
-//    }
+    @GetMapping("/infocand/{id}")
+    public String showInfoForm(@PathVariable("id") long id, Model model) {
+        Candidate candidate = candidateRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid user Id:" + id));
+        model.addAttribute("candidate", candidate);
+        model.addAttribute("tags", tagRepository.findAll());
+        return "popup-infoCandidate";
+    }
 //        @PostMapping("/emailokcand/{id}")
 //    public String updateUser(@PathVariable("id") long id, @Valid Candidate candidate, @Valid User user, BindingResult result, Model model) {
 //        if (result.hasErrors()) {
