@@ -93,7 +93,10 @@ public class TeamController {
 
     //TODO доделать контроллер данные из чекбоксов
     @PostMapping("/searchteam")
-    public String inputData(@RequestParam("idChecked") List<String> tags){
+    public String inputData(@RequestParam("idChecked") List<String> tags, Model model){
+        model.addAttribute("tags", tagRepository.findAll());
+        model.addAttribute("statususer", statusRepository.findAll());
+        model.addAttribute("postname", postRepository.findAll());
 
         if(tags != null){
             for(String tagStr : tags){

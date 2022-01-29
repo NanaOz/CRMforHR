@@ -44,7 +44,7 @@
                                         <div th:switch="${postname}" class="checkbox-group">
                         <span th:each="post : ${postname}">
             <p><input type="checkbox" id="post" name="idChecked" value="post">
-            <label for="post"><i th:text="${post.post}"></i></label></p>
+            <label for="post"><i th:text="${post.name}"></i></label></p>
                         </span>
                                         </div>
                                     </div>
