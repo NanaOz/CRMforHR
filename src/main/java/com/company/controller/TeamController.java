@@ -51,13 +51,13 @@ public class TeamController {
         return "redirect:/team#tab_team";
     }
 
-    @GetMapping("/edit/{id}")
-    public String showUpdateForm(@PathVariable("id") long id, Model model) {
-        Tag tag = tagRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid user Id:" + id));
-        model.addAttribute("tag", tag);
-
-        return "popup-refreshTag";
-    }
+//    @GetMapping("/edit/{id}")
+//    public String showUpdateForm(@PathVariable("id") long id, Model model) {
+//        Tag tag = tagRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid user Id:" + id));
+//        model.addAttribute("tag", tag);
+//
+//        return "popup-refreshTag";
+//    }
 
     @PostMapping("/refresh/{id}")
     public String refreshTag(@PathVariable("id") long id, @Valid Tag tag, BindingResult result, Model model) {
@@ -94,9 +94,9 @@ public class TeamController {
     //TODO доделать контроллер данные из чекбоксов
     @PostMapping("/searchteam")
     public String inputData(@RequestParam("idChecked") List<String> tags, Model model){
-        model.addAttribute("tags", tagRepository.findAll());
-        model.addAttribute("statususer", statusRepository.findAll());
-        model.addAttribute("postname", postRepository.findAll());
+//        model.addAttribute("tags", tagRepository.findAll());
+//        model.addAttribute("statususer", statusRepository.findAll());
+//        model.addAttribute("postname", postRepository.findAll());
 
         if(tags != null){
             for(String tagStr : tags){

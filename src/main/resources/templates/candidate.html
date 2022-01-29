@@ -29,6 +29,7 @@
                                     <th onclick="sortTableCandidate(3)">Претендуемая должность</th>
                                     <th></th>
                                     <th></th>
+                                    <th></th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -41,6 +42,7 @@
                                            class="border-button">CandidateToEmployee</a></td>
                                     <td><a th:href="'/infocand/'+ ${candidate.id}"
                                            class="tabs_info_user tabs_info_user">ИНФО</a></td>
+                                    <td><a th:href="'/edit/'+${candidate.user.id}" class="tabs_info_user tabs_info_user">ред</a></td>
                                 </tr>
                                 </tbody>
                             </table>
