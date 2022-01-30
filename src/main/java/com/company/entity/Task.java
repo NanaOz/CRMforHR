@@ -103,6 +103,10 @@ public class Task {
         this.id = id;
     }
 
+    public boolean isSelectedStatus(StatusTask status){
+        return statusTask.getId().equals(status.getId());
+    }
+
 //
 //    @Id
 //    @GeneratedValue(strategy = GenerationType.IDENTITY)

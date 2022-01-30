@@ -40,7 +40,7 @@ public class TaskController {
         model.addAttribute("employeesIt", employeeITRepository.findAll());
         model.addAttribute("employeesHr", employeeHrRepository.findAll());
         model.addAttribute("users", userRepository.findAll());
-        model.addAttribute("statustask", statusTaskRepository.findAll());
+        model.addAttribute("taskStatuses", statusTaskRepository.findAll());
         return "task";
     }
 
@@ -48,7 +48,7 @@ public class TaskController {
     public String showInfoForm(@PathVariable("id") long id, Model model) {
         Task task = taskRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid user Id:" + id));
         model.addAttribute("task", task);
-        model.addAttribute("statustask", statusTaskRepository.findAll());
+        model.addAttribute("taskStatuses", statusTaskRepository.findAll());
         return "popup-infoTask";
     }
 

@@ -11,7 +11,7 @@ public class Candidate {
     @Id
     private Long id;
 
-    @OneToOne(optional = false, cascade = CascadeType.ALL)
+    @OneToOne(optional = false, cascade = CascadeType.ALL, fetch=FetchType.EAGER)
     @MapsId
     @JoinColumn(name = "id")
     private User user;

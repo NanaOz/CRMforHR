@@ -52,9 +52,9 @@ public class CandidateController {
     public String showUpdateForm(@PathVariable("id") long id, Model model) {
         Candidate candidate = candidateRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid user Id:" + id));
         User user = userRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid user Id:" + id));
-        System.out.println(candidate.getUser());
+        System.out.println(candidate);
         model.addAttribute("candidate", candidate);
-        model.addAttribute("user", user);
+       // model.addAttribute("user", user);
 
         return "popup-infoCandidateUpdate";
     }
