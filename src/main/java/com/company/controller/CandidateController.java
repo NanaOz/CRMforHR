@@ -52,9 +52,10 @@ public class CandidateController {
     public String showUpdateForm(@PathVariable("id") long id, Model model) {
         Candidate candidate = candidateRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid user Id:" + id));
         User user = userRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid user Id:" + id));
-        System.out.println(candidate);
+        System.out.println(candidate.getUser());
         model.addAttribute("candidate", candidate);
-       // model.addAttribute("user", user);
+        //model.addAttribute("user", user);
+        model.addAttribute("tags", tagRepository.findAll());
 
         return "popup-infoCandidateUpdate";
     }
@@ -73,13 +74,13 @@ public class CandidateController {
         return "redirect:/candidate#tab_candidate";
     }
 
-//    @GetMapping("/infocand/{id}")
-//    public String showInfoForm(@PathVariable("id") long id, Model model) {
-//        Candidate candidate = candidateRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid user Id:" + id));
-//        model.addAttribute("candidate", candidate);
-//        model.addAttribute("tags", tagRepository.findAll());
-//        return "popup-infoCandidateUpdate";
-//    }
+    @GetMapping("/infocand/{id}")
+    public String showInfoForm(@PathVariable("id") long id, Model model) {
+        Candidate candidate = candidateRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid user Id:" + id));
+        model.addAttribute("candidate", candidate);
+        model.addAttribute("tags", tagRepository.findAll());
+        return "popup-infoCandidate";
+    }
 //        @PostMapping("/emailokcand/{id}")
 //    public String updateUser(@PathVariable("id") long id, @Valid Candidate candidate, @Valid User user, BindingResult result, Model model) {
 //        if (result.hasErrors()) {
