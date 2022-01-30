@@ -25,14 +25,13 @@ public class Task {
     @JoinColumn(name = "lid_id")
     private User lid;
 
-
     @ManyToOne(optional = false, cascade = CascadeType.ALL)
     @JoinColumn(name = "status_id")
     private StatusTask statusTask;
-//    @Lob @Type(type = "org.hibernate.type.DateType")
+    //    @Lob @Type(type = "org.hibernate.type.DateType")
     @Column(name = "date_deadline", nullable = false)
     private LocalDate dateDeadline;
-//    @Lob @Type(type = "org.hibernate.type.DateType")
+    //    @Lob @Type(type = "org.hibernate.type.DateType")
     @Column(name = "date_actual_completion")
     private LocalDate dateActualCompletion;
 
@@ -88,7 +87,7 @@ public class Task {
         this.task = task;
     }
 
-     public LocalDate getDateCreation() {
+    public LocalDate getDateCreation() {
         return dateCreation;
     }
 
@@ -102,6 +101,10 @@ public class Task {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public boolean isSelectedStatus(StatusTask status){
+        return statusTask.getId().equals(status.getId());
     }
 
 //

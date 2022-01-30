@@ -11,7 +11,7 @@ public class Candidate {
     @Id
     private Long id;
 
-    @OneToOne(optional = false, cascade = CascadeType.ALL)
+    @OneToOne(optional = false, cascade = CascadeType.ALL, fetch=FetchType.EAGER)
     @MapsId
     @JoinColumn(name = "id")
     private User user;
@@ -75,6 +75,12 @@ public class Candidate {
         this.id = id;
     }
 
+    public boolean isSelectedStatus(Status status){
+        return status.getId().equals(status.getId());
+    }
+    public boolean isSelectedPost(Post post){
+        return post.getId().equals(post.getId());
+    }
     @Override
     public String toString() {
         return "Candidate{" +
@@ -84,7 +90,7 @@ public class Candidate {
                 ", post=" + post +
                 '}';
     }
-        @Override
+    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;

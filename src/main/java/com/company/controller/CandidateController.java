@@ -1,8 +1,6 @@
 package com.company.controller;
 
-import com.company.entity.Candidate;
-import com.company.entity.Employee;
-import com.company.entity.User;
+import com.company.entity.*;
 import com.company.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,8 +9,10 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.validation.Valid;
+import javax.websocket.server.PathParam;
 
 @Controller
 public class CandidateController {
@@ -21,14 +21,16 @@ public class CandidateController {
     private final StatusRepository statusRepository;
     private final TagRepository tagRepository;
     private final UserRepository userRepository;
+    private final PostRepository postRepository;
 
     @Autowired
-    public CandidateController(CandidateRepository candidateRepository, EmployeeRepository employeeRepository, StatusRepository statusRepository, TagRepository tagRepository, UserRepository userRepository) {
+    public CandidateController(CandidateRepository candidateRepository, EmployeeRepository employeeRepository, StatusRepository statusRepository, TagRepository tagRepository, UserRepository userRepository, PostRepository postRepository) {
         this.candidateRepository = candidateRepository;
         this.employeeRepository = employeeRepository;
         this.statusRepository = statusRepository;
         this.tagRepository = tagRepository;
         this.userRepository = userRepository;
+        this.postRepository = postRepository;
     }
 
 //    @GetMapping("/candidate")
@@ -52,31 +54,37 @@ public class CandidateController {
     public String showUpdateForm(@PathVariable("id") long id, Model model) {
         Candidate candidate = candidateRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid user Id:" + id));
         User user = userRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid user Id:" + id));
+        System.out.println(candidate);
         model.addAttribute("candidate", candidate);
-        model.addAttribute("user", user);
+        // model.addAttribute("user", user);
+        model.addAttribute("statuses", statusRepository.findAll());
+        model.addAttribute("postes", postRepository.findAll());
 
         return "popup-infoCandidateUpdate";
     }
     @PostMapping("/update/{id}")
-    public String updateUser(@PathVariable("id") long id, @Valid Candidate candidate, @Valid User user, BindingResult result, Model model) {
+    public String update(@PathVariable("id") long id,  @Valid Candidate candidate, BindingResult result, Model model) {
         if (result.hasErrors()) {
-            user.setId(id);
-//            candidate.setId(id);
+//            user.setId(id);
+            candidate.setId(id);
             return "popup-infoCandidateUpdate";
         }
-        userRepository.save(user);
-//        candidateRepository.save(candidate);
+//        System.out.println(candidate);
+//        System.out.println(candidate.getUser());
+//        userRepository.save(user);
+
+        candidateRepository.save(candidate);
 
         return "redirect:/candidate#tab_candidate";
     }
 
-//    @GetMapping("/infocand/{id}")
-//    public String showInfoForm(@PathVariable("id") long id, Model model) {
-//        Candidate candidate = candidateRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid user Id:" + id));
-//        model.addAttribute("candidate", candidate);
-//        model.addAttribute("tags", tagRepository.findAll());
-//        return "popup-infoCandidate";
-//    }
+    @GetMapping("/infocand/{id}")
+    public String showInfoForm(@PathVariable("id") long id, Model model) {
+        Candidate candidate = candidateRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid user Id:" + id));
+        model.addAttribute("candidate", candidate);
+        model.addAttribute("tags", tagRepository.findAll());
+        return "popup-infoCandidate";
+    }
 
     //TODO ДОДЕЛАТЬ контроллер на редактирование телефона
 //    @PostMapping("/phoneokcand")
@@ -121,10 +129,10 @@ public class CandidateController {
 //        return "redirect:/candidate#tab_candidate";
 //    }
 
-        @GetMapping("/create/{id}")
-        public String addUser(@PathVariable("id") long id,  Model model) {
+    @GetMapping("/create/{id}")
+    public String addUser(@PathVariable("id") long id,  Model model) {
         System.out.println("BRGINOFADDING");
-            System.out.println(id);
+        System.out.println(id);
 
         Candidate candidate = candidateRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid candidate Id:" + id));
         Employee employee = new Employee();
