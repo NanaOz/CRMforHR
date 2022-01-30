@@ -25,7 +25,6 @@ public class Task {
     @JoinColumn(name = "lid_id")
     private User lid;
 
-
     @ManyToOne(optional = false, cascade = CascadeType.ALL)
     @JoinColumn(name = "status_id")
     private StatusTask statusTask;
