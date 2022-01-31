@@ -10,11 +10,11 @@ public class EmployeeITTag {
     @Column(name = "id", nullable = false)
     private Long id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(optional = false, cascade = CascadeType.REFRESH)
     @JoinColumn(name = "employee_it_id", nullable = false)
     private EmployeeIT employeeIT;
 
-    @ManyToOne(optional = false, cascade = CascadeType.ALL)
+    @ManyToOne(optional = false, cascade = CascadeType.REFRESH)
     @JoinColumn(name = "tag_id", nullable = false)
     private Tag tag;
 

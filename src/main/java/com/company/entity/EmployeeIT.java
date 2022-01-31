@@ -23,20 +23,8 @@ public class EmployeeIT {
     @JoinColumn(name = "id")
     private Employee employee;
 
-    @ManyToMany(cascade = {CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH}, fetch = FetchType.EAGER)
-    @JoinTable(name = "employee_it_tag",
-            joinColumns = @JoinColumn(name = "employee_it_id"),
-            inverseJoinColumns = @JoinColumn(name = "tag_id")
-    )
-    private List<Tag> tags;
-
-    public List<Tag> getTags() {
-        return tags;
-    }
-
-    public void setTags(List<Tag> tags) {
-        this.tags = tags;
-    }
+    @OneToMany(mappedBy = "employeeIT", cascade = CascadeType.REFRESH, fetch = FetchType.EAGER)
+    private List<EmployeeITTag> employeeITTags;
 
     public Long getId() {return id;}
     public void setId(Long id) {this.id = id;}
@@ -51,17 +39,28 @@ public class EmployeeIT {
         this.project = project;
     }
 
+    public List<EmployeeITTag> getEmployeeITTags() {
+        return employeeITTags;
+    }
 
-//    @OneToMany(mappedBy = "employeeIT", cascade = CascadeType.ALL, orphanRemoval = true)
+    public void setEmployeeITTags(List<EmployeeITTag> employeeITTags) {
+        this.employeeITTags = employeeITTags;
+    }
+
+//    @ManyToMany(cascade = {CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH}, fetch = FetchType.EAGER)
+//    @JoinTable(name = "employee_it_tag",
+//            joinColumns = @JoinColumn(name = "employee_it_id"),
+//            inverseJoinColumns = @JoinColumn(name = "tag_id")
+//    )
+//    private List<Tag> tags;
 //
-//    private Collection<EmployeeITTag> employeeITTags = new ArrayList<>();
-//
-//    public Collection<EmployeeITTag> getEmployeeITTags() {
-//        return employeeITTags;
+//    public List<Tag> getTags() {
+//        return tags;
 //    }
 //
-//    public void setEmployeeITTags(Collection<EmployeeITTag> employeeITTags) {
-//        this.employeeITTags = employeeITTags;
+//    public void setTags(List<Tag> tags) {
+//        this.tags = tags;
 //    }
-//
+
+
 }

@@ -11,35 +11,22 @@ public class Candidate {
     @Id
     private Long id;
 
-    @OneToOne(optional = false, cascade = CascadeType.ALL, fetch=FetchType.EAGER)
+    @OneToOne(optional = false, cascade = CascadeType.REFRESH, fetch=FetchType.EAGER)
     @MapsId
     @JoinColumn(name = "id")
     private User user;
 
-    @ManyToOne(optional = false, cascade = CascadeType.ALL)
+    @ManyToOne(optional = false, cascade = CascadeType.REFRESH)
     @JoinColumn(name = "status_id")
     private Status status;
 
-    @ManyToOne(optional = false, cascade = CascadeType.ALL)
+    @ManyToOne(optional = false, cascade = CascadeType.REFRESH)
     @JoinColumn(name = "post_id")
     private Post post;
 
 
-
-    @ManyToMany(cascade = {CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH}, fetch = FetchType.EAGER)
-    @JoinTable(name = "candidate_tag",
-            joinColumns = @JoinColumn(name = "candidate_id"),
-            inverseJoinColumns = @JoinColumn(name = "tag_id")
-    )
-    private List<Tag> tags;
-
-    public List<Tag> getTags() {
-        return tags;
-    }
-
-    public void setTags(List<Tag> tags) {
-        this.tags = tags;
-    }
+    @OneToMany(mappedBy = "candidate", cascade = CascadeType.REFRESH, fetch = FetchType.EAGER)
+    private List<CandidateTag> candidateTag;
 
     public Candidate () {}
 
@@ -76,10 +63,10 @@ public class Candidate {
     }
 
     public boolean isSelectedStatus(Status status){
-        return status.getId().equals(status.getId());
+        return this.status.getId().equals(status.getId());
     }
     public boolean isSelectedPost(Post post){
-        return post.getId().equals(post.getId());
+        return this.post.getId().equals(post.getId());
     }
     @Override
     public String toString() {
@@ -102,34 +89,28 @@ public class Candidate {
     public int hashCode() {
         return Objects.hash(id);
     }
+
+    public List<CandidateTag> getCandidateTag() {
+        return candidateTag;
+    }
+
+    public void setCandidateTag(List<CandidateTag> candidateTag) {
+        this.candidateTag = candidateTag;
+    }
 //
-//    @ManyToOne
-//    @JoinColumn(name = "User_Id", referencedColumnName = "id", nullable = false)
-//    public User getUsersByUserId() {
-//        return usersByUserId;
+//    @ManyToMany(cascade = {CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH}, fetch = FetchType.EAGER)
+//    @JoinTable(name = "candidate_tag",
+//            joinColumns = @JoinColumn(name = "candidate_id"),
+//            inverseJoinColumns = @JoinColumn(name = "tag_id")
+//    )
+//    private List<Tag> tags;
+//
+//    public List<Tag> getTags() {
+//        return tags;
 //    }
 //
-//    public void setUsersByUserId(User usersByUserId) {
-//        this.usersByUserId = usersByUserId;
+//    public void setTags(List<Tag> tags) {
+//        this.tags = tags;
 //    }
-//
-//    @ManyToOne
-//    @JoinColumn(name = "Status_id", referencedColumnName = "Id")
-//    public StatusRepository getStatusByStatusId() {
-//        return statusByStatusId;
-//    }
-//
-//    public void setStatusByStatusId(StatusRepository statusByStatusId) {
-//        this.statusByStatusId = statusByStatusId;
-//    }
-//
-//    @ManyToOne
-//    @JoinColumn(name = "Post_id", referencedColumnName = "Id")
-//    public PostRepository getPostByPostId() {
-//        return postByPostId;
-//    }
-//
-//    public void setPostByPostId(PostRepository postByPostId) {
-//        this.postByPostId = postByPostId;
-//    }
+
 }
