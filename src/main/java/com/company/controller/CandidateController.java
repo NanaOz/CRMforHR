@@ -21,14 +21,16 @@ public class CandidateController {
     private final StatusRepository statusRepository;
     private final TagRepository tagRepository;
     private final UserRepository userRepository;
+    private final PostRepository postRepository;
 
     @Autowired
-    public CandidateController(CandidateRepository candidateRepository, EmployeeRepository employeeRepository, StatusRepository statusRepository, TagRepository tagRepository, UserRepository userRepository) {
+    public CandidateController(CandidateRepository candidateRepository, EmployeeRepository employeeRepository, StatusRepository statusRepository, TagRepository tagRepository, UserRepository userRepository, PostRepository postRepository) {
         this.candidateRepository = candidateRepository;
         this.employeeRepository = employeeRepository;
         this.statusRepository = statusRepository;
         this.tagRepository = tagRepository;
         this.userRepository = userRepository;
+        this.postRepository = postRepository;
     }
 
 //    @GetMapping("/candidate")
@@ -55,17 +57,23 @@ public class CandidateController {
         System.out.println(candidate.getUser());
         model.addAttribute("candidate", candidate);
         //model.addAttribute("user", user);
+        model.addAttribute("statuses", statusRepository.findAll());
+        model.addAttribute("postes", postRepository.findAll());
         model.addAttribute("tags", tagRepository.findAll());
 
         return "popup-infoCandidateUpdate";
     }
     @PostMapping("/update/{id}")
     public String updateUser(@PathVariable("id") long id, @Valid Candidate candidate, BindingResult result, Model model) {
-        if (result.hasErrors()) {
+        System.out.println(candidate.getStatus().getName());
+        System.out.println(candidate.getPost().getName());
+       // candidate.setStatus(statusRepository.findById(candidate.getStatus().getId()));
+        //candidate.setPost(postRepository.findById(candidate.getPost().getId()));
+       /* if (result.hasErrors()) {
 //            user.setId(id);
             candidate.setId(id);
             return "popup-infoCandidateUpdate";
-        }
+        }*/
         System.out.println(candidate);
         System.out.println(candidate.getUser());
 //        userRepository.save(user);
@@ -149,6 +157,7 @@ public class CandidateController {
         employee.setUser(candidate.getUser());
         employee.setPost(candidate.getPost());
         employee.setStatus(statusRepository.findByName("Работает"));
+        employee.setId(candidate.getId());
 
         candidateRepository.delete(candidate);
         employeeRepository.save(employee);

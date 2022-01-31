@@ -64,12 +64,31 @@
 <script src="/popup.js/"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script type="text/javascript">
-    $(function updateDateForId() {
-        console.log(this);
+    $(document).ready(function() {
+        $(".form-control").change(function () {
+            var id = $(this).attr("id");
+            let strNewId = id.substring(id.indexOf("statusTask") + "statusTask".length, id.length);
+            id = "#" + 'dateActualCompletion' + strNewId;
+            $(id).text(Date());
+          /*  $.post($(this).attr('action'), $(this).find('input').serialize(), function() {
+                $('.form2 input[type="text"]').val('').focus(); // опционально
+                alert('Successfully saved');
+            });*/
+           /* $.post( "test.html", function( data ) {
+                alert( "Data Loaded: " + data );
+            });
+            $.post("test.html", function(data)){
+                alert("DataLoaded: "+ data);
+            });
+            $("#button-id").click(function(){
+                var url = $("#button-id").data("url");
+                $.get(url , function(result) {
+                    //do something with the result if you ever need to
+                });
+            });
+            return false;*/
+        })
     });
-    $( ".form-control" ).change(function() {
-        var id = $(this).attr("id");
-        alert(id);
-    });
+
 </script>
 </html>

@@ -36,7 +36,8 @@
                                         </thead>
                                         <tbody>
                                         <tr th:each="employeeit:${employeesIt}">
-                                            <td th:text="${employeeit.id}"></td>
+                                            <td><a th:href="'/info/employeeit/'+ ${employeeit.id}"><i th:text="${employeeit.id}"/></a></td>
+                                            <td th:text="${employeeit.id}" th:href="'/info/employeeit/'+ ${employeeit.id}"></td>
                                             <td th:text="${employeeit.employee.user.surname} + ' ' + ${employeeit.employee.user.username} + ' ' + ${employeeit.employee.user.fathersName}"></td>
                                             <td th:text="${employeeit.employee.status.name}"></td>
                                             <td th:text="${employeeit.employee.post.name}"></td>

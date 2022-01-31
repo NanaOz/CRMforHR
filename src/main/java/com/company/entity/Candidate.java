@@ -11,16 +11,16 @@ public class Candidate {
     @Id
     private Long id;
 
-    @OneToOne(optional = false, cascade = CascadeType.ALL, fetch=FetchType.EAGER)
+    @OneToOne(optional = false, cascade = CascadeType.REFRESH, fetch=FetchType.EAGER)
     @MapsId
     @JoinColumn(name = "id")
     private User user;
 
-    @ManyToOne(optional = false, cascade = CascadeType.ALL)
+    @ManyToOne(optional = false, cascade = CascadeType.REFRESH)
     @JoinColumn(name = "status_id")
     private Status status;
 
-    @ManyToOne(optional = false, cascade = CascadeType.ALL)
+    @ManyToOne(optional = false, cascade = CascadeType.REFRESH)
     @JoinColumn(name = "post_id")
     private Post post;
 
@@ -32,6 +32,13 @@ public class Candidate {
             inverseJoinColumns = @JoinColumn(name = "tag_id")
     )
     private List<Tag> tags;
+
+    public boolean isSelectedStatus(Status status){
+        return this.status.getId().equals(status.getId());
+    }
+    public boolean isSelectedPost(Post post){
+        return this.post.getId().equals(post.getId());
+    }
 
     public List<Tag> getTags() {
         return tags;
