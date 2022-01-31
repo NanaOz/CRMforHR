@@ -21,7 +21,7 @@
                         <label></label>
                     </td>
                     <td>
-                        <input type="hidden" th:value="${candidate.user.id}" class="form-control" id="user.id" placeholder="user.id">
+                        <input type="hidden" th:field="${candidate.user.id}" class="form-control" id="user.id" placeholder="user.id">
                     </td>
                     <td></td>
                 </tr>
@@ -30,7 +30,7 @@
                         <label>Фамилия:</label>
                     </td>
                     <td>
-                        <input type="text" th:value="${candidate.user.surname}" class="form-control" id="surname" placeholder="surname">
+                        <input type="text" th:field="${candidate.user.surname}" class="form-control" id="surname" placeholder="surname">
 <!--                        <span th:text="${candidate.user.surname}"></span>-->
                     </td>
                     <td></td>
@@ -40,7 +40,7 @@
                         <label>Имя:</label>
                     </td>
                     <td>
-                        <input type="text" th:value="${candidate.user.username}" class="form-control" id="username" placeholder="username" disabled>
+                        <input type="text" th:field="${candidate.user.username}" class="form-control" id="username" placeholder="username" th:readonly="true">
 <!--                        <span th:text="${candidate.user.username}"></span>-->
                     </td>
                     <td></td>
@@ -50,7 +50,7 @@
                         <label>Отчество:</label>
                     </td>
                     <td>
-                        <input type="text" th:value="${candidate.user.fathersName}" class="form-control" id="fathersName" placeholder="fathersName" disabled>
+                        <input type="text" th:field="${candidate.user.fathersName}" class="form-control" id="fathersName" placeholder="fathersName" th:readonly="true">
 <!--                        <span th:text="${candidate.user.fathersName}"></span>-->
                     </td>
                     <td></td>
@@ -60,7 +60,7 @@
                         <label>Почта:</label>
                     </td>
                     <td>
-                        <input type="text" th:value="${candidate.user.email}" class="form-control" id="email" placeholder="email">
+                        <input type="text" th:field="${candidate.user.email}" class="form-control" id="email" placeholder="email">
                     </td>
                     <td></td>
                 </tr>
@@ -69,7 +69,7 @@
                         <label>Телефон:</label>
                     </td>
                     <td>
-                        <input type="text" th:value="${candidate.user.phone}" class="form-control" id="phone" placeholder="phone">
+                        <input type="text" th:field="${candidate.user.phone}" class="form-control" id="phone" placeholder="phone">
                     </td>
                     <td></td>
                 </tr>
@@ -81,7 +81,7 @@
                         <select class="form-control" th:id="'statusCandidate'+${candidate.status.id}" th:name="statusCandidate">
                             <option th:each="status : ${statuses}"
                                     th:value="${status}"
-                                    th:text="${status.id}+ ''+${status.name}"
+                                    th:text="${status.name}"
                                     th:selected="${candidate.isSelectedStatus(status)}">
                             </option>
                         </select>
@@ -98,7 +98,7 @@
                         <select class="form-control" th:id="'postCandidate'+${candidate.post.id}" th:name="postCandidate">
                             <option th:each="post : ${postes}"
                                     th:value="${post}"
-                                    th:text="${post.id}+ ''+${post.name}"
+                                    th:text="${post.name}"
                                     th:selected="${candidate.isSelectedPost(post)}">
                             </option>
                         </select>
@@ -106,22 +106,39 @@
                     </td>
                     <td></td>
                 </tr>
-                <tr >
-                    <td>
-                    </td>
-<!--                <tr th:each="tag:${candidate.tags}">-->
-                    <td>
-                        <input type="hidden" th:value="${candidate.tags}" class="form-control" id="tags" placeholder="tags">
-                    </td>
-<!--                    <td th:text="${tag.name}"></td>-->
-<!--                    </td>-->
-<!--                    <span th:each="tag:${candidate.tags}" th:text="${tag.name}"></span>-->
+
+<!--                <tr th:each="candidateTag:${candidate.candidateTag}">-->
 <!--                    <td>-->
-<!--                    <tr>-->
-                    <td></td>
-                    </tr>
+<!--                    </td>-->
+<!--&lt;!&ndash;                <tr th:each="tag:${candidate.tags}">&ndash;&gt;-->
+<!--                    <td>-->
+<!--                        <input type="text" th:field="${candidateTag.tag.name}" class="form-control" id="tag.name" placeholder="tag.name">-->
+<!--                    </td>-->
+<!--&lt;!&ndash;                    <td th:text="${tag.name}"></td>&ndash;&gt;-->
+<!--&lt;!&ndash;                    </td>&ndash;&gt;-->
+<!--&lt;!&ndash;                    <span th:each="tag:${candidate.tags}" th:text="${tag.name}"></span>&ndash;&gt;-->
+<!--&lt;!&ndash;                    <td>&ndash;&gt;-->
+<!--&lt;!&ndash;                    <tr>&ndash;&gt;-->
+<!--                    <td>-->
+<!--                        <input type="hidden" th:field="${candidateTag.level}" class="form-control" id="level" placeholder="level">-->
+<!--                    </td>-->
+<!--                    </tr>-->
                 </tbody>
             </table>
+            <div class="table_and_search">
+                                <table class="table_info_tag">
+                                    <tbody>
+<!--                                    <tr th:each="tag:${candidate.tags}">-->
+                                        <tr>
+                                            <input type="text" th:field="${candidate.tags}" class="form-control" id="tags" placeholder="tags">
+
+                                        </tr>
+<!--                                        <td th:text="${tag.name}"></td>-->
+<!--                                        <td th:text="${tag.level}"></td>-->
+
+                                    </tbody>
+                                </table>
+            <div>
             <div>
                                     <input type="submit" class="text-field_btn" value="Обновить информацию">
                                 </div>

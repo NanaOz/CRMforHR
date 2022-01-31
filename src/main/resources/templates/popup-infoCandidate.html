@@ -113,25 +113,25 @@
                 </tbody>
             </table>
 
-            <div class="table_and_search">
-                <table class="table_info_tag">
-                    <tbody>
-                    <tr th:each="tag:${candidate.tags}">
-                        <td th:text="${tag.name}"></td>
-                    </tbody>
-                </table>
+<!--            <div class="table_and_search">-->
+<!--                <table class="table_info_tag">-->
+<!--                    <tbody>-->
+<!--                    <tr th:each="tag:${candidate.tags}">-->
+<!--                        <td th:text="${tag.name}"></td>-->
+<!--                    </tbody>-->
+<!--                </table>-->
 
-                <div class="search">
-                    <label for="tagcand">Добавить теги:</label>
-                    <select type="text" id="tagcand" class="popup_field" required autocomplete="off">
-                        <option
-                                th:each="tag:${tags}"
-                                th:text="${tag.name}">
-                        </option>
-                    </select>
-                    <button class="text-field_btn" type="submit"><a class="not_line_href" href="/addtagcand">добавить</a></button>
-                </div>
-            </div>
+<!--                <div class="search">-->
+<!--                    <label for="tagcand">Добавить теги:</label>-->
+<!--                    <select type="text" id="tagcand" class="popup_field" required autocomplete="off">-->
+<!--                        <option-->
+<!--                                th:each="tag:${tags}"-->
+<!--                                th:text="${tag.name}">-->
+<!--                        </option>-->
+<!--                    </select>-->
+<!--                    <button class="text-field_btn" type="submit"><a class="not_line_href" href="/addtagcand">добавить</a></button>-->
+<!--                </div>-->
+<!--            </div>-->
         </div>
     </div>
     </div>

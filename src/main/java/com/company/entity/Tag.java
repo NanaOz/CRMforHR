@@ -23,7 +23,7 @@ public class Tag {
     @ManyToMany(cascade = {CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
     @JoinTable(name = "candidate_tag",
             joinColumns = @JoinColumn(name = "tag_id"),
-            inverseJoinColumns = @JoinColumn(name = "candidate_id")
+            inverseJoinColumns = @JoinColumn(name = "level")
     )
     private List<Candidate> candidates;
 
@@ -33,6 +33,18 @@ public class Tag {
             inverseJoinColumns = @JoinColumn(name = "employee_it_id")
     )
     private List<EmployeeIT> employeeIT;
+
+    @JoinTable(name = "candidate_tag")
+    @Column(name = "level")
+    private Long level;
+
+    public Long getLevel() {
+        return level;
+    }
+
+    public void setLevel(Long level) {
+        this.level = level;
+    }
 
     public Long getCriterion() {
         return criterion;

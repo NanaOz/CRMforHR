@@ -2,7 +2,7 @@ package com.company.entity;
 
 import javax.persistence.*;
 
-@Entity
+
 @Table(name = "candidate_tag")
 public class CandidateTag {
     @Id

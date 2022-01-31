@@ -24,9 +24,9 @@ public class Candidate {
     @JoinColumn(name = "post_id")
     private Post post;
 
-
-    @OneToMany(mappedBy = "candidate", cascade = CascadeType.REFRESH, fetch = FetchType.EAGER)
-    private List<CandidateTag> candidateTag;
+//
+//    @OneToMany(mappedBy = "candidate", cascade = CascadeType.REFRESH, fetch = FetchType.EAGER)
+//    private List<CandidateTag> candidateTag;
 
     public Candidate () {}
 
@@ -89,28 +89,28 @@ public class Candidate {
     public int hashCode() {
         return Objects.hash(id);
     }
-
-    public List<CandidateTag> getCandidateTag() {
-        return candidateTag;
-    }
-
-    public void setCandidateTag(List<CandidateTag> candidateTag) {
-        this.candidateTag = candidateTag;
-    }
 //
-//    @ManyToMany(cascade = {CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH}, fetch = FetchType.EAGER)
-//    @JoinTable(name = "candidate_tag",
-//            joinColumns = @JoinColumn(name = "candidate_id"),
-//            inverseJoinColumns = @JoinColumn(name = "tag_id")
-//    )
-//    private List<Tag> tags;
-//
-//    public List<Tag> getTags() {
-//        return tags;
+//    public List<CandidateTag> getCandidateTag() {
+//        return candidateTag;
 //    }
 //
-//    public void setTags(List<Tag> tags) {
-//        this.tags = tags;
+//    public void setCandidateTag(List<CandidateTag> candidateTag) {
+//        this.candidateTag = candidateTag;
 //    }
+
+    @ManyToMany(cascade = {CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH}, fetch = FetchType.EAGER)
+    @JoinTable(name = "candidate_tag",
+            joinColumns = @JoinColumn(name = "candidate_id"),
+            inverseJoinColumns ={ @JoinColumn(name = "tag_id"), @JoinColumn(name = "level")}
+    )
+    private List<Tag> tags;
+
+    public List<Tag> getTags() {
+        return tags;
+    }
+
+    public void setTags(List<Tag> tags) {
+        this.tags = tags;
+    }
 
 }
