@@ -1,5 +1,6 @@
 package logika;
 
+import com.company.entity.*;
 import org.hibernate.mapping.Map;
 
 import java.util.ArrayList;
@@ -7,39 +8,37 @@ import java.util.HashMap;
 
 public class Logics {
 
-    private ArrayList<Long> positions;
+
     //поля
-    private ArrayList<String> tags;
-    private HashMap<Long, Long> idUsers;
+    private HashMap<Post, ArrayList<TagWithLevel>> tagsByPositions;
+    private ArrayList<Lid> lids;
+
 
     //конструктор
-    public Logics(ArrayList<String> tags, HashMap<Long, Long> idUsers, ArrayList<Long> positions) {
-        this.tags = tags;
-        this.idUsers = idUsers;
-        this.positions=positions;
+    public Logics(HashMap<Post, ArrayList<TagWithLevel>> tagsByPositions, ArrayList<Lid> lids) {
+        this.tagsByPositions = tagsByPositions;
+        this.lids = lids;
     }
 
-    //фильтр по тегам
-    private ArrayList<Long> filter() {
 
-        ArrayList<Long> filterIdUsers = new ArrayList<>();
+    //сбор команды
+    public HashMap<Post, ArrayList<Lid>> gatherTeam() {
+        for (Post p : tagsByPositions.keySet()) {
+            for (TagWithLevel tagWithLevel : tagsByPositions.get(p)) {
+                for (Lid lid : lids) {
+                    if (lid.isCandidate()) {
+                        if (lid.getCandidate().getTags().contains(tagWithLevel.getTag())) {
+                            if (tagWithLevel.getLevel() <= lid.getCandidate().getTags().getLevel()){
 
-        for (int i = 0; i < idUsers.size(); i++) { //для каждого пользователя проверяем совпадене тегов
-
-            // контроллер дает arraylist тегов конкретно i-го пользователя
-            ArrayList<String> userTags;
-
-            int flag = 1;
-            for (int j = 0; j < tags.size(); j++) { // для каждого выбранного тега проверяем наличие тега у пользователя
-                for (int k = 0; k < userTags.size(); k++) {
-
-                    if(tags.get(j)!= userTags.get(k)){flag=0;}
+                            }
+                        }
+                    }
                 }
             }
-
-            if(flag==0){ filterIdUsers.add(idUsers.get(i));} //если у нас выбранный тег есть у пользователя, то добавляем его в список фильтрованных
         }
 
-        return filterIdUsers;
+        return null;
     }
+
+
 }
