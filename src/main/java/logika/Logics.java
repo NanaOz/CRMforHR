@@ -1,7 +1,6 @@
 package logika;
 
 import com.company.entity.*;
-import org.hibernate.mapping.Map;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -23,13 +22,25 @@ public class Logics {
 
     //сбор команды
     public HashMap<Post, ArrayList<Lid>> gatherTeam() {
-        for (Post p : tagsByPositions.keySet()) {
-            for (TagWithLevel tagWithLevel : tagsByPositions.get(p)) {
-                for (Lid lid : lids) {
-                    if (lid.isCandidate()) {
-                        if (lid.getCandidate().getTags().contains(tagWithLevel.getTag())) {
-                            if (tagWithLevel.getLevel() <= lid.getCandidate().getTags().getLevel()){
 
+
+        for (Post p : tagsByPositions.keySet()) { //для каждой позиции должности, будем перебирать лидов
+            for (Lid lid : lids) { //для каждого лида будем перебирать теги
+                if (lid.isCandidate()) { //если лид кандидат
+                    for (TagWithLevel tagWithLevel : tagsByPositions.get(p)) { //для каждого тега лида, будем перебирать и сравнивать теги необходимые для должности p
+                        if (lid.getCandidateTags().contains(tagWithLevel.getTag())) { //если у лида есть тег указанный в листе тегов должности p
+                            int i = lid.getCandidateTags().indexOf(tagWithLevel.getTag());
+                            if (tagWithLevel.getLevel() <= lid.getCandidateTags().get(i).getLevel()) { //если уровень тега не ниже чем требуемый для должности
+                                lid.summAdd(1);//todo связать "1" с коэфициентом важности тега
+                            } else { // если уровень ниже требуемого, домножаем коэфициент "1" то есть коэф важности тега на частное от уровень владения лидом на требуемый уровень для должности
+                                lid.summAdd(1*lid.getCandidateTags().get(i).getLevel() / tagWithLevel.getLevel());
+                            }
+                        } else {
+                            int i = lid.getEmployeeTags().indexOf(tagWithLevel.getTag());
+                            if (tagWithLevel.getLevel() <= lid.getEmployeeTags().get(i).getLevel()) { //если уровень тега не ниже чем требуемый для должности
+                                lid.summAdd(1);//todo
+                            } else { // если уровень ниже требуемого, домножаем коэфициент "1" то есть коэф важности тега на частное от уровень владения лидом на требуемый уровень для должности
+                                lid.summAdd(1 * lid.getCandidateTags().get(i).getLevel() / tagWithLevel.getLevel());
                             }
                         }
                     }

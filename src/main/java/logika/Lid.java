@@ -1,6 +1,10 @@
-package com.company.entity;
+package logika;
+
+import com.company.entity.*;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Lid {
     private Long id;
@@ -9,16 +13,24 @@ public class Lid {
     private Status status;
     private Project project;
     private boolean isCandidate;
+    private List<TagWithLevel> candidateTags;//todo настроить Candidate теги
+    private List<TagWithLevel> employeeTags;//todo Employee
+    private double summ;
+
+
 
     //конструктор для Employee
     public Lid(Employee employee) {
-       this.id= employee.getId();
-       this.user=employee.getUser();
-       this.post= employee.getPost();
-       this.status=employee.getStatus();
-       this.project= employee.getProject();
-       this.isCandidate=false;
+        this.id= employee.getId();
+        this.user=employee.getUser();
+        this.post= employee.getPost();
+        this.status=employee.getStatus();
+        this.project= employee.getProject();
+        this.isCandidate=false;
+        this.employeeTags=null //todo настроить Employee
+        this.summ=0;
     }
+
 
     //конструктор для Candidate
     public Lid(Candidate candidate) {
@@ -28,6 +40,8 @@ public class Lid {
         this.status=candidate.getStatus();
         this.project= null;
         this.isCandidate=true;
+        this.candidateTags=null;//todo настроить Candidate теги
+        this.summ=0;
     }
 
 
@@ -51,6 +65,26 @@ public class Lid {
         }
     }
 
+    public List<TagWithLevel> getEmployeeTags() {
+        return employeeTags;
+    }
+
+    public void summAdd(double plusSumm){
+        this.summ+=plusSumm;
+    }
+
+    public double getSumm() {
+        return summ;
+    }
+
+
+    public List<TagWithLevel> getCandidateTags() {
+        return candidateTags;
+    }
+
+    public void setCandidateTags(List<TagWithLevel> candidateTags) {
+        this.candidateTags = candidateTags;
+    }
 
     public boolean isCandidate() {
         return isCandidate;
@@ -99,24 +133,5 @@ public class Lid {
     public void setUser(User user) {
         this.user = user;
     }
-
-
-    public Employee getEmployee() {
-        return employee;
-    }
-
-    public void setEmployee(Employee employee) {
-        this.employee = employee;
-    }
-
-    public Candidate getCandidate() {
-        return candidate;
-    }
-
-    public void setCandidate(Candidate candidate) {
-        this.candidate = candidate;
-    }
-
-
 
 }
