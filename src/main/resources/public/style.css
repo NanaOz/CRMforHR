@@ -194,7 +194,7 @@ body.lock {
     transition: 0s ease opacity .4s, .2s ease height .4s, .2s ease width .6s;
 }
 
-.tabs_addTask:hover, .tabs_deleteAccount:hover, .tabs_addAccount:hover, .tabs_exit:hover, .tabs_addVacancy:hover, .tabs_teamSelection:hover{
+.tabs_addTask:hover, .tabs_deleteAccount:hover, .tabs_addAccount:hover, .tabs_exit:hover, .tabs_addVacancy:hover, .tabs_teamSelection:hover {
     background: rgba(255, 255, 255, .2);
 }
 
@@ -204,10 +204,12 @@ body.lock {
     vertical-align: top;
     width: 800px;
 }
+
 .table_team_search th {
     vertical-align: top;
 
 }
+
 .team_lable {
     font-size: 14px;
     text-transform: none;
@@ -216,6 +218,7 @@ body.lock {
 .onediv {
     float: left;
 }
+
 .twodiv {
     float: right;
 }
@@ -227,6 +230,7 @@ body.lock {
     margin: 0 auto;
     table-layout: fixed;
 }
+
 .th {
     width: 20%;
 
@@ -290,7 +294,8 @@ body.lock {
     /*border: 1px solid #fffefe;*/
     /*border-radius: 0.50rem; !*радиус скругления углов*!*/
 }
-.search_button{
+
+.search_button {
     /*text-decoration: none;*/
     /*display: inline-block;*/
     padding: 10px 10px;
@@ -304,7 +309,8 @@ body.lock {
     /*text-transform: uppercase;*/
     letter-spacing: 2px;
 }
-.search_name{
+
+.search_name {
     font-size: 14px;
     margin: 0px;
     color: white;
@@ -371,7 +377,7 @@ body.lock {
     width: 100%;
 }
 
-.popup_button{
+.popup_button {
     line-height: 40px;
     width: 100%;
     display: inline-block;
@@ -409,6 +415,7 @@ body.lock {
 .text-field_group {
     display: flex;
 }
+
 .text-field_btn {
     display: inline-block;
     font-weight: 400;
@@ -425,45 +432,63 @@ body.lock {
     border-radius: .25rem;
     transition: background-color .15s ease-in-out;
 }
+
 .text-field_btn:hover {
     background-color: #b7b7b7;
 }
+
 .text-field_group .text-field__input {
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
     position: relative;
     z-index: 2;
 }
+
 .text-field_group .text-field__btn {
     position: relative;
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
     border-left-width: 0;
 }
+
 .table_info td {
     padding: 5px;
 
 }
 
-.table_info label{
+.table_info label {
     font-weight: bold;
 }
 
 .table_info_tag {
     /*padding: 5px;*/
     width: 250px;
-    margin-left:100px;
+    margin-left: 100px;
     /*font-size: 20px;*/
 }
+
 .text-field_btn {
     font-size: 15px;
 }
+
 .not_line_href {
     text-decoration: none;
-
+    color: #ffffff;
+    font-style: normal;
+    font-weight: lighter;
+    text-align: left;
 }
-
-
-
-
+.not_line_href_black{
+    text-decoration: none;
+    color: #000000;
+    font-style: normal;
+    font-weight: lighter;
+    text-align: left;
+}
+/*.a_btn{*/
+/*    border:1px solid #ccc; !*рамка*!*/
+/*    background:#eaeaea; !*фон*!*/
+/*    padding: 10px 10px; !*отступы внутри*!*/
+/*    text-decoration: none; !*убрать подчеркивание ссылки*!*/
+/*}*/
 /*сбор команды*/

@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
 @Controller
-public class TaskController {
+public class  TaskController {
 
     private final EmployeeRepository employeeRepository;
     private final CandidateRepository candidateRepository;

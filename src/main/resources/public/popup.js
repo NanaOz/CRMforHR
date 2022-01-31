@@ -396,3 +396,4 @@ function getCheckedCheckBoxes() {
     }
     return checkboxesChecked; // для использования в нужном месте
 }
+

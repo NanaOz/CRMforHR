@@ -17,100 +17,41 @@
                 <div id="tab_employee" class="tabs_block"></div>
                 <div id="tab_candidate" class="tabs_block"></div>
                 <div id="tab_team" class="tabs_block">
-                    <!--                    <table>-->
-                    <div class="table_and_search">
-                        <div class="onediv" th:insert="popups/popup-changeTag :: popup-changeTag"></div>
-                        <div class="twodiv"  th:insert="popups/popup-searchteam :: popup-searchtaem"></div>
-                        <!--                        <a href="" class="tabs_teamSelection popup-link">Изменить теги</a>-->
-                        <!--                        <a href="" class="tabs_teamSelection popup-link">Подбор команды</a>-->
+
+                    <div class="table">
+                    <table id="" class="table">
+                        <thead>
+                        <tr>
+                            <th>ФИО:</th>
+                            <th>Должность:</th>
+                            <th>Статус:</th>
+                            <th>теги(подключить те, по которым подбираем)</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>вывести фио</td>
+                            <td>вывести должность</td>
+                            <td>вывести статус</td>
+                            <td>вывести цифры+окрашивание</td>
+                        </tr>
+                        </tbody>
+                    </table>
                     </div>
-
-<!--                    <table class="table_team_search">-->
-<!--                        <thead>-->
-<!--                        <tr>-->
-<!--                            <th>-->
-<!--                                <div>-->
-<!--                                    <legend class="team_lable">Выберите теги:</legend>-->
-<!--                                    <div th:switch="${tags}" class="checkbox-group">-->
-<!--                        <span th:each="tag : ${tags}">-->
-<!--&lt;!&ndash;            <p><input class="checkbox" type="checkbox" id="tag" name="ingredient" value="tag">&ndash;&gt;-->
-<!--            <p><input type="checkbox" th:name="tag" th:value="${tag.tag}"/>-->
-
-<!--&lt;!&ndash;            <label for="tag"><i th:text="${tag.tag}"></i></label></p>&ndash;&gt;-->
-<!--                        </span>-->
-<!--                                    </div>-->
-<!--                                </div>-->
-<!--                            </th>-->
-<!--                            <th>-->
-<!--                                <div>-->
-<!--                                    <legend class="team_lable">Выберите статус:</legend>-->
-<!--                                    <div th:switch="${statususer}" class="checkbox-group">-->
-<!--                        <span th:each="status : ${statususer}">-->
-<!--            <p><input type="checkbox" id="status" name="ingredient" value="status">-->
-<!--            <label for="status"><i th:text="${status.status}"></i></label></p>-->
-<!--                        </span>-->
-<!--                                    </div>-->
-<!--                                </div>-->
-<!--                            </th>-->
-<!--                            <th>-->
-<!--                                <div>-->
-<!--                                    <legend class="team_lable" >Выберите должность:</legend>-->
-<!--                                    <div th:switch="${postname}" class="checkbox-group">-->
-<!--                        <span th:each="post : ${postname}">-->
-<!--            <p><input type="checkbox" id="post" name="ingredient" value="post">-->
-<!--            <label for="post"><i th:text="${post.post}"></i></label></p>-->
-<!--                        </span>-->
-<!--                                    </div>-->
-<!--                                </div>-->
-<!--                            </th>-->
-
-
-<!--                        </tr>-->
-<!--                        </thead>-->
-<!--                    </table>-->
+                    <div class="search">
+<!--                    <div class="table_and_search">-->
+<!--                        <div class="onediv" th:insert="popups/popup-changeTag :: popup-changeTag"></div>-->
+                        <div th:insert="popups/popup-changeTag :: popup-changeTag"></div>
+<!--                        <div class="twodiv" th:insert="popups/popup-searchteam :: popup-searchtaem"></div>-->
+                        <div th:insert="popups/popup-searchteam :: popup-searchtaem"></div>
+                    </div>
                 </div>
-                <!--                    <legend>Выберите должность</legend>-->
-                <!--                    <div class="checkbox-group">-->
-                <!--                        <span>-->
-                <!--            <input type="checkbox" id="post" name="ingredient" value="book">-->
-                <!--            <label for="post">Тут список должностей</label>-->
-                <!--                        </span>-->
-                <!--                    </div>-->
-
-                <!--                    <section class="container">-->
-                <!--                        <div class="select_tag">-->
-                <!--                            <select size="30" name="select_tag" class="dropdown-select">-->
-                <!--                                <option value="">Тэг</option>-->
-                <!--                                <option value="1">какой-то первый тэг</option>-->
-                <!--                                <option value="2">еще какой-то тэг</option>-->
-                <!--                                <option value="3">просто тэг</option>-->
-                <!--                            </select>-->
-                <!--                        </div>-->
-                <!--                    </section>-->
-
-                <!--                    <form class="team_check">-->
-                <!--                        <div class="multiselect">-->
-                <!--                            <div class="selectBox" onclick="showCheckboxes()">-->
-                <!--                                <select>-->
-                <!--                                    <option>Выберите теги</option>-->
-                <!--                                </select>-->
-                <!--                                <div class="overSelect"></div>-->
-                <!--                            </div>-->
-                <!--                            <div id="checkboxes">-->
-                <!--                                <label for="one">-->
-                <!--                                    <input type="checkbox" id="one"/>First checkbox</label>-->
-                <!--                                <label for="two">-->
-                <!--                                    <input type="checkbox" id="two"/>Second checkbox</label>-->
-                <!--                                <label for="three">-->
-                <!--                                    <input type="checkbox" id="three"/>Third checkbox</label>-->
-                <!--                            </div>-->
-                <!--                        </div>-->
-                <!--                    </form>-->
 
 
             </div>
         </div>
     </div>
+</div>
 </div>
 <script src="/popup.js/"></script>
 </body>
