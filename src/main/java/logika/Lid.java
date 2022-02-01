@@ -2,7 +2,9 @@ package logika;
 
 import com.company.entity.*;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Lid {
     private Long id;
@@ -11,8 +13,8 @@ public class Lid {
     private Status status;
     private Project project;
     private boolean isCandidate;
-    private List<TagWithLevel> candidateTags;//todo настроить Candidate теги
-    private List<TagWithLevel> employeeTags;//todo Employee
+    private Map<Tag,Level> candidateTags;
+    private Map<Tag,Level> employeeTags;//todo Employee
     private double summ;
 
 
@@ -25,7 +27,7 @@ public class Lid {
         this.status=employee.getStatus();
         this.project= employee.getProject();
         this.isCandidate=false;
-        this.employeeTags=null; //todo настроить Employee
+        this.employeeTags=employee.getTagLevelMap(); //todo настроить Employee
         this.summ=0;
     }
 
@@ -38,7 +40,7 @@ public class Lid {
         this.status=candidate.getStatus();
         this.project= null;
         this.isCandidate=true;
-        this.candidateTags=null;//todo настроить Candidate теги
+        this.candidateTags=candidate.getTagLevelMap();
         this.summ=0;
     }
 
@@ -63,9 +65,13 @@ public class Lid {
         }
     }
 
-    public List<TagWithLevel> getEmployeeTags() {
+    public Map<Tag, Level> getEmployeeTags() {
         return employeeTags;
     }
+    public Map<Tag, Level> getCandidateTags() {
+        return candidateTags;
+    }
+
 
     public void summAdd(double plusSumm){
         this.summ+=plusSumm;
@@ -73,15 +79,6 @@ public class Lid {
 
     public double getSumm() {
         return summ;
-    }
-
-
-    public List<TagWithLevel> getCandidateTags() {
-        return candidateTags;
-    }
-
-    public void setCandidateTags(List<TagWithLevel> candidateTags) {
-        this.candidateTags = candidateTags;
     }
 
     public boolean isCandidate() {

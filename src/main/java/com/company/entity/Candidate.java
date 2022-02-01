@@ -25,6 +25,10 @@ public class Candidate {
     @JoinColumn(name = "post_id")
     private Post post;
 
+
+    private Map<Tag, Level> tagLevelMap;
+
+
     public Candidate () {}
 
     public Post getPost() {
@@ -91,7 +95,6 @@ public class Candidate {
             joinColumns = @JoinColumn(name = "candidate_id"))
              @MapKeyJoinColumn(name = "tag_id")
 
-    private Map<Tag, Level> tagLevelMap;
 
     public Map<Tag, Level> getTagLevelMap() {
         return tagLevelMap;
