@@ -72,6 +72,7 @@ public class CandidateController {
         System.out.println(candidate);
         System.out.println(candidate.getUser());
         System.out.println(candidate.getPost());
+        System.out.println(candidate.getTagLevelMap());
 //        userRepository.save(user);
 
         candidateRepository.save(candidate);
@@ -87,48 +88,12 @@ public class CandidateController {
         return "popup-infoCandidate";
     }
 
-    //TODO ДОДЕЛАТЬ контроллер на редактирование телефона
-//    @PostMapping("/phoneokcand")
-//    public String phoneNewCandidate(@PathVariable("id") long id, @Valid Candidate candidate,  BindingResult result, Model model) {
-//        if (result.hasErrors()) {
-//            candidate.setId(id);
-//            return "popup-infoCandidate";
-//        }
-//
-//
-//        candidateRepository.save(candidate);
-//
-//        return "redirect:/candidate#tab_candidate";
-//    }
-    //TODO ДОДЕЛАТЬ контроллер на редактирование почты
-    @GetMapping("/emailokcand")
-    public String emailNewCandidate(Model model) {
-        return "redirect:/candidate#tab_candidate";
-    }
+
     //TODO ДОДЕЛАТЬ контроллер на добавление выбранного тега
     @GetMapping("/addtagcand")
     public String tagAddCandidate(Model model) {
         return "redirect:/candidate#tab_candidate";
     }
-
-//    @PostMapping("/candok")
-//    public String okayInfoForm(@PathVariable("id") long id, @Valid Candidate candidate, BindingResult result, Model model) {
-////        System.out.println("BRGINOFADDING");
-////        if (result.hasErrors()) {
-////            System.out.println("ERROR????");
-////            return "popup-infocand";
-////        }
-////        candidate.getUser().setEmail();
-//
-//        if (result.hasErrors()) {
-//            candidate.setId(id);
-//
-//            return "popup-infocand";
-//        }
-////
-//        candidateRepository.save(candidate);
-//        return "redirect:/candidate#tab_candidate";
-//    }
 
     @GetMapping("/create/{id}")
     public String addUser(@PathVariable("id") long id,  Model model) {
@@ -141,10 +106,12 @@ public class CandidateController {
         employee.setUser(candidate.getUser());
         employee.setPost(candidate.getPost());
         employee.setStatus(statusRepository.findByName("Работает"));
+        employee.setId(candidate.getId());
 
         candidateRepository.delete(candidate);
         employeeRepository.save(employee);
         System.out.println("SAVED??????");
         return "redirect:/candidate#tab_candidate";
+
     }
 }
