@@ -20,8 +20,7 @@
                                     <div>
                                         <legend class="team_lable">Выберите теги:</legend>
                                         <p th:switch="${tags}" class="checkbox-group">
-                                        <p>
-                                                <span th:each="tag : ${tags}">
+                                        <p th:each="tag : ${tags}">
                                             <input class="checkbox" type="checkbox" id="tag" name="idChecked"
                                                    value="tags"><label
                                                 for="tag"><i th:text="${tag.name}"></i></label>
@@ -32,7 +31,6 @@
                                                 <option value="2">Продвинутый</option>
                                                 <option value="3">Эксперт</option>
                                             </select>
-                                        </span>
                                         </p>
                                         </p>
                                     </div>
@@ -85,6 +83,7 @@
             $(this).parent().find('select').css("visibility", "visible");
         })
     });
+
 
 
 
