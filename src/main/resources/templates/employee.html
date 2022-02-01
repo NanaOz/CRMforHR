@@ -10,76 +10,111 @@
 <div class="wrapper">
     <div th:switch="${employees}" class="contents">
         <div class="tabs">
-            <header th:insert="blocks/header :: header"> </header>
+            <header th:insert="blocks/header :: header"></header>
             <div class="tabs_body">
                 <div id="tab_menu" class="tabs_block"></div>
                 <div id="tab_task" class="tabs_block"></div>
                 <div id="tab_employee" class="tabs_block">
                     <div>
-<!--                        <div th:insert="popups/popup_acount :: popup_acount">  </div>-->
-                        <div class="table_and_search">
+
+                        <form action="" method="get">
+                            <div class="search_field_emp"><i class="search_name"></i><input class="search_field_emp" id="idInputEmployee"
+                                                                      onkeyup="searchByIdEmployee()"
+                                                                      name="id_search" type="search" placeholder="ID"></div>
+                            <div class="search_field_emp"><i class="search_name"></i><input class="search_field_emp" id="nameInputEmployee"
+                                                                       onkeyup="searchByNameEmployee()"
+                                                                       name="name_search" type="search" placeholder="ФИО"></div>
+                            <div class="search_field_emp"><i class="search_name"></i><input class="search_field_emp" id="postInputEmployee"
+                                                                             onkeyup="searchByPostEmployee()"
+                                                                             name="post_search" type="search" placeholder="Должность"></div>
+                            <div class="search_field_emp"><i class="search_name"></i><input class="search_field_emp" id="projectInputEmployee"
+                                                                          onkeyup="searchByProjectEmployee()"
+                                                                          name="project_search" type="search" placeholder="Проект"></div>
+
+                        </form>
+<!--                        <div class="table_and_search">-->
                             <div class="table">
                                 <div>
                                     <table id="employeeTable" class="table">
                                         <thead>
                                         <tr>
-                                            <th onclick="sortTableEmployee(0)">ID</th>
-                                            <th onclick="sortTableEmployee(1)">ФИО</th>
-                                            <th onclick="sortTableEmployee(2)">Статус</th>
-                                            <th onclick="sortTableEmployee(3)">Должность</th>
-                                            <th onclick="sortTableEmployee(4)">Проект</th>
-<!--                                            <th onclick="sortTableEmployee(5)">Тэги</th>-->
-<!--                                            <th onclick="sortTableEmployee(6)">Навыки</th>-->
-<!--                                            <th> </th>-->
+                                            <th onclick="sortTableEmployee(0)" class="id_employee">ID</th>
+                                            <th onclick="sortTableEmployee(1)" class="name_employee">ФИО</th>
+                                            <th onclick="sortTableEmployee(2)" class="status_employee">Статус</th>
+                                            <th onclick="sortTableEmployee(3)" class="post_employee">Должность</th>
+                                            <th onclick="sortTableEmployee(4)" class="project_employee">Проект</th>
 
                                         </tr>
                                         </thead>
                                         <tbody>
                                         <tr th:each="employeeit:${employeesIt}">
-                                            <td><a class="not_line_href" th:href="'/info/employeeit/'+ ${employeeit.id}"><i class="not_line_href" th:text="${employeeit.id}"></i></a></td>
-                                            <td><a class="not_line_href" th:href="'/info/employeeit/'+ ${employeeit.id}"><i class="not_line_href" th:text="${employeeit.employee.user.surname} + ' ' + ${employeeit.employee.user.username} + ' ' + ${employeeit.employee.user.fathersName}"></i></a></td>
-                                            <td><a class="not_line_href" th:href="'/info/employeeit/'+ ${employeeit.id}"><i class="not_line_href" th:text="${employeeit.employee.status.name}"></i></a></td>
-                                            <td><a class="not_line_href" th:href="'/info/employeeit/'+ ${employeeit.id}"><i class="not_line_href" th:text="${employeeit.employee.post.name}"></i></a></td>
-                                            <td><a class="not_line_href" th:href="'/info/employeeit/'+ ${employeeit.id}"><i class="not_line_href" th:text="${employeeit.project.projectName}"></i></a></td>
-<!--                                            <td><a th:href="'/info/employeeit/'+ ${employeeit.id}" class="tabs_info_user tabs_info_user">ИНФО</a></td>-->
-<!--                                           <td><div th:insert="popups/popup-infoIT :: popup-infoIT"></div></td>-->
+                                            <td><a class="not_line_href"
+                                                   th:href="'/info/employeeit/'+ ${employeeit.id}"><i
+                                                    class="not_line_href" th:text="${employeeit.id}"></i></a></td>
+                                            <td><a class="not_line_href"
+                                                   th:href="'/info/employeeit/'+ ${employeeit.id}"><i
+                                                    class="not_line_href"
+                                                    th:text="${employeeit.employee.user.surname} + ' ' + ${employeeit.employee.user.username} + ' ' + ${employeeit.employee.user.fathersName}"></i></a>
+                                            </td>
+                                            <td><a class="not_line_href"
+                                                   th:href="'/info/employeeit/'+ ${employeeit.id}"><i
+                                                    class="not_line_href"
+                                                    th:text="${employeeit.employee.status.name}"></i></a></td>
+                                            <td><a class="not_line_href"
+                                                   th:href="'/info/employeeit/'+ ${employeeit.id}"><i
+                                                    class="not_line_href"
+                                                    th:text="${employeeit.employee.post.name}"></i></a></td>
+                                            <td><a class="not_line_href"
+                                                   th:href="'/info/employeeit/'+ ${employeeit.id}"><i
+                                                    class="not_line_href"
+                                                    th:text="${employeeit.project.projectName}"></i></a></td>
 
                                         </tr>
                                         <tr th:each="employeehr:${employeesHr}">
-                                            <td><a class="not_line_href" th:href="'/info/employeehr/'+ ${employeehr.id}"><i class="not_line_href" th:text="${employeehr.id}"></i></a></td>
-                                            <td><a class="not_line_href" th:href="'/info/employeehr/'+ ${employeehr.id}"><i class="not_line_href" th:text="${employeehr.employee.user.surname} + ' ' + ${employeehr.employee.user.username} + ' ' + ${employeehr.employee.user.fathersName}"></i></a></td>
-                                            <td><a class="not_line_href" th:href="'/info/employeehr/'+ ${employeehr.id}"><i class="not_line_href" th:text="${employeehr.employee.status.name}"></i></a></td>
-                                            <td><a class="not_line_href" th:href="'/info/employeehr/'+ ${employeehr.id}"><i class="not_line_href" th:text="${employeehr.employee.post.name}"></i></a></td>
+                                            <td><a class="not_line_href"
+                                                   th:href="'/info/employeehr/'+ ${employeehr.id}"><i
+                                                    class="not_line_href" th:text="${employeehr.id}"></i></a></td>
+                                            <td><a class="not_line_href"
+                                                   th:href="'/info/employeehr/'+ ${employeehr.id}"><i
+                                                    class="not_line_href"
+                                                    th:text="${employeehr.employee.user.surname} + ' ' + ${employeehr.employee.user.username} + ' ' + ${employeehr.employee.user.fathersName}"></i></a>
+                                            </td>
+                                            <td><a class="not_line_href"
+                                                   th:href="'/info/employeehr/'+ ${employeehr.id}"><i
+                                                    class="not_line_href"
+                                                    th:text="${employeehr.employee.status.name}"></i></a></td>
+                                            <td><a class="not_line_href"
+                                                   th:href="'/info/employeehr/'+ ${employeehr.id}"><i
+                                                    class="not_line_href"
+                                                    th:text="${employeehr.employee.post.name}"></i></a></td>
                                             <td></td>
-<!--                                            <td><a th:href="'/info/employeehr/'+ ${employeehr.id}" class="tabs_info_user tabs_info_user">ИНФО</a></td>-->
-<!--                                            <td><div th:insert="popups/popup-infoHR :: popup-infoHR"></div></td>-->
 
                                         </tr>
                                         </tbody>
                                     </table>
                                 </div>
                             </div>
-                            <div class="search">
-                                <form action="" method="get">
-                                    <div><p class="search_name">ФИО:</p><input id="nameInputEmployee"
-                                                                               onkeyup="searchByNameEmployee()"
-                                                                               name="name_search" type="search"></div>
-                                    <div><p class="search_name">Должность:</p><input id="postInputEmployee"
-                                                                                     onkeyup="searchByPostEmployee()"
-                                                                                     name="post_search" type="search">
-                                    </div>
-<!--                                    <div><p class="search_name">Тэги:</p><input id="tagInputEmployee"-->
-<!--                                                                                onkeyup="searchByTagEmployee()"-->
-<!--                                                                                name="tags_search" type="search"></div>-->
-                                    <div><p class="search_name">Проект:</p><input id="projectInputEmployee"
-                                                                                  onkeyup="searchByProjectEmployee()"
-                                                                                  name="project_search" type="search">
-                                    </div>
-                                    <div><p class="search_name">ID:</p><input id="idInputEmployee"
-                                                                              onkeyup="searchByIdEmployee()"
-                                                                              name="id_search" type="search"></div>
-                                </form>
-                            </div>
+                            <!--                            <div class="search">-->
+                            <!--                                <form action="" method="get">-->
+                            <!--                                    <div><p class="search_name">ФИО:</p><input id="nameInputEmployee"-->
+                            <!--                                                                               onkeyup="searchByNameEmployee()"-->
+                            <!--                                                                               name="name_search" type="search"></div>-->
+                            <!--                                    <div><p class="search_name">Должность:</p><input id="postInputEmployee"-->
+                            <!--                                                                                     onkeyup="searchByPostEmployee()"-->
+                            <!--                                                                                     name="post_search" type="search">-->
+                            <!--                                    </div>-->
+                            <!--&lt;!&ndash;                                    <div><p class="search_name">Тэги:</p><input id="tagInputEmployee"&ndash;&gt;-->
+                            <!--&lt;!&ndash;                                                                                onkeyup="searchByTagEmployee()"&ndash;&gt;-->
+                            <!--&lt;!&ndash;                                                                                name="tags_search" type="search"></div>&ndash;&gt;-->
+                            <!--                                    <div><p class="search_name">Проект:</p><input id="projectInputEmployee"-->
+                            <!--                                                                                  onkeyup="searchByProjectEmployee()"-->
+                            <!--                                                                                  name="project_search" type="search">-->
+                            <!--                                    </div>-->
+                            <!--                                    <div><p class="search_name">ID:</p><input id="idInputEmployee"-->
+                            <!--                                                                              onkeyup="searchByIdEmployee()"-->
+                            <!--                                                                              name="id_search" type="search"></div>-->
+                            <!--                                </form>-->
+                            <!--                            </div>-->
                         </div>
                     </div>
                 </div>
