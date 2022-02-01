@@ -6,6 +6,7 @@ import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.Map;
 
 @Entity
 @Table(name = "employee_it")
@@ -17,14 +18,19 @@ public class EmployeeIT {
     @JoinColumn(name = "project_id")
     private Project project;
 
-
     @OneToOne(optional = false)
     @MapsId
     @JoinColumn(name = "id")
     private Employee employee;
 
-    @OneToMany(mappedBy = "employeeIT", cascade = CascadeType.REFRESH, fetch = FetchType.EAGER)
-    private List<EmployeeITTag> employeeITTags;
+    @ElementCollection(fetch=FetchType.EAGER)
+    @CollectionTable (name = "employee_it_tag",
+            joinColumns = @JoinColumn(name = "employee_it_id"))
+    @MapKeyJoinColumn(name = "tag_id")
+
+    private Map<Tag, Level> tagLevel;
+
+    public EmployeeIT () {}
 
     public Long getId() {return id;}
     public void setId(Long id) {this.id = id;}
@@ -39,28 +45,22 @@ public class EmployeeIT {
         this.project = project;
     }
 
-    public List<EmployeeITTag> getEmployeeITTags() {
-        return employeeITTags;
+
+    public Map<Tag, Level> getTagLevel() {
+        return tagLevel;
     }
 
-    public void setEmployeeITTags(List<EmployeeITTag> employeeITTags) {
-        this.employeeITTags = employeeITTags;
+    public void setTagLevel(Map<Tag, Level> tagLevel) {
+        this.tagLevel = tagLevel;
     }
 
-//    @ManyToMany(cascade = {CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH}, fetch = FetchType.EAGER)
-//    @JoinTable(name = "employee_it_tag",
-//            joinColumns = @JoinColumn(name = "employee_it_id"),
-//            inverseJoinColumns = @JoinColumn(name = "tag_id")
-//    )
-//    private List<Tag> tags;
-//
-//    public List<Tag> getTags() {
-//        return tags;
-//    }
-//
-//    public void setTags(List<Tag> tags) {
-//        this.tags = tags;
-//    }
-
-
+    @Override
+    public String toString() {
+        return "EmployeeIT{" +
+                "id=" + id +
+                ", project=" + project +
+                ", employee=" + employee +
+                ", tagLevel=" + tagLevel +
+                '}';
+    }
 }

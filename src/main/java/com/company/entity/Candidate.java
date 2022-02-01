@@ -25,6 +25,12 @@ public class Candidate {
     @JoinColumn(name = "post_id")
     private Post post;
 
+    @ElementCollection(fetch=FetchType.EAGER)
+    @CollectionTable (name = "candidate_tag",
+            joinColumns = @JoinColumn(name = "candidate_id"))
+    @MapKeyJoinColumn(name = "tag_id")
+
+    private Map<Tag, Level> tagLevelMap;
     public Candidate () {}
 
     public Post getPost() {
@@ -65,15 +71,7 @@ public class Candidate {
     public boolean isSelectedPost(Post post){
         return this.post.getId().equals(post.getId());
     }
-    @Override
-    public String toString() {
-        return "Candidate{" +
-                "id=" + id +
-                ", user=" + user +
-                ", status=" + status +
-                ", post=" + post +
-                '}';
-    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -86,12 +84,7 @@ public class Candidate {
     public int hashCode() {
         return Objects.hash(id);
     }
-    @ElementCollection(fetch=FetchType.EAGER)
-    @CollectionTable (name = "candidate_tag",
-            joinColumns = @JoinColumn(name = "candidate_id"))
-             @MapKeyJoinColumn(name = "tag_id")
 
-    private Map<Tag, Level> tagLevelMap;
 
     public Map<Tag, Level> getTagLevelMap() {
         return tagLevelMap;
@@ -101,21 +94,16 @@ public class Candidate {
         this.tagLevelMap = tagLevelMap;
     }
 
+    @Override
+    public String toString() {
+        return "Candidate{" +
+                "id=" + id +
+                ", user=" + user +
+                ", status=" + status +
+                ", post=" + post +
+                ", tagLevelMap=" + tagLevelMap +
+                '}';
+    }
 
-//
-//    @ManyToMany(cascade = {CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH}, fetch = FetchType.EAGER)
-//    @JoinTable(name = "candidate_tag",
-//            joinColumns = @JoinColumn(name = "candidate_id"),
-//            inverseJoinColumns = {@JoinColumn(name = "tag_id"), @JoinColumn (name = "level")}
-//    )
-//    private List<Tag> tags;
-//
-//    public List<Tag> getTags() {
-//        return tags;
-//    }
-//
-//    public void setTags(List<Tag> tags) {
-//        this.tags = tags;
-//    }
 
 }

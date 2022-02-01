@@ -3,7 +3,6 @@ package com.company.entity;
 import javax.persistence.*;
 
 @Embeddable
-//@Table(name = "level")
 public class Level {
 
     @Column(name = "level")
