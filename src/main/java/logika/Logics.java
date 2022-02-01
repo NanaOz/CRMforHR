@@ -2,9 +2,8 @@ package logika;
 
 import com.company.entity.*;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
+import java.lang.reflect.Array;
+import java.util.*;
 
 public class Logics {
 
@@ -15,7 +14,7 @@ public class Logics {
 
 
     //конструктор
-    public Logics(HashMap<Post, Map<Tag, Level>> tagsByPositions, ArrayList<Lid> lids) {
+    public Logics(HashMap<Post, Map<Tag, Level>> tagsByPositions0, ArrayList<Lid> lids) {
         this.tagsByPositions = tagsByPositions;
         this.lids = lids;
     }
@@ -47,12 +46,15 @@ public class Logics {
                     }
                 }
             }
-            Map<Post, ArrayList<Lid>> team=new HashMap<>();
-
         }
 
         return null;
     }
 
+    private ArrayList<Lid> sortTeam(ArrayList<Lid> team) {
+//      Map<Post, ArrayList<Lid>> team=new HashMap<>();
+        Collections.sort(team, ( (a, b) -> (int)(a.getSumm() * 100 - b.getSumm() * 100)));
+
+    }
 
 }
