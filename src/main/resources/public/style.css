@@ -485,10 +485,28 @@ body.lock {
     font-weight: lighter;
     text-align: left;
 }
-/*.a_btn{*/
-/*    border:1px solid #ccc; !*рамка*!*/
-/*    background:#eaeaea; !*фон*!*/
-/*    padding: 10px 10px; !*отступы внутри*!*/
-/*    text-decoration: none; !*убрать подчеркивание ссылки*!*/
-/*}*/
+.avatar {
+    vertical-align: middle;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+}
+
+/*для меню*/
+.slideshow-container {
+    margin: 30px;
+    position: relative;
+    background: rgba(241, 241, 241, 0.25);
+
+}
+
+.mySlides {
+    padding: 15px;
+    text-align: center;
+}
+
+q {font-style: italic;}
+.author {color: #000000;}
+
+
 /*сбор команды*/

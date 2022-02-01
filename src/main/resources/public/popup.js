@@ -384,6 +384,7 @@ function makeCheckboxGroup(container) {
     });
 }
 
+
 document.querySelectorAll('.checkbox-group').forEach(makeCheckboxGroup);
 
 function getCheckedCheckBoxes() {
@@ -396,4 +397,3 @@ function getCheckedCheckBoxes() {
     }
     return checkboxesChecked; // для использования в нужном месте
 }
-
