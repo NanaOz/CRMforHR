@@ -1,10 +1,7 @@
 package com.company.entity;
 
 import javax.persistence.*;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Set;
+import java.util.*;
 
 @Entity
 @Table(name = "candidate")
@@ -30,7 +27,7 @@ public class Candidate {
             joinColumns = @JoinColumn(name = "candidate_id"))
     @MapKeyJoinColumn(name = "tag_id")
 
-    private Map<Tag, Level> tagLevelMap;
+    private Map<Tag, Level> tagLevelMap = new HashMap<Tag, Level>() ;
     public Candidate () {}
 
     public Post getPost() {

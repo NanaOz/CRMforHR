@@ -1,8 +1,6 @@
 package com.company.controller;
 
-import com.company.entity.Candidate;
-import com.company.entity.Employee;
-import com.company.entity.User;
+import com.company.entity.*;
 import com.company.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.validation.Valid;
+import java.util.Map;
 
 @Controller
 public class CandidateController {
@@ -20,15 +19,19 @@ public class CandidateController {
     private final EmployeeRepository employeeRepository;
     private final StatusRepository statusRepository;
     private final TagRepository tagRepository;
-    private final UserRepository userRepository;
+    private final EmployeeHrRepository employeeHrRepository;
+    private final EmployeeITRepository employeeITRepository;
+    private final ProjectRepository projectRepository;
 
     @Autowired
-    public CandidateController(CandidateRepository candidateRepository, EmployeeRepository employeeRepository, StatusRepository statusRepository, TagRepository tagRepository, UserRepository userRepository) {
+    public CandidateController(CandidateRepository candidateRepository, EmployeeRepository employeeRepository, StatusRepository statusRepository, TagRepository tagRepository, UserRepository userRepository, EmployeeHrRepository employeeHrRepository, EmployeeITRepository employeeITRepository, ProjectRepository projectRepository) {
         this.candidateRepository = candidateRepository;
         this.employeeRepository = employeeRepository;
         this.statusRepository = statusRepository;
         this.tagRepository = tagRepository;
-        this.userRepository = userRepository;
+        this.employeeHrRepository = employeeHrRepository;
+        this.employeeITRepository = employeeITRepository;
+        this.projectRepository = projectRepository;
     }
 
     @GetMapping("/candidate")
@@ -46,10 +49,8 @@ public class CandidateController {
     @GetMapping("/edit/{id}")
     public String showUpdateForm(@PathVariable("id") long id, Model model) {
         Candidate candidate = candidateRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid user Id:" + id));
-        User user = userRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid user Id:" + id));
         System.out.println(candidate.getUser());
         model.addAttribute("candidate", candidate);
-        model.addAttribute("user", user);
         model.addAttribute("tags", tagRepository.findAll());
 
         return "popup-infoCandidateUpdate";
@@ -78,78 +79,51 @@ public class CandidateController {
         model.addAttribute("tags", tagRepository.findAll());
         return "popup-infoCandidate";
     }
-//        @PostMapping("/emailokcand/{id}")
-//    public String updateUser(@PathVariable("id") long id, @Valid Candidate candidate, @Valid User user, BindingResult result, Model model) {
-//        if (result.hasErrors()) {
-////            user.setId(id);
-//            candidate.setId(id);
-//            return "popup-infoCandidateUpdate";
-//        }
-////        userRepository.save(user);
-//        candidateRepository.save(candidate);
-//
-//        return "redirect:/candidate#tab_candidate";
-//    }
 
-
-    //TODO ДОДЕЛАТЬ контроллер на редактирование телефона
-//    @PostMapping("/phoneokcand")
-//    public String phoneNewCandidate(@PathVariable("id") long id, @Valid Candidate candidate,  BindingResult result, Model model) {
-//        if (result.hasErrors()) {
-//            candidate.setId(id);
-//            return "popup-infoCandidate";
-//        }
-//
-//
-//        candidateRepository.save(candidate);
-//
-//        return "redirect:/candidate#tab_candidate";
-//    }
-    //TODO ДОДЕЛАТЬ контроллер на редактирование почты
-    @GetMapping("/emailokcand")
-    public String emailNewCandidate(Model model) {
-        return "redirect:/candidate#tab_candidate";
-    }
     //TODO ДОДЕЛАТЬ контроллер на добавление выбранного тега
     @GetMapping("/addtagcand")
     public String tagAddCandidate(Model model) {
         return "redirect:/candidate#tab_candidate";
     }
 
-//    @PostMapping("/candok")
-//    public String okayInfoForm(@PathVariable("id") long id, @Valid Candidate candidate, BindingResult result, Model model) {
-////        System.out.println("BRGINOFADDING");
-////        if (result.hasErrors()) {
-////            System.out.println("ERROR????");
-////            return "popup-infocand";
-////        }
-////        candidate.getUser().setEmail();
-//
-//        if (result.hasErrors()) {
-//            candidate.setId(id);
-//
-//            return "popup-infocand";
-//        }
-////
-//        candidateRepository.save(candidate);
-//        return "redirect:/candidate#tab_candidate";
-//    }
-
-        @GetMapping("/create/{id}")
-        public String addUser(@PathVariable("id") long id,  Model model) {
+    @GetMapping("/create/{id}")
+    public String addUser(@PathVariable("id") long id,  Model model) {
         System.out.println("BRGINOFADDING");
-            System.out.println(id);
+        System.out.println(id);
 
         Candidate candidate = candidateRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid candidate Id:" + id));
         Employee employee = new Employee();
+        EmployeeHR employeeHR = new EmployeeHR();
+        EmployeeIT employeeIT = new EmployeeIT();
 
         employee.setUser(candidate.getUser());
         employee.setPost(candidate.getPost());
         employee.setStatus(statusRepository.findByName("Работает"));
+        employee.setId(candidate.getId());
 
+        candidate.getTagLevelMap().keySet();
+
+
+        Map<Tag, Level> tagLev = candidate.getTagLevelMap();
+
+        System.out.println(tagLev);
         candidateRepository.delete(candidate);
         employeeRepository.save(employee);
+
+        if (employee.getPost().getId() == 110 || employee.getPost().getId() == 111){
+            employeeHR.setEmployee(employee);
+            employeeHR.setId(employee.getId());
+            employeeHrRepository.save (employeeHR);
+        }
+        else {
+            employeeIT.setEmployee(employee);
+            employeeIT.setId(employee.getId());
+            employeeIT.setProject(projectRepository.getById(0L));
+            employeeIT.setTagLevel(tagLev);
+            employeeITRepository.save(employeeIT);}
+
         System.out.println("SAVED??????");
         return "redirect:/candidate#tab_candidate";
     }
+
 }
