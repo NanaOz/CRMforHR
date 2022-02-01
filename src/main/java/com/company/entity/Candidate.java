@@ -2,6 +2,7 @@ package com.company.entity;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
 
@@ -23,10 +24,6 @@ public class Candidate {
     @ManyToOne(optional = false, cascade = CascadeType.REFRESH)
     @JoinColumn(name = "post_id")
     private Post post;
-
-//
-//    @OneToMany(mappedBy = "candidate", cascade = CascadeType.REFRESH, fetch = FetchType.EAGER)
-//    private List<CandidateTag> candidateTag;
 
     public Candidate () {}
 
@@ -89,28 +86,36 @@ public class Candidate {
     public int hashCode() {
         return Objects.hash(id);
     }
-//
-//    public List<CandidateTag> getCandidateTag() {
-//        return candidateTag;
-//    }
-//
-//    public void setCandidateTag(List<CandidateTag> candidateTag) {
-//        this.candidateTag = candidateTag;
-//    }
+    @ElementCollection(fetch=FetchType.EAGER)
+    @CollectionTable (name = "candidate_tag",
+            joinColumns = @JoinColumn(name = "candidate_id"))
+             @MapKeyJoinColumn(name = "tag_id")
 
-    @ManyToMany(cascade = {CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH}, fetch = FetchType.EAGER)
-    @JoinTable(name = "candidate_tag",
-            joinColumns = @JoinColumn(name = "candidate_id"),
-            inverseJoinColumns ={ @JoinColumn(name = "tag_id"), @JoinColumn(name = "level")}
-    )
-    private List<Tag> tags;
+    private Map<Tag, Level> tagLevelMap;
 
-    public List<Tag> getTags() {
-        return tags;
+    public Map<Tag, Level> getTagLevelMap() {
+        return tagLevelMap;
     }
 
-    public void setTags(List<Tag> tags) {
-        this.tags = tags;
+    public void setTagLevelMap(Map<Tag, Level> tagLevelMap) {
+        this.tagLevelMap = tagLevelMap;
     }
+
+
+//
+//    @ManyToMany(cascade = {CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH}, fetch = FetchType.EAGER)
+//    @JoinTable(name = "candidate_tag",
+//            joinColumns = @JoinColumn(name = "candidate_id"),
+//            inverseJoinColumns = {@JoinColumn(name = "tag_id"), @JoinColumn (name = "level")}
+//    )
+//    private List<Tag> tags;
+//
+//    public List<Tag> getTags() {
+//        return tags;
+//    }
+//
+//    public void setTags(List<Tag> tags) {
+//        this.tags = tags;
+//    }
 
 }

@@ -4,6 +4,7 @@ import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.Map;
 
 @Entity
 @Table(name = "tags")
@@ -19,32 +20,20 @@ public class Tag {
 
     @Column(name = "criterion")
     private Long criterion;
-
-    @ManyToMany(cascade = {CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
-    @JoinTable(name = "candidate_tag",
-            joinColumns = @JoinColumn(name = "tag_id"),
-            inverseJoinColumns = @JoinColumn(name = "level")
-    )
-    private List<Candidate> candidates;
-
-    @ManyToMany(cascade = {CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
-    @JoinTable(name = "employee_it_tag",
-            joinColumns = @JoinColumn(name = "tag_id"),
-            inverseJoinColumns = @JoinColumn(name = "employee_it_id")
-    )
-    private List<EmployeeIT> employeeIT;
-
-    @JoinTable(name = "candidate_tag")
-    @Column(name = "level")
-    private Long level;
-
-    public Long getLevel() {
-        return level;
-    }
-
-    public void setLevel(Long level) {
-        this.level = level;
-    }
+//
+//    @ManyToMany(cascade = {CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
+//    @JoinTable(name = "candidate_tag",
+//            joinColumns = @JoinColumn(name = "tag_id"),
+//            inverseJoinColumns = @JoinColumn(name = "candidate_id")
+//    )
+//    private List<Candidate> candidates;
+//
+//    @ManyToMany(cascade = {CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
+//    @JoinTable(name = "employee_it_tag",
+//            joinColumns = @JoinColumn(name = "tag_id"),
+//            inverseJoinColumns = @JoinColumn(name = "employee_it_id")
+//    )
+//    private List<EmployeeIT> employeeIT;
 
     public Long getCriterion() {
         return criterion;
@@ -68,21 +57,37 @@ public class Tag {
         this.id = id;
     }
 
-    public List<Candidate> getCandidates() {
-        return candidates;
+    @ElementCollection
+    @CollectionTable (name = "candidate_tag",
+            joinColumns = @JoinColumn(name = "tag_id"))
+    @MapKeyJoinColumn(name = "candidate_id")
+
+    private Map<Candidate, Level> candidateLevelMap;
+
+    public Map<Candidate, Level> getCandidateLevelMap() {
+        return candidateLevelMap;
     }
 
-    public void setCandidates(List<Candidate> candidates) {
-        this.candidates = candidates;
+    public void setCandidateLevelMap(Map<Candidate, Level> candidateLevelMap) {
+        this.candidateLevelMap = candidateLevelMap;
     }
 
-    public List<EmployeeIT> getEmployeeIT() {
-        return employeeIT;
-    }
 
-    public void setEmployeeIT(List<EmployeeIT> employeeIT) {
-        this.employeeIT = employeeIT;
-    }
+//    public List<Candidate> getCandidates() {
+//        return candidates;
+//    }
+//
+//    public void setCandidates(List<Candidate> candidates) {
+//        this.candidates = candidates;
+//    }
+//
+//    public List<EmployeeIT> getEmployeeIT() {
+//        return employeeIT;
+//    }
+//
+//    public void setEmployeeIT(List<EmployeeIT> employeeIT) {
+//        this.employeeIT = employeeIT;
+//    }
 
 
 }
