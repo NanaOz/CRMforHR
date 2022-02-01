@@ -27,7 +27,7 @@ public class Lid {
         this.status=employee.getStatus();
         this.project= employee.getProject();
         this.isCandidate=false;
-        this.employeeTags=null //todo настроить Employee
+        this.employeeTags=null; //todo настроить Employee
         this.summ=0;
     }
 
