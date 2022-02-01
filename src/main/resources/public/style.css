@@ -485,6 +485,8 @@ body.lock {
     font-weight: lighter;
     text-align: left;
 }
+
+/*для меню*/
 .avatar {
     vertical-align: middle;
     width: 100px;
@@ -492,9 +494,8 @@ body.lock {
     border-radius: 50%;
 }
 
-/*для меню*/
 .slideshow-container {
-    margin: 30px;
+    margin: 30px 15px 3px 3px;
     position: relative;
     background: rgba(241, 241, 241, 0.25);
 
@@ -507,6 +508,9 @@ body.lock {
 
 q {font-style: italic;}
 .author {color: #000000;}
+.user_photo{
+    margin: 10px 0px 0px 0px;
+}
 
 
 /*сбор команды*/
