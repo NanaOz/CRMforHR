@@ -86,9 +86,17 @@
         <div class="table_and_search">
             <table class="table_info_tag">
                 <tbody>
-                <tr th:each="tag:${employeeit.tags}">
-                    <td th:text="${tag.name}"></td>
+                <tr>
+                    <td>№</td>
+                    <td>Наменование тега</td>
+                    <td>Уровень владения</td>
                 </tr>
+                <tr th:each="mapItem, state:${employeeit.tagLevel}">
+                    <td th:utext="${state.count}"> </td>
+                    <td th:utext="${mapItem.key.name}"> </td>
+                    <td th:utext="${mapItem.value.level}"> </td>
+                </tr>
+
                 </tbody>
             </table>
 

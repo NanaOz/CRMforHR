@@ -69,8 +69,17 @@
             <div class="table_and_search">
                 <table class="table_info_tag">
                     <tbody>
-                    <tr th:each="tag:${candidate.tags}">
-                        <td th:text="${tag.name}"></td>
+                    <tr>
+                        <td>№</td>
+                        <td>Наменование тега</td>
+                        <td>Уровень владения</td>
+                    </tr>
+                    <tr th:each="mapItem, state:${candidate.tagLevelMap}">
+                        <td th:utext="${state.count}"> </td>
+                        <td th:utext="${mapItem.key.name}"> </td>
+                        <td th:utext="${mapItem.value.level}"> </td>
+                    </tr>
+
                     </tbody>
                 </table>
 
@@ -78,8 +87,8 @@
                     <label for="tagcand">Добавить теги:</label>
                     <select type="text" id="tagcand" class="popup_field" required autocomplete="off">
                         <option
-                                th:each="tag:${tags}"
-                                th:text="${tag.name}">
+                                th:each="mapItem, state:${candidate.tagLevelMap}"
+                                th:utext="${state.count} + ${mapItem.key.name} + ${mapItem.value.level}">
                         </option>
                     </select>
                     <button class="text-field_btn" type="submit"><a class="not_line_href"

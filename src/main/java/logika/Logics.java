@@ -1,45 +1,58 @@
 package logika;
 
-import org.hibernate.mapping.Map;
+import com.company.entity.*;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 
 public class Logics {
 
-    private ArrayList<Long> positions;
+
     //поля
-    private ArrayList<String> tags;
-    private HashMap<Long, Long> idUsers;
+    private HashMap<Post, Map<Tag, Level>> tagsByPositions;
+    private ArrayList<Lid> lids;
+
 
     //конструктор
-    public Logics(ArrayList<String> tags, HashMap<Long, Long> idUsers, ArrayList<Long> positions) {
-        this.tags = tags;
-        this.idUsers = idUsers;
-        this.positions=positions;
+    public Logics(HashMap<Post, Map<Tag, Level>> tagsByPositions, ArrayList<Lid> lids) {
+        this.tagsByPositions = tagsByPositions;
+        this.lids = lids;
     }
 
-    //фильтр по тегам
-    private ArrayList<Long> filter() {
 
-        ArrayList<Long> filterIdUsers = new ArrayList<>();
+    //сбор команды
+    public HashMap<Post, ArrayList<Lid>> gatherTeam() {
 
-        for (int i = 0; i < idUsers.size(); i++) { //для каждого пользователя проверяем совпадене тегов
 
-            // контроллер дает arraylist тегов конкретно i-го пользователя
-            ArrayList<String> userTags;
-
-            int flag = 1;
-            for (int j = 0; j < tags.size(); j++) { // для каждого выбранного тега проверяем наличие тега у пользователя
-                for (int k = 0; k < userTags.size(); k++) {
-
-                    if(tags.get(j)!= userTags.get(k)){flag=0;}
+        for (Post p : tagsByPositions.keySet()) { //для каждой позиции должности, будем перебирать лидов
+            for (Lid lid : lids) { //для каждого лида будем перебирать теги
+                if (lid.isCandidate()) { //если лид кандидат
+                    for (Tag tagFromForm : tagsByPositions.get(p).keySet()) { //для каждого тега лида, будем перебирать и сравнивать теги необходимые для должности p
+                        if (lid.getCandidateTags().containsKey(tagFromForm)) { //если у лида есть тег указанный в листе тегов должности p
+                            if (tagsByPositions.get(p).get(tagFromForm).getLevel() <= lid.getCandidateTags().get(tagFromForm).getLevel()) { //если уровень тега не ниже чем требуемый для должности
+                                lid.summAdd(1.0);//todo связать "1" с коэфициентом важности тега
+                            } else { // если уровень ниже требуемого, домножаем коэфициент "1" то есть коэф важности тега на частное от уровень владения лидом на требуемый уровень для должности
+                                lid.summAdd(1.0 * tagFromForm.getCriterion() * lid.getCandidateTags().get(tagFromForm).getLevel() / tagsByPositions.get(p).get(tagFromForm).getLevel());
+                            }
+                        } else {
+                            /*
+                            if (tagsByPositions.get(p).get(tagFromForm).getLevel() <= lid.getCandidateTags().get(tagFromForm).getLevel()) { //если уровень тега не ниже чем требуемый для должности
+                                lid.summAdd(1.0);//todo связать "1" с коэфициентом важности тега
+                            } else { // если уровень ниже требуемого, домножаем коэфициент "1" то есть коэф важности тега на частное от уровень владения лидом на требуемый уровень для должности
+                                lid.summAdd(1.0*tagFromForm.getCriterion()*lid.getCandidateTags().get(tagFromForm).getLevel() / tagsByPositions.get(p).get(tagFromForm).getLevel());
+                            }
+                             */
+                        }
+                    }
                 }
             }
+            Map<Post, ArrayList<Lid>> team=new HashMap<>();
 
-            if(flag==0){ filterIdUsers.add(idUsers.get(i));} //если у нас выбранный тег есть у пользователя, то добавляем его в список фильтрованных
         }
 
-        return filterIdUsers;
+        return null;
     }
+
+
 }
