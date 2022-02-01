@@ -1,6 +1,5 @@
 package com.company.entity;
 
-
 import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
@@ -31,4 +30,11 @@ public class Status {
         this.id = id;
     }
 
+    @Override
+    public String toString() {
+        return "Status{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                '}';
+    }
 }

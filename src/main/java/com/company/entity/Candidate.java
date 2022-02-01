@@ -2,6 +2,7 @@ package com.company.entity;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
 
@@ -11,36 +12,25 @@ public class Candidate {
     @Id
     private Long id;
 
-    @OneToOne(optional = false, cascade = CascadeType.ALL)
+    @OneToOne(optional = false, cascade = CascadeType.REFRESH, fetch=FetchType.EAGER)
     @MapsId
     @JoinColumn(name = "id")
     private User user;
 
-    @ManyToOne(optional = false, cascade = CascadeType.ALL)
+    @ManyToOne(optional = false, cascade = CascadeType.REFRESH)
     @JoinColumn(name = "status_id")
     private Status status;
 
-    @ManyToOne(optional = false, cascade = CascadeType.ALL)
+    @ManyToOne(optional = false, cascade = CascadeType.REFRESH)
     @JoinColumn(name = "post_id")
     private Post post;
 
+    @ElementCollection(fetch=FetchType.EAGER)
+    @CollectionTable (name = "candidate_tag",
+            joinColumns = @JoinColumn(name = "candidate_id"))
+    @MapKeyJoinColumn(name = "tag_id")
 
-
-    @ManyToMany(cascade = {CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH}, fetch = FetchType.EAGER)
-    @JoinTable(name = "candidate_tag",
-            joinColumns = @JoinColumn(name = "candidate_id"),
-            inverseJoinColumns = @JoinColumn(name = "tag_id")
-    )
-    private List<Tag> tags;
-
-    public List<Tag> getTags() {
-        return tags;
-    }
-
-    public void setTags(List<Tag> tags) {
-        this.tags = tags;
-    }
-
+    private Map<Tag, Level> tagLevelMap;
     public Candidate () {}
 
     public Post getPost() {
@@ -75,16 +65,14 @@ public class Candidate {
         this.id = id;
     }
 
-    @Override
-    public String toString() {
-        return "Candidate{" +
-                "id=" + id +
-                ", user=" + user +
-                ", status=" + status +
-                ", post=" + post +
-                '}';
+    public boolean isSelectedStatus(Status status){
+        return this.status.getId().equals(status.getId());
     }
-        @Override
+    public boolean isSelectedPost(Post post){
+        return this.post.getId().equals(post.getId());
+    }
+
+    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
@@ -96,34 +84,26 @@ public class Candidate {
     public int hashCode() {
         return Objects.hash(id);
     }
-//
-//    @ManyToOne
-//    @JoinColumn(name = "User_Id", referencedColumnName = "id", nullable = false)
-//    public User getUsersByUserId() {
-//        return usersByUserId;
-//    }
-//
-//    public void setUsersByUserId(User usersByUserId) {
-//        this.usersByUserId = usersByUserId;
-//    }
-//
-//    @ManyToOne
-//    @JoinColumn(name = "Status_id", referencedColumnName = "Id")
-//    public StatusRepository getStatusByStatusId() {
-//        return statusByStatusId;
-//    }
-//
-//    public void setStatusByStatusId(StatusRepository statusByStatusId) {
-//        this.statusByStatusId = statusByStatusId;
-//    }
-//
-//    @ManyToOne
-//    @JoinColumn(name = "Post_id", referencedColumnName = "Id")
-//    public PostRepository getPostByPostId() {
-//        return postByPostId;
-//    }
-//
-//    public void setPostByPostId(PostRepository postByPostId) {
-//        this.postByPostId = postByPostId;
-//    }
+
+
+    public Map<Tag, Level> getTagLevelMap() {
+        return tagLevelMap;
+    }
+
+    public void setTagLevelMap(Map<Tag, Level> tagLevelMap) {
+        this.tagLevelMap = tagLevelMap;
+    }
+
+    @Override
+    public String toString() {
+        return "Candidate{" +
+                "id=" + id +
+                ", user=" + user +
+                ", status=" + status +
+                ", post=" + post +
+                ", tagLevelMap=" + tagLevelMap +
+                '}';
+    }
+
+
 }
