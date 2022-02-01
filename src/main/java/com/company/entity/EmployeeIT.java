@@ -1,12 +1,7 @@
 package com.company.entity;
 
-import org.hibernate.annotations.Type;
-
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Entity
 @Table(name = "employee_it")
@@ -18,7 +13,7 @@ public class EmployeeIT {
     @JoinColumn(name = "project_id")
     private Project project;
 
-    @OneToOne(optional = false)
+    @OneToOne(optional = false, cascade = CascadeType.ALL)
     @MapsId
     @JoinColumn(name = "id")
     private Employee employee;
@@ -28,7 +23,7 @@ public class EmployeeIT {
             joinColumns = @JoinColumn(name = "employee_it_id"))
     @MapKeyJoinColumn(name = "tag_id")
 
-    private Map<Tag, Level> tagLevel;
+    private Map<Tag, Level> tagLevel = new HashMap<Tag, Level>();
 
     public EmployeeIT () {}
 
