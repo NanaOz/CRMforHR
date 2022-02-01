@@ -1,16 +1,16 @@
-<div th:fragment="popup-searchtaem">
+<div th:fragment="popup-searchtaem" xmlns:th="http://www.w3.org/1999/xhtml">
 
     <a href="#popup_8" class="tabs_addAccount popup-link">Подобрать команду</a>
     <div id="popup_8" class="popup">
         <div class="popup_body">
             <div class="popup_content">
                 <a href="#" class="popup_close close-popup">X</a>
-                <div class="popup_title">Подобрать команду</div>
+                <div class="popup_title">Добавить поле должности</div>
                 <div class="popup_text">
                     <form th:action='@{/searchteam}'
                           method="post"
                           th:object="${tags}">
-                        <button class="tabs_change tabs_change"><a>Подобрать</a></button>
+                        <button class="tabs_change tabs_change"><a>Добавить</a></button>
                         <p></p>
 
                         <table class="table_team_search">
@@ -19,12 +19,24 @@
                                 <th>
                                     <div>
                                         <legend class="team_lable">Выберите теги:</legend>
-                                        <div th:switch="${tags}" class="checkbox-group">
-                        <span th:each="tag : ${tags}">
-                            <p><input class="checkbox" type="checkbox" id="tag" name="idChecked" value="tags">
-                            <label for="tag"><i th:text="${tag.name}"></i></label></p>
-                        </span>
-                                        </div>
+                                        <p th:switch="${tags}" class="checkbox-group">
+                                        <p>
+                                                <span th:each="tag : ${tags}">
+                                        <p>
+                                            <input class="checkbox" type="checkbox" id="tag" name="idChecked"
+                                                   value="tags"><label
+                                                for="tag"><i th:text="${tag.name}"></i></label>
+
+                                            <select th:class="hiddenElement">
+                                                <option value="0" selected>--</option>
+                                                <option value="1">Базовый</option>
+                                                <option value="2">Продвинутый</option>
+                                                <option value="3">Эксперт</option>
+                                            </select>
+                                        </p>
+                                        </span>
+                                        </p>
+                                        </p>
                                     </div>
                                 </th>
                                 <th>
@@ -68,5 +80,20 @@
                         <!--                        </table>-->
                     </form>
 
+                    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+                    <script type="text/javascript">
+    $(document).ready(function() {
+        $(".checkbox").change(function () {
+            $(this).parent().find('select').css("visibility", "visible");
+        })
+    });
+
+
+
+                    </script>
 
                 </div>
+            </div>
+        </div>
+    </div>
+</div>

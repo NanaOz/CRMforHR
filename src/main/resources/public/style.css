@@ -27,6 +27,10 @@ body.lock {
     overflow: hidden;
 }
 
+.hiddenElement{
+visibility: hidden;
+}
+
 /*вкладки и их содержимое*/
 .contents {
     padding: 50px 0;

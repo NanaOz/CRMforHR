@@ -3,6 +3,7 @@ package logika;
 import com.company.entity.*;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -47,11 +48,16 @@ public class Logics {
                     }
                 }
             }
-            Map<Post, ArrayList<Lid>> team=new HashMap<>();
+            Map<Post, ArrayList<Lid>> team = new HashMap<>();
 
         }
 
         return null;
+    }
+
+    private ArrayList<Lid> sortTeam(ArrayList<Lid> team) {
+        Collections.sort(team, ((a, b) -> (int) (a.getSumm() * 100 - b.getSumm() * 100)));// с помощью лямбда выражения задаем для сортировки параметры (как нужно сортировать)
+        return lids;
     }
 
 

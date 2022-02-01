@@ -14,7 +14,6 @@ public class Lid {
     private Project project;
     private boolean isCandidate;
     private Map<Tag,Level> candidateTags;
-    private Map<Tag,Level> employeeTags;//todo Employee
     private double summ;
 
 
@@ -65,9 +64,9 @@ public class Lid {
         }
     }
 
-    public Map<Tag, Level> getEmployeeTags() {
-        return employeeTags;
-    }
+//    public Map<Tag, Level> getEmployeeTags() {
+//        return employeeTags;
+//    }
     public Map<Tag, Level> getCandidateTags() {
         return candidateTags;
     }
