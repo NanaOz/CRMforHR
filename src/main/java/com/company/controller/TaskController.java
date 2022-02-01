@@ -1,13 +1,16 @@
 package com.company.controller;
 
+import com.company.entity.Candidate;
 import com.company.entity.Employee;
 import com.company.entity.Task;
 import com.company.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.*;
+
+import java.time.LocalDate;
+import java.util.Date;
 
 @Controller
 public class TaskController {
@@ -61,6 +64,18 @@ public class TaskController {
     @GetMapping("/taskok")
     public String okayInfoForm(Model model) {
         return "redirect:/task#tab_task";
+    }
+
+    @RequestMapping(value = "/task/updateDate", method = RequestMethod.POST)
+    public String saveHosting(
+            @RequestParam long id, @RequestParam long statusId, @RequestParam LocalDate date
+    ) {
+        Task task = taskRepository.getById(id);
+        task.setStatus(statusTaskRepository.getById(statusId));
+        if(statusId!=3 && task.getDateActualCompletion()!=null) task.setDateActualCompletion(null);
+        else if(statusId==3) task.setDateActualCompletion(date);
+        taskRepository.save(task);
+       return "";
     }
 
 //    @GetMapping("/close")

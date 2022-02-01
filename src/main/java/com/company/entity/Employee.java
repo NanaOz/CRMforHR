@@ -21,10 +21,6 @@ public class Employee {
     @JoinColumn(name = "status_id")
     private Status status;
 
-    @OneToOne(mappedBy = "employee", cascade = CascadeType.ALL, optional = false, fetch = FetchType.LAZY)
-//    @OneToOne(fetch = FetchType.LAZY)
-    private EmployeeIT employeeIT;
-
     @ManyToOne
     @JoinColumn(name = "project_id")
     private Project project;
@@ -69,10 +65,6 @@ public class Employee {
     public void setUser(User user) {
         this.user = user;
     }
-
-    public EmployeeIT getEmployeeIT() {return employeeIT;}
-
-    public void setEmployeeIT(EmployeeIT employeeIT) {this.employeeIT = employeeIT;}
 
     @Override
     public String toString() {

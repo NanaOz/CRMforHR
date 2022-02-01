@@ -41,7 +41,8 @@
                                 <option th:each="status : ${taskStatuses}"
                                         th:value="${status}"
                                         th:text="${status.taskName}"
-                                        th:selected="${task.isSelectedStatus(status)}">
+                                        th:selected="${task.isSelectedStatus(status)}"
+                                        th:data-id="${status.id}">
                                 </option>
                             </select>
                             </td>
@@ -53,7 +54,7 @@
                         </tbody>
                     </table>
                 </div>
-                <div id="tab_employee" class="tabs_block"></div>
+                <div id="tab_employee" class="tabs_block" ></div>
                 <div id="tab_candidate" class="tabs_block"></div>
                 <div id="tab_team" class="tabs_block"></div>
             </div>
@@ -62,32 +63,33 @@
 </div>
 </body>
 <script src="/popup.js/"></script>
+<script src="/dateFormatter.js/"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script type="text/javascript">
     $(document).ready(function() {
         $(".form-control").change(function () {
             var id = $(this).attr("id");
             let strNewId = id.substring(id.indexOf("statusTask") + "statusTask".length, id.length);
-            id = "#" + 'dateActualCompletion' + strNewId;
-            $(id).text(Date());
-          /*  $.post($(this).attr('action'), $(this).find('input').serialize(), function() {
-                $('.form2 input[type="text"]').val('').focus(); // опционально
-                alert('Successfully saved');
-            });*/
-           /* $.post( "test.html", function( data ) {
-                alert( "Data Loaded: " + data );
+            dateId = "#" + 'dateActualCompletion' + strNewId;
+            if($("option:selected", this).attr("data-id")=="3") {
+                $(dateId).text(formatDate(Date()));
+            }
+            else{
+                $(dateId).text("");
+            }
+
+            var data = {}
+            /*data["id"] = strNewId;
+            data["statusId"] = $("option:selected", this).attr("data-id");
+            data["date"] = $(dateId).text();*/
+            $.post("/task/updateDate", {
+                "id" : strNewId,
+                "statusId" : $("option:selected", this).attr("data-id"),
+                "date" : $(dateId).text()
+            }, function(data) {
+                ;
             });
-            $.post("test.html", function(data)){
-                alert("DataLoaded: "+ data);
-            });
-            $("#button-id").click(function(){
-                var url = $("#button-id").data("url");
-                $.get(url , function(result) {
-                    //do something with the result if you ever need to
-                });
-            });
-            return false;*/
-        })
+        });
     });
 
 </script>
