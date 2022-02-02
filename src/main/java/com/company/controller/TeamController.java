@@ -1,9 +1,9 @@
 package com.company.controller;
 
-import com.company.entity.Tag;
-import com.company.repository.PostRepository;
-import com.company.repository.StatusRepository;
-import com.company.repository.TagRepository;
+import com.company.entity.*;
+import com.company.repository.*;
+import logika.Lid;
+import logika.Logics;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,7 +14,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.validation.Valid;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 public class TeamController {
@@ -22,12 +24,16 @@ public class TeamController {
     private final TagRepository tagRepository;
     private final StatusRepository statusRepository;
     private final PostRepository postRepository;
+    private final CandidateRepository candidateRepository;
+    private final EmployeeITRepository employeeITRepository;
 
     @Autowired
-    public TeamController(TagRepository tagRepository, StatusRepository statusRepository, PostRepository postRepository) {
+    public TeamController(TagRepository tagRepository, StatusRepository statusRepository, PostRepository postRepository, CandidateRepository candidateRepository, EmployeeITRepository employeeITRepository) {
         this.tagRepository = tagRepository;
         this.statusRepository = statusRepository;
         this.postRepository = postRepository;
+        this.candidateRepository = candidateRepository;
+        this.employeeITRepository = employeeITRepository;
     }
 
 //    @GetMapping("/team")
@@ -91,20 +97,27 @@ public class TeamController {
         return "redirect:/team#tab_team";
     }
 
-    //TODO доделать контроллер данные из чекбоксов
     @PostMapping("/searchteam")
-    public String inputData(@RequestParam("idChecked") List<String> tags, Model model){
-//        model.addAttribute("tags", tagRepository.findAll());
-//        model.addAttribute("statususer", statusRepository.findAll());
-//        model.addAttribute("postname", postRepository.findAll());
+    public String inputData(@RequestParam("idChecked") Map<Post, Map<Tag, Level>> tagsWithLevel, /*ArrayList<String> filterByStatus,*/ Model model){
 
-        if(tags != null){
-            for(String tagStr : tags){
+        model.addAttribute("readyTeam", tagsWithLevel);
 
-//                tagRepository.
-            }
+        ArrayList<Lid> lids=new ArrayList<>();
+        List<Candidate> candidates= candidateRepository.findAll();
+        List<EmployeeIT> employeeITs= employeeITRepository.findAll();
+
+        for(Candidate candidate:candidates){
+            lids.add(new Lid(candidate));
         }
-        return "redirect:/team#tab_team";
+        for(EmployeeIT employeeIT:employeeITs){
+            lids.add(new Lid(employeeIT));
+        }
+
+        Logics logics=new Logics(tagsWithLevel,lids);
+
+        return "team";
     }
+
+
 
 }

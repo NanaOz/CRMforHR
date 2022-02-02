@@ -14,20 +14,20 @@ public class Lid {
     private Project project;
     private boolean isCandidate;
     private Map<Tag,Level> candidateTags;
-    private Map<Tag,Level> employeeTags;//todo Employee
+    private Map<Tag,Level> employeeITags;//todo Employee
     private double summ;
 
 
 
-    //конструктор для Employee
-    public Lid(Employee employee) {
-        this.id= employee.getId();
-        this.user=employee.getUser();
-        this.post= employee.getPost();
-        this.status=employee.getStatus();
-        this.project= employee.getProject();
+    //конструктор для employeeITags
+    public Lid(EmployeeIT employeeITags) {
+        this.id= employeeITags.getId();
+        this.user=employeeITags.getEmployee().getUser();
+        this.post= employeeITags.getEmployee().getPost();
+        this.status=employeeITags.getEmployee().getStatus();
+        this.project= employeeITags.getProject();
         this.isCandidate=false;
-//        this.employeeTags=employee.getTagLevelMap(); //todo настроить Employee
+        this.employeeITags= employeeITags.getTagLevel();
         this.summ=0;
     }
 
@@ -65,8 +65,8 @@ public class Lid {
         }
     }
 
-    public Map<Tag, Level> getEmployeeTags() {
-        return employeeTags;
+    public Map<Tag, Level> getEmployeeITags() {
+        return employeeITags;
     }
     public Map<Tag, Level> getCandidateTags() {
         return candidateTags;
