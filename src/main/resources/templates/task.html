@@ -40,7 +40,8 @@
                                     <option th:each="status : ${taskStatuses}"
                                             th:value="${status}"
                                             th:text="${status.taskName}"
-                                            th:selected="${task.isSelectedStatus(status)}">
+                                            th:selected="${task.isSelectedStatus(status)}"
+                                            th:data-id="${status.id}">
                                     </option>
                                 </select>
                             </td>
@@ -49,6 +50,25 @@
 
 
                             <td th:text="${task.dateActualCompletion}" th:name="dateActualCompletion" th:id="'dateActualCompletion'+${task.id}"></td>
+                            <td th:hidden="${task.id}" th:id="'taskId'+${task.id}" ></td>
+                            <td th:text="${task.dateCreation}"></td>
+                            <td th:text="${task.executor.employee.user.surname}+ ' ' + ${task.executor.employee.user.username} + ' ' + ${task.executor.employee.user.fathersName}"></td>
+                            <td th:text="${task.task}"></td>
+                            <td th:text="${task.lid.surname} + ' ' + ${task.lid.username} + ' ' + ${task.lid.fathersName}"></td>
+                            <!--<td th:text="${task.status.taskName}"></td>-->
+                            <td>
+                                <select class="form-control" th:id="'statusTask'+${task.id}" th:name="statusTask">
+                                <option th:each="status : ${taskStatuses}"
+                                        th:value="${status}"
+                                        th:text="${status.taskName}"
+                                        th:selected="${task.isSelectedStatus(status)}"
+                                        th:data-id="${status.id}">
+                                </option>
+                            </select>
+                            </td>
+                            <td th:text="${task.dateDeadline}"></td>
+                            <td th:text="${task.dateActualCompletion}" th:name="dateActualCompletion" th:id="'dateActualCompletion'+${task.id}"></td>
+                            <td><a th:href="'/infotask/'+ ${task.id}" class="tabs_info_user tabs_info_user">ИНФО</a></td>
 
                         </tr>
                         </tbody>
@@ -63,14 +83,34 @@
 </div>
 </body>
 <script src="/popup.js/"></script>
+<script src="/dateFormatter.js/"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script type="text/javascript">
-    $(function updateDateForId() {
-        console.log(this);
+    $(document).ready(function() {
+        $(".form-control").change(function () {
+            var id = $(this).attr("id");
+            let strNewId = id.substring(id.indexOf("statusTask") + "statusTask".length, id.length);
+            dateId = "#" + 'dateActualCompletion' + strNewId;
+            if($("option:selected", this).attr("data-id")=="3") {
+                $(dateId).text(formatDate(Date()));
+            }
+            else{
+                $(dateId).text("");
+            }
+
+            var data = {}
+            /*data["id"] = strNewId;
+            data["statusId"] = $("option:selected", this).attr("data-id");
+            data["date"] = $(dateId).text();*/
+            $.post("/task/updateDate", {
+                "id" : strNewId,
+                "statusId" : $("option:selected", this).attr("data-id"),
+                "date" : $(dateId).text()
+            }, function(data) {
+                ;
+            });
+        });
     });
-    $( ".form-control" ).change(function() {
-        var id = $(this).attr("id");
-        alert(id);
-    });
+
 </script>
 </html>

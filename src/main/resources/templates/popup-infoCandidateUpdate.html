@@ -25,6 +25,9 @@
                     <input type="text" th:field="*{user.surname}" class="form-control" id="surname"
                            placeholder="surname">
                     <!--                    <span th:if="${#fields.hasErrors('surname')}" th:errors="*{surname}" class="text-danger"></span>-->
+                    <input type="text" th:field="*{user.surname}" class="form-control" id="surname"
+                           placeholder="surname">
+                    <!--                    <span th:if="${#fields.hasErrors('surname')}" th:errors="*{surname}" class="text-danger"></span>-->
                 </div>
                 <div>
                     <label for="username">Имя</label>
@@ -50,13 +53,36 @@
                 </div>
                 <div>
                     <label for="post">Должность</label>
-                    <input type="text" th:field="*{post}" class="form-control" id="post" placeholder="post">
+                    <select class="form-control" th:id="post" th:name="post">
+                        <option th:each="post : ${postes}"
+                                th:value="${post}"
+                                th:text="${post.id}+ ''+${post.name}"
+                                th:selected="${candidate.isSelectedPost(post)}"
+                                th:data-id="${post.id}" th:data-name="${post.name}">
+                        </option>
+                    </select>
+                    <!--            <input type="text" th:field="*{post}" class="form-control" id="post" placeholder="post">-->
                     <!--                    <span th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}" class="text-danger"></span>-->
                 </div>
                 <div>
                     <label for="status">Статус</label>
-                    <input type="text" th:field="*{status}" class="form-control" id="status" placeholder="status">
+                    <select class="form-control" th:id="status"
+                            th:name="status">
+                        <option th:each="status : ${statuses}"
+                                th:value="${status}"
+                                th:text="${status.id}+ ''+${status.name}"
+                                th:selected="${candidate.isSelectedStatus(status)}"
+                                th:data-id="${status.id}" th:data-name="${status.name}">
+                        </option>
+                    </select>
+                    <!--<input type="text" th:field="*{status}" class="form-control" id="status" placeholder="status">-->
                     <!--                    <span th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}" class="text-danger"></span>-->
+                </div>
+                <div>
+                    <input type="hidden" th:field="*{status.id}" class="form-control" id="statusId"  placeholder="statusId">
+                    <input type="hidden" th:field="*{status.name}" class="form-control" id="statusName"   placeholder="statusName">
+                    <input type="hidden" th:field="*{post.id}" class="form-control" id="postId" placeholder="postId">
+                    <input type="hidden" th:field="*{post.name}" class="form-control" id="postName" placeholder="postName">
                 </div>
 
             </div>
@@ -98,6 +124,25 @@
         </div>
     </div>
     <script src="/popup.js/"></script>
+            </div>
+        </div>
+
+
+        <script src="/popup.js/"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $("#status").change(function () {
+                    $("#statusId").val($("#status option:selected").attr("data-id"));
+                    $("#statusName").val($("#status option:selected").attr("data-name"));
+                });
+                $("#post").change(function () {
+                    $("#postId").val($("#post option:selected").attr("data-id"));
+                    $("#postName").val($("#post option:selected").attr("data-name"));
+                })
+            });
+        </script>
+    </div>
     </body>
 </form>
 
