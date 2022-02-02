@@ -22,9 +22,10 @@ public class CandidateController {
     private final EmployeeHrRepository employeeHrRepository;
     private final EmployeeITRepository employeeITRepository;
     private final ProjectRepository projectRepository;
+    private final PostRepository postRepository;
 
     @Autowired
-    public CandidateController(CandidateRepository candidateRepository, EmployeeRepository employeeRepository, StatusRepository statusRepository, TagRepository tagRepository, UserRepository userRepository, EmployeeHrRepository employeeHrRepository, EmployeeITRepository employeeITRepository, ProjectRepository projectRepository) {
+    public CandidateController(CandidateRepository candidateRepository, EmployeeRepository employeeRepository, StatusRepository statusRepository, TagRepository tagRepository, UserRepository userRepository, EmployeeHrRepository employeeHrRepository, EmployeeITRepository employeeITRepository, ProjectRepository projectRepository, PostRepository postRepository) {
         this.candidateRepository = candidateRepository;
         this.employeeRepository = employeeRepository;
         this.statusRepository = statusRepository;
@@ -32,6 +33,7 @@ public class CandidateController {
         this.employeeHrRepository = employeeHrRepository;
         this.employeeITRepository = employeeITRepository;
         this.projectRepository = projectRepository;
+        this.postRepository = postRepository;
     }
 
     @GetMapping("/candidate")
@@ -52,20 +54,18 @@ public class CandidateController {
         System.out.println(candidate.getUser());
         model.addAttribute("candidate", candidate);
         model.addAttribute("tags", tagRepository.findAll());
-
+        model.addAttribute("postes", postRepository.findAll());
+        model.addAttribute("statuses", statusRepository.findAll());
         return "popup-infoCandidateUpdate";
     }
 
     @PostMapping("/update/{id}")
     public String updateUser(@PathVariable("id") long id, @Valid Candidate candidate, BindingResult result, Model model) {
 
-        if (result.hasErrors()) {
-//            user.setId(id);
+/*        if (result.hasErrors()) {
             candidate.setId(id);
             return "popup-infoCandidateUpdate";
-        }
-        System.out.println(candidate);
-        System.out.println(candidate.getUser());
+        }*/
 //        userRepository.save(user);
         candidateRepository.save(candidate);
 
@@ -88,9 +88,6 @@ public class CandidateController {
 
     @GetMapping("/create/{id}")
     public String addUser(@PathVariable("id") long id,  Model model) {
-        System.out.println("BRGINOFADDING");
-        System.out.println(id);
-
         Candidate candidate = candidateRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid candidate Id:" + id));
         Employee employee = new Employee();
         EmployeeHR employeeHR = new EmployeeHR();
