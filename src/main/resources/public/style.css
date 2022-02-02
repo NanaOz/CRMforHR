@@ -243,10 +243,25 @@ visibility: hidden;
     table-layout: fixed;
 }
 
-.th {
-    width: 20%;
-
+.id_candidate, .id_employee{
+    width: 50px;
 }
+.name_candidate, .post_candidate, .name_employee{
+    width: 300px;
+}
+.status_candidate, .status_employee {
+    width: 200px;
+}
+.date_task {
+    width: 100px;
+}
+.status_task{
+    width: 120px;
+}
+.task_task {
+    width: 140px;
+}
+
 
 .table thead th {
     font-weight: normal;
@@ -290,7 +305,7 @@ visibility: hidden;
     display: table;
 }
 
-.table {
+.table_and {
     display: table-cell;
 }
 
@@ -303,8 +318,26 @@ visibility: hidden;
     width: 100%;
     padding: 0.75rem; /*внутренние поля:*/
     line-height: 2; /*высота строки*/
-    /*border: 1px solid #fffefe;*/
-    /*border-radius: 0.50rem; !*радиус скругления углов*!*/
+
+}
+
+.search_field{
+    display: inline-block;
+    margin-right: 150px;
+    margin-bottom: 20px;
+    text-decoration: none;
+    height: 25px;
+    width: 200px;
+    border-radius:  3px;
+}
+.search_field_emp {
+    display: inline-block;
+    margin-right: 60px;
+    margin-bottom: 20px;
+    text-decoration: none;
+    height: 25px;
+    width: 200px;
+    border-radius:  3px;
 }
 
 .search_button {

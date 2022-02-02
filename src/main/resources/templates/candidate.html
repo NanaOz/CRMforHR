@@ -17,14 +17,27 @@
                 <div id="tab_employee" class="tabs_block"></div>
                 <div id="tab_candidate" class="tabs_block">
                     <div>
-                        <div class="table">
+<!--                        <div class="table">-->
+                            <form action="" method="get" >
+                                <div class="search_field"><i class="search_name"></i><input class="search_field" id="idInputCandidate"
+                                                                                            onkeyup="searchByIdCandidate()"
+                                                                                            name="id_search"
+                                                                                            type="search" placeholder="ID"></div>
+                                <div class="search_field"><i class="search_name"></i><input class="search_field" id="nameInputCandidate"
+                                                                           onkeyup="searchByNameCandidate()"
+                                                                           name="name_search" type="search" placeholder="ФИО"></div>
+                                <div class="search_field"><i class="search_name"></i><input class="search_field" id="postInputCandidate"
+                                                                                 onkeyup="searchByPostCandidate()"
+                                                                                 name="post_search" type="search" placeholder="Должность"></div>
+
+                            </form>
                             <table id="candidateTable" class="table">
                                 <thead>
                                 <tr>
-                                    <th onclick="sortTableCandidate(0)">ID</th>
-                                    <th onclick="sortTableCandidate(1)">ФИО</th>
-                                    <th onclick="sortTableCandidate(2)">Статус</th>
-                                    <th onclick="sortTableCandidate(3)">Претендуемая должность</th>
+                                    <th onclick="sortTableCandidate(0)" class="id_candidate">ID</th>
+                                    <th onclick="sortTableCandidate(1)" class="name_candidate">ФИО</th>
+                                    <th onclick="sortTableCandidate(2)" class="status_candidate">Статус</th>
+                                    <th onclick="sortTableCandidate(3)" class="post_candidate">Претендуемая должность</th>
                                     <th></th>
                                     <!--                                    <th></th>-->
                                     <!--                                    <th></th>-->
@@ -44,22 +57,22 @@
                                 </tbody>
                             </table>
                         </div>
-                        <div class="search">
-                            <form action="" method="get">
-                                <div><p class="search_name">ФИО:</p><input id="nameInputCandidate"
-                                                                           onkeyup="searchByNameCandidate()"
-                                                                           name="name_search" type="search"></div>
-                                <div><p class="search_name">Должность:</p><input id="postInputCandidate"
-                                                                                 onkeyup="searchByPostCandidate()"
-                                                                                 name="post_search" type="search"></div>
-                                <!--                                <div><p class="search_name">Тэги:</p><input id="tagInputCandidate"-->
-                                <!--                                                                            onkeyup="searchByTagCandidate()"-->
-                                <!--                                                                            name="tags_search" type="search"></div>-->
-                                <div><p class="search_name">ID:</p><input id="idInputCandidate"
-                                                                          onkeyup="searchByIdCandidate()"
-                                                                          name="id_search"
-                                                                          type="search"></div>
-                            </form>
+<!--                        <div class="search">-->
+<!--                            <form action="" method="get">-->
+<!--                                <div><p class="search_name">ФИО:</p><input id="nameInputCandidate"-->
+<!--                                                                           onkeyup="searchByNameCandidate()"-->
+<!--                                                                           name="name_search" type="search"></div>-->
+<!--                                <div><p class="search_name">Должность:</p><input id="postInputCandidate"-->
+<!--                                                                                 onkeyup="searchByPostCandidate()"-->
+<!--                                                                                 name="post_search" type="search"></div>-->
+<!--                                &lt;!&ndash;                                <div><p class="search_name">Тэги:</p><input id="tagInputCandidate"&ndash;&gt;-->
+<!--                                &lt;!&ndash;                                                                            onkeyup="searchByTagCandidate()"&ndash;&gt;-->
+<!--                                &lt;!&ndash;                                                                            name="tags_search" type="search"></div>&ndash;&gt;-->
+<!--                                <div><p class="search_name">ID:</p><input id="idInputCandidate"-->
+<!--                                                                          onkeyup="searchByIdCandidate()"-->
+<!--                                                                          name="id_search"-->
+<!--                                                                          type="search"></div>-->
+<!--                            </form>-->
                         </div>
                     </div>
                 </div>

@@ -18,14 +18,14 @@
                     <table id="taskTable" class="table">
                         <thead>
                         <tr>
-                            <th onclick="sortTableTask(0)">Дата создания</th>
+                            <th onclick="sortTableTask(0)" class="date_task">Дата создания</th>
                             <th onclick="sortTableTask(1)">Исполнитель</th>
-                            <th onclick="sortTableTask(2)">Задача</th>
+                            <th onclick="sortTableTask(2)" class="task_task">Задача</th>
                             <th onclick="sortTableTask(3)">Лид</th>
-                            <th onclick="sortTableTask(4)">Статус</th>
-                            <th onclick="sortTableTask(5)">Дэдлайн (желаемый)</th>
-                            <th onclick="sortTableTask(6)">Факт. дата завершения</th>
-                            <th></th>
+                            <th onclick="sortTableTask(4)" class="status_task">Статус</th>
+                            <th onclick="sortTableTask(5)" class="date_task">Дэдлайн (желаемый)</th>
+                            <th onclick="sortTableTask(6)" class="date_task">Факт. дата завершения</th>
+<!--                            <th></th>-->
                         </tr>
                         </thead>
                         <tbody>
@@ -37,19 +37,16 @@
                         <td><a class="not_line_href" th:href="'/infotask/'+ ${task.id}"><i class="not_line_href" th:text="${task.lid.surname} + ' ' + ${task.lid.username} + ' ' + ${task.lid.fathersName}"></i></a></td>
                             <td>
                                 <select class="form-control" th:id="'statusTask'+${task.id}" th:name="statusTask">
-                                    <option th:each="status : ${taskStatuses}"
-                                            th:value="${status}"
-                                            th:text="${status.taskName}"
-                                            th:selected="${task.isSelectedStatus(status)}">
-                                    </option>
-                                </select>
+                                <option th:each="status : ${taskStatuses}"
+                                        th:value="${status}"
+                                        th:text="${status.taskName}"
+                                        th:selected="${task.isSelectedStatus(status)}"
+                                        th:data-id="${status.id}">
+                                </option>
+                            </select>
                             </td>
-                        <td><a class="not_line_href" th:href="'/infotask/'+ ${task.id}"><i class="not_line_href" th:text="${task.dateDeadline}"></i></a></td>
-<!--                        <td><a class="not_line_href" th:href="'/infotask/'+ ${task.id}"><i class="not_line_href" th:text="${task.dateActualCompletion}"></i></a></td>-->
-
-
+                            <td><a class="not_line_href" th:href="'/infotask/'+ ${task.id}"><i class="not_line_href" th:text="${task.dateDeadline}"></i></a></td>
                             <td th:text="${task.dateActualCompletion}" th:name="dateActualCompletion" th:id="'dateActualCompletion'+${task.id}"></td>
-
                         </tr>
                         </tbody>
                     </table>
@@ -63,14 +60,34 @@
 </div>
 </body>
 <script src="/popup.js/"></script>
+<script src="/dateFormatter.js/"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script type="text/javascript">
-    $(function updateDateForId() {
-        console.log(this);
+    $(document).ready(function() {
+        $(".form-control").change(function () {
+            var id = $(this).attr("id");
+            let strNewId = id.substring(id.indexOf("statusTask") + "statusTask".length, id.length);
+            dateId = "#" + 'dateActualCompletion' + strNewId;
+            if($("option:selected", this).attr("data-id")=="3") {
+                $(dateId).text(formatDate(Date()));
+            }
+            else{
+                $(dateId).text("");
+            }
+
+            var data = {}
+            /*data["id"] = strNewId;
+            data["statusId"] = $("option:selected", this).attr("data-id");
+            data["date"] = $(dateId).text();*/
+            $.post("/task/updateDate", {
+                "id" : strNewId,
+                "statusId" : $("option:selected", this).attr("data-id"),
+                "date" : $(dateId).text()
+            }, function(data) {
+                ;
+            });
+        });
     });
-    $( ".form-control" ).change(function() {
-        var id = $(this).attr("id");
-        alert(id);
-    });
+
 </script>
 </html>

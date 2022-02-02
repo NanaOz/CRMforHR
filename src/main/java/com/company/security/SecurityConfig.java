@@ -21,6 +21,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
+        http.csrf().disable();
         http.authorizeRequests()
                 .antMatchers("/**").hasAnyRole( "employeIt","employeeHr","managerHr")
                 .and().formLogin()
@@ -29,7 +30,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .loginProcessingUrl("/perform-login")
                 .usernameParameter("user")
                 .passwordParameter("pass")
-                .defaultSuccessUrl("/menu")
+                .defaultSuccessUrl("/menu#tab_menu")
                 .and().logout()
                 .logoutSuccessUrl("/login")
                 .logoutUrl("/perform_logout")
