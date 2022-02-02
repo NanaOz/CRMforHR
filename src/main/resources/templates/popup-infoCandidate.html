@@ -21,7 +21,6 @@
                     <td>
                         <span th:text="${candidate.id}">ID:</span>
                     </td>
-                    <td></td>
                 </tr>
                 <tr>
                     <td>
@@ -30,7 +29,6 @@
                     <td>
                         <span th:text="${candidate.user.surname}"></span>
                     </td>
-                    <td></td>
                 </tr>
                 <tr>
                     <td>
@@ -39,7 +37,6 @@
                     <td>
                         <span th:text="${candidate.user.username}"></span>
                     </td>
-                    <td></td>
                 </tr>
                 <tr>
                     <td>
@@ -48,7 +45,6 @@
                     <td>
                         <span th:text="${candidate.user.fathersName}"></span>
                     </td>
-                    <td></td>
                 </tr>
                 <tr>
                     <td>
@@ -56,13 +52,6 @@
                     </td>
                     <td>
                         <span th:text="${candidate.user.email}"></span>
-                    </td>
-                    <td>
-                        <!--                        <div class="text-field_group">-->
-                        <!--                            <input class="edit_file" type="text" id="emailcan" placeholder="введите email">-->
-                        <!--                            <button class="text-field_btn" type="button"><a class="not_line_href" href="'/emailokcand/'+${candidate.id}">изменить</a>-->
-                        <!--                            </button>-->
-                        <!--                        </div>-->
                     </td>
                 </tr>
                 <tr>
@@ -72,7 +61,6 @@
                     <td>
                         <span th:text="${candidate.post.name}"></span>
                     </td>
-                    <td></td>
                 </tr>
                 <tr>
                     <td>
@@ -81,69 +69,35 @@
                     <td>
                         <span th:text="${candidate.user.phone}"></span>
                     </td>
-                    <td>
-                        <!--                        <div class="text-field_group">-->
-                        <!--                            <input class="edit_file" type="text" id="phonecand" placeholder="введите номер">-->
-                        <!--                            <button class="text-field_btn" type="button"><a class="not_line_href" href="/phoneokcand">изменить</a>-->
-                        <!--                            </button>-->
-                        <!--                        </div>-->
-                    </td>
                 </tr>
                 <tr>
                     <td>
                         <label>Тэги:</label>
                     </td>
-<!--                                        <td>-->
-<!--                                            <div class="table">-->
-<!--                                                <div>-->
-<!--                                                    <table id="tagTable" >-->
-<!--                                                        <tbody>-->
-<!--                                                        <tr th:each="tag:${candidate.tags}">-->
-<!--                                                            <td th:text="${tag.tag}"></td>-->
-<!--                                                        </tbody>-->
-<!--                                                    </table>-->
-<!--                                                </div>-->
-<!--                                            </div>-->
-<!--                                        </td>-->
                     <td></td>
-                    <td>
-                    </td>
                 </tr>
                 </tbody>
             </table>
-
-            <div class="table_and_search">
+            <div class="table">
                 <table class="table_info_tag">
                     <tbody>
                     <tr>
                         <td>№</td>
-                        <td>Наменование тега</td>
+                        <td>Наименование тега</td>
                         <td>Уровень владения</td>
                     </tr>
                     <tr th:each="mapItem, state:${candidate.tagLevelMap}">
-                        <td th:utext="${state.count}"> </td>
-                        <td th:utext="${mapItem.key.name}"> </td>
-                        <td th:utext="${mapItem.value.level}"> </td>
+                        <td th:utext="${state.count}"></td>
+                        <td th:utext="${mapItem.key.name}"></td>
+                        <td th:utext="${mapItem.value.level}"></td>
                     </tr>
-
                     </tbody>
                 </table>
             </div>
             <div>
-                <button class="text-field_btn" type="button"><a th:href="'/edit/'+${candidate.id}" class="not_line_href_black"
-                                                                href="/phoneokcand">редактировать информацию</a>
-                </button>
+                <button class="tabs_change tabs_change" type="button"><a th:href="'/edit/'+${candidate.id}"
+                                                                         class="not_line_href_black" href="/phoneokcand">Редактировать информацию</a></button>
             </div>
-            <!--                <div class="search">-->
-            <!--                    <label for="tagcand">Добавить теги:</label>-->
-            <!--                    <select type="text" id="tagcand" class="popup_field" required autocomplete="off">-->
-            <!--                        <option-->
-            <!--                                th:each="tag:${tags}"-->
-            <!--                                th:text="${tag.name}">-->
-            <!--                        </option>-->
-            <!--                    </select>-->
-            <!--                    <button class="text-field_btn" type="submit"><a class="not_line_href" href="/addtagcand">добавить</a></button>-->
-            <!--                </div>-->
         </div>
     </div>
     </div>

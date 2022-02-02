@@ -83,12 +83,12 @@
             </td>
             </tbody>
         </table>
-        <div class="table_and_search">
+        <div class="table">
             <table class="table_info_tag">
                 <tbody>
                 <tr>
                     <td>№</td>
-                    <td>Наменование тега</td>
+                    <td>Наименование тега</td>
                     <td>Уровень владения</td>
                 </tr>
                 <tr th:each="mapItem, state:${employeeit.tagLevel}">
@@ -101,8 +101,8 @@
             </table>
 
             <div>
-                <button class="text-field_btn" type="button"><a th:href="'/employeeit/edit/'+${employeeit.id}"
-                                                                class="not_line_href_black" href="/phoneokcand">редактировать
+                <button class="tabs_change tabs_change" type="button"><a th:href="'/employeeit/edit/'+${employeeit.id}"
+                                                                class="not_line_href_black" href="/phoneokcand">Редактировать
                     информацию</a>
                 </button>
             </div>
