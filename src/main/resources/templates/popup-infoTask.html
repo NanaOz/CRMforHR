@@ -8,12 +8,10 @@
         <title>ИНФО</title>
     </head>
     <body>
-    <!--    <div id="popup_3" class="popup">-->
     <div th:switch="${statustask}" class="popup_body">
         <div class="popup_content">
             <a href="/closetask" class="popup_close close-popup">X</a>
             <div class="popup_title">Информация о задаче</div>
-
             <table class="table_info">
                 <tbody>
                 <tr>
@@ -68,15 +66,6 @@
                     <td>
                         <span th:text="${task.status.taskName}"></span>
                     </td>
-                    <td >
-                        <div class="text-field_group">
-                            <select type="text" id="tagemp" class="popup_field" required autocomplete="off">
-                                <option th:each="status:${statustask}"
-                                        th:text="${status.taskName}"></option>
-                            </select>
-<!--                            <button class="text-field_btn" type="button"><a href="/changestatus">изменить</a></button>-->
-                        </div>
-                    </td>
                 </tr>
                 <tr>
                     <td>
@@ -98,53 +87,9 @@
                 </tr>
                 </tbody>
             </table>
-<!--            <div>-->
-<!--                <label>ID:</label>-->
-<!--                <span th:text="${task.id}">ID:</span>-->
-<!--            </div>-->
-<!--            <div>-->
-<!--                <label>Дата создания задачи:</label>-->
-<!--                <span th:text="${task.dateCreation}"></span>-->
-<!--            </div>-->
-<!--            <div>-->
-<!--                <label>Исполнитель:</label>-->
-<!--                <span th:text="${task.executor.employee.user.surname}+ ' ' + ${task.executor.employee.user.username} + ' ' + ${task.executor.employee.user.fathersName}"></span>-->
-<!--            </div>-->
-<!--            <div>-->
-<!--                <label>Задача:</label>-->
-<!--                <span th:text="${task.task}"></span>-->
-<!--            </div>-->
-<!--            <div>-->
-<!--                <label>Лид:</label>-->
-<!--                <span th:text="${task.lid.surname} + ' ' + ${task.lid.username} + ' ' + ${task.lid.fathersName}"></span>-->
-<!--            </div>-->
-<!--            <div>-->
-<!--                <label>Статус:</label>-->
-<!--                <span th:text="${task.status.taskName}"></span>-->
-<!--            </div>-->
-<!--&lt;!&ndash;            <div th:switch="${statustask}">&ndash;&gt;-->
-<!--&lt;!&ndash;                <select type="text" id="select_status" class="popup_field" required autocomplete="off">&ndash;&gt;-->
-<!--&lt;!&ndash;                    <option th:each="statustask:${statustask}"&ndash;&gt;-->
-<!--&lt;!&ndash;                            th:text="${statustask.task_name}">&ndash;&gt;-->
-<!--&lt;!&ndash;                    </option>&ndash;&gt;-->
-<!--&lt;!&ndash;                </select>&ndash;&gt;-->
-<!--&lt;!&ndash;            </div>&ndash;&gt;-->
-
-<!--            <div>-->
-<!--                <label>Дэдлайн:</label>-->
-<!--                <span th:text="${task.dateDeadline}"></span>-->
-<!--            </div>-->
-<!--            <div>-->
-<!--                <label>Фактическая дата завершения:</label>-->
-<!--                <span th:text="${task.dateActualCompletion}"></span>-->
-<!--            </div>-->
-            <div>
-                <button class="popup_button" type="submit"><a href="/taskok">ОК</a></button>
-            </div>
         </div>
     </div>
     <script src="/popup.js/"></script>
-    <!--    </div>-->
     </body>
 </form>
 </html>

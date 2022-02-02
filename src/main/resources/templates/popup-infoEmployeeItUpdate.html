@@ -13,95 +13,124 @@
             <a href="/closex" class="popup_close close-popup">X</a>
             <div class="popup_title">Редактировать информацию</div>
             <div class="row">
-                <div>
-                    <label for="userId"></label>
-                    <input type="hidden" th:field="*{employee.user.id}" class="form-control" id="userId"
-                           placeholder="userId">
-                    <!--                    <span th:if="${#fields.hasErrors('surname')}" th:errors="*{surname}" class="text-danger"></span>-->
-                </div>
-                <div>
-                    <label for="surname">Фамилия</label>
-                    <input type="text" th:field="*{employee.user.surname}" class="form-control" id="surname"
-                           placeholder="surname">
-                    <!--                    <span th:if="${#fields.hasErrors('surname')}" th:errors="*{surname}" class="text-danger"></span>-->
-                </div>
-                <div>
-                    <label for="username">Имя</label>
-                    <input type="text" th:field="*{employee.user.username}" class="form-control" id="username"
-                           placeholder="username">
-                    <!--                    <span th:if="${#fields.hasErrors('username')}" th:errors="*{username}" class="text-danger"></span>-->
-                </div>
-                <div>
-                    <label for="fathersName">Отчество</label>
-                    <input type="text" th:field="*{employee.user.fathersName}" class="form-control" id="fathersName"
-                           placeholder="fathersName">
-                    <!--                    <span th:if="${#fields.hasErrors('fathersName')}" th:errors="*{fathersName}" class="text-danger"></span>-->
-                </div>
-                <div>
-                    <label for="email">Почта</label>
-                    <input type="text" th:field="*{employee.user.email}" class="form-control" id="email"
-                           placeholder="email">
-                    <!--                    <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="text-danger"></span>-->
-                </div>
-                <div>
-                    <label for="phone">Телефон</label>
-                    <input type="text" th:field="*{employee.user.phone}" class="form-control" id="phone"
-                           placeholder="phone">
-                    <!--                    <span th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}" class="text-danger"></span>-->
-                </div>
-                <div>
-                    <label for="post">Должность</label>
-                    <input type="text" th:field="*{employee.post.name}" class="form-control" id="post"
-                           placeholder="post">
-                    <!--                    <span th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}" class="text-danger"></span>-->
-                </div>
-                <div>
-                    <label for="status">Статус</label>
-                    <input type="text" th:field="*{employee.status.name}" class="form-control" id="status"
-                           placeholder="status">
-                    <!--                    <span th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}" class="text-danger"></span>-->
-                </div>
-                <div>
-                    <label for="project">Проект:</label>
-                    <input type="text" th:field="*{project.projectName}" class="form-control" id="project"
-                           placeholder="project">
-                    <!--                    <span th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}" class="text-danger"></span>-->
-                </div>
-            </div>
-            <div class="row">
-                <div>
-                    <input type="submit" class="text-field_btn" value="Обновить информацию">
-                </div>
-            </div>
-
-            <div class="table_and_search">
-                <table class="table_info_tag">
+                <table class="table_info">
                     <tbody>
                     <tr>
-                        <td>№</td>
-                        <td>Наменование тега</td>
-                        <td>Уровень владения</td>
+                        <td>
+                            <label for="userId"></label>
+                        </td>
+                        <td>
+                            <input type="hidden" th:field="*{employee.user.id}" class="form-control" id="userId"
+                                   placeholder="userId">
+                        </td>
                     </tr>
-                    <tr th:each="mapItem, state:${employeeit.tagLevel}">
-                        <td th:utext="${state.count}"> </td>
-                        <td th:utext="${mapItem.key.name}"> </td>
-                        <td th:utext="${mapItem.value.level}"> </td>
+                    <tr>
+                        <td>
+                            <label for="surname">Фамилия</label>
+                        </td>
+                        <td>
+                            <input type="text" th:field="*{employee.user.surname}" class="form-control" id="surname"
+                                   placeholder="surname">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="username">Имя</label>
+                        </td>
+                        <td>
+                            <input type="text" th:field="*{employee.user.username}" class="form-control" id="username"
+                                   placeholder="username">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="fathersName">Отчество</label>
+                        </td>
+                        <td>
+                            <input type="text" th:field="*{employee.user.fathersName}" class="form-control"
+                                   id="fathersName"
+                                   placeholder="fathersName">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="email">Почта</label>
+                        </td>
+                        <td>
+                            <input type="text" th:field="*{employee.user.email}" class="form-control" id="email"
+                                   placeholder="email">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="phone">Телефон</label>
+                        </td>
+                        <td>
+                            <input type="text" th:field="*{employee.user.phone}" class="form-control" id="phone"
+                                   placeholder="phone">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="post">Должность</label>
+                        </td>
+                        <td>
+                            <input type="text" th:field="*{employee.post.name}" class="form-control" id="post"
+                                   placeholder="post">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="status">Статус</label>
+                        </td>
+                        <td>
+                            <input type="text" th:field="*{employee.status.name}" class="form-control" id="status"
+                                   placeholder="status">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="project">Проект:</label>
+                        </td>
+                        <td>
+                            <input type="text" th:field="*{project.projectName}" class="form-control" id="project"
+                                   placeholder="project">
+                        </td>
                     </tr>
 
-                    </tbody>
-                </table>
 
-                <div class="search">
-                    <label for="tagcand">Добавить теги:</label>
-                    <select type="text" id="tagcand" class="popup_field" required autocomplete="off">
-                        <option
-                                th:each="mapItem, state:${employeeit.tagLevel}"
-                                th:utext="${state.count} + ${mapItem.key.name} + ${mapItem.value.level}">
-                        </option>
-                    </select>
-                    <button class="text-field_btn" type="submit"><a class="not_line_href"
-                                                                    href="/addtagcand">добавить</a></button>
-                </div>
+                    <div class="table">
+                        <table class="table_info_tag">
+                            <tbody>
+                            <tr>
+                                <td>№</td>
+                                <td>Наменование тега</td>
+                                <td>Уровень владения</td>
+                            </tr>
+                            <tr th:each="mapItem, state:${employeeit.tagLevel}">
+                                <td th:utext="${state.count}"></td>
+                                <td th:utext="${mapItem.key.name}"></td>
+                                <td th:utext="${mapItem.value.level}"></td>
+                            </tr>
+
+                            </tbody>
+                        </table>
+
+                        <div class="">
+                            <p><label for="tagcand">Добавить теги:</label></p>
+                            <select type="text" id="tagcand" class="popup_field" required autocomplete="off">
+                                <option
+                                        th:each="mapItem, state:${employeeit.tagLevel}"
+                                        th:utext="${state.count} + ${mapItem.key.name} + ${mapItem.value.level}">
+                                </option>
+                            </select>
+                            <button class="tabs_change tabs_change" type="submit"><a class="not_line_href_black"
+                                                                                     href="/addtagcand">Добавить</a>
+                            </button>
+
+                            <p><input type="submit" class="tabs_change tabs_change" value="Обновить информацию"></p>
+                        </div>
+                    </div>
             </div>
         </div>
     </div>

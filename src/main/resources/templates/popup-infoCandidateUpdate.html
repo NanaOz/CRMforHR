@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <form action="#" th:action="@{/update/{id}(id=${candidate.id})}" th:object="${candidate}" method="post">
-    <!--<form action="#" th:action="@{/emailokcand/{id}(id=${candidate.id})}" th:object="${candidate.user}" method="post">-->
-
     <head>
         <meta charset="UTF-8">
         <meta username="viewport" content="width=device-width, initial-scale=1">
@@ -15,130 +13,157 @@
             <a href="/closex" class="popup_close close-popup">X</a>
             <div class="popup_title">Редактирование</div>
             <div class="row">
-                <div>
-                    <label for="userId"></label>
-                    <input type="hidden" th:field="*{user.id}" class="form-control" id="userId" placeholder="userId">
-                    <!--                    <span th:if="${#fields.hasErrors('surname')}" th:errors="*{surname}" class="text-danger"></span>-->
-                </div>
-                <div>
-                    <label for="surname">Фамилия</label>
-                    <input type="text" th:field="*{user.surname}" class="form-control" id="surname"
-                           placeholder="surname">
-                    <!--                    <span th:if="${#fields.hasErrors('surname')}" th:errors="*{surname}" class="text-danger"></span>-->
-                </div>
-                <div>
-                    <label for="username">Имя</label>
-                    <input type="text" th:field="*{user.username}" class="form-control" id="username"
-                           placeholder="username">
-                    <!--                    <span th:if="${#fields.hasErrors('username')}" th:errors="*{username}" class="text-danger"></span>-->
-                </div>
-                <div>
-                    <label for="fathersName">Отчество</label>
-                    <input type="text" th:field="*{user.fathersName}" class="form-control" id="fathersName"
-                           placeholder="fathersName">
-                    <!--                    <span th:if="${#fields.hasErrors('fathersName')}" th:errors="*{fathersName}" class="text-danger"></span>-->
-                </div>
-                <div>
-                    <label for="email">Почта</label>
-                    <input type="text" th:field="*{user.email}" class="form-control" id="email" placeholder="email">
-                    <!--                    <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="text-danger"></span>-->
-                </div>
-                <div>
-                    <label for="phone">Телефон</label>
-                    <input type="text" th:field="*{user.phone}" class="form-control" id="phone" placeholder="phone">
-                    <!--                    <span th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}" class="text-danger"></span>-->
-                </div>
-                <div>
-                    <label for="post">Должность</label>
-                    <select class="form-control" th:id="post" th:name="post">
-                        <option th:each="post : ${postes}"
-                                th:value="${post}"
-                                th:text="${post.id}+ ''+${post.name}"
-                                th:selected="${candidate.isSelectedPost(post)}"
-                                th:data-id="${post.id}" th:data-name="${post.name}">
-                        </option>
-                    </select>
-                    <!--            <input type="text" th:field="*{post}" class="form-control" id="post" placeholder="post">-->
-                    <!--                    <span th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}" class="text-danger"></span>-->
-                </div>
-                <div>
-                    <label for="status">Статус</label>
-                    <select class="form-control" th:id="status"
-                            th:name="status">
-                        <option th:each="status : ${statuses}"
-                                th:value="${status}"
-                                th:text="${status.id}+ ''+${status.name}"
-                                th:selected="${candidate.isSelectedStatus(status)}"
-                                th:data-id="${status.id}" th:data-name="${status.name}">
-                        </option>
-                    </select>
-                    <!--<input type="text" th:field="*{status}" class="form-control" id="status" placeholder="status">-->
-                    <!--                    <span th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}" class="text-danger"></span>-->
-                </div>
-                <div>
-                    <input type="hidden" th:field="*{status.id}" class="form-control" id="statusId"  placeholder="statusId">
-                    <input type="hidden" th:field="*{status.name}" class="form-control" id="statusName"   placeholder="statusName">
-                    <input type="hidden" th:field="*{post.id}" class="form-control" id="postId" placeholder="postId">
-                    <input type="hidden" th:field="*{post.name}" class="form-control" id="postName" placeholder="postName">
-                </div>
-
-            </div>
-            <div class="row">
-                <div>
-                    <input type="submit" class="text-field_btn" value="Обновить информацию">
-                </div>
-            </div>
-
-            <div class="table_and_search">
-                <table class="table_info_tag">
+                <table class="table_info">
                     <tbody>
                     <tr>
-                        <td>№</td>
-                        <td>Наменование тега</td>
-                        <td>Уровень владения</td>
-                    </tr>
-                    <tr th:each="mapItem, state:${candidate.tagLevelMap}">
-                        <td th:utext="${state.count}"> </td>
-                        <td th:utext="${mapItem.key.name}"> </td>
-                        <td th:utext="${mapItem.value.level}"> </td>
-                    </tr>
+                        <td>
+                            <label class="lable_edit" for="userId"></label>
+                        </td>
+                        <td>
+                            <input type="hidden" th:field="*{user.id}" class="form-control" id="userId"
+                                   placeholder="userId">
 
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label class="lable_edit" for="surname">Фамилия</label>
+                        </td>
+                        <td>
+                            <input type="text" th:field="*{user.surname}" class="form-control" id="surname"
+                                   placeholder="Фамилия">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label class="lable_edit" for="username">Имя</label>
+                        </td>
+                        <td>
+                            <input type="text" th:field="*{user.username}" class="form-control" id="username"
+                                   placeholder="username">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label class="lable_edit" for="fathersName">Отчество</label>
+                        </td>
+                        <td>
+                            <input type="text" th:field="*{user.fathersName}" class="form-control" id="fathersName"
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label class="lable_edit" for="email">Почта</label>
+                        </td>
+                        <td>
+                            <input type="text" th:field="*{user.email}" class="form-control" id="email"
+                                   placeholder="email">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label class="lable_edit" for="phone">Телефон</label>
+                        </td>
+                        <td>
+                            <input type="text" th:field="*{user.phone}" class="form-control" id="phone"
+                                   placeholder="phone">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label class="lable_edit" for="post">Должность</label>
+                        </td>
+                        <td>
+                            <select class="form-control" th:id="post" th:name="post">
+                                <option th:each="post : ${postes}"
+                                        th:value="${post}"
+                                        th:text="${post.id}+ ''+${post.name}"
+                                        th:selected="${candidate.isSelectedPost(post)}"
+                                        th:data-id="${post.id}" th:data-name="${post.name}">
+                                </option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label class="lable_edit" for="status">Статус</label>
+                        </td>
+                        <td>
+                            <select class="form-control" th:id="status"
+                                    th:name="status">
+                                <option th:each="status : ${statuses}"
+                                        th:value="${status}"
+                                        th:text="${status.id}+ ''+${status.name}"
+                                        th:selected="${candidate.isSelectedStatus(status)}"
+                                        th:data-id="${status.id}" th:data-name="${status.name}">
+                                </option>
+                            </select>
+                        </td>
+                    </tr>
                     </tbody>
                 </table>
-
-                <div class="search">
-                    <label for="tagcand">Добавить теги:</label>
-                    <select type="text" id="tagcand" class="popup_field" required autocomplete="off">
-                        <option
-                                th:each="mapItem, state:${candidate.tagLevelMap}"
-                                th:utext="${state.count} + ${mapItem.key.name} + ${mapItem.value.level}">
-                        </option>
-                    </select>
-                    <button class="text-field_btn" type="submit"><a class="not_line_href"
-                                                                    href="/addtagcand">добавить</a></button>
+                <div>
+                    <input type="hidden" th:field="*{status.id}" class="form-control" id="statusId"
+                           placeholder="statusId">
+                    <input type="hidden" th:field="*{status.name}" class="form-control" id="statusName"
+                           placeholder="statusName">
+                    <input type="hidden" th:field="*{post.id}" class="form-control" id="postId"
+                           placeholder="postId">
+                    <input type="hidden" th:field="*{post.name}" class="form-control" id="postName"
+                           placeholder="postName">
                 </div>
-            </div>
-        </div>
-    </div>
-    <script src="/popup.js/"></script>
-            </div>
-        </div>
 
 
-        <script src="/popup.js/"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-        <script type="text/javascript">
-            $(document).ready(function () {
-                $("#status").change(function () {
-                    $("#statusId").val($("#status option:selected").attr("data-id"));
-                    $("#statusName").val($("#status option:selected").attr("data-name"));
-                });
-                $("#post").change(function () {
-                    $("#postId").val($("#post option:selected").attr("data-id"));
-                    $("#postName").val($("#post option:selected").attr("data-name"));
-                })
-            });
-        </script>
+                <div class="table">
+                    <table class="table_info_tag">
+                        <tbody>
+                        <tr>
+                            <td>№</td>
+                            <td>Наименование тега</td>
+                            <td>Уровень владения</td>
+                        </tr>
+                        <tr th:each="mapItem, state:${candidate.tagLevelMap}">
+                            <td th:utext="${state.count}"></td>
+                            <td th:utext="${mapItem.key.name}"></td>
+                            <td th:utext="${mapItem.value.level}"></td>
+                        </tr>
+
+                        </tbody>
+                    </table>
+
+                    <div class="">
+                        <p><label class="lable_edit" for="tagcand">Добавить теги:</label></p>
+                        <select type="text" id="tagcand" class="popup_field" required autocomplete="off">
+                            <option
+                                    th:each="mapItem, state:${candidate.tagLevelMap}"
+                                    th:utext="${state.count} + ${mapItem.key.name} + ${mapItem.value.level}">
+                            </option>
+                        </select>
+                        <button class="tabs_change tabs_change" type="submit"><a class="not_line_href_black"
+                                                                                 href="/addtagcand">Добавить</a>
+                        </button>
+                        <p><input type="submit" class="tabs_change tabs_change" value="Обновить информацию"></p>
+
+                    </div>
+                </div>
+                <script src="/popup.js/"></script>
+                <script src="/popup.js/"></script>
+                <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+                <script type="text/javascript">
+                    $(document).ready(function () {
+                        $("#status").change(function () {
+                            $("#statusId").val($("#status option:selected").attr("data-id"));
+                            $("#statusName").val($("#status option:selected").attr("data-name"));
+                        });
+                        $("#post").change(function () {
+                            $("#postId").val($("#post option:selected").attr("data-id"));
+                            $("#postName").val($("#post option:selected").attr("data-name"));
+                        })
+                    });
+                </script>
+
+            </div>
+        </div>
     </div>
     </body>
 </form>

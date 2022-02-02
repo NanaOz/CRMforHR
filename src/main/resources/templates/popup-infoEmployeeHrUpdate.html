@@ -13,63 +13,91 @@
             <a href="/closex" class="popup_close close-popup">X</a>
             <div class="popup_title">Редактирование</div>
             <div class="row">
-                <div>
-                    <label for="userId">ID:</label>
-                    <input type="hidden" th:field="*{employee.user.id}" class="form-control" id="userId"
-                           placeholder="userId">
-                    <!--                    <span th:if="${#fields.hasErrors('surname')}" th:errors="*{surname}" class="text-danger"></span>-->
-                </div>
-                <div>
-                    <label for="surname">Фамилия:</label>
-                    <input type="text" th:field="*{employee.user.surname}" class="form-control" id="surname"
-                           placeholder="surname">
-                    <!--                    <span th:if="${#fields.hasErrors('surname')}" th:errors="*{surname}" class="text-danger"></span>-->
-                </div>
-                <div>
-                    <label for="username">Имя:</label>
-                    <input type="text" th:field="*{employee.user.username}" class="form-control" id="username"
-                           placeholder="username">
-                    <!--                    <span th:if="${#fields.hasErrors('username')}" th:errors="*{username}" class="text-danger"></span>-->
-                </div>
-                <div>
-                    <label for="fathersName">Отчество:</label>
-                    <input type="text" th:field="*{employee.user.fathersName}" class="form-control" id="fathersName"
-                           placeholder="fathersName">
-                    <!--                    <span th:if="${#fields.hasErrors('fathersName')}" th:errors="*{fathersName}" class="text-danger"></span>-->
-                </div>
-                <div>
-                    <label for="email">Почта:</label>
-                    <input type="text" th:field="*{employee.user.email}" class="form-control" id="email"
-                           placeholder="email">
-                    <!--                    <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="text-danger"></span>-->
-                </div>
-                <div>
-                    <label for="phone">Телефон:</label>
-                    <input type="text" th:field="*{employee.user.phone}" class="form-control" id="phone"
-                           placeholder="phone">
-                    <!--                    <span th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}" class="text-danger"></span>-->
-                </div>
-                <div>
-                    <label for="post">Должность:</label>
-                    <input type="text" th:field="*{employee.post.name}" class="form-control" id="post"
-                           placeholder="post">
-                    <!--                    <span th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}" class="text-danger"></span>-->
-                </div>
-                <div>
-                    <label for="status">Статус:</label>
-                    <input type="text" th:field="*{employee.status.name}" class="form-control" id="status"
-                           placeholder="status">
-                    <!--                    <span th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}" class="text-danger"></span>-->
-                </div>
-            </div>
+                <table class="table_info">
+                    <tbody>
+                    <tr>
+                        <td>
+                            <label for="userId">ID:</label>
+                        </td>
+                        <td>
+                            <input type="hidden" th:field="*{employee.user.id}" class="form-control" id="userId"
+                                   placeholder="userId">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="surname">Фамилия:</label>
+                        </td>
+                        <td>
+                            <input type="text" th:field="*{employee.user.surname}" class="form-control" id="surname">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="username">Имя:</label>
+
+                        </td>
+                        <td>
+                            <input type="text" th:field="*{employee.user.username}" class="form-control" id="username"
+                                   placeholder="username">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="fathersName">Отчество:</label>
+                        </td>
+                        <td>
+                            <input type="text" th:field="*{employee.user.fathersName}" class="form-control" id="fathersName"
+                                   placeholder="fathersName">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="email">Почта:</label>
+                        </td>
+                        <td>
+                            <input type="text" th:field="*{employee.user.email}" class="form-control" id="email"
+                                   placeholder="email">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="phone">Телефон:</label>
+                        </td>
+                        <td>
+                            <input type="text" th:field="*{employee.user.phone}" class="form-control" id="phone"
+                                   placeholder="phone">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="post">Должность:</label>
+                        </td>
+                        <td>
+                            <input type="text" th:field="*{employee.post.name}" class="form-control" id="post"
+                                   placeholder="post">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="status">Статус:</label>
+                        </td>
+                        <td>
+                            <input type="text" th:field="*{employee.status.name}" class="form-control" id="status"
+                                   placeholder="status">
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
             <div class="row">
                 <div>
-                    <input type="submit" class="text-field_btn" value="Обновить информацию">
+                    <input type="submit" class="tabs_change tabs_change" value="Обновить информацию">
                 </div>
             </div>
         </div>
     </div>
     <script src="/popup.js/"></script>
+    </div>
     </body>
 </form>
 </html>
