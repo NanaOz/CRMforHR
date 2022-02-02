@@ -23,9 +23,10 @@ public class CandidateController {
     private final EmployeeITRepository employeeITRepository;
     private final ProjectRepository projectRepository;
     private final PostRepository postRepository;
+    private final UserRepository userRepository;
 
     @Autowired
-    public CandidateController(CandidateRepository candidateRepository, EmployeeRepository employeeRepository, StatusRepository statusRepository, TagRepository tagRepository, UserRepository userRepository, EmployeeHrRepository employeeHrRepository, EmployeeITRepository employeeITRepository, ProjectRepository projectRepository, PostRepository postRepository) {
+    public CandidateController(CandidateRepository candidateRepository, EmployeeRepository employeeRepository, StatusRepository statusRepository, TagRepository tagRepository, UserRepository userRepository, EmployeeHrRepository employeeHrRepository, EmployeeITRepository employeeITRepository, ProjectRepository projectRepository, PostRepository postRepository, UserRepository userRepository1) {
         this.candidateRepository = candidateRepository;
         this.employeeRepository = employeeRepository;
         this.statusRepository = statusRepository;
@@ -34,6 +35,7 @@ public class CandidateController {
         this.employeeITRepository = employeeITRepository;
         this.projectRepository = projectRepository;
         this.postRepository = postRepository;
+        this.userRepository = userRepository;
     }
 
     @GetMapping("/candidate")
@@ -66,7 +68,7 @@ public class CandidateController {
             candidate.setId(id);
             return "popup-infoCandidateUpdate";
         }*/
-//        userRepository.save(user);
+        userRepository.save(candidate.getUser());
         candidateRepository.save(candidate);
 
         return "redirect:/candidate#tab_candidate";
