@@ -47,5 +47,6 @@ public class LoginTest {
         this.mockMvc.perform(post("/login").param("user", "bazaevaAV"))
                 .andDo(print())
                 .andExpect(status().isForbidden());
+
     }
 }
