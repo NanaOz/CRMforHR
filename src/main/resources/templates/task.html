@@ -37,27 +37,6 @@
                         <td><a class="not_line_href" th:href="'/infotask/'+ ${task.id}"><i class="not_line_href" th:text="${task.lid.surname} + ' ' + ${task.lid.username} + ' ' + ${task.lid.fathersName}"></i></a></td>
                             <td>
                                 <select class="form-control" th:id="'statusTask'+${task.id}" th:name="statusTask">
-                                    <option th:each="status : ${taskStatuses}"
-                                            th:value="${status}"
-                                            th:text="${status.taskName}"
-                                            th:selected="${task.isSelectedStatus(status)}"
-                                            th:data-id="${status.id}">
-                                    </option>
-                                </select>
-                            </td>
-                        <td><a class="not_line_href" th:href="'/infotask/'+ ${task.id}"><i class="not_line_href" th:text="${task.dateDeadline}"></i></a></td>
-<!--                        <td><a class="not_line_href" th:href="'/infotask/'+ ${task.id}"><i class="not_line_href" th:text="${task.dateActualCompletion}"></i></a></td>-->
-
-
-                            <td th:text="${task.dateActualCompletion}" th:name="dateActualCompletion" th:id="'dateActualCompletion'+${task.id}"></td>
-                            <td th:hidden="${task.id}" th:id="'taskId'+${task.id}" ></td>
-                            <td th:text="${task.dateCreation}"></td>
-                            <td th:text="${task.executor.employee.user.surname}+ ' ' + ${task.executor.employee.user.username} + ' ' + ${task.executor.employee.user.fathersName}"></td>
-                            <td th:text="${task.task}"></td>
-                            <td th:text="${task.lid.surname} + ' ' + ${task.lid.username} + ' ' + ${task.lid.fathersName}"></td>
-                            <!--<td th:text="${task.status.taskName}"></td>-->
-                            <td>
-                                <select class="form-control" th:id="'statusTask'+${task.id}" th:name="statusTask">
                                 <option th:each="status : ${taskStatuses}"
                                         th:value="${status}"
                                         th:text="${status.taskName}"
@@ -66,10 +45,8 @@
                                 </option>
                             </select>
                             </td>
-                            <td th:text="${task.dateDeadline}"></td>
+                            <td><a class="not_line_href" th:href="'/infotask/'+ ${task.id}"><i class="not_line_href" th:text="${task.dateDeadline}"></i></a></td>
                             <td th:text="${task.dateActualCompletion}" th:name="dateActualCompletion" th:id="'dateActualCompletion'+${task.id}"></td>
-                            <td><a th:href="'/infotask/'+ ${task.id}" class="tabs_info_user tabs_info_user">ИНФО</a></td>
-
                         </tr>
                         </tbody>
                     </table>
